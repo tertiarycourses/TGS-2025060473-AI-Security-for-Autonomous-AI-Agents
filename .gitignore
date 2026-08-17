@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+._*
+
+# Office lock files
+~$*
+
+# CONFIDENTIAL — assessment papers and answer keys are never pushed to GitHub.
+# They are trainer-only and live in Google Drive / the LMS-TMS only.
+assessment/
+**/assessment/
+
+# Local environment (contains the courseware Drive link)
+.env
+courseweare/.env
+
+# Build intermediates
+__pycache__/
+*.pyc
