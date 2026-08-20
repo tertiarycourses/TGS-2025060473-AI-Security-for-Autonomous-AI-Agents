@@ -115,9 +115,10 @@ FOLDERS = {
 
 
 def is_answer_key(name):
-    """'Answer to …' / 'Answers to …' — the marking guide. TRAINER-ONLY: it lives on Drive and
-    is NEVER attached to the LMS, a learner-visible field, or GitHub."""
-    return re.match(r"^\s*answers?\s+to\b", name.strip(), re.I) is not None
+    """Recognise legacy and current trainer-only marking-guide filenames."""
+    cleaned = name.strip()
+    return (re.match(r"^\s*answers?\s+to\b", cleaned, re.I) is not None
+            or re.search(r"\banswer\s+key\b", cleaned, re.I) is not None)
 
 
 # ---------------------------------------------------------------- Google Drive
@@ -222,7 +223,7 @@ def collect_links(root):
     # reach the LMS, so they are filtered out before anything is picked.
     docx = lambda n: n.lower().endswith(".docx") and not is_answer_key(n)
     take("writtenAssessmentLink", "assessment",
-         lambda n: docx(n) and re.match(r"^\s*wa\b|written assessment", n, re.I),
+         lambda n: docx(n) and re.search(r"\bwa\b|written assessment", n, re.I),
          "WA (SAQ) question paper .docx")
     # The practical instrument is EITHER a Case Study OR a Practical Performance — never both.
     take("caseStudyLink", "assessment",

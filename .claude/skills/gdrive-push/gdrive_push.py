@@ -29,7 +29,8 @@ created if absent, and any "Archive"/"archives" variant is renamed to the canoni
 lowercase "archive"; any "old versions"-style folder is merged into archive/. For labs, changed/removed files are MOVED to Activities/archive
 by rclone's --backup-dir. Nothing is ever deleted.
 
-Every newly uploaded courseware file is set to "anyone with the link can view".
+Every newly uploaded learner-facing courseware file is set to "anyone with the link can view".
+Assessment answer keys are uploaded without a public link and excluded from the LMS link block.
 
 Prerequisite (one-time): `rclone config create gdrive drive scope=drive`.
 """
@@ -240,6 +241,12 @@ def md5(path):
     return h.hexdigest()
 
 
+def is_answer_key_name(name):
+    """Recognise both legacy `Answer to ...` names and current `... Answer Key ...` names."""
+    low = name.strip().lower()
+    return bool(re.match(r"^answers?\s+to\b", low) or "answer key" in low)
+
+
 def list_dirs(root, path=""):
     return rc(["lsjson", f"{REMOTE}:{path}", "--dirs-only"], root, parse=True)
 
@@ -340,8 +347,11 @@ def push_folder(root, folder_path, files, dry):
         print(f"    upload:  {fn}")
         if not dry:
             rc(["copyto", path, f"{REMOTE}:{folder_path}/{fn}"], root)
-            link = rc(["link", f"{REMOTE}:{folder_path}/{fn}"], root).strip()
-            print(f"      view link (anyone with the link): {link}")
+            if is_answer_key_name(fn):
+                print("      trainer-only answer key: no public link created")
+            else:
+                link = rc(["link", f"{REMOTE}:{folder_path}/{fn}"], root).strip()
+                print(f"      view link (anyone with the link): {link}")
 
 
 def push_labs(root, labs_dir, dry):
@@ -439,7 +449,7 @@ def print_link_block(root):
     one("Lesson Plan", "lesson plan", pdf, "LP - PDF")
     folder, files = files_of("Assessment", "assess")
     qp = [f for f in files if f["Name"].lower().endswith(".docx")
-          and not f["Name"].lower().startswith("answer")]
+          and not is_answer_key_name(f["Name"])]
     if not qp:
         print("Assessment - DOCX: !! MISSING (no question paper .docx on Drive)")
     for f in sorted(qp, key=lambda f: f["Name"]):
