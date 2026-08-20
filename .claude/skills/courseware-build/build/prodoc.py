@@ -126,4 +126,11 @@ def add_page_numbers(doc, left_text=""):
 def enable_update_fields(doc):
     """Tell Word to refresh all fields (TOC, PAGE) when the document opens."""
     settings = doc.settings.element
-    uf = OxmlElement("w:updateFields"); uf.set(qn("w:val"), "true"); settings.append(uf)
+    zoom = settings.find(qn("w:zoom"))
+    if zoom is not None:
+        zoom.set(qn("w:percent"), "100")
+    existing = settings.find(qn("w:updateFields"))
+    if existing is not None:
+        settings.remove(existing)
+    uf = OxmlElement("w:updateFields"); uf.set(qn("w:val"), "true")
+    settings.insert_element_before(uf, "w:hdrShapeDefaults", "w:footnotePr", "w:endnotePr", "w:compat")

@@ -3,7 +3,7 @@
 **WSQ Course Code:** TGS-2025060473
 **Skills Framework TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)
 **Duration:** 2 days · 16 hours
-**Version:** 2.0 (17 August 2026)
+**Version:** 2.1 (20 August 2026)
 **Conducted by:** Tertiary Infotech Pte Ltd · UEN 20120096W
 
 > Courseware for the WSQ course on securing generative AI systems and autonomous AI agents.
@@ -22,7 +22,8 @@ It covers both halves of the problem:
 | Domain | Topics |
 |---|---|
 | **Generative AI security** | Prompt injection (direct, indirect, cross-modal), sensitive data leakage, data and model poisoning, hidden context exposure, improper output handling, PDPA exposure |
-| **Autonomous agent security** | Excessive agency, uncontrolled and destructive execution, tool misuse, agent identity and privilege abuse, memory poisoning, rogue agents, cyber-attack chains |
+| **Autonomous agent security** | Excessive agency, uncontrolled and destructive execution, tool misuse, agent identity and privilege abuse, memory poisoning, malicious skills/plugins and MCP servers, rogue agents, cyber-attack chains |
+| **Organisational implementation** | Guardrails, least privilege, sandboxing, egress control, deterministic human approval, Responsible AI/shared responsibility, monitoring, incident response, PDPA evidence and deployment checklists |
 
 ### Frameworks covered
 
@@ -67,13 +68,13 @@ It covers both halves of the problem:
 
 | Artifact | File |
 |---|---|
-| Trainer slide deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v20.pptx` (+ `.pdf`, 64 slides) |
+| Trainer slide deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v21.pptx` (+ `.pdf`) |
 | Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` (+ `.pdf`) |
 | Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` (+ `.pdf`) |
 | Learner Guide (Markdown mirror) | `courseweare/LEARNER-GUIDE.md` |
-| Activity packs | `activities/activity-{1..5}-*/` (scenario, questions, debrief, PDF) |
+| Activity packs | `activities/activity-{1..5}-*/` (scenario, questions, practice/checklist, Markdown/PDF) |
 
-The deck filename carries the version (`-v20` = Version 2.0), matching the cover.
+The deck filename carries the version (`-v21` = Version 2.1), matching the cover.
 
 ## Repository structure
 
@@ -96,15 +97,18 @@ courseware/
 │   ├── activity-4-rogue-agent-incident-review/
 │   └── activity-5-agent-governance-deployment-gate/
 ├── research/                       # Research notes and the content design
-└── reference/                      # Superseded source deck
+└── reference/                      # Local source packs, including AI Ethics and Responsible AI (not published)
 ```
 
-Each activity folder contains `README.md`, `SCENARIO.md`, `DISCUSSION-QUESTIONS.md`,
-`DEBRIEF.md` (trainer only) and a printable PDF combining all three.
+Each learner-facing activity folder contains `README.md`, `SCENARIO.md`,
+`DISCUSSION-QUESTIONS.md`, `SECURITY-CHECKLIST.md`, matching per-file PDFs and a consolidated
+learner PDF. Activities 2 and 4 also include dedicated prompt-injection and skill/plugin practice
+resources. Trainer debriefs are kept separately in the ignored local `trainer-resources/` tree so
+they are not exposed by the public Activities link.
 
 > **Note:** the `assessment/` folder is **confidential** and is deliberately excluded from this
-> repository via `.gitignore`. Assessment papers and answer keys are distributed through Google
-> Drive and the LMS-TMS only.
+> repository via `.gitignore`. Learner question papers are distributed through Google Drive and
+> LMS-TMS; answer keys remain trainer-only on Drive and are never linked in LMS-TMS.
 
 ---
 
@@ -116,10 +120,10 @@ Each activity folder contains `README.md`, `SCENARIO.md`, `DISCUSSION-QUESTIONS.
 | 2 | Prompt Injection and the PDPA-Reportable Leak | 1 | 60 min | K4, K1 |
 | 3 | Selecting a Security Framework for GenAI and Agents | 2 | 60 min | A3, A5 |
 | 4 | Rogue Agent Post-Incident Review | 2 | 60 min | K5 |
-| 5 | Agent Governance and the Deployment Gate (capstone) | 2 | 75 min | A1, A2 |
+| 5 | Agent Governance and the Deployment Gate (capstone) | 2 | 25 min | A1, A2 |
 
-Every activity is a realistic Singapore-context case study with a scenario, discussion questions
-and a trainer debrief covering expected answers, teaching points and common misconceptions.
+Every activity is a realistic Singapore-context case study with a scenario, discussion questions,
+an operational security checklist and separate trainer-only debrief notes.
 
 ---
 
@@ -142,6 +146,7 @@ python3 make_charts.py          # regenerate the security diagrams
 python3 build_slides.py         # build the trainer deck
 python3 make_lesson_plan.py     # build the Lesson Plan  (asserts 480 min/day)
 python3 make_learner_guide.py   # build the Learner Guide (DOCX + Markdown)
+python3 build_activity_pdfs.py  # build all five activity PDFs from the Markdown packs
 
 # PDFs
 soffice --headless --convert-to pdf --outdir . *.pptx *.docx

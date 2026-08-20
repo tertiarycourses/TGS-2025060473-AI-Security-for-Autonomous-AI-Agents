@@ -26,18 +26,17 @@ Learners select and combine security frameworks (OWASP LLM & ASI Top 10, NIST AI
 |---|---|---|
 | `SCENARIO.md` | Learner | The case study narrative, artefacts and data |
 | `DISCUSSION-QUESTIONS.md` | Learner | The five questions to work through in groups |
-| `DEBRIEF.md` | **Trainer only** | Expected answers, teaching points, common misconceptions |
-| `Activity-3-*.pdf` | Learner / Trainer | Printable scenario + questions + debrief |
+| `SECURITY-CHECKLIST.md` | Learner | Framework coverage and go-live evidence checklist |
+| `Activity-3-*.pdf` | Learner | Printable full learner pack including the checklist |
 
 ## How to run it
 
 1. **Set up (5 min).** Form groups of 3–4. Issue `SCENARIO.md` and `DISCUSSION-QUESTIONS.md`.
-   Do **not** issue `DEBRIEF.md`.
+   Trainer debrief notes are supplied separately and are not stored in the learner-facing Activities folder.
 2. **Group work (60 minutes).** Groups work the five questions in order. Circulate; the questions are
    designed to be argued, not looked up.
 3. **Presentation.** Each group presents its answer to one nominated question.
-4. **Debrief.** Work `DEBRIEF.md` question by question. Draw out the teaching points and correct
-   the common misconceptions explicitly — they are listed because they recur.
+4. **Debrief.** Use the separate trainer notes to draw out the teaching points and correct recurring misconceptions.
 
 > **Step-by-step instructions for this activity are in the Learner Guide.** The slide deck
 > carries the scenario and the discussion questions only.

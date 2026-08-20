@@ -1,6 +1,6 @@
 # Content Design — AI Security for Autonomous AI Agents
 
-Course code: **TGS-2025060473** | TSC: **ICT-INT-0052-1.1** | Version 2.0
+Course code: **TGS-2025060473** | TSC: **ICT-INT-0052-1.1** | Version 2.1
 Design decision: **Option A** — accredited K/A taught VERBATIM, AI security is the delivery lens.
 
 ---
@@ -47,7 +47,7 @@ performance in service settings.
 | Code | Accredited statement (verbatim) | Security lens | Assessed |
 |---|---|---|---|
 | K5 | Generative AI model workings, including training data, algorithms, and outputs | From model to **agent**: planning loops, tool calling, memory. **Excessive agency (LLM03)**, uncontrolled execution (ASI05), rogue agents (ASI10) | WA Q5 |
-| A2 | Identify the ethical implications and societal impact of AI-generated content | **PDPA obligations**, PDPC GenAI guidelines (deployer accountability), IMDA agentic framework, societal harm from autonomous action | CS Q3 |
+| A2 | Identify the ethical implications and societal impact of AI-generated content | **Responsible AI controls and shared responsibility**, **PDPA obligations**, PDPC GenAI guidelines (deployer accountability), IMDA agentic framework, societal harm from autonomous action | CS Q3 |
 | A1 | Analyse limitations and potential biases in AI-generated content | **Misinformation as a security risk (LLM07)** — hallucination driving wrong tool calls; slopsquatting (ASI04); bias in security decisioning | CS Q3 |
 
 **Coverage check:** K1,K2,K3,K4,K5 all in WA (5 Qs). A1,A2,A3,A4,A5 all in CS (3 Qs across LO1/LO2/LO3). No gaps.
@@ -73,7 +73,7 @@ performance in service settings.
 | **Activity 3** | **Framework Selection Workshop** | A3,A5 |
 | LU3 T1 | Agent anatomy; excessive agency; uncontrolled/destructive execution | K5 |
 | **Activity 4** | **Rogue Agent Post-Incident Review** (OpenAI→HF / Replit) | K5 |
-| LU3 T2 | PDPA, PDPC GenAI guidelines, IMDA agentic governance | A2 |
+| LU3 T2 | Responsible AI assurance, shared responsibility, PDPA, PDPC GenAI guidelines, IMDA agentic governance | A2 |
 | LU3 T3 | Misinformation, bias and limitations as security risks | A1 |
 | **Activity 5** | **Agent Governance & Deployment Gate** (capstone) | A1,A2 |
 | | Assessment: WA + Case Study | all |

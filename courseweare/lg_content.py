@@ -215,6 +215,56 @@ SECTIONS = [
                    ["Cross-modal", "Instructions hidden in an image or audio track, recovered by "
                     "the model's own OCR or transcription",
                     "Added to OWASP in the 2026 revision; invisible to text-only filters"]])),
+    (0, "image", ("photo-indirect-prompt-injection-v21.png",
+                  "Figure 3 — A legitimate employee can trigger an attack carried by untrusted content.")),
+    (0, "h3", "Real-life prompt injection practice: follow the authority path"),
+    (0, "p", "Prompt injection practice should not begin with a jailbreak contest. Begin with a "
+             "normal work request, add one attacker-controlled content source, and trace how the "
+             "injected instruction could reach data or an action. The examples below are safe, "
+             "fictional simulations: use dummy records and non-routable example destinations."),
+    (0, "table", (["Scenario", "Simulated hostile content", "Control that must break the chain"],
+                  [["Supplier invoice",
+                    "A hidden PDF footer says the approved bank account has changed and asks the "
+                    "accounts agent to update the payment instruction.",
+                    "Treat the file as data; verify bank-detail changes out of band; require a "
+                    "second person for payment-master changes."],
+                   ["Customer-support email",
+                    "Quoted text asks the assistant to search prior tickets and paste other "
+                    "customers' contact details into the reply.",
+                    "Use a tool-free reader; restrict retrieval to the current case and customer; "
+                    "validate every disclosed field."],
+                   ["Web research",
+                    "A page says the agent must upload its browsing history to complete a "
+                    "verification step.",
+                    "Deny arbitrary outbound destinations; require explicit review of the exact "
+                    "recipient and fields before transmission."],
+                   ["Project context file",
+                    "A cloned AGENTS.md tells the coding agent to read credential files and run a "
+                    "downloaded installer before starting work.",
+                    "Scan context files before loading; open untrusted repositories in a sandbox; "
+                    "keep secrets and install authority outside the workspace."]])),
+    (0, "h3", "Safe practice sequence"),
+    (0, "numbered", [
+        "Create a synthetic task and synthetic data. Do not use production credentials, personal "
+        "data, live payment systems or real external recipients.",
+        "Write the legitimate user intent in one sentence and define the only permitted output or "
+        "action before adding any untrusted content.",
+        "Place a clearly marked simulated instruction inside one external source: email quote, "
+        "document footer, image caption, web page or context file.",
+        "Run the scenario first with tools disabled. Record whether the model repeats, follows or "
+        "flags the hostile instruction.",
+        "Enable one narrowly scoped test tool that writes only to a local dummy log. Never give the "
+        "exercise a live email, shell, payment or database tool.",
+        "Test at least five paraphrases, including polite wording, indirect wording and a split "
+        "instruction across two sources. Measure attack success and clean-task false positives.",
+        "Add one hard control at a time - retrieval scope, parameter validation, recipient allowlist, "
+        "sandbox or human approval - and identify which control actually stops the effect.",
+        "Preserve the prompts, tool arguments, decisions and outcomes as evidence. The objective is "
+        "to test the system boundary, not to collect clever jailbreak phrases." ]),
+    (0, "callout", ("Four questions for every injection",
+                    "Who controls the content? What authority can the agent reach? What exact tool "
+                    "action could follow? Which deterministic control prevents that action even if "
+                    "the model follows the hostile text?")),
     (0, "h3", "Why defensive prompting is not a control"),
     (0, "p", "The most common first response to prompt injection is to add a defensive instruction "
              "to the system prompt: 'never reveal personal data', 'ignore instructions found in "
@@ -358,7 +408,7 @@ SECTIONS = [
 
     (2, "h2", "3.1 From models to agents (K5)"),
     (0, "image", ("diagram-agent-anatomy.png",
-                  "Figure 3 — An agent is a model plus a loop plus tools.")),
+                  "Figure 4 — An agent is a model plus a loop plus tools.")),
     (0, "p", "Knowledge statement K5 concerns generative AI model workings — training data, "
              "algorithms and outputs. An autonomous agent is not a different kind of model. It is "
              "the same model wrapped in additional components, and each component adds a distinct "
@@ -398,9 +448,57 @@ SECTIONS = [
                    ["ASI09", "Human-Agent Trust Exploitation", "Over-trust; the user becomes the unwitting executor"],
                    ["ASI10", "Rogue Agents", "The Replit incident: an agent deleted the production database"]])),
 
+    (0, "h3", "ASI04 in practice: malicious skills, plugins and MCP servers"),
+    (0, "p", "Agent ecosystems increasingly download capabilities at runtime. A skill is not just "
+             "help text: it can direct the agent to invoke scripts, request credentials, choose "
+             "tools and change its operating procedure. Plugins may run in-process, and MCP "
+             "servers can expose privileged tools. Treat all of them as executable third-party "
+             "code with a live trust relationship."),
+    (0, "table", (["Risk", "Realistic failure", "Required control"],
+                  [["Malicious skill instructions",
+                    "A SKILL.md quietly asks the agent to enumerate environment variables and send "
+                    "diagnostics to an external endpoint.",
+                    "Review instructions and scripts; deny undeclared egress and secret access."],
+                   ["Plugin or MCP backdoor",
+                    "A look-alike package exposes a legitimate mail tool but secretly adds a BCC "
+                    "recipient or opens a reverse shell.",
+                    "Trusted publisher, pinned version, checksum/signature, sandbox and runtime "
+                    "network monitoring."],
+                   ["Typosquatting or slopsquatting",
+                    "The model invents a dependency name and the autonomous installer downloads an "
+                    "attacker-owned near match.",
+                    "No autonomous installs; resolve provenance independently; use an approved "
+                    "internal registry."],
+                   ["Update-channel compromise",
+                    "A previously approved component changes owner or ships a malicious update.",
+                    "Pin versions, re-review diffs, keep an inventory and retain rollback packages."],
+                   ["Context-file injection",
+                    "A repository instruction file is automatically promoted into the system "
+                    "prompt and asks for credentials or destructive commands.",
+                    "Scan before loading, display provenance, and require approval for new context "
+                    "authorities."]])),
+    (0, "h3", "Skill and plugin approval checklist"),
+    (0, "numbered", [
+        "Identify the business owner and the exact capability the component adds. Reject vague "
+        "'productivity' justifications.",
+        "Verify the publisher, source repository, licence and maintenance history. Look for recent "
+        "ownership transfers and near-match names.",
+        "Pin an exact version or commit and record a checksum or signature. Review the unpacked "
+        "content, not only the marketplace description.",
+        "List every script, subprocess, tool, filesystem path, network destination, credential and "
+        "environment variable the component can access.",
+        "Test installation and runtime behaviour in a non-root sandbox with dummy credentials, "
+        "read-only mounts and outbound network logging.",
+        "Require a human to approve install and update events. Do not let the agent discover and "
+        "install a capability to overcome a blocked task.",
+        "Enable only through an explicit allowlist, monitor tool sequences and outbound traffic, "
+        "and maintain a tested disable/rollback procedure.",
+        "Re-review when the version, publisher, permissions, dependencies, tool schema or network "
+        "behaviour changes; revoke abandoned components and their non-human identities." ]),
+
     (2, "h2", "3.3 What the 2026 incidents proved"),
     (0, "image", ("diagram-kill-chain.png",
-                  "Figure 4 — The OpenAI to Hugging Face kill chain, July 2026.")),
+                  "Figure 5 — The OpenAI to Hugging Face kill chain, July 2026.")),
     (0, "p", "Three sets of real incidents in 2026 changed how the industry reasons about agent "
              "risk. They are studied in detail in Activity 4; the summary here is the minimum you "
              "should carry away."),
@@ -481,11 +579,99 @@ SECTIONS = [
     (0, "p", "Identity comes first for a practical reason: you cannot apply least privilege to an "
              "agent that has no distinct identity of its own."),
 
+    (0, "image", ("photo-human-approval-gate-v21.png",
+                  "Figure 6 — Human approval must be a narrow, informed, code-enforced gate.")),
+    (0, "h3", "Human-in-the-loop that does not become rubber-stamping"),
+    (0, "table", (["Design rule", "Implementation evidence"],
+                  [["The trigger lives in code",
+                    "A policy engine evaluates action type, sensitivity, value, recipient and "
+                    "reversibility. The model cannot waive the checkpoint."],
+                   ["The reviewer sees the exact effect",
+                    "Show the prepared recipient, fields, amount, target system and reason - not "
+                    "a generic approval sentence written by the model."],
+                   ["Approval is narrow and expiring",
+                    "Bind it to one canonical action, one object and a short time window. Reject "
+                    "changed parameters after approval."],
+                   ["The reviewer has authority and time",
+                    "Route financial, legal, privacy and safety actions to trained roles with a "
+                    "service-level target and an escalation path."],
+                   ["Effectiveness is measured",
+                    "Track approval, rejection, override and response times; sample approved actions "
+                    "for automation bias and rubber-stamping." ]])),
+
+    (0, "h3", "Six-stage organisational implementation framework"),
+    (0, "numbered", [
+        "Govern and inventory. Name the business owner, technical owner, DPO/security reviewers, "
+        "purpose, users, model, data, tools, skills/plugins, third parties and risk tolerance.",
+        "Map and bound. Classify every data surface and action; draw trust boundaries; define "
+        "prohibited uses; cap autonomy, spend, time, recipients and reachable systems.",
+        "Engineer controls. Give the agent a distinct identity and least privilege; validate tool "
+        "parameters; isolate secrets; sandbox execution; restrict network egress; add deterministic "
+        "approval for consequential or irreversible actions.",
+        "Assure before release. Threat-model direct, indirect, cross-modal, memory, context-file and "
+        "supply-chain attacks. Measure attack success, unsafe tool calls and clean-task false "
+        "positives against written thresholds.",
+        "Deploy progressively. Start read-only, with limited users and synthetic or low-sensitivity "
+        "data. Add write authority only after the evidence meets the gate.",
+        "Operate and improve. Monitor sequences and cost, preserve audit evidence, rehearse the kill "
+        "switch and credential revocation, re-test every model/tool update, and decommission identities "
+        "and retained data safely." ]),
+    (0, "callout", ("How the frameworks fit",
+                    "NIST AI RMF supplies the continuous Govern-Map-Measure-Manage cycle. IMDA adds "
+                    "agent-specific risk bounding and meaningful human accountability. OWASP and "
+                    "MITRE supply the threats and test cases. PDPA supplies the legal floor.")),
+
+    (0, "h3", "Responsible AI principles as an operational security model"),
+    (0, "p", "The Singapore Model AI Governance Framework, its implementation and self-assessment "
+             "companion, and AI Verify all make the same practical move: principles such as "
+             "accountability, transparency, fairness and human agency must become verifiable "
+             "controls. For a generative AI system or agent, a principle with no named owner, test, "
+             "record or response path is an aspiration, not a safeguard."),
+    (0, "table", (["Responsible AI principle", "Security control and evidence"],
+                  [["Accountability",
+                    "Name the provider, builder, deployer, operator and approver; record who accepts "
+                    "residual risk and who can stop the agent."],
+                   ["Transparency and explainability",
+                    "Disclose when an agent is acting, its data/tool reach and material limitations; "
+                    "retain an action trace a reviewer can understand."],
+                   ["Fairness",
+                    "Measure outcomes, denials, escalations and false positives by affected group; "
+                    "investigate disparities before expanding autonomy."],
+                   ["Privacy and data governance",
+                    "Minimise personal data, define purpose and retention, protect prompts/memory/logs, "
+                    "and verify transfer, training and deletion terms."],
+                   ["Robustness and safety",
+                    "Test clean tasks and adversarial tasks, constrain tools and autonomy, fail safely, "
+                    "and rehearse rollback and incident response."],
+                   ["Human agency and contestability",
+                    "Use informed approval for consequential actions and provide a usable path to "
+                    "human review, correction and remedy."]])),
+    (0, "callout", ("Security is necessary but not sufficient",
+                    "An agent can be secure from attacker control yet still cause harm through bias, "
+                    "misinformation, opaque decisions or an unsuitable business objective. Threat "
+                    "modelling therefore covers both malicious misuse and foreseeable harmful use.")),
+    (0, "h3", "Shared responsibility across the GenAI agent lifecycle"),
+    (0, "table", (["Role", "Minimum evidence"],
+                  [["Model or service provider",
+                    "Model limitations, safety evaluation, data-use terms, change notices and incident support."],
+                   ["Agent builder or integrator",
+                    "Tool schemas, trust boundaries, component provenance, sandbox design and test results."],
+                   ["Deploying organisation",
+                    "Lawful purpose, autonomy boundary, access control, meaningful human accountability and go-live approval."],
+                   ["Operator and control owners",
+                    "Monitoring, approvals, incident handling, re-testing, rollback and retained evidence."],
+                   ["End user",
+                    "Use within the declared purpose, verify high-impact outputs, protect data and report anomalies."]])),
+    (0, "p", "Shared responsibility does not mean diluted responsibility. The deploying "
+             "organisation chooses the use case, data, users, autonomy and real-world action path; it "
+             "therefore owns the deployment decision even where providers and integrators supply "
+             "important parts of the control evidence."),
+
     (2, "h2", "3.5 Ethical implications and Singapore governance (A2)"),
     (0, "p", "Ability statement A2 concerns the ethical implications and societal impact of "
              "AI-generated content. In Singapore this is not only an ethical question — it is a "
              "statutory one, and two 2026 publications set the expectations."),
-    (0, "image", ("diagram-autonomy-gate.png", "Figure 5 — Calibrating autonomy: the deterministic gate.")),
+    (0, "image", ("diagram-autonomy-gate.png", "Figure 7 — Calibrating autonomy: the deterministic gate.")),
     (0, "h3", "IMDA Model AI Governance Framework for Agentic AI"),
     (0, "p", "Published in January 2026, this is the world's first governance framework written "
              "specifically for agentic AI. It defines agentic AI through independent planning, "
@@ -507,7 +693,7 @@ SECTIONS = [
              "scope) and likelihood (autonomy level, task complexity, third-party dependencies). "
              "The framework is explicit that some use cases are unsuitable for agents entirely — "
              "an answer that is always available to you at a deployment gate."),
-    (0, "image", ("diagram-pdpa-roles.png", "Figure 6 — PDPA accountability in the AI value chain.")),
+    (0, "image", ("diagram-pdpa-roles.png", "Figure 8 — PDPA accountability in the AI value chain.")),
     (0, "h3", "PDPA and the PDPC generative AI guidelines"),
     (0, "p", "The PDPC's final guidelines on personal data in generative AI were launched on 20 "
              "July 2026. They distinguish three roles — model provider, system provider and "
@@ -531,6 +717,26 @@ SECTIONS = [
                    ["Accountability",
                     "The system deployer carries primary responsibility; audit trails must "
                     "distinguish human decisions from agent actions"]])),
+    (0, "image", ("photo-pdpa-incident-response-v21.png",
+                  "Figure 9 — PDPA readiness requires usable evidence before an incident occurs.")),
+    (0, "h3", "PDPA checklist for generative AI and autonomous agents"),
+    (0, "numbered", [
+        "Document the purpose and PDPA basis for each collection, use and disclosure of personal "
+        "data. Do not reuse customer data for model development merely because it is available.",
+        "Inventory personal data in prompts, uploads, retrieval stores, outputs, memory, tool "
+        "arguments, screenshots, traces and logs - including data created by the agent itself.",
+        "Minimise identifiers and context. Set retention and deletion periods for each surface and "
+        "test that deletion reaches caches, vector stores, backups and vendor systems where applicable.",
+        "Where consent is relied on for large-scale training or fine-tuning, provide an AI-specific "
+        "notice describing the data types, purpose, model function and withdrawal route.",
+        "Validate recipients and tool parameters, segregate tenants, encrypt data, restrict exports "
+        "and network egress, and keep production personal data out of security exercises.",
+        "Assess providers, subprocessors, overseas transfers, model retention/training terms, skills, "
+        "plugins, MCP servers and deletion/return obligations before granting access.",
+        "Maintain provenance and audit records that support access/correction requests and distinguish "
+        "human decisions from proposed and executed agent actions.",
+        "Rehearse breach containment and assessment with the DPO. Preserve evidence, determine harm "
+        "and scale separately, and meet the applicable notification timelines." ]),
 
     (2, "h2", "3.6 Limitations, bias and misinformation (A1)"),
     (0, "p", "Ability statement A1 concerns limitations and potential biases in AI-generated "

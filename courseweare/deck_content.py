@@ -149,6 +149,33 @@ LU2_INJECTION_TYPES = [
      "Added to OWASP in the 2026 revision", "VIOLET"),
 ]
 
+PROMPT_INJECTION_IN_PRACTICE = [
+    ("The attacker controls content, not the chat",
+     "A supplier PDF, email, web page, image, ticket or context file carries the instruction. "
+     "The employee's request can be completely legitimate."),
+    ("The model sees what the human does not",
+     "HTML comments, white-on-white text, metadata, OCR layers and tool descriptions can be "
+     "invisible in the rendered view but present in model context."),
+    ("The harmful step is usually a tool call",
+     "The injection matters when it crosses into email, file, browser, payment or database "
+     "authority. Constrain the action path, not only the words."),
+]
+
+PROMPT_PRACTICE_CASES = [
+    ("Supplier invoice",
+     "A PDF footer tells the accounts agent to replace the approved bank account. Treat the "
+     "document as data; verify payment details out of band."),
+    ("Customer-support email",
+     "Quoted text asks the assistant to search prior tickets and paste customer details. Keep "
+     "the reader agent tool-free and scope retrieval to the current case."),
+    ("Web research",
+     "A page instructs the browsing agent to upload its session history for verification. "
+     "Block arbitrary egress and require confirmation for data transmission."),
+    ("Project context file",
+     "A cloned AGENTS.md asks the coding agent to read credentials and run an installer. Scan "
+     "context files before loading and isolate untrusted repositories."),
+]
+
 LU2_WHY_PROMPTS_FAIL = [
     ("Instructions compete on plausibility",
      "A retrieved document saying \"the previous policy was a test\" is just more text. "
@@ -171,6 +198,31 @@ LU2_POISONING = [
     ["Agent memory", "Persisted state across sessions", "Behavioural backdoor survives restarts", "ASI06"],
     ["Model artifact", "The weights you downloaded", "The artifact is not what it claims to be", "LLM04"],
     ["Package name", "A hallucinated dependency", "Slopsquatting — attacker registers the name", "ASI04"],
+]
+
+AGENT_SUPPLY_CHAIN = [
+    ("Skills are executable policy",
+     "A SKILL.md can steer tool choice, request credentials and invoke scripts. Treat the folder "
+     "as trusted code, not as documentation."),
+    ("Plugins run with host authority",
+     "In-process plugins and MCP servers may see filesystem, network and credential surfaces. "
+     "An attractive feature can be a privileged dependency."),
+    ("Dynamic discovery",
+     "Runtime-loaded tools, agent cards and prompt templates can change after review. Pin the "
+     "source and version; disable automatic installation."),
+    ("Typosquatting",
+     "A hallucinated package or near-match skill name can route installation to an attacker. "
+     "Resolve provenance independently before download."),
+]
+
+SKILL_PLUGIN_GATE = [
+    ["Gate", "Minimum evidence before enablement"],
+    ["Provenance", "Named owner, trusted registry or repository, verified publisher and licence"],
+    ["Integrity", "Pinned version or commit, checksum/signature, reviewed unpacked contents"],
+    ["Capabilities", "Declared tools, file paths, network destinations, subprocesses and credentials"],
+    ["Isolation", "Non-root sandbox, read-only mounts, workspace-only file access, bounded egress"],
+    ["Approval", "Human confirmation for install/update and for consequential tool actions"],
+    ["Operations", "Inventory, audit logs, vulnerability monitoring, rollback and offboarding plan"],
 ]
 
 # ---- LU2 : frameworks & measurement
@@ -243,6 +295,62 @@ IMDA_DIMENSIONS = [
      "Train users on the failure modes."),
 ]
 
+IMPLEMENTATION_LIFECYCLE = [
+    ("1. Govern and inventory", "Name the owner, business purpose, users, data, model, tools, "
+     "skills/plugins and third parties. Set the risk tolerance."),
+    ("2. Map and bound", "Classify data and actions; define trust boundaries; cap autonomy, "
+     "cost, time, recipients and reachable systems."),
+    ("3. Engineer controls", "Use distinct identity, least privilege, allowlisted tools, validated "
+     "parameters, sandboxing, egress control and protected secrets."),
+    ("4. Assure before release", "Threat-model direct, indirect, cross-modal, memory and supply-chain "
+     "attacks. Measure ASR, false positives and unsafe tool calls."),
+    ("5. Deploy progressively", "Start read-only with limited users and data. Add write authority only "
+     "after evidence meets the defined gate."),
+    ("6. Operate and improve", "Monitor sequences, preserve audit evidence, rehearse containment, "
+     "re-test changes, revoke access and decommission safely."),
+]
+
+RESPONSIBLE_AI_SECURITY = [
+    ("Accountability",
+     "Assign the model provider, agent builder, deployer, operator and approver. A named human "
+     "owns every consequential outcome and residual-risk decision."),
+    ("Transparency",
+     "Tell users when an agent is acting, what data and tools it can reach, its limits, and how "
+     "to challenge, correct or escalate an outcome."),
+    ("Fairness",
+     "Test security controls and agent outcomes by affected group. A control that protects one "
+     "segment while blocking another is not production-ready."),
+    ("Privacy and data governance",
+     "Minimise data, define purpose and retention, protect every prompt/memory/log surface, and "
+     "verify providers, transfers and deletion behaviour."),
+    ("Robustness and safety",
+     "Test clean tasks and adversarial tasks, constrain tools and autonomy, fail safely, and "
+     "preserve evidence for incident response."),
+    ("Human agency and contestability",
+     "Use informed approval for consequential actions and give affected people a practical route "
+     "to human review and remedy."),
+]
+
+SHARED_RESPONSIBILITY = [
+    ["Role", "Security and Responsible AI evidence"],
+    ["Model or service provider", "Model limits, safety evaluation, data-use terms, change notices and incident support"],
+    ["Agent builder or integrator", "Tool schemas, prompt/RAG boundaries, component provenance, sandbox and test results"],
+    ["Deploying organisation", "Lawful purpose, autonomy boundary, access control, human accountability and go-live approval"],
+    ["Operator and control owners", "Monitoring, approvals, incident handling, re-testing, rollback and retained evidence"],
+    ["End user", "Use within declared purpose, verify high-impact outputs, protect data and report anomalies"],
+]
+
+HITL_RULES = [
+    ("Trigger in code", "The model must not decide whether it needs approval. The policy engine "
+     "evaluates action type, data sensitivity, value and reversibility."),
+    ("Show the exact effect", "The reviewer sees recipient, data fields, amount, target system and "
+     "reason - not a vague 'approve?' prompt."),
+    ("Make approval narrow", "Approval covers one prepared action and expires. It must not become a "
+     "standing permission for later model-generated variants."),
+    ("Audit effectiveness", "Track approval, rejection, override and response time. Sample approved "
+     "actions to detect automation bias and rubber-stamping."),
+]
+
 PDPA_DUTIES = [
     ["Obligation", "What it means for an AI deployment"],
     ["Consent & notification", "Generic 'product development' notice is insufficient — "
@@ -253,6 +361,28 @@ PDPA_DUTIES = [
     ["Breach notification", "Notify PDPC within 3 calendar days of completing the assessment, "
      "where harm is significant OR 500+ individuals are affected"],
     ["Accountability", "The system deployer carries primary responsibility"],
+]
+
+PDPA_AGENT_CHECKLIST = [
+    ["Decision", "Evidence required before deployment"],
+    ["Purpose and basis", "Document each collection, use and disclosure purpose and the PDPA basis relied on"],
+    ["Data minimisation", "Exclude unnecessary identifiers; define prompt, output, memory and log retention"],
+    ["Transparency", "Give clear AI-specific notice where consent is relied on for model development"],
+    ["Protection", "Encrypt, segregate tenants, restrict exports, validate recipients and control egress"],
+    ["Third parties", "Verify providers, locations, transfers, subprocessors, skills/plugins and deletion terms"],
+    ["Individual rights", "Maintain provenance to support access/correction and explain material human decisions"],
+    ["Breach readiness", "Detect, assess, contain and notify; retain evidence for the DPO and incident team"],
+]
+
+DEPLOYMENT_CHECKLIST = [
+    ["Area", "Go-live evidence"],
+    ["Ownership", "Named business owner, technical owner, DPO/security review and accountable approver"],
+    ["Boundaries", "Documented users, channels, data, tools, skills/plugins, autonomy and prohibited actions"],
+    ["Prevent", "Least privilege, sandbox, tool schemas, egress allowlist, secret isolation and approval gates"],
+    ["Detect", "Prompt/tool/identity logs, sequence analytics, cost limits and alerts with named responders"],
+    ["Assure", "Adversarial tests across prompt variants, clean-task tests, privacy review and residual-risk sign-off"],
+    ["Respond", "Kill switch, credential revocation, rollback, evidence preservation and PDPA assessment playbook"],
+    ["Sustain", "Change control, re-test after model/tool updates, component inventory and safe decommissioning"],
 ]
 
 BIAS_LIMITS = [

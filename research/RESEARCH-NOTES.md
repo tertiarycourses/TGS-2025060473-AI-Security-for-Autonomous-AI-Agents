@@ -135,3 +135,40 @@ Learners select and justify a framework combination:
 - **MITRE ATLAS** — adversary TTPs against AI systems
 - **IMDA Model AI Governance Framework for Agentic AI** — Singapore, agent-specific, human accountability
 - **PDPA + PDPC GenAI guidelines** — Singapore statutory obligation
+
+## 8. v2.1 source register and evidence rules (20 August 2026)
+
+### Primary and authoritative implementation sources
+
+- [OpenClaw Gateway Security](https://docs.openclaw.ai/gateway/security) - trust-boundary separation, allowlists, sandboxing, context visibility, prompt-injection controls, explicit plugin allowlists and the rule that skill folders/plugins are trusted code.
+- [Hermes Agent Security](https://hermes-agent.nousresearch.com/docs/user-guide/security) - defence in depth, human approval for dangerous commands, file-write controls, container isolation, credential filtering, context-file injection scanning and production deployment checks.
+- [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/download/52117/?tmstv=1765059207) - ASI04 covers third-party models, tools, plugins, datasets, other agents, MCP/A2A interfaces, registries and update channels; runtime composition can introduce unsafe code and hidden instructions.
+- [OWASP GenAI Exploit Round-up Q1 2026](https://genai.owasp.org/2026/04/14/owasp-genai-exploit-round-up-report-q1-2026/) - prompt injection, excessive autonomy, weak validation and supply-chain weaknesses mapped to reported exploit patterns. Individual cases remain attributed reports, not universal prevalence claims.
+- [IMDA Model AI Governance Framework for Agentic AI factsheet](https://www.imda.gov.sg/-/media/imda/files/news-and-events/media-room/media-releases/2026/01/factsheet-model-ai-governance-framework-for-agentic-ai.pdf) - assess and bound risk; make humans meaningfully accountable; implement controls throughout the lifecycle; enable end-user responsibility.
+- [NIST AI RMF Core](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/) - continuous Govern, Map, Measure and Manage lifecycle; third-party and supply-chain governance; human oversight; monitoring; incident response and safe deactivation.
+- [PDPC data-protection obligations](https://www.pdpc.gov.sg/data-protection-obligations) and [PDPC breach reporting](https://www.pdpc.gov.sg/report-data-breach) - Singapore legal baseline for purpose, protection, retention, transfer, access/correction, accountability and breach notification.
+- [PDPC 2026 GenAI consultation overview](https://files.app.optical.gov.sg/pdpc/production/assets/6bb79f5a-6f1c-484f-8ed0-91cb64c93abd.pdf) plus the final-guidance publication trail - GenAI lifecycle responsibilities and AI-specific notification where consent is relied on for large-scale training or fine-tuning.
+- [OpenAI prompt-injection guidance](https://openai.com/safety/prompt-injections/) - layered defence, restricted access, sandboxing, monitoring, red teaming, explicit task scope and careful review of consequential actions.
+- [CSA/IMDA joint advisory on safe use of GenAI tools](https://www.csa.gov.sg/alerts-and-advisories/advisories/ad-2026-008/) - current Singapore public-sector security guidance.
+
+### Incident and policy context
+
+- [Carnegie Endowment - When AI Agents Attack](https://carnegieendowment.org/research/2026/07/when-ai-agents-attack-autonomous-cyber-operations-and-europes-governance-gap) supports the loss-of-control framing, auditable agent identity and the deployer's continuing obligations.
+- [Cloud Security Alliance research note](https://labs.cloudsecurityalliance.org/research/csa-research-note-autonomous-ai-offensive-agents-20260308-cs/) is used as incident-analysis context for autonomous offensive tempo, CI/CD exposure and least-privilege/egress controls. Incident details are presented as reported by CSA unless independently corroborated.
+- The supplied Reuters URL was not directly accessible during the v2.1 build. Claims attributed to Reuters were cross-checked against accessible follow-on reporting where possible and must remain explicitly attributed rather than presented as independently verified fact.
+
+### Discovery-only sources
+
+The supplied Axis Intelligence tracker, Blue Radius report, Help Net Security article and Reddit roundup may be used to discover candidate cases. They do not establish facts on their own. A case enters learner-facing material only after a primary disclosure, official advisory, CVE, vendor post-mortem or multiple reputable independent reports support it. The duplicate Carnegie URL was consolidated to one source.
+
+## 9. Local AI Ethics and Responsible AI reference pack
+
+The user-supplied `reference/AI Ethics and Responsible AI/` folder was reviewed during the v2.1 enhancement. The following materials were used as supporting context; current primary sources remain controlling where guidance has evolved:
+
+- `BoK/SGModelAIGovFramework2.pdf` - Singapore Model AI Governance Framework (2nd Edition): internal governance, human involvement, operations management and stakeholder communication.
+- `BoK/SGIsago.pdf` - AI governance testing principles and the need for objective, verifiable evidence across transparency, explainability, safety, security, robustness, fairness, data governance, accountability and human oversight.
+- `Module 5 - Governance for AI Explainability/Generative AI - Implications for Trust and Governance.pdf` - GenAI-specific risks including hallucination, privacy/confidentiality, bias and systemic downstream effects; shared responsibility, data use, assurance and evaluation.
+- `Module 4 - Business Liability and Ethics in AI Usage/Topic 2 Human Centred Design (Accountability) .pdf` - human-centred design and accountability context.
+- `Module 4 - Business Liability and Ethics in AI Usage/Topic 4 Training Data (Privacy).pdf` - privacy-by-design and distributed-data context.
+
+Courseware additions derived from this review are deliberately security-operational: every Responsible AI principle is mapped to a named owner, hard control, test, record or remedy path; the lifecycle now distinguishes provider, builder, deployer, operator and end-user responsibilities; and the deployment gate tests foreseeable ethical harm as well as attacker-driven misuse.

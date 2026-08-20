@@ -32,7 +32,7 @@ ASSETS = os.path.join(HERE, "assets")
 VERSIONS = [
     ("1.0", "16 June 2025", "Initial release — Core Principles and Ethical Challenges in "
                             "Generative AI.", "Dr Alfred Ang"),
-    ("2.0", C.VERSION_DATE, "Course revised and retitled to AI Security for Autonomous AI "
+    ("2.0", "17 August 2026", "Course revised and retitled to AI Security for Autonomous AI "
                             "Agents. Learner Guide rebuilt around AI security for generative AI "
                             "and autonomous agents, covering OWASP LLM Top 10 (2026), OWASP ASI "
                             "Top 10 (2026), NIST AI RMF, MITRE ATLAS, the IMDA Model AI "
@@ -40,6 +40,12 @@ VERSIONS = [
                             "Five real-world case-study activities added with full step-by-step "
                             "walkthroughs. Accredited TSC K/A statements unchanged.",
      "Dr Alfred Ang"),
+    ("2.1", C.VERSION_DATE, "Enhanced prompt-injection practice, PDPA implementation guidance, "
+                            "organisational guardrails and human-approval framework, malicious "
+                            "skill/plugin supply-chain controls, Responsible AI and shared-"
+                            "responsibility controls, scenario checklists and new "
+                            "photorealistic teaching visuals. Accredited TSC K/A statements "
+                            "unchanged.", "Dr Alfred Ang"),
 ]
 
 
@@ -250,7 +256,7 @@ def build_md():
                 L.append("| " + " | ".join(str(c).replace("\n", " ") for c in row) + " |")
             L.append("")
         elif kind == "callout":
-            L.append(f"> **{payload[0]}**  \n> {payload[1]}\n")
+            L.append(f"> **{payload[0]}**\n> {payload[1]}\n")
         elif kind == "image":
             fn, cap = payload
             L.append(f"![{cap}](assets/{fn})\n")

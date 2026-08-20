@@ -26,18 +26,18 @@ Learners dissect a real-shaped indirect prompt-injection incident at a Singapore
 |---|---|---|
 | `SCENARIO.md` | Learner | The case study narrative, artefacts and data |
 | `DISCUSSION-QUESTIONS.md` | Learner | The five questions to work through in groups |
-| `DEBRIEF.md` | **Trainer only** | Expected answers, teaching points, common misconceptions |
-| `Activity-2-*.pdf` | Learner / Trainer | Printable scenario + questions + debrief |
+| `PROMPT-INJECTION-PRACTICE.md` | Learner | Safe, synthetic direct, indirect and context-file exercises |
+| `SECURITY-CHECKLIST.md` | Learner | Prompt-injection controls, test evidence and PDPA response checks |
+| `Activity-2-*.pdf` | Learner | Printable full learner pack including practice and checklist |
 
 ## How to run it
 
 1. **Set up (5 min).** Form groups of 3–4. Issue `SCENARIO.md` and `DISCUSSION-QUESTIONS.md`.
-   Do **not** issue `DEBRIEF.md`.
+   Trainer debrief notes are supplied separately and are not stored in the learner-facing Activities folder.
 2. **Group work (60 minutes).** Groups work the five questions in order. Circulate; the questions are
    designed to be argued, not looked up.
 3. **Presentation.** Each group presents its answer to one nominated question.
-4. **Debrief.** Work `DEBRIEF.md` question by question. Draw out the teaching points and correct
-   the common misconceptions explicitly — they are listed because they recur.
+4. **Debrief.** Use the separate trainer notes to draw out the teaching points and correct recurring misconceptions.
 
 > **Step-by-step instructions for this activity are in the Learner Guide.** The slide deck
 > carries the scenario and the discussion questions only.

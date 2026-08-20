@@ -33,7 +33,7 @@ ASSETS = os.path.join(HERE, "assets")
 VERSIONS = [
     ("1.0", "16 June 2025", "Initial release — Core Principles and Ethical Challenges in "
                             "Generative AI.", "Dr Alfred Ang"),
-    ("2.0", C.VERSION_DATE, "Course revised and retitled to AI Security for Autonomous AI "
+    ("2.0", "17 August 2026", "Course revised and retitled to AI Security for Autonomous AI "
                             "Agents. Content rebuilt around AI security for generative AI and "
                             "autonomous agents (OWASP LLM Top 10 2026, OWASP ASI Top 10 2026, "
                             "NIST AI RMF, MITRE ATLAS, IMDA Model AI Governance for Agentic AI, "
@@ -41,6 +41,12 @@ VERSIONS = [
                             "Assessment restructured: Written Assessment (one question per K) "
                             "and Case Study (one question per LO). Accredited TSC K/A statements "
                             "unchanged.", "Dr Alfred Ang"),
+    ("2.1", C.VERSION_DATE, "Added realistic prompt-injection practice, PDPA and organisational "
+                            "implementation checklists, deterministic human approval, malicious "
+                            "skill/plugin supply-chain controls, Responsible AI/shared responsibility "
+                            "and enhanced scenario visuals. "
+                            "Slide mappings regenerated; accredited TSC K/A statements unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess
@@ -61,8 +67,8 @@ DAY1 = [
     ("3:00 – 3:45", "LU2 T1: Data quality, preprocessing and the model pipeline — poisoning "
                     "across training, RAG, memory and artifacts (K1)", 45, "topic"),
     ("3:45 – 4:00", "Tea break", 15, "break"),
-    ("4:00 – 4:45", "LU2 T2: Prompt injection in depth — direct, indirect and cross-modal; "
-                    "why prompt-based defences fail (K4)", 45, "topic"),
+    ("4:00 – 4:45", "LU2 T2: Prompt injection in depth — direct, indirect, cross-modal and "
+                    "context-file practice; why prompt-based defences fail (K4)", 45, "topic"),
     ("4:45 – 5:45", "Activity 2: Prompt Injection and the PDPA-Reportable Leak (K4, K1)", 60, "activity"),
     ("5:45 – 6:15", "Activity 2 debrief — notification decision and prioritised controls", 30, "activity"),
     ("6:15 – 6:30", "Day 1 recap, Q&A and PM digital attendance", 15, "admin"),
@@ -80,10 +86,11 @@ DAY2 = [
     ("12:15 – 12:45", "LU3 T1: Agent anatomy — model, loop, tools, memory, identity. Excessive "
                       "agency, uncontrolled and destructive execution (K5)", 30, "topic"),
     ("12:45 – 1:45", "Lunch break", 60, "lunch"),
-    ("1:45 – 2:00", "LU3 T1 (cont.): Defence in depth and the four-layer control stack (K5)", 15, "topic"),
+    ("1:45 – 2:00", "LU3 T1 (cont.): Defence in depth, malicious skill/plugin supply chains "
+                    "and the control stack (K5)", 15, "topic"),
     ("2:00 – 3:00", "Activity 4: Rogue Agent Post-Incident Review — the real 2026 incidents (K5)", 60, "activity"),
-    ("3:00 – 3:30", "LU3 T2: Ethical implications and societal impact — PDPA, PDPC GenAI "
-                    "guidelines and the IMDA Model AI Governance Framework for Agentic AI (A2)", 30, "topic"),
+    ("3:00 – 3:30", "LU3 T2: Organisational implementation — guardrails, deterministic human "
+                    "approval, Responsible AI/shared responsibility, PDPA/PDPC and IMDA agentic governance (A2)", 30, "topic"),
     ("3:30 – 3:45", "Tea break", 15, "break"),
     ("3:45 – 4:05", "LU3 T3: Limitations and bias — misinformation as a security risk, "
                     "aggregate accuracy and disparate impact (A1)", 20, "topic"),

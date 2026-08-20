@@ -14,6 +14,11 @@ assessment/
 .env
 courseweare/.env
 
+# Local source packs, trainer-only debriefs and generated archives are not public release content
+reference/
+trainer-resources/
+**/archive/
+
 # Build intermediates
 __pycache__/
 *.pyc

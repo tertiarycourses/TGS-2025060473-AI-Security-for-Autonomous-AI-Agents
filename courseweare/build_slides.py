@@ -105,9 +105,9 @@ def footer(s):
 def head(s, title, kicker=None, kcolor=BLUE):
     rect(s, 0, 0, SW, SH, WHITE); rect(s, 0, 0, Inches(0.28), Inches(1.55), kcolor)
     if kicker:
-        txt(s, Inches(0.85), Inches(0.5), Inches(11.6), Inches(0.4), [[(kicker, 14, kcolor, True)]])
-    txt(s, Inches(0.85), Inches(0.9), Inches(11.9), Inches(0.9), [[(title, 28, INK, True)]])
-    rect(s, Inches(0.85), Inches(1.7), Inches(11.63), Inches(0.02), LINE)
+        txt(s, Inches(0.85), Inches(0.34), Inches(11.6), Inches(0.38), [[(kicker, 14, kcolor, True)]])
+    txt(s, Inches(0.85), Inches(0.78), Inches(11.9), Inches(0.86), [[(title, 28, INK, True)]])
+    rect(s, Inches(0.85), Inches(1.68), Inches(11.63), Inches(0.02), LINE)
     return s
 
 
@@ -129,28 +129,34 @@ def _fit(path, max_w_in, max_h_in):
 
 # ================================================================ components
 def cover():
-    s = slide(); rect(s, 0, 0, SW, SH, WHITE)
-    rect(s, 0, 0, SW, Inches(0.22), BLUE); rect(s, 0, Inches(7.28), SW, Inches(0.22), RED)
+    s = slide(); rect(s, 0, 0, SW, SH, NAVY)
+    hero = _asset("hero-ai-agent-security-v21.png")
+    if hero:
+        s.shapes.add_picture(hero, 0, 0, width=SW, height=SH)
+    rect(s, 0, 0, Inches(6.45), SH, NAVY)
+    rect(s, 0, 0, SW, Inches(0.16), BLUE); rect(s, 0, Inches(7.34), SW, Inches(0.16), RED)
     org = _asset("tertiary-infotech-logo.png")
-    if org: s.shapes.add_picture(org, Inches(0.85), Inches(0.7), height=Inches(1.05))
-    rect(s, Inches(10.6), Inches(0.72), Inches(1.95), Inches(1.0), RED)
-    txt(s, Inches(10.6), Inches(0.84), Inches(1.95), Inches(0.5),
+    if org:
+        rect(s, Inches(0.72), Inches(0.58), Inches(2.35), Inches(0.92), WHITE)
+        s.shapes.add_picture(org, Inches(0.84), Inches(0.67), height=Inches(0.72))
+    rect(s, Inches(10.72), Inches(0.62), Inches(1.85), Inches(0.94), RED)
+    txt(s, Inches(10.72), Inches(0.73), Inches(1.85), Inches(0.46),
         [[("WSQ", 22, WHITE, True)]], align=PP_ALIGN.CENTER)
-    txt(s, Inches(10.6), Inches(1.32), Inches(1.95), Inches(0.4),
+    txt(s, Inches(10.72), Inches(1.18), Inches(1.85), Inches(0.32),
         [[("AI SECURITY", 8, WHITE, True)]], align=PP_ALIGN.CENTER)
-    txt(s, Inches(0.9), Inches(2.3), Inches(12), Inches(0.6),
-        [[("TRAINER SLIDES  ·  WSQ", 16, BLUE, True)]])
-    txt(s, Inches(0.9), Inches(2.85), Inches(12.0), Inches(1.9), [[(C.TITLE, 38, INK, True)]])
-    rect(s, Inches(0.92), Inches(4.45), Inches(2.4), Inches(0.06), RED)
-    txt(s, Inches(0.9), Inches(4.8), Inches(12), Inches(1.5),
-        [[(f"WSQ Course Code: {C.COURSE_CODE}  ·  {C.DURATION}", 16, GREY, False)],
-         [(f"Skills Framework TSC: {C.TSC_TITLE} ({C.TSC_CODE})", 14, GREY, False)],
-         [("Conducted by Tertiary Infotech Pte Ltd  ·  UEN 20120096W", 14, GREY, False)]], space=6)
-    txt(s, Inches(0.9), Inches(6.45), Inches(12), Inches(0.4),
-        [[(f"Version {C.VERSION}  ·  {C.VERSION_DATE}", 12, GREY, False)]])
-    txt(s, Inches(0.9), Inches(6.85), Inches(12), Inches(0.34),
+    txt(s, Inches(0.8), Inches(1.9), Inches(5.2), Inches(0.5),
+        [[("TRAINER SLIDES  ·  WSQ", 15, CODEBLUE, True)]])
+    txt(s, Inches(0.8), Inches(2.35), Inches(5.35), Inches(2.05), [[(C.TITLE, 34, WHITE, True)]])
+    rect(s, Inches(0.82), Inches(4.35), Inches(2.2), Inches(0.06), RED)
+    txt(s, Inches(0.8), Inches(4.62), Inches(5.35), Inches(1.35),
+        [[(f"WSQ Course Code: {C.COURSE_CODE}  ·  {C.DURATION}", 14, WHITE, False)],
+         [(f"Skills Framework TSC: {C.TSC_TITLE} ({C.TSC_CODE})", 12, WHITE, False)],
+         [("Conducted by Tertiary Infotech Pte Ltd  ·  UEN 20120096W", 12, WHITE, False)]], space=6)
+    txt(s, Inches(0.8), Inches(6.2), Inches(5.35), Inches(0.36),
+        [[(f"Version {C.VERSION}  ·  {C.VERSION_DATE}", 11, CODEBLUE, False)]])
+    txt(s, Inches(0.8), Inches(6.68), Inches(5.35), Inches(0.28),
         [[("© 2026 Tertiary Infotech Pte Ltd. All Rights Reserved.  ·  www.tertiarycourses.com.sg",
-           10, GREY, False)]])
+           8.5, WHITE, False)]])
     PAGE["n"] += 1
 
 
@@ -290,18 +296,19 @@ def brk(kind, dur, color=AMBER):
 def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=None):
     s = head(slide(), title, kicker, kcolor=accent)
     p = _asset(image)
+    content_h = 4.35 if note else 4.75
     if p:
-        w, h = _fit(p, img_w, 4.75)
+        w, h = _fit(p, img_w, content_h)
         s.shapes.add_picture(p, Inches(0.85), Inches(2.05), width=w, height=h)
     rx = Inches(0.85) + Inches(img_w) + Inches(0.3); rw = Inches(12.48) - rx
-    n = len(points); gy = Inches(0.2); th = int((Inches(4.75) - gy * (n - 1)) / n)
+    n = len(points); gy = Inches(0.2); th = int((Inches(content_h) - gy * (n - 1)) / n)
     for i, (t1, t2) in enumerate(points):
         y = int(Inches(2.05) + (th + gy) * i); col = PALETTE[i % len(PALETTE)]
         rect(s, rx, y, rw, th, LIGHT); rect(s, rx, y, Inches(0.09), th, col)
         txt(s, rx + Inches(0.28), y, rw - Inches(0.5), th,
             [[(t1, 14, col, True)], [(t2, 12, INK, False)]], anchor=MSO_ANCHOR.MIDDLE, space=3)
     if note:
-        txt(s, Inches(0.85), Inches(6.9), Inches(11.7), Inches(0.4), [[(note, 12.5, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.55), Inches(11.7), Inches(0.34), [[(note, 11.5, GREY, False)]],
             align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -315,8 +322,8 @@ def img_full(title, image, kicker=None, accent=BLUE, caption=None):
         x = int(Inches(0.85) + (Inches(11.63) - w) / 2)
         s.shapes.add_picture(p, x, Inches(1.95), width=w, height=h)
     if caption:
-        rect(s, Inches(0.85), Inches(6.45), Inches(11.63), Inches(0.62), LIGHT)
-        txt(s, Inches(1.1), Inches(6.45), Inches(11.1), Inches(0.62), [[(caption, 14, INK, False)]],
+        rect(s, Inches(0.85), Inches(6.35), Inches(11.63), Inches(0.55), LIGHT)
+        txt(s, Inches(1.1), Inches(6.35), Inches(11.1), Inches(0.55), [[(caption, 13, INK, False)]],
             anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -666,6 +673,15 @@ ncards("Three kinds of prompt injection",
        note="Indirect injection is the one that matters in production: the attacker never "
             "touches your interface, only the content your system chooses to read.")
 
+img_points("Prompt injection in everyday work", "photo-indirect-prompt-injection-v21.png",
+           D.PROMPT_INJECTION_IN_PRACTICE,
+           kicker="LU2 · T2 · K4 · REALISTIC USE CASE", accent=RED, img_w=7.2,
+           note="The safe design assumes the content can win and prevents it from turning into authority.")
+
+ncards("Practice: find the hostile instruction path", D.PROMPT_PRACTICE_CASES,
+       kicker="LU2 · T2 · K4 · SAFE SIMULATIONS", accent=RED, cols=4,
+       note="Ask four questions: who controls the content, what can the agent reach, what action follows, and what hard control stops it?")
+
 ncards("Why prompt-based defences fail", D.LU2_WHY_PROMPTS_FAIL,
        kicker="LU2 · T2 · K4", accent=RED, cols=4,
        note="Defensive prompting raises the attacker's cost. It never closes the hole. "
@@ -745,6 +761,16 @@ table_slide("Agent capabilities and their risks",
             D.AGENT_CAPABILITY_RISK[0], D.AGENT_CAPABILITY_RISK[1:],
             kicker="LU3 · T1 · K5", accent=VIOLET, widths=[0.18, 0.28, 0.32, 0.22])
 
+ncards("Skills and plugins are executable supply chain", D.AGENT_SUPPLY_CHAIN,
+       kicker="LU3 · T1 · K5 · OWASP ASI04", accent=VIOLET, cols=4,
+       note="Do not let an autonomous agent discover and install capabilities on its own. Installation is a privileged change event.")
+
+table_slide("Trusted skill and plugin install gate",
+            D.SKILL_PLUGIN_GATE[0], D.SKILL_PLUGIN_GATE[1:],
+            kicker="LU3 · T1 · K5 · SUPPLY CHAIN", accent=VIOLET,
+            widths=[0.20, 0.80], fsize=12.5,
+            note="Approve provenance, integrity and permissions before enablement - then monitor the component at runtime.")
+
 img_full("Agent kill chain — a real 2026 incident", "diagram-kill-chain.png",
          kicker="LU3 · T1 · K5 · CASE STUDY", accent=RED,
          caption="OpenAI → Hugging Face, July 2026. No malware, no known CVE. "
@@ -778,6 +804,10 @@ activity_slide(D.ACTIVITIES[3])
 big_statement(D.BIG_STATEMENTS[2]["l1"], D.BIG_STATEMENTS[2]["l2"],
               D.BIG_STATEMENTS[2]["kicker"], color=TEAL)
 
+img_points("Human approval that actually controls the agent", "photo-human-approval-gate-v21.png",
+           D.HITL_RULES, kicker="LU3 · T2 · A2 · HUMAN IN THE LOOP", accent=TEAL,
+           img_w=7.1, note="Human-in-the-loop fails when the reviewer cannot see the exact action or is asked too often to think.")
+
 img_full("Calibrating autonomy — the deterministic gate", "diagram-autonomy-gate.png",
          kicker="LU3 · T2 · A2", accent=TEAL,
          caption="IMDA: structural safeguards are preferred over prompt-based controls, and "
@@ -788,14 +818,39 @@ ncards("IMDA Model AI Governance for Agentic AI", D.IMDA_DIMENSIONS,
        note="Published January 2026 — the world's first governance framework written "
             "specifically for agentic AI. Some use cases are unsuitable for agents entirely.")
 
+ncards("Six-stage organisational implementation framework", D.IMPLEMENTATION_LIFECYCLE,
+       kicker="LU3 · T2 · A2 · FROM PILOT TO PRODUCTION", accent=TEAL, cols=3,
+       note="NIST supplies the continuous risk cycle; IMDA sharpens the autonomy and human-accountability decisions for agents.")
+
+ncards("Responsible AI principles become security controls", D.RESPONSIBLE_AI_SECURITY,
+       kicker="LU3 · T2 · A1–A2 · RESPONSIBLE AI", accent=TEAL, cols=3,
+       note="The Singapore Model AI Governance Framework and AI Verify convert principles into named owners, process checks and measurable evidence.")
+
+table_slide("Shared responsibility across the GenAI agent lifecycle",
+            D.SHARED_RESPONSIBILITY[0], D.SHARED_RESPONSIBILITY[1:],
+            kicker="LU3 · T2 · A2 · ACCOUNTABILITY", accent=TEAL,
+            widths=[0.25, 0.75], fsize=11.5,
+            note="Responsibility is distributed, but the deploying organisation still owns the go-live decision and its real-world consequences.")
+
+img_points("PDPA risk begins before a breach", "photo-pdpa-incident-response-v21.png",
+           [("Know every data surface", "Prompts, uploads, retrieval chunks, outputs, memory, tool arguments and logs may contain personal data."),
+            ("Limit use and disclosure", "Purpose, recipients, retention and overseas processing must be defined before the agent receives access."),
+            ("Prepare the response", "The DPO and incident team need evidence that distinguishes human decisions, agent actions and third-party processing.")],
+           kicker="LU3 · T2 · A2 · SINGAPORE", accent=RED, img_w=7.2,
+           note="A model provider's contract does not remove the deploying organisation's PDPA obligations.")
+
 img_full("PDPA accountability in the AI value chain", "diagram-pdpa-roles.png",
          kicker="LU3 · T2 · A2 · SINGAPORE", accent=RED,
-         caption="PDPC GenAI Guidelines, July 2026. The system deployer carries primary "
-                 "responsibility — you cannot contract it away to the model vendor.")
+         caption="PDPC GenAI guidance clarifies responsibilities across the lifecycle. The deploying organisation must evidence its own lawful, protected use.")
 
 table_slide("PDPA obligations for an AI deployment",
             D.PDPA_DUTIES[0], D.PDPA_DUTIES[1:],
             kicker="LU3 · T2 · A2", accent=RED, widths=[0.26, 0.74], fsize=12.5)
+
+table_slide("PDPA checklist for GenAI and agents",
+            D.PDPA_AGENT_CHECKLIST[0], D.PDPA_AGENT_CHECKLIST[1:],
+            kicker="LU3 · T2 · A2 · EVIDENCE", accent=RED,
+            widths=[0.22, 0.78], fsize=11.5)
 
 ncards("Bias, limits and misinformation", D.BIAS_LIMITS,
        kicker="LU3 · T3 · A1", accent=AMBER, cols=4,
@@ -812,6 +867,12 @@ ncards("Four principles to take back to work", D.CLOSING_PRINCIPLES,
        kicker="SYNTHESIS", accent=BLUE, cols=4,
        note="If you remember one thing: security for AI systems is an architecture problem "
             "wearing a prompt-engineering costume.")
+
+table_slide("Production readiness checklist",
+            D.DEPLOYMENT_CHECKLIST[0], D.DEPLOYMENT_CHECKLIST[1:],
+            kicker="SYNTHESIS · ORGANISATIONAL HANDOFF", accent=BLUE,
+            widths=[0.18, 0.82], fsize=11.5,
+            note="No evidence means no go-live. Record exceptions as accepted residual risk with an owner and expiry date.")
 
 content("Summary & Q&A", [
     "LU1: Generative AI breaks classical assumptions — input is executable, output drives action.",

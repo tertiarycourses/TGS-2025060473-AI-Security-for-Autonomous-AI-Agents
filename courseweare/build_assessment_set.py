@@ -35,8 +35,8 @@ TSC_TITLE = "Generative AI Principles and Applications"
 TSC_CODE = "ICT-INT-0052-1.1"
 ORG = "Tertiary Infotech Pte Ltd"
 UEN = "UEN: 20120096W"
-VERSION = "2.0"
-VERSION_DATE = "17 August 2026"
+VERSION = "2.1"
+VERSION_DATE = "20 August 2026"
 LMS_URL = "https://lms-tms.tertiaryinfotech.com/"
 COPYRIGHT = ("This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). "
              "All Rights Reserved.")
@@ -96,13 +96,6 @@ def _shade(cell, hexc):
 def _fix_widths(table, widths_in):
     """Disable autofit and pin column widths, so Word/LibreOffice honour them."""
     table.autofit = False
-    tblPr = table._tbl.tblPr
-    for tag in ("w:tblLayout",):
-        for el in tblPr.findall(qn(tag)):
-            tblPr.remove(el)
-    layout = OxmlElement("w:tblLayout")
-    layout.set(qn("w:type"), "fixed")
-    tblPr.append(layout)
     for row in table.rows:
         for i, w in enumerate(widths_in):
             if i < len(row.cells):
@@ -175,16 +168,14 @@ def page_break(d):
 
 def keep_with_next(paragraph):
     """Bind a paragraph to the one that follows so a heading never orphans."""
-    pPr = paragraph._p.get_or_add_pPr()
-    kn = OxmlElement("w:keepNext"); kn.set(qn("w:val"), "true"); pPr.append(kn)
-    kl = OxmlElement("w:keepLines"); kl.set(qn("w:val"), "true"); pPr.append(kl)
+    paragraph.paragraph_format.keep_with_next = True
+    paragraph.paragraph_format.keep_together = True
     return paragraph
 
 
 def keep_lines(paragraph):
     """Stop a single paragraph being split across a page boundary."""
-    pPr = paragraph._p.get_or_add_pPr()
-    kl = OxmlElement("w:keepLines"); kl.set(qn("w:val"), "true"); pPr.append(kl)
+    paragraph.paragraph_format.keep_together = True
     return paragraph
 
 
@@ -219,8 +210,14 @@ def footer_block(d):
 
 def enable_update_fields(d):
     settings = d.settings.element
+    zoom = settings.find(qn("w:zoom"))
+    if zoom is not None:
+        zoom.set(qn("w:percent"), "100")
+    existing = settings.find(qn("w:updateFields"))
+    if existing is not None:
+        settings.remove(existing)
     uf = OxmlElement("w:updateFields"); uf.set(qn("w:val"), "true")
-    settings.append(uf)
+    settings.insert_element_before(uf, "w:hdrShapeDefaults", "w:footnotePr", "w:endnotePr", "w:compat")
 
 
 def add_hyperlink(paragraph, url, text):
