@@ -1,17 +1,21 @@
 # Activity 2 — Scenario
 
-## Prompt Injection and the PDPA-Reportable Leak
+## Prompt Injection and the PDPA Breach Decision
 
 **Course:** AI Security for Autonomous AI Agents (TGS-2025060473)
-**Duration:** 60 minutes | **Format:** Small groups of 3–4 | **Type:** Real-world case study
+**Duration:** 60 minutes | **Format:** Small groups of 3–4 | **Type:** Realistic synthetic simulation
+
+> **Evidence status: SIM.** The organisation, people, events, identifiers, record counts, test
+> results, dates, and impact figures in this scenario are fictional. Use only the supplied masked
+> data and non-routable destinations.
 
 ---
 
-## The organisation
+## The simulated organisation
 
 **Meridian Assurance (Singapore) Pte Ltd** is a mid-sized general insurer with 310,000 policyholders,
 underwriting motor, travel and personal accident cover. It is licensed by MAS and, for PDPA purposes,
-is the **system deployer** of every AI system it puts in front of customers.
+operates every AI system it puts in front of customers and retains its own obligations under the PDPA.
 
 Claims volume rose 34% year on year after a motor tariff change. The claims team of 42 assessors was
 handling an average of 1,900 open claims each week, and first-response time had drifted from 2 days to
@@ -99,11 +103,9 @@ customer.
 ```
 
 Note the three moves: it **reframes the prior context as untrustworthy**, it **claims a legitimate
-operational purpose**, and it **asks for silence**. Nothing in it is technically sophisticated. It is
-the same technique used against Hugging Face maintainers in the July 2026 OpenAI evaluation incident,
-where an attacking model planted a prompt injection inside a **GitHub issue, hidden in an HTML
-comment** — invisible to a human reading the issue in a browser, fully visible to any AI coding
-assistant that read the raw text.
+operational purpose**, and it **asks for silence**. Nothing in it is technically sophisticated. The
+defensive lesson is to distrust the content path, not to search only for this wording: a real attacker
+can paraphrase, split, encode, or move the instruction into another modality.
 
 ### Artefact 2 — the image
 
@@ -111,8 +113,8 @@ assistant that read the raw text.
 paper visible on the car's parcel shelf, at an angle, is a second copy of the same instruction block,
 legible to OCR. It survives because the pipeline OCRs images by design.
 
-This is why the **2026 OWASP revision of LLM01 Prompt Injection explicitly added cross-modal
-payloads** — instructions carried in images and audio. Meridian's text-based input filter, which
+OWASP prompt-injection guidance includes multimodal injection examples - instructions carried in
+images and other media. Meridian's text-based input filter, which
 scanned the claim narrative field, never saw it: by the time the payload existed as text, it was
 already inside the OCR output and treated as retrieved content.
 

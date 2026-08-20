@@ -3,16 +3,21 @@
 ## Selecting a Security Framework for GenAI and Agents
 
 **Course:** AI Security for Autonomous AI Agents (TGS-2025060473)
-**Duration:** 60 minutes | **Format:** Small groups of 3–4 | **Type:** Real-world case study
+**Duration:** 60 minutes | **Format:** Small groups of 3–4 | **Type:** Realistic synthetic simulation
+
+> **Evidence status: SIM.** The organisation, deployment, dates, budgets, volumes, benefits, and
+> all other scenario figures are fictional classroom data. Framework names and descriptions must
+> be checked against the cited official sources.
 
 ---
 
-## The organisation
+## The simulated organisation
 
 **Straits Meridian Health Pte Ltd** operates a network of 22 GP and specialist clinics across
 Singapore, plus a diagnostics laboratory in Tuas. It holds records for 480,000 patients, is a licensee
-under the Healthcare Services Act, and — for PDPA purposes — is the **system deployer** of every AI
-system it operates. It is also, since March, an approved participant in a national health data
+under the Healthcare Services Act and operates every AI system it deploys. In the role vocabulary of
+the PDPC's 2 June 2026 proposed GenAI consultation text, it would be the **system deployer**. It is also,
+since March, an approved participant in a national health data
 programme, which brings an additional layer of scrutiny it has never faced before.
 
 The group has 41 IT staff. It has no dedicated AI security function. Its cyber security team of four
@@ -94,9 +99,10 @@ The CISO's own view, in a note to the AI working group:
 | **OWASP Top 10 for LLM Applications 2026** | 4 Aug 2026 | A threat taxonomy for GenAI applications — LLM01 Prompt Injection through LLM10 Improper Output Handling |
 | **OWASP Top 10 for Agentic Applications (ASI) 2026** | Announced 9 Dec 2025 | A threat taxonomy for autonomous agents — ASI01 Agent Goal Hijack through ASI10 Rogue Agents |
 | **NIST AI RMF** | Current | A lifecycle risk management process: **Govern, Map, Measure, Manage** |
-| **MITRE ATLAS** | Current | A knowledge base of real adversary tactics and techniques against AI systems |
-| **IMDA Model AI Governance Framework for Agentic AI** | 26 Jan 2026, updated Jun 2026 | Singapore's — and the world's first — governance framework specific to agentic AI |
-| **PDPA + PDPC Guidelines on Personal Data in Generative AI** | Guidelines final 20 Jul 2026 | Statutory obligation. Not a framework you may choose |
+| **MITRE ATLAS** | Current | A knowledge base of observed and realistically demonstrated adversary tactics and techniques against AI-enabled systems |
+| **IMDA Model AI Governance Framework for Agentic AI v1.5** | Published 20 May 2026; updated 5 Jun 2026 | Singapore governance guidance for responsible agentic-AI deployment |
+| **PDPA + current PDPC obligations** | Current law and regulator guidance | Legal/accountability layer; not a voluntary framework you may choose |
+| **PDPC proposed GenAI guidelines** | Consultation issued 2 Jun 2026 | Proposed consultation text only; do not present it as final law or final guidance |
 
 ---
 

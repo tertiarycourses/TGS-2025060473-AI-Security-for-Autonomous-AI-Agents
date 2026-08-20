@@ -3,23 +3,28 @@
 ## Agent Governance and the Deployment Gate
 
 **Course:** AI Security for Autonomous AI Agents (TGS-2025060473)
-**Duration:** 25 minutes | **Format:** Small groups of 3–4 acting as one governance board | **Type:** Capstone real-world case study
+**Duration:** 25 minutes | **Format:** Small groups of 3–4 acting as one governance board | **Type:** Capstone synthetic simulation
+
+> **Evidence status: SIM.** The organisation, people, customer counts, financial values, evaluation
+> results, targets, segment labels, and projected benefits are synthetic classroom data. They are
+> not market evidence or a claim about any real bank or population.
 
 ---
 
-## The organisation
+## The simulated organisation
 
 **Meridian Bank Singapore** is a mid-tier retail and SME bank with 1.4 million customers, 26
 branches, and a digital-first strategy under pressure from three larger incumbents and two digital
-banks. It is a Singapore-incorporated entity, regulated by MAS, and a **data intermediary and
-organisation** under the PDPA for the personal data it holds.
+banks. It is a Singapore-incorporated entity, regulated by MAS, and is an **organisation** under the
+PDPA for personal data it collects, uses or discloses. A vendor may separately act as a data
+intermediary when it processes personal data on the bank's behalf.
 
 Its Collections and Customer Assistance division handles customers who fall behind on unsecured
 credit — personal loans, credit cards, SME working-capital facilities. The division employs 118
 officers and handles roughly **31,000 delinquency cases per year**. Median time from first missed
-payment to first meaningful customer contact is **nine days**. Industry research the bank commissioned
-is unambiguous: intervention within 72 hours materially improves outcomes for the customer, not only
-for the bank.
+payment to first meaningful customer contact is **nine days**. For this synthetic business case, the
+bank's commissioned internal analysis assumes that intervention within 72 hours materially improves
+outcomes for the customer, not only for the bank; it is not presented as external industry evidence.
 
 ## The proposal
 
@@ -112,7 +117,8 @@ resolved. The finding was logged as *"minor code quality issue"*.
 
 ## What the board already knows
 
-- ARIA's supplier is a well-regarded international vendor. Meridian is the **system deployer**.
+- ARIA's supplier is a well-regarded international vendor. Meridian operates the deployment and,
+  using the PDPC's 2 June 2026 proposed consultation vocabulary, is the **system deployer**.
 - The customer notification currently drafted for the terms and conditions reads:
   *"We may use automated systems and new technologies to improve our products and services."*
 - No customer-facing disclosure currently states that the counterparty in a collections conversation

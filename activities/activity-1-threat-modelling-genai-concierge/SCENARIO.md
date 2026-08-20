@@ -3,11 +3,14 @@
 ## Threat Modelling a Generative AI Concierge
 
 **Course:** AI Security for Autonomous AI Agents (TGS-2025060473)
-**Duration:** 45 minutes | **Format:** Small groups of 3–4 | **Type:** Real-world case study
+**Duration:** 45 minutes | **Format:** Small groups of 3–4 | **Type:** Realistic synthetic simulation
+
+> **Evidence status: SIM.** The organisation, people, events, record counts, performance figures,
+> and financial values in this scenario are fictional and exist only for classroom analysis.
 
 ---
 
-## The organisation
+## The simulated organisation
 
 **Marina Crescent Hotel** is a 340-room business hotel on Singapore's waterfront, part of a
 regional group with properties in Kuala Lumpur, Bangkok and Jakarta. Occupancy runs at 82%,

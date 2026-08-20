@@ -15,7 +15,7 @@ House rules enforced here:
   · NO step-by-step procedures (those live in the Learner Guide)
 """
 
-import os, sys, json, math
+import os, sys, json, math, re
 from PIL import Image
 from pptx import Presentation
 from pptx.util import Inches, Pt
@@ -86,7 +86,7 @@ def bullets(s, x, y, w, h, items, size=18, color=INK, gap=10, mcolor=BLUE):
     return tb
 
 
-PAGE = {"n": 0}; SLIDE_MAP = {}
+PAGE = {"n": 0}; SLIDE_MAP = {}; CURRENT_META = {"evidence": "", "sources": []}
 
 
 def mark(key): SLIDE_MAP[key] = PAGE["n"] + 1
@@ -94,19 +94,28 @@ def mark(key): SLIDE_MAP[key] = PAGE["n"] + 1
 
 def footer(s):
     PAGE["n"] += 1
-    txt(s, Inches(0.4), Inches(7.05), Inches(7.5), Inches(0.35),
+    evidence = CURRENT_META.get("evidence", "")
+    source_ids = ", ".join(CURRENT_META.get("sources", []))
+    if evidence or source_ids:
+        source_line = "Evidence: " + evidence if evidence else ""
+        if source_ids:
+            source_line += ("  ·  " if source_line else "") + "Sources: " + source_ids
+        txt(s, Inches(0.85), Inches(6.82), Inches(11.5), Inches(0.18),
+            [[(source_line, 6.8, GREY, False)]], align=PP_ALIGN.LEFT)
+    txt(s, Inches(0.4), Inches(7.08), Inches(7.5), Inches(0.30),
         [[(f"{C.SHORT_TITLE}  ·  {C.COURSE_CODE}", 9, GREY, False)]])
-    txt(s, Inches(5.0), Inches(7.05), Inches(3.3), Inches(0.35),
+    txt(s, Inches(5.0), Inches(7.08), Inches(3.3), Inches(0.30),
         [[("© 2026 Tertiary Infotech Pte Ltd", 9, GREY, False)]], align=PP_ALIGN.CENTER)
-    txt(s, Inches(12.4), Inches(7.05), Inches(0.6), Inches(0.35),
+    txt(s, Inches(12.4), Inches(7.08), Inches(0.6), Inches(0.30),
         [[(str(PAGE["n"]), 9, GREY, False)]], align=PP_ALIGN.RIGHT)
 
 
-def head(s, title, kicker=None, kcolor=BLUE):
+def head(s, title, kicker=None, kcolor=BLUE, title_w=11.9, title_size=28):
     rect(s, 0, 0, SW, SH, WHITE); rect(s, 0, 0, Inches(0.28), Inches(1.55), kcolor)
     if kicker:
         txt(s, Inches(0.85), Inches(0.34), Inches(11.6), Inches(0.38), [[(kicker, 14, kcolor, True)]])
-    txt(s, Inches(0.85), Inches(0.78), Inches(11.9), Inches(0.86), [[(title, 28, INK, True)]])
+    txt(s, Inches(0.85), Inches(0.78), Inches(title_w), Inches(0.86),
+        [[(title, title_size, INK, True)]])
     rect(s, Inches(0.85), Inches(1.68), Inches(11.63), Inches(0.02), LINE)
     return s
 
@@ -130,7 +139,7 @@ def _fit(path, max_w_in, max_h_in):
 # ================================================================ components
 def cover():
     s = slide(); rect(s, 0, 0, SW, SH, NAVY)
-    hero = _asset("hero-ai-agent-security-v21.png")
+    hero = _asset("hero-ai-agent-security-v30.png") if C.VERSION.startswith("3") else _asset("hero-ai-agent-security-v21.png")
     if hero:
         s.shapes.add_picture(hero, 0, 0, width=SW, height=SH)
     rect(s, 0, 0, Inches(6.45), SH, NAVY)
@@ -180,7 +189,7 @@ def content(title, items, kicker=None, size=20, kcolor=BLUE):
 def two_col(title, left, right, kicker=None, lhead="", rhead="",
             lcolor=BLUE, rcolor=TEAL, note=None):
     s = head(slide(), title, kicker)
-    bh = Inches(4.7) if not note else Inches(4.15)
+    bh = Inches(4.7) if not note else Inches(4.05)
     rect(s, Inches(0.85), Inches(1.95), Inches(5.7), bh, LIGHT)
     rect(s, Inches(6.95), Inches(1.95), Inches(5.55), bh, LIGHT)
     rect(s, Inches(0.85), Inches(1.95), Inches(5.7), Inches(0.1), lcolor)
@@ -190,7 +199,7 @@ def two_col(title, left, right, kicker=None, lhead="", rhead="",
     bullets(s, Inches(1.1), Inches(2.7), Inches(5.2), bh - Inches(0.9), left, size=15)
     bullets(s, Inches(7.2), Inches(2.7), Inches(5.05), bh - Inches(0.9), right, size=15, mcolor=rcolor)
     if note:
-        txt(s, Inches(0.85), Inches(6.25), Inches(11.7), Inches(0.6), [[(note, 13, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.14), Inches(11.7), Inches(0.50), [[(note, 12.3, GREY, False)]],
             align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     footer(s); return s
 
@@ -308,7 +317,7 @@ def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=N
         txt(s, rx + Inches(0.28), y, rw - Inches(0.5), th,
             [[(t1, 14, col, True)], [(t2, 12, INK, False)]], anchor=MSO_ANCHOR.MIDDLE, space=3)
     if note:
-        txt(s, Inches(0.85), Inches(6.55), Inches(11.7), Inches(0.34), [[(note, 11.5, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.18), Inches(11.7), Inches(0.45), [[(note, 10.8, GREY, False)]],
             align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -322,8 +331,8 @@ def img_full(title, image, kicker=None, accent=BLUE, caption=None):
         x = int(Inches(0.85) + (Inches(11.63) - w) / 2)
         s.shapes.add_picture(p, x, Inches(1.95), width=w, height=h)
     if caption:
-        rect(s, Inches(0.85), Inches(6.35), Inches(11.63), Inches(0.55), LIGHT)
-        txt(s, Inches(1.1), Inches(6.35), Inches(11.1), Inches(0.55), [[(caption, 13, INK, False)]],
+        rect(s, Inches(0.85), Inches(6.16), Inches(11.63), Inches(0.48), LIGHT)
+        txt(s, Inches(1.1), Inches(6.16), Inches(11.1), Inches(0.48), [[(caption, 11.8, INK, False)]],
             anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -332,7 +341,7 @@ def table_slide(title, headers, rows, kicker=None, accent=BLUE, widths=None, not
     s = head(slide(), title, kicker, kcolor=accent)
     ncol = len(headers); X0 = Inches(0.85); TOTW = Inches(11.63)
     ws = [int(TOTW * w) for w in widths] if widths else [int(TOTW / ncol)] * ncol
-    area_h = Inches(4.65) if note else Inches(4.85)
+    area_h = Inches(4.08) if note else Inches(4.85)
     nrow = len(rows) + 1; rh = int(area_h / nrow); y = Inches(1.95); x = X0
     for j, htxt in enumerate(headers):
         rect(s, x, y, ws[j], rh, accent)
@@ -348,7 +357,7 @@ def table_slide(title, headers, rows, kicker=None, accent=BLUE, widths=None, not
                 [[(cell, fsize - 1, INK, j == 0)]], anchor=MSO_ANCHOR.MIDDLE)
             x += ws[j]
     if note:
-        txt(s, Inches(0.85), Inches(6.62), Inches(11.7), Inches(0.4), [[(note, 13, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.16), Inches(11.7), Inches(0.48), [[(note, 11.8, GREY, False)]],
             align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -369,7 +378,7 @@ def formula_slide(title, panels, kicker=None, accent=BLUE, note=None):
         txt(s, x + Inches(0.22), y + Inches(2.5), cw - Inches(0.44), ch - Inches(2.6),
             [[(cap, 12.5, GREY, False)]])
     if note:
-        txt(s, Inches(0.85), Inches(6.25), Inches(11.7), Inches(0.6), [[(note, 14, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.14), Inches(11.7), Inches(0.50), [[(note, 12.3, GREY, False)]],
             align=PP_ALIGN.CENTER)
     footer(s); return s
 
@@ -385,7 +394,7 @@ def ncards(title, cards, kicker=None, accent=BLUE, cols=4, note=None, ch_in=None
     gx = Inches(0.28) if cols > 2 else Inches(0.15)
     cw = int((TOTW - gx * (cols - 1)) / cols)
     rows = math.ceil(n / cols)
-    areah = Inches(4.4) if note else Inches(4.75)
+    areah = Inches(3.95) if note else Inches(4.75)
     gy = Inches(0.25)
     ch = Inches(ch_in) if ch_in else int((areah - gy * (rows - 1)) / rows)
     # card title column width, in characters, drives the wrap estimate
@@ -408,8 +417,8 @@ def ncards(title, cards, kicker=None, accent=BLUE, cols=4, note=None, ch_in=None
         txt(s, x + Inches(0.28), body_y, cw - Inches(0.54),
             y + ch - body_y - Inches(0.14), [[(t2, 11.5, INK, False)]])
     if note:
-        rect(s, Inches(0.72), Inches(6.42), Inches(11.85), Inches(0.62), LIGHT)
-        txt(s, Inches(1.0), Inches(6.42), Inches(11.3), Inches(0.62), [[(note, 13, INK, False)]],
+        rect(s, Inches(0.72), Inches(6.10), Inches(11.85), Inches(0.54), LIGHT)
+        txt(s, Inches(1.0), Inches(6.10), Inches(11.3), Inches(0.54), [[(note, 11.7, INK, False)]],
             anchor=MSO_ANCHOR.MIDDLE)
     footer(s); return s
 
@@ -424,7 +433,10 @@ def takeaway(s, text, color=BLUE, y=6.35):
 
 def activity_slide(a):
     col = CMAP[a["accent"]]
-    s = head(slide(), a["title"], f"ACTIVITY {a['n']} · CASE STUDY", kcolor=col)
+    # Reserve the top-right area for the duration badge. Long activity titles must
+    # never run underneath it.
+    s = head(slide(), a["title"], f"ACTIVITY {a['n']} · CASE STUDY", kcolor=col,
+             title_w=9.15, title_size=26)
     rect(s, Inches(10.35), Inches(0.5), Inches(2.13), Inches(0.62), col)
     txt(s, Inches(10.35), Inches(0.5), Inches(2.13), Inches(0.62),
         [[(f"ACTIVITY {a['n']} · {a['minutes']} MIN", 11, WHITE, True)]],
@@ -462,14 +474,16 @@ def activity_slide(a):
         [[("YOU'LL PRODUCE", 10.5, TEAL, True)]])
     txt(s, Inches(8.92), Inches(5.32), Inches(3.45), Inches(1.0), [[(a["produce"], 11.5, INK, False)]])
     # meta
-    txt(s, Inches(0.85), Inches(6.5), Inches(11.63), Inches(0.4),
-        [[(f"Assesses {a['ka']}  ·  Activity pack: activities/activity-{a['n']}/  "
+    txt(s, Inches(0.85), Inches(6.30), Inches(11.63), Inches(0.34),
+        [[(f"Assesses {a['ka']}  ·  Activity pack: activities/{a['folder']}/  "
            f"·  Full step-by-step facilitation detail: Learner Guide", 11.5, GREY, False)]])
     footer(s); return s
 
 
-def lms_slide():
-    s = head(slide(), "Download Course Material", kicker="COURSE PORTAL · LMS/TMS", kcolor=BLUE)
+def lms_slide(spec=None):
+    spec = spec or {}
+    s = head(slide(), spec.get("title", "Download Course Material"),
+             kicker="COURSE PORTAL · LMS/TMS", kcolor=BLUE)
     bx, by, bw, bh = Inches(0.85), Inches(2.0), Inches(6.1), Inches(4.55)
     rect(s, bx, by, bw, bh, WHITE, line=LINE)
     rect(s, bx, by, bw, Inches(0.52), RGBColor(0xEE, 0xF2, 0xF8))
@@ -485,11 +499,16 @@ def lms_slide():
         w, h = _fit(shot, 5.6, 3.55)
         x = int(bx + (bw - w) / 2)
         s.shapes.add_picture(shot, x, int(by + Inches(0.72)), width=w, height=h)
-    steps = [("Sign in", "lms-tms.tertiaryinfotech.com — log in with your registered email (OTP or password)."),
-             ("Open your course", f"Select '{C.TITLE}' under My Courses."),
-             ("Download materials", "Trainer slides and the Learner Guide — your open-book references."),
-             ("Submit & survey", "Upload your assessment answers and complete the TRAQOM survey.")]
-    rx = Inches(7.3); rw = Inches(5.2); gy = Inches(0.2); th = int((Inches(4.55) - gy * 3) / 4)
+    supplied = spec.get("points", [])
+    if supplied:
+        steps = [(f"Step {i}", point) for i, point in enumerate(supplied, 1)]
+    else:
+        steps = [("Sign in", "lms-tms.tertiaryinfotech.com — log in with your registered email (OTP or password)."),
+                 ("Open your course", f"Select '{C.TITLE}' under My Courses."),
+                 ("Download materials", "Trainer slides and the Learner Guide — your open-book references."),
+                 ("Submit & survey", "Upload your assessment answers and complete the TRAQOM survey.")]
+    rx = Inches(7.3); rw = Inches(5.2); gy = Inches(0.2)
+    th = int((Inches(4.55) - gy * (len(steps) - 1)) / len(steps))
     for i, (t1, t2) in enumerate(steps):
         y = int(Inches(2.0) + (th + gy) * i); col = PALETTE[i % 4]
         rect(s, rx, y, rw, th, LIGHT); rect(s, rx, y, Inches(0.09), th, col)
@@ -499,9 +518,10 @@ def lms_slide():
             align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
         txt(s, rx + Inches(0.9), y, rw - Inches(1.1), th,
             [[(t1, 14, col, True)], [(t2, 11.5, INK, False)]], anchor=MSO_ANCHOR.MIDDLE, space=2)
-    txt(s, Inches(0.85), Inches(6.6), Inches(11.7), Inches(0.4),
-        [[("All course material is downloaded from the LMS/TMS portal — keep it handy: "
-           "the final assessment is open book.", 13, GREY, False)]], align=PP_ALIGN.CENTER)
+    note = spec.get("note") or ("Use only the current learner-facing files. Keep evidence "
+                                "synthetic, local and reversible; never upload secrets or answer keys.")
+    txt(s, Inches(0.85), Inches(6.20), Inches(11.7), Inches(0.44),
+        [[(note, 12.5, GREY, False)]], align=PP_ALIGN.CENTER)
     footer(s); return s
 
 
@@ -513,6 +533,170 @@ def attendance_slide(kicker="TRAQOM · SSG DIGITAL ATTENDANCE"):
         "A minimum of 75% attendance is required to be eligible for assessment and funding.",
         "Complete the TRAQOM survey at the end of the course — it is required for funding.",
     ], kicker=kicker)
+
+
+def _v30_thank_you(spec):
+    s = slide(); rect(s, 0, 0, SW, SH, WHITE)
+    rect(s, 0, 0, SW, Inches(0.22), BLUE); rect(s, 0, Inches(7.28), SW, Inches(0.22), RED)
+    txt(s, Inches(0.9), Inches(2.35), Inches(11.5), Inches(1.25),
+        [[(spec.get("title", "Thank You"), 46, INK, True)]], align=PP_ALIGN.CENTER)
+    rect(s, Inches(5.4), Inches(3.85), Inches(2.53), Inches(0.08), RED)
+    txt(s, Inches(1.15), Inches(4.25), Inches(11.0), Inches(1.15),
+        [[(spec.get("note", "Bound the authority. Preserve the evidence."), 21, GREY, False)]],
+        align=PP_ALIGN.CENTER)
+    txt(s, 0, Inches(5.55), SW, Inches(0.6),
+        [[(f"{C.COURSE_CODE}  ·  Tertiary Infotech Pte Ltd", 13, GREY, False)]],
+        align=PP_ALIGN.CENTER)
+    footer(s)
+
+
+def _v30_render(spec):
+    """Render one v3 source record with the existing house component library."""
+    kind = spec.get("kind", "content")
+    title = spec.get("title", "")
+    kicker = spec.get("kicker")
+    accent = CMAP.get(spec.get("accent", "BLUE"), BLUE)
+    note = spec.get("note")
+
+    if kind == "cover":
+        cover()
+    elif kind == "section":
+        section(kicker or "COURSE MODULE", title,
+                spec.get("number", str(spec.get("n", "")).zfill(2)), note or "")
+    elif kind == "content":
+        content(title, spec.get("points", []), kicker=kicker, size=spec.get("size", 17), kcolor=accent)
+    elif kind == "cards":
+        cards = []
+        for item in spec.get("cards", []):
+            if isinstance(item, dict):
+                cards.append((item.get("title", ""), item.get("body", "")))
+            else:
+                cards.append(tuple(item[:2]))
+        ncards(title, cards, kicker=kicker, accent=accent,
+               cols=spec.get("cols", min(4, max(2, len(cards)))), note=note,
+               ch_in=spec.get("card_height"))
+    elif kind == "table":
+        table_slide(title, spec.get("headers", []), spec.get("rows", []),
+                    kicker=kicker, accent=accent, widths=spec.get("widths"),
+                    note=note, fsize=spec.get("fsize", 12.5))
+    elif kind == "compare":
+        two_col(title, spec.get("left", []), spec.get("right", []), kicker=kicker,
+                lhead=spec.get("lhead", ""), rhead=spec.get("rhead", ""),
+                lcolor=accent, rcolor=CMAP.get(spec.get("right_accent", "TEAL"), TEAL), note=note)
+    elif kind == "flow":
+        flow_h(title, spec.get("steps", []), kicker=kicker, color=accent, note=note)
+    elif kind == "big":
+        line2 = note or " · ".join(spec.get("points", []))
+        big_statement(title, line2, kicker or "KEY IDEA", color=accent)
+    elif kind == "image":
+        image_name = spec.get("image")
+        if image_name and _asset(image_name):
+            if spec.get("points"):
+                pts = []
+                for item in spec.get("points", []):
+                    pts.append(tuple(item[:2]) if not isinstance(item, dict)
+                               else (item.get("title", ""), item.get("body", "")))
+                img_points(title, image_name, pts, kicker=kicker, accent=accent,
+                           img_w=spec.get("img_w", 7.0), note=note)
+            else:
+                img_full(title, image_name, kicker=kicker, accent=accent, caption=note)
+        else:
+            content(title, spec.get("points", [note] if note else []), kicker=kicker,
+                    size=spec.get("size", 17), kcolor=accent)
+    elif kind == "activity":
+        activity_points = spec.get("points", [])
+        match = re.search(r"\bActivity\s+(\d+)\b", title, flags=re.IGNORECASE)
+        activity_no = match.group(1) if match else str(spec.get("activity_no", ""))
+        activity_minutes = {"1": 45, "2": 60, "3": 60, "4": 60, "5": 25}
+        activity_ka = {"1": "K2, K3, A4", "2": "K1, K4", "3": "A3, A5",
+                       "4": "K5", "5": "A1, A2"}
+        activity_folders = {
+            "1": "activity-1-threat-modelling-genai-concierge",
+            "2": "activity-2-prompt-injection-data-leakage",
+            "3": "activity-3-security-framework-selection",
+            "4": "activity-4-rogue-agent-incident-review",
+            "5": "activity-5-agent-governance-deployment-gate",
+        }
+        activity_org = {
+            "1": "Realistic synthetic classroom simulation",
+            "2": "Realistic synthetic classroom simulation",
+            "3": "Realistic synthetic classroom simulation",
+            "4": "Evidence-based documented case review",
+            "5": "Realistic synthetic classroom simulation",
+        }
+        a = {
+            "n": activity_no, "title": title,
+            "minutes": spec.get("minutes", activity_minutes.get(activity_no, 45)),
+            "accent": spec.get("accent", "VIOLET"),
+            "org": spec.get("org", activity_org.get(activity_no, "Evidence-based classroom exercise")),
+            "scenario": spec.get("scenario", note or (" · ".join(activity_points) if activity_points else
+                                      "Use only synthetic data and approved lab resources.")),
+            "flow": spec.get("steps", ["Scope", "Map", "Test", "Control", "Evidence"]),
+            "questions": spec.get("questions", activity_points[:3] or
+                                   ["Where does untrusted content meet delegated authority?",
+                                    "Which hard control breaks the chain earliest?"]),
+            "produce": spec.get("produce", "A documented risk decision with evidence."),
+            "ka": spec.get("ka", activity_ka.get(activity_no, "K/A statements")),
+            "folder": spec.get("folder", activity_folders.get(activity_no, f"activity-{activity_no}")),
+        }
+        activity_slide(a)
+    elif kind == "break":
+        brk(title or "Break", spec.get("duration", ""), color=accent)
+    elif kind == "attendance":
+        attendance_slide(kicker=kicker or "TRAQOM · SSG DIGITAL ATTENDANCE")
+    elif kind == "lms":
+        lms_slide(spec)
+    elif kind == "trainer":
+        is_template = "General" in title
+        trainer_slide(kicker or "YOUR TRAINER",
+                      spec.get("name", "Your Trainer" if is_template else C.TRAINER),
+                      spec.get("role", "Complete this profile before delivery" if is_template else
+                               "Principal Trainer\nTertiary Infotech Pte Ltd"),
+                      spec.get("rows", [("Name", ""), ("Qualifications", ""),
+                                        ("Industry experience", ""), ("Training experience", "")]
+                               if is_template else
+                               [("Role", "Principal Trainer"),
+                                ("Expertise", "AI security, governance and enterprise IT")]),
+                      spec.get("initials", "?" if is_template else "AA"), accent=accent)
+    elif kind == "thankyou":
+        _v30_thank_you(spec)
+    else:
+        content(title, spec.get("points", [note] if note else []), kicker=kicker,
+                size=spec.get("size", 17), kcolor=accent)
+
+
+def _build_v30():
+    import v30_content as V
+    global CURRENT_META
+    for spec in V.SLIDES:
+        if spec.get("anchor"):
+            mark(spec["anchor"])
+        source_labels = []
+        for sid in spec.get("sources", []):
+            src = V.SOURCES.get(sid, {})
+            short = (src.get("short") or src.get("title", "")) if isinstance(src, dict) else str(src)
+            if len(short) > 34:
+                short = short[:31].rstrip() + "..."
+            # The footer is a compact trace key. Full titles and URLs are resolved
+            # in the claim ledger; IDs alone prevent wrapping into the note/footer.
+            source_labels.append(sid)
+        CURRENT_META = {"evidence": spec.get("evidence", ""), "sources": source_labels}
+        _v30_render(spec)
+    expected = getattr(V, "EXPECTED_SLIDES", 207)
+    if PAGE["n"] != expected:
+        raise RuntimeError(f"v3 slide count mismatch: expected {expected}, built {PAGE['n']}")
+    out = os.path.join(OUTDIR, f"WSQ - Master Trainer Slides - {C.COURSE_CODE} - {C.TITLE}-v{C.VERSION.replace('.','')}.pptx")
+    prs.save(out)
+    with open(os.path.join(OUTDIR, "slide_map.json"), "w") as f:
+        json.dump(SLIDE_MAP, f, indent=2)
+    print(f"Saved: {out}")
+    print(f"Slides: {PAGE['n']}")
+    print("Slide map:", SLIDE_MAP)
+
+
+if C.VERSION.startswith("3") and __name__ == "__main__":
+    _build_v30()
+    sys.exit(0)
 
 
 # ================================================================ BUILD

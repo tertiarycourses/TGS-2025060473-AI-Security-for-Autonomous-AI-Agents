@@ -42,8 +42,8 @@ Be precise about the attacker's goal — data, money, disruption or reputation.
 The three incidents in the scenario are not unrelated glitches.
 
 - Give the most likely technical cause of each.
-- Which of them is, in your assessment, **already a reportable personal data breach** under the
-  PDPA? State what makes it reportable rather than merely embarrassing.
+- Which events require a formal PDPA breach assessment? Apply the current significant-harm and
+  significant-scale tests without assuming that every data leak is automatically notifiable.
 - The project lead says PDPA is not in scope because Cres holds no payment card data. Rebut this.
 
 ### Q5 — Recommend the deployment decision *(A4)*

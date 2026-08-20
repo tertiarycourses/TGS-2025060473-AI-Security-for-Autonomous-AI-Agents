@@ -12,7 +12,14 @@ assessment/
 
 # Local environment (contains the courseware Drive link)
 .env
+.env.*
 courseweare/.env
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
 
 # Local source packs, trainer-only debriefs and generated archives are not public release content
 reference/
@@ -22,3 +29,12 @@ trainer-resources/
 # Build intermediates
 __pycache__/
 *.pyc
+tmp/
+
+# Internal QA and build-facing research records
+QA-REPORT-v*.md
+research/AGENT-*.md
+research/CLAIM-LEDGER-v*.md
+research/IMAGEGEN-PROMPTS-v*.md
+research/SOURCE-REGISTER-v*.md
+research/V*-*.md

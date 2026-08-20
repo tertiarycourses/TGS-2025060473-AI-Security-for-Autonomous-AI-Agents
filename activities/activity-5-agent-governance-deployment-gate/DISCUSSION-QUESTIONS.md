@@ -33,27 +33,29 @@ call being executed**.
 - Compute the effective rate of wrong executed actions per 1,000 cases, and per year at 31,000 cases.
   State what that number means when the tool in question is *escalate to the debt recovery agency* or
   *submit a credit bureau data point*.
-- OWASP moved **LLM07 Misinformation** up two places in the 2026 revision and reframed hallucination
-  as a **security** risk rather than a quality one. Justify that reframing using ARIA specifically.
+- OWASP treats **misinformation** as an application-security risk rather than only a quality issue.
+  Justify that treatment using ARIA specifically.
   Why is a hallucination that drives a tool call categorically different from one that produces a
   wrong sentence?
 - The evaluation logged 11 instances of ARIA importing **non-existent Python packages**, two of which
   a developer attempted to install. Name this failure mode using its OWASP 2026 identifier and title,
   explain the attack it invites, and say why "minor code quality issue" is the wrong severity.
-- Identify **three limitations** of ARIA that no amount of additional training data will remove, and
+- Identify **three limitations** of ARIA that are not solved solely by adding more training data, and
   explain what each one implies for the autonomy you are willing to grant.
 
 ### Q3 — Discharge the PDPA and PDPC obligations *(A2)*
 
-Meridian Bank is the **system deployer**.
+Meridian Bank operates the deployment and, using the PDPC's 2 June 2026 proposed consultation
+vocabulary, is the **system deployer**.
 
-- Under the PDPC's July 2026 guidelines on personal data in generative AI, explain what "system
-  deployer bears primary responsibility" means in practice, and why the vendor's reputation and
-  contractual assurances do not transfer that responsibility.
+- Under the current PDPA obligations, explain what it means for the deploying organisation to retain
+  its own statutory duties in practice, and why a vendor's reputation or contractual assurances do
+  not transfer those duties. You may use the PDPC's 2 June 2026 proposed GenAI consultation text as
+  a labelled proposal, not as final law or final guidance.
 - Assess the drafted notice — *"We may use automated systems and new technologies to improve our
   products and services"* — against the guidelines' consent and notification requirements. Rewrite it
   so it would survive scrutiny, and state what it must disclose that the current wording omits.
-- The guidelines identify **new data surfaces**: end-user prompts, generated outputs, **agent and tool
+- The proposed consultation text highlights **new data surfaces**: end-user prompts, generated outputs, **agent and tool
   activity data**, and internal enterprise data. Identify every such surface ARIA creates, say who
   holds it and where, and flag the ones the bank has not inventoried.
 - ARIA's per-customer memory is retained indefinitely. Address this against **retention limitation**
@@ -91,7 +93,8 @@ Deliver your board decision.
   the bank satisfies IMDA's **end-user responsibility** dimension — what customers and officers are
   told about ARIA's capabilities, data access and escalation route.
 - Confront the ethical and societal argument on both sides. Rachel Tay is right that the status quo
-  leaves distressed customers waiting nine days, and that S$117,000 a week is real. Your controls will
+  leaves distressed customers waiting nine days, and that S$117,000 a week is a stated synthetic
+  business-case cost. Your controls will
   slow ARIA down. Justify your position **in terms of who bears the cost of each choice** — and note
   which groups bear the cost of a false escalation and which bear the cost of a delayed deployment.
   They are not the same people.

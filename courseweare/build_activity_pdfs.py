@@ -67,14 +67,14 @@ def inline(text: str) -> str:
 
 
 styles = getSampleStyleSheet()
-BODY = ParagraphStyle("Body", parent=styles["BodyText"], fontName="Helvetica", fontSize=9.5,
-                      leading=13.2, textColor=NAVY, spaceAfter=5)
+BODY = ParagraphStyle("Body", parent=styles["BodyText"], fontName="Helvetica", fontSize=9.0,
+                      leading=11.6, textColor=NAVY, spaceAfter=3.5)
 H1 = ParagraphStyle("H1", parent=styles["Heading1"], fontName="Helvetica-Bold", fontSize=18,
                     leading=22, textColor=NAVY, spaceBefore=10, spaceAfter=8)
 H2 = ParagraphStyle("H2", parent=styles["Heading2"], fontName="Helvetica-Bold", fontSize=14,
-                    leading=17, textColor=BLUE, spaceBefore=9, spaceAfter=6)
-H3 = ParagraphStyle("H3", parent=styles["Heading3"], fontName="Helvetica-Bold", fontSize=11.5,
-                    leading=14, textColor=NAVY, spaceBefore=7, spaceAfter=4)
+                    leading=17, textColor=BLUE, spaceBefore=8, spaceAfter=5)
+H3 = ParagraphStyle("H3", parent=styles["Heading3"], fontName="Helvetica-Bold", fontSize=11.3,
+                    leading=13.5, textColor=NAVY, spaceBefore=6, spaceAfter=3)
 BULLET = ParagraphStyle("Bullet", parent=BODY, leftIndent=13, firstLineIndent=-8, bulletIndent=4)
 QUOTE = ParagraphStyle("Quote", parent=BODY, leftIndent=12, rightIndent=8, borderColor=BLUE,
                        borderWidth=1, borderPadding=7, backColor=LIGHT, textColor=NAVY)

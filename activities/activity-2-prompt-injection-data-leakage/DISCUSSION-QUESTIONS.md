@@ -1,6 +1,6 @@
 # Activity 2 — Discussion Questions
 
-## Prompt Injection and the PDPA-Reportable Leak
+## Prompt Injection and the PDPA Breach Decision
 
 Work through all five questions in your group. Nominate one person to present your findings and your
 notification recommendation in the debrief. You have 60 minutes.
@@ -59,12 +59,12 @@ You must give the board a yes or no tomorrow, with reasons.
   significant harm to affected individuals, and significant scale — and state your conclusion on each
   separately. Say what you would notify, to whom, and within what timeframe.
 - Rebut the Head of Digital's note. Deal with both of its claims: that a malicious upload makes this
-  customer conduct, and that a human pressing Send transfers responsibility. Use the PDPC's 2026
-  guidelines on personal data in generative AI, and be specific about which of the three roles —
-  model provider, system provider, system deployer — Meridian occupies.
+  customer conduct, and that a human pressing Send transfers responsibility. Apply current PDPA
+  obligations. If you use the role vocabulary in the PDPC's 2 June 2026 GenAI consultation text —
+  model provider, system provider and system deployer — label it as proposed consultation material.
 - Meridian's data inventory lists the claims database and the document store. It does not list
-  prompts, model outputs, or tool-call activity data. Explain why the 2026 guidelines make that a
-  problem, and what it means for Meridian's ability to answer an access or correction request from one
+  prompts, model outputs, or tool-call activity data. Explain why those omitted data surfaces create
+  accountability and operational problems, and what they mean for Meridian's ability to answer an access or correction request from one
   of the 118 individuals.
 
 ### Q5 — Design the controls, and price them *(K4, K1)*

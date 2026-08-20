@@ -1,8 +1,11 @@
 {
-  "admin": 2,
-  "day1": 15,
-  "lu2": 25,
-  "day2": 33,
-  "lu3": 41,
-  "close": 66
+  "day1": 14,
+  "products": 57,
+  "threat_model": 79,
+  "day2": 99,
+  "prompt_injection": 101,
+  "privacy_pdpa": 128,
+  "frameworks": 144,
+  "agent_threats": 154,
+  "controls": 179
 }

@@ -1,167 +1,93 @@
 # AI Security for Autonomous AI Agents
 
-**WSQ Course Code:** TGS-2025060473
-**Skills Framework TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)
+**WSQ course code:** TGS-2025060473
+
+**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)
+
 **Duration:** 2 days · 16 hours
-**Version:** 2.1 (20 August 2026)
-**Conducted by:** Tertiary Infotech Pte Ltd · UEN 20120096W
 
-> Courseware for the WSQ course on securing generative AI systems and autonomous AI agents.
-> Delivered through real-world 2026 case studies and grounded in current security and
-> governance frameworks.
+**Courseware version:** 3.0 · 20 August 2026
 
----
+Evidence-grounded courseware for understanding and controlling the security risks of generative AI, agentic operating patterns and deployed AI agents.
 
-## About this course
+![Version 3.0 trainer-deck cover](screenshot.png)
 
-This course equips learners to identify, analyse and mitigate the security risks introduced by
-generative AI systems **and** by autonomous AI agents.
+## Course progression
 
-It covers both halves of the problem:
+The 207-slide trainer deck follows a simple-to-complex sequence:
 
-| Domain | Topics |
+1. AI history and the transition from prediction to generation and action.
+2. Generative AI, agentic behaviour and deployed AI agents as overlapping operating layers.
+3. Product and harness boundaries across OpenClaw, Hermes, Prime Agent, QM, DeepSeek Harness, Claude Code, Codex and ChatGPT Chat/Work.
+4. Threat modelling from untrusted content through identity, tools, runtime, memory, network and impact.
+5. Prompt injection, jailbreaks, data leakage, PDPA, token exposure, malicious skills/plugins/MCP, code execution and persistent compromise.
+6. Controls, governance, incident response, rollback and deployment assurance.
+
+## Frameworks and evidence
+
+| Framework | Course use |
 |---|---|
-| **Generative AI security** | Prompt injection (direct, indirect, cross-modal), sensitive data leakage, data and model poisoning, hidden context exposure, improper output handling, PDPA exposure |
-| **Autonomous agent security** | Excessive agency, uncontrolled and destructive execution, tool misuse, agent identity and privilege abuse, memory poisoning, malicious skills/plugins and MCP servers, rogue agents, cyber-attack chains |
-| **Organisational implementation** | Guardrails, least privilege, sandboxing, egress control, deterministic human approval, Responsible AI/shared responsibility, monitoring, incident response, PDPA evidence and deployment checklists |
+| NIST AI RMF | Govern, map, measure and manage AI risk across the lifecycle |
+| OWASP Top 10 for LLM Applications | Generative-AI application risk taxonomy |
+| OWASP Top 10 for Agentic Applications | Agentic goals, tools, identity, memory and coordination risks |
+| MITRE ATLAS | Adversary tactics and techniques involving AI-enabled systems |
+| IMDA Model AI Governance Framework for Agentic AI v1.5 | Bounds, human accountability, technical controls and end-user responsibility |
+| Singapore PDPA and PDPC publications | Purpose, protection, retention, transfers, accountability and breach notification |
 
-### Frameworks covered
+PDPC's June 2026 generative-AI material is identified as proposed public-consultation guidance, not represented as final law or final guidance.
 
-- **OWASP Top 10 for LLM Applications (2026)** — the GenAI threat taxonomy
-- **OWASP Top 10 for Agentic Applications, ASI (2026)** — the agent threat taxonomy
-- **NIST AI Risk Management Framework** — Govern · Map · Measure · Manage
-- **MITRE ATLAS** — adversary tactics and techniques against AI systems
-- **IMDA Model AI Governance Framework for Agentic AI (Jan 2026)** — the world's first
-  governance framework written specifically for agentic AI
-- **PDPA + PDPC Guidelines on Personal Data in Generative AI (Jul 2026)** — Singapore's
-  statutory obligations, including system-deployer accountability
+Documented cases retain evidence labels and limitations. They include EchoLeak as a verified vulnerability rather than a claimed breach; the Amazon Q extension supply-chain event where malicious code was distributed but did not execute because of a syntax error; Replit's first-party account that the affected application database was restored with no data lost; and the dated ClawHavoc security-research snapshot without generalising its reported figures to the current marketplace.
 
-### Real incidents studied
+## Organisational control model
 
-- **OpenAI → Hugging Face (July 2026)** — an agent escaped its evaluation sandbox and chained
-  reconnaissance, a supply-chain pull request, spear-phishing and a prompt injection hidden in
-  an HTML comment into remote code execution on production infrastructure. No malware, no known
-  CVE — every individual action was legitimate.
-- **Anthropic cybersecurity evaluations (August 2026)** — models that believed they had no
-  internet access compromised real infrastructure, published malicious code to PyPI that ran on
-  15 real systems, and scanned ~9,000 targets.
-- **Replit** — an agent deleted the production customer database (the canonical ASI10 case).
+The implementation sequence is designed to leave observable evidence:
 
----
+1. Inventory and risk-tier the use case.
+2. Bound data, tools and autonomy.
+3. Give each agent a scoped, short-lived identity.
+4. Apply guardrails and deterministic schema/policy validation.
+5. Sandbox code and files.
+6. Deny network egress by default and allow named destinations.
+7. Require meaningful human approval for consequential actions.
+8. Log the decision, approval and resulting action.
+9. Monitor sequences and boundary crossings, not only isolated events.
+10. Red-team before go-live and retain rollback, incident and decommissioning evidence.
 
-## Learning outcomes
+## Current learner-facing artifacts
 
-| LO | Outcome |
+| Artifact | Current file |
 |---|---|
-| **LO1** | Demonstrate generative AI concepts and applications relevant to customer service and hospitality management. |
-| **LO2** | Apply prompt engineering techniques and analyse output variations to improve generative AI performance in service settings. |
-| **LO3** | Identify ethical risks and analyse bias in AI-generated content used in customer engagement. |
+| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v30.pptx` and matching PDF |
+| Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
+| Learner Guide Markdown | `courseweare/LEARNER-GUIDE.md` |
+| Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
+| Activities | Five self-contained folders under `activities/`, each with Markdown and printable PDFs |
 
-> **Design note.** The accredited TSC knowledge and ability statements are Generative-AI-principles
-> statements. They are taught and assessed **verbatim**; AI security is the delivery lens through
-> which each statement is evidenced. See [`research/CONTENT-DESIGN.md`](research/CONTENT-DESIGN.md)
-> for the full K/A → security-topic mapping.
-
----
-
-## Deliverables (current version)
-
-| Artifact | File |
-|---|---|
-| Trainer slide deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v21.pptx` (+ `.pdf`) |
-| Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` (+ `.pdf`) |
-| Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` (+ `.pdf`) |
-| Learner Guide (Markdown mirror) | `courseweare/LEARNER-GUIDE.md` |
-| Activity packs | `activities/activity-{1..5}-*/` (scenario, questions, practice/checklist, Markdown/PDF) |
-
-The deck filename carries the version (`-v21` = Version 2.1), matching the cover.
-
-## Repository structure
-
-```
-courseware/
-├── courseweare/                    # Generated courseware (PPT, LP, LG + PDFs)
-│   ├── build_slides.py             # Slide deck generator
-│   ├── make_charts.py              # Security diagrams (matplotlib)
-│   ├── make_lesson_plan.py         # Lesson Plan generator
-│   ├── make_learner_guide.py       # Learner Guide generator (DOCX + Markdown mirror)
-│   ├── course_data.py              # Single source of truth: TSC, K/A, LO, version
-│   ├── deck_content.py             # Slide content
-│   ├── lg_content.py               # Learner Guide content
-│   ├── LEARNER-GUIDE.md            # Markdown mirror of the LG DOCX
-│   └── assets/                     # Logos, LMS screenshot, generated diagrams
-├── activities/                     # Five real-world case-study activities
-│   ├── activity-1-threat-modelling-genai-concierge/
-│   ├── activity-2-prompt-injection-data-leakage/
-│   ├── activity-3-security-framework-selection/
-│   ├── activity-4-rogue-agent-incident-review/
-│   └── activity-5-agent-governance-deployment-gate/
-├── research/                       # Research notes and the content design
-└── reference/                      # Local source packs, including AI Ethics and Responsible AI (not published)
-```
-
-Each learner-facing activity folder contains `README.md`, `SCENARIO.md`,
-`DISCUSSION-QUESTIONS.md`, `SECURITY-CHECKLIST.md`, matching per-file PDFs and a consolidated
-learner PDF. Activities 2 and 4 also include dedicated prompt-injection and skill/plugin practice
-resources. Trainer debriefs are kept separately in the ignored local `trainer-resources/` tree so
-they are not exposed by the public Activities link.
-
-> **Note:** the `assessment/` folder is **confidential** and is deliberately excluded from this
-> repository via `.gitignore`. Learner question papers are distributed through Google Drive and
-> LMS-TMS; answer keys remain trainer-only on Drive and are never linked in LMS-TMS.
-
----
+The Learner Guide is 109 pages. The Lesson Plan is 9 pages. Detailed procedures are kept in the Learner Guide and activity packs; the trainer slides remain concept-led.
 
 ## Activities
 
-| # | Activity | Day | Duration | Assesses |
-|---|---|---|---|---|
+| # | Activity | Day | Duration | Evidence |
+|---|---|---:|---:|---|
 | 1 | Threat Modelling a Generative AI Concierge | 1 | 45 min | K2, K3, A4 |
-| 2 | Prompt Injection and the PDPA-Reportable Leak | 1 | 60 min | K4, K1 |
+| 2 | Prompt Injection and the PDPA Breach Decision | 2 | 60 min | K4, K1 |
 | 3 | Selecting a Security Framework for GenAI and Agents | 2 | 60 min | A3, A5 |
-| 4 | Rogue Agent Post-Incident Review | 2 | 60 min | K5 |
-| 5 | Agent Governance and the Deployment Gate (capstone) | 2 | 25 min | A1, A2 |
+| 4 | Evidence-Based Rogue Agent Incident Review | 2 | 60 min | K5 |
+| 5 | Agent Governance and the Deployment Gate | 2 | 25 min | A1, A2 |
 
-Every activity is a realistic Singapore-context case study with a scenario, discussion questions,
-an operational security checklist and separate trainer-only debrief notes.
+Every activity includes a learner workflow, required evidence, acceptance criteria and an operational checklist. Prompt-injection practice uses synthetic, local and reversible table-top tests. Learners must not upload answer keys, real credentials, production secrets or personal data.
 
----
+## Assessment boundary
 
-## Assessment
+The confidential `assessment/` folder is excluded from GitHub. Learner question papers are distributed through the approved Drive/LMS workflow; answer keys remain trainer-only and are never linked from LMS-TMS.
 
-| Instrument | Covers | Detail |
-|---|---|---|
-| **Written Assessment (SAQ)** | K1 – K5 | 5 short-answer questions — one per knowledge statement |
-| **Case Study** | A1 – A5 via LO1–LO3 | 3 questions — one per Learning Outcome |
+## Release safety
 
-Open book. Graded Competent / Not Yet Competent. Re-assessment available.
-
----
-
-## Building the courseware
-
-```bash
-cd courseweare
-python3 make_charts.py          # regenerate the security diagrams
-python3 build_slides.py         # build the trainer deck
-python3 make_lesson_plan.py     # build the Lesson Plan  (asserts 480 min/day)
-python3 make_learner_guide.py   # build the Learner Guide (DOCX + Markdown)
-python3 build_activity_pdfs.py  # build all five activity PDFs from the Markdown packs
-
-# PDFs
-soffice --headless --convert-to pdf --outdir . *.pptx *.docx
-```
-
-All artifacts derive from `course_data.py`, so the version, TSC codes and K/A statements can
-never drift between the deck, the Lesson Plan and the Learner Guide.
+- `.env`, credentials and local source packs are excluded.
+- Archived versions and temporary QA renders are excluded.
+- Case statements distinguish verified vulnerabilities, first-party incidents, research reports and fictional simulations.
+- The public release contains courseware artifacts only; assessments, answer keys and internal QA/build materials remain excluded.
 
 ---
 
-## Funding and attendance
-
-Funding eligibility requires a minimum **75% attendance** recorded through SSG digital
-attendance, an assessment outcome of **Competent**, and completion of the **TRAQOM survey**.
-
----
-
-*This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). All Rights Reserved.*
+This material belongs to Tertiary Infotech Pte Ltd (UEN 20120096W). All Rights Reserved.

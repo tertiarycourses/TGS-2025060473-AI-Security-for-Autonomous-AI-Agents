@@ -3,7 +3,7 @@
 ## Scope
 
 - WSQ course: `TGS-2025060473 - AI Security for Autonomous AI Agents`.
-- Treat `courseweare/course_data.py`, `courseweare/deck_content.py`, and `courseweare/lg_content.py` as the instructional source of truth.
+- Treat `courseweare/course_data.py`, `courseweare/v30_content.py`, and `courseweare/v30_learner.py` as the active v3.0 instructional source of truth. `deck_content.py` and `lg_content.py` are legacy v2.x sources and must not feed a v3.x build.
 - Preserve the existing `courseweare/` spelling. Do not rename it during a scoped release.
 - This is a technical AI-security course, but the verified learner-facing hands-on directory is `activities/`. Preserve that public destination unless the project owner explicitly changes it.
 
@@ -12,6 +12,8 @@
 - Keep the PowerPoint concept-led and highly visual. Put detailed procedures, evidence requirements, acceptance criteria, and checklists in the Learner Guide and activity packs.
 - Cover prompt injection, indirect and cross-modal injection, personal-data exposure under Singapore's PDPA, excessive agency, tool misuse, memory poisoning, and malicious or untrusted agent skills/plugins.
 - Use realistic, clearly fictional Singapore business scenarios. Distinguish verified incidents from reported or hypothetical cases.
+- Every factual slide must carry an evidence label and one or more source IDs resolved in `research/CLAIM-LEDGER-v30.md`; every synthetic scenario must display `SIM` and state that its names, events and numbers are fictional.
+- OpenAI product claims may use only current official pages under `learn.chatgpt.com`, `developers.openai.com`, or `platform.openai.com` for this package.
 - Generated images must contain no embedded text, logos, trademarks, or watermarks. Keep titles and labels editable in PowerPoint.
 - Do not add a practice-exam slide unless this course is explicitly mapped to an external certification exam and a matching exam exists.
 

@@ -12,13 +12,13 @@
 |---|---|
 | **Duration** | 45 minutes |
 | **Format** | Small groups of 3–4, plenary debrief |
-| **Type** | Real-world case study |
+| **Type** | Realistic synthetic simulation (SIM) |
 | **Learning Outcome** | LO1 |
 | **K/A statements assessed** | K2, K3, A4 |
 
 ## Purpose
 
-Learners threat-model a live hospitality GenAI concierge, identify trust boundaries and attacker-writable retrieval sources, turn each application mode into an attack surface, and make a rollout recommendation with costed controls.
+Learners threat-model a fictional deployed hospitality GenAI concierge, identify trust boundaries and attacker-writable retrieval sources, turn each application mode into an attack surface, and make a rollout recommendation with costed controls.
 
 ## Files in this folder
 
@@ -33,13 +33,36 @@ Learners threat-model a live hospitality GenAI concierge, identify trust boundar
 
 1. **Set up (5 min).** Form groups of 3–4. Issue `SCENARIO.md` and `DISCUSSION-QUESTIONS.md`.
    Trainer debrief notes are supplied separately and are not stored in the learner-facing Activities folder.
-2. **Group work (45 minutes).** Groups work the five questions in order. Circulate; the questions are
+2. **Group work (30 minutes).** Groups work the five questions in order. Circulate; the questions are
    designed to be argued, not looked up.
-3. **Presentation.** Each group presents its answer to one nominated question.
-4. **Debrief.** Use the separate trainer notes to draw out the teaching points and correct recurring misconceptions.
+3. **Presentation (5 minutes).** Each group presents its answer to one nominated question.
+4. **Debrief (5 minutes).** Use the separate trainer notes to draw out the teaching points and correct recurring misconceptions.
 
-> **Step-by-step instructions for this activity are in the Learner Guide.** The slide deck
-> carries the scenario and the discussion questions only.
+## Learner workflow
+
+1. Inventory every channel, retrieval source, data store, model, tool and output consumer in the scenario.
+2. Draw the data flow and mark each boundary where a public, partner or internal writer can place content into model context.
+3. Mark personal data, secrets and business-sensitive data, including purpose, owner and retention.
+4. Write one realistic abuse case for every attacker-writable source; do not test a live system.
+5. Trace each abuse case from source through model interpretation, identity and tool authority to its possible effect.
+6. Rank the boundaries by impact, likelihood, reversibility and detection difficulty.
+7. Select the earliest deterministic control for the top three risks and record owner, test evidence, residual risk and operational cost.
+8. Decide proceed, conditional proceed or halt, then complete `SECURITY-CHECKLIST.md`.
+
+## Required evidence
+
+- One labelled data-flow diagram covering at least three channels, four retrieval sources and four tools.
+- One ranked abuse-case table with a source-to-sink chain for every shortlisted risk.
+- Three control decisions, each with an owner, evidence test, residual risk and operational cost.
+- One rollout decision supported by the completed deployment checklist.
+
+## Acceptance criteria
+
+The submission passes when every external writer, personal-data path and action tool is represented;
+the three priority risks can be traced end to end; and the rollout decision is supported by testable,
+owned controls rather than prompt wording alone.
+
+> The slide deck remains concept-led. These learner procedures are also reproduced in the Learner Guide.
 
 ## Alignment
 
