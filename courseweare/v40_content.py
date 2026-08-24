@@ -37,7 +37,6 @@ SOURCES = {
     "S20": {"title": "PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024)", "url": "https://petapixel.com/2024/07/16/fashion-brand-mango-launches-photorealistic-ai-generated-campaign/"},
     "S21": {"title": "CNN — H&M to create AI 'digital twins' of models (Mar 2025)", "url": "https://www.cnn.com/2025/03/28/style/h-and-m-ai-models-intl-scli"},
     "S22": {"title": "CNN — AI models in Guess ad in Vogue's August 2025 issue", "url": "https://www.cnn.com/2025/07/31/style/vogue-ai-models-guess-campaign"},
-    "S23": {"title": "OpenAI — Sora 2 is here (30 Sep 2025)", "url": "https://openai.com/index/sora-2/"},
     "S24": {"title": "Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025)", "url": "https://www.forbes.com/sites/danidiplacido/2025/11/04/coca-cola-sparks-backlash-with-ai-generated-christmas-ad-again/"},
     "S25": {"title": "Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024)", "url": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/"},
     "S26": {"title": "Forbes — Klarna reverses on AI, re-hires human agents (May 2025)", "url": "https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/"},
@@ -68,7 +67,8 @@ SOURCES = {
 def S(n, kind, title, *, evidence="SYN", sources=(), kicker=None, accent="BLUE",
       points=None, cards=None, headers=None, rows=None, left=None, right=None,
       steps=None, note=None, anchor=None, image=None, lhead=None, rhead=None,
-      cols=None, widths=None, img_w=None, size=None, fsize=None):
+      cols=None, widths=None, img_w=None, size=None, fsize=None, video_url=None,
+      video_embed=None):
     """Return one normalized slide dictionary."""
     d = {
         "n": n, "kind": kind, "title": title, "evidence": evidence,
@@ -80,7 +80,8 @@ def S(n, kind, title, *, evidence="SYN", sources=(), kicker=None, accent="BLUE",
                        ("right", right), ("steps", steps), ("note", note),
                        ("anchor", anchor), ("image", image), ("lhead", lhead),
                        ("rhead", rhead), ("cols", cols), ("widths", widths),
-                       ("img_w", img_w), ("size", size), ("fsize", fsize)):
+                       ("img_w", img_w), ("size", size), ("fsize", fsize),
+                       ("video_url", video_url), ("video_embed", video_embed)):
         if value is not None:
             d[key] = value
     return d
@@ -197,10 +198,15 @@ SLIDES = [
       cards=[("Mango, Jul 2024", "Ran its first fully AI-generated campaign for its teen 'Sunset Dream' line across 95 markets"),
              ("H&M, 2025", "Announced AI 'digital twins' of 30 real models; first labelled images appeared mid-2025"),
              ("Guess, Aug 2025", "A Guess ad using AI-generated models ran in Vogue's August issue and drew wide debate")]),
-    S(28, "cards", "Short Vertical Video Is Being Generated", evidence="CASE-V", sources=("S23", "S24"), accent="TEAL",
-      cards=[("OpenAI Sora 2", "Launched 30 Sep 2025 with a TikTok-style app of AI clips; No.1 on the US App Store within days"),
-             ("Coca-Cola", "Aired an AI-generated 'Holidays Are Coming' ad in 2024 and again in 2025"),
-             ("Takeaway", "Marketing teams can now generate campaign video without a film crew")]),
+    S(28, "video", "AI-Generated Video Is Overtaking Whole Industries", evidence="SYN", accent="TEAL",
+      image="yt-qNBngP40P_s.jpg",
+      video_url="https://www.youtube.com/shorts/qNBngP40P_s",
+      video_embed="https://www.youtube.com/embed/qNBngP40P_s",
+      points=[("AI-generated", "This short vertical video was made with generative AI — no camera, cast or crew"),
+              ("Marketing & advertising", "Brands now generate campaign video in hours, not weeks"),
+              ("Movies", "AI is moving into film production — visuals, scenes and effects"),
+              ("Music", "AI-generated tracks and videos are reshaping the music industry too")],
+      note="Play the Short in-slide, or tap 'Watch the Short'. Discuss: could your team use this — and what could go wrong?"),
     S(29, "flow", "Customer Service: The Klarna Story", evidence="CASE-V", sources=("S25", "S26"), accent="TEAL",
       steps=["Feb 2024 — AI assistant handles 2/3 of chats", "Work of ~700 agents in month one",
              "Resolution time 11 min to under 2 min", "May 2025 — re-hires humans for quality"],

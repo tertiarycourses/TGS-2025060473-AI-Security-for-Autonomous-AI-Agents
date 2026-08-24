@@ -337,6 +337,102 @@ def img_full(title, image, kicker=None, accent=BLUE, caption=None):
     footer(s); return s
 
 
+def _embed_youtube(s, poster_path, embed_url, watch_url, x, y, w, h):
+    """Insert a real PowerPoint 'Online Video' (YouTube) object so it streams and
+    plays in-slide during the slideshow — the same structure PowerPoint writes when
+    you use Insert > Video > Online Video. The poster image is the video frame."""
+    from pptx.oxml.ns import qn
+    from pptx.opc.constants import RELATIONSHIP_TYPE as RT
+    part = s.part
+    # 1) external relationship to the YouTube embed URL (the streamed media)
+    media_rid = part.relate_to(embed_url, RT.MEDIA, is_external=True)
+    # 2) a second external relationship PowerPoint also stores (video web link)
+    video_rid = part.relate_to(watch_url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/video", is_external=True)
+    # 3) the poster image as an internal picture part
+    img_part, image_rid = part.get_or_add_image_part(poster_path)
+    ns = ('xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
+          'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" '
+          'xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"')
+    xml = (
+        f'<p:pic {ns}>'
+        f'<p:nvPicPr>'
+        f'<p:cNvPr id="0" name="AI video">'
+        f'<a:hlinkClick r:id="" action="ppaction://media"/>'
+        f'</p:cNvPr>'
+        f'<p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr>'
+        f'<p:nvPr>'
+        f'<a:videoFile r:link="{video_rid}"/>'
+        f'<p:extLst>'
+        f'<p:ext uri="{{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}}">'
+        f'<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="{media_rid}"/>'
+        f'</p:ext>'
+        f'</p:extLst>'
+        f'</p:nvPr>'
+        f'</p:nvPicPr>'
+        f'<p:blipFill><a:blip r:embed="{image_rid}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>'
+        f'<p:spPr>'
+        f'<a:xfrm><a:off x="{int(x)}" y="{int(y)}"/><a:ext cx="{int(w)}" cy="{int(h)}"/></a:xfrm>'
+        f'<a:prstGeom prst="rect"><a:avLst/></a:prstGeom>'
+        f'</p:spPr>'
+        f'</p:pic>'
+    )
+    from pptx.oxml import parse_xml
+    pic = parse_xml(xml)
+    s.shapes._spTree.append(pic)
+    return pic
+
+
+def video_slide(title, poster, video_url, kicker=None, accent=BLUE, caption=None,
+                points=None, video_embed=None):
+    """A slide with a real embedded YouTube video that streams and plays in-slide in
+    PowerPoint slideshow. A clickable 'Watch the Short' link is a fallback for PDF
+    export and non-PowerPoint viewers. The vertical Short sits in a portrait frame on
+    the left with talking points on the right."""
+    s = head(slide(), title, kicker, kcolor=accent)
+    vh = Inches(4.55); vw = Inches(2.56)  # 9:16 portrait
+    vx = Inches(1.15); vy = Inches(1.95)
+    rect(s, int(vx - Inches(0.1)), int(vy - Inches(0.1)),
+         int(vw + Inches(0.2)), int(vh + Inches(0.2)), NAVY)
+    poster_path = _asset(poster) if poster else None
+    embedded = False
+    if poster_path and video_embed:
+        try:
+            _embed_youtube(s, poster_path, video_embed, video_url, vx, vy, vw, vh)
+            embedded = True
+        except Exception as e:
+            print(f"  [video] online embed failed ({e}); using poster fallback")
+    if not embedded and poster_path:
+        s.shapes.add_picture(poster_path, vx, vy, width=vw, height=vh)
+    if not embedded:
+        # play badge only on the fallback poster (the real embed shows its own control)
+        bd = Inches(0.9)
+        oval(s, int(vx + vw/2 - bd/2), int(vy + vh/2 - bd/2), bd, bd, RED)
+        txt(s, int(vx + vw/2 - bd/2), int(vy + vh/2 - bd/2), bd, bd,
+            [[("▶", 26, WHITE, True)]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    # right-hand talking points
+    rx = int(vx + vw + Inches(0.55)); rw = int(Inches(12.48) - rx)
+    if points:
+        n = len(points); gy = Inches(0.2); th = int((vh - gy*(n-1))/n)
+        for i, (t1, t2) in enumerate(points):
+            y = int(vy + (th+gy)*i); col = PALETTE[i % len(PALETTE)]
+            rect(s, rx, y, rw, th, LIGHT); rect(s, rx, y, Inches(0.09), th, col)
+            txt(s, rx + Inches(0.28), y, rw - Inches(0.5), th,
+                [[(t1, 15, col, True)], [(t2, 12.5, INK, False)]],
+                anchor=MSO_ANCHOR.MIDDLE, space=3)
+    # clickable link line under the video (fallback for PDF / non-PowerPoint)
+    link_tb = txt(s, vx - Inches(0.1), int(vy + vh + Inches(0.12)), int(vw + Inches(0.2)),
+                  Inches(0.34), [[("▶ Watch the Short on YouTube", 11, BLUE, True)]],
+                  align=PP_ALIGN.CENTER)
+    try:
+        link_tb.text_frame.paragraphs[0].runs[0].hyperlink.address = video_url
+    except Exception:
+        pass
+    if caption:
+        txt(s, rx, int(vy + vh - Inches(0.02)), rw, Inches(0.7),
+            [[(caption, 11.5, GREY, False)]])
+    footer(s); return s
+
+
 def table_slide(title, headers, rows, kicker=None, accent=BLUE, widths=None, note=None, fsize=13):
     s = head(slide(), title, kicker, kcolor=accent)
     ncol = len(headers); X0 = Inches(0.85); TOTW = Inches(11.63)
@@ -435,7 +531,7 @@ def activity_slide(a):
     col = CMAP[a["accent"]]
     # Reserve the top-right area for the duration badge. Long activity titles must
     # never run underneath it.
-    s = head(slide(), a["title"], f"ACTIVITY {a['n']} · CASE STUDY", kcolor=col,
+    s = head(slide(), a["title"], f"ACTIVITY {a['n']} · HANDS-ON", kcolor=col,
              title_w=9.15, title_size=26)
     rect(s, Inches(10.35), Inches(0.5), Inches(2.13), Inches(0.62), col)
     txt(s, Inches(10.35), Inches(0.5), Inches(2.13), Inches(0.62),
@@ -588,6 +684,14 @@ def _v30_render(spec):
     elif kind == "big":
         line2 = note or " · ".join(spec.get("points", []))
         big_statement(title, line2, kicker or "KEY IDEA", color=accent)
+    elif kind == "video":
+        pts = []
+        for item in spec.get("points", []):
+            pts.append(tuple(item[:2]) if not isinstance(item, dict)
+                       else (item.get("title", ""), item.get("body", "")))
+        video_slide(title, spec.get("image"), spec.get("video_url"), kicker=kicker,
+                    accent=accent, caption=note, points=pts or None,
+                    video_embed=spec.get("video_embed"))
     elif kind == "image":
         image_name = spec.get("image")
         if image_name and _asset(image_name):
@@ -607,23 +711,23 @@ def _v30_render(spec):
         activity_points = spec.get("points", [])
         match = re.search(r"\bActivity\s+(\d+)\b", title, flags=re.IGNORECASE)
         activity_no = match.group(1) if match else str(spec.get("activity_no", ""))
-        activity_minutes = {"1": 45, "2": 60, "3": 60, "4": 60, "5": 25}
-        activity_ka = {"1": "K2, K3, A4", "2": "K1, K4", "3": "A3, A5",
-                       "4": "K5", "5": "A1, A2"}
+        activity_minutes = {"1": 45, "2": 25, "3": 25, "4": 25, "5": 30,
+                            "6": 30, "7": 30, "8": 15}
+        activity_ka = {"1": "LO1 · A2, A4", "2": "LO2 · A5", "3": "LO2 · A5",
+                       "4": "LO2 · A1, A5", "5": "LO3 · A1, A2", "6": "LO3 · A2",
+                       "7": "LO3 · A1, A2", "8": "LO3 · A1, A2"}
         activity_folders = {
-            "1": "activity-1-threat-modelling-genai-concierge",
-            "2": "activity-2-prompt-injection-data-leakage",
-            "3": "activity-3-security-framework-selection",
-            "4": "activity-4-rogue-agent-incident-review",
-            "5": "activity-5-agent-governance-deployment-gate",
+            "1": "activity-1-genai-agent-whatsapp",
+            "2": "activity-2-excel-analysis",
+            "3": "activity-3-ppt-builder",
+            "4": "activity-4-tools-and-skills",
+            "5": "activity-5-data-governance-policy",
+            "6": "activity-6-job-redesign-role-play",
+            "7": "activity-7-chatbot-security-lab",
+            "8": "activity-8-security-reflection",
         }
-        activity_org = {
-            "1": "Realistic synthetic classroom simulation",
-            "2": "Realistic synthetic classroom simulation",
-            "3": "Realistic synthetic classroom simulation",
-            "4": "Evidence-based documented case review",
-            "5": "Realistic synthetic classroom simulation",
-        }
+        activity_org = {str(i): "Hands-on, no-code — ready-made website or AI agent"
+                        for i in range(1, 9)}
         a = {
             "n": activity_no, "title": title,
             "minutes": spec.get("minutes", activity_minutes.get(activity_no, 45)),
@@ -665,6 +769,35 @@ def _v30_render(spec):
                 size=spec.get("size", 17), kcolor=accent)
 
 
+def _add_transitions(prs, kind="fade", dur_ms=500):
+    """Apply a subtle slide transition to EVERY slide so the deck advances with a
+    consistent, restrained motion in slideshow. Uses the PowerPoint 2010 fade
+    transition (p14) which every modern PowerPoint honours; advances on click."""
+    from pptx.oxml import parse_xml
+    a_ns = "http://schemas.openxmlformats.org/drawingml/2006/main"
+    p_ns = "http://schemas.openxmlformats.org/presentationml/2006/main"
+    p14 = "http://schemas.microsoft.com/office/powerpoint/2010/main"
+    r_ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+    for slide in prs.slides:
+        sld = slide._element
+        xml = (
+            f'<p:transition xmlns:p="{p_ns}" xmlns:p14="{p14}" '
+            f'xmlns:a="{a_ns}" xmlns:r="{r_ns}" '
+            f'p14:dur="{dur_ms}" spd="med">'
+            f'<p14:{kind}/>'
+            f'</p:transition>'
+        )
+        trans = parse_xml(xml)
+        # Schema order for p:sld is cSld, clrMapOvr, transition, timing. Insert the
+        # transition after clrMapOvr (or after cSld if clrMapOvr is absent), and
+        # before any existing timing element.
+        clr = sld.find(f"{{{p_ns}}}clrMapOvr")
+        cSld = sld.find(f"{{{p_ns}}}cSld")
+        anchor = clr if clr is not None else cSld
+        idx = list(sld).index(anchor) + 1
+        sld.insert(idx, trans)
+
+
 def _build_v30():
     if C.VERSION.startswith("4"):
         import v40_content as V
@@ -688,6 +821,7 @@ def _build_v30():
     expected = getattr(V, "EXPECTED_SLIDES", 207)
     if PAGE["n"] != expected:
         raise RuntimeError(f"v3 slide count mismatch: expected {expected}, built {PAGE['n']}")
+    _add_transitions(prs)
     out = os.path.join(OUTDIR, f"WSQ - Master Trainer Slides - {C.COURSE_CODE} - {C.TITLE}-v{C.VERSION.replace('.','')}.pptx")
     prs.save(out)
     with open(os.path.join(OUTDIR, "slide_map.json"), "w") as f:

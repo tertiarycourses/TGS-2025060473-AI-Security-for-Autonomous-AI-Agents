@@ -391,18 +391,20 @@ Read the points below as the few things worth remembering about “Fashion Model
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 28 — Short Vertical Video Is Being Generated
+## Slide 28 — AI-Generated Video Is Overtaking Whole Industries
 
-> **Evidence: CASE-V**
-> Sources: S23 — OpenAI — Sora 2 is here (30 Sep 2025), S24 — Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025)
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-Read the points below as the few things worth remembering about “Short Vertical Video Is Being Generated”.
+“AI-Generated Video Is Overtaking Whole Industries” is worth a closer look. Play the Short in-slide, or tap 'Watch the Short'. Discuss: could your team use this — and what could go wrong?
 
-| Concept | What it means |
-|---|---|
-| OpenAI Sora 2 | Launched 30 Sep 2025 with a TikTok-style app of AI clips; No.1 on the US App Store within days |
-| Coca-Cola | Aired an AI-generated 'Holidays Are Coming' ad in 2024 and again in 2025 |
-| Takeaway | Marketing teams can now generate campaign video without a film crew |
+- ('AI-generated', 'This short vertical video was made with generative AI — no camera, cast or crew')
+- ('Marketing & advertising', 'Brands now generate campaign video in hours, not weeks')
+- ('Movies', 'AI is moving into film production — visuals, scenes and effects')
+- ('Music', 'AI-generated tracks and videos are reshaping the music industry too')
+
+> **Note**
+> Play the Short in-slide, or tap 'Watch the Short'. Discuss: could your team use this — and what could go wrong?
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
@@ -2184,7 +2186,6 @@ These are the sources behind the dated facts and cases in this course. Product p
 | S20 | PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024) | https://petapixel.com/2024/07/16/fashion-brand-mango-launches-photorealistic-ai-generated-campaign/ |
 | S21 | CNN — H&M to create AI 'digital twins' of models (Mar 2025) | https://www.cnn.com/2025/03/28/style/h-and-m-ai-models-intl-scli |
 | S22 | CNN — AI models in Guess ad in Vogue's August 2025 issue | https://www.cnn.com/2025/07/31/style/vogue-ai-models-guess-campaign |
-| S23 | OpenAI — Sora 2 is here (30 Sep 2025) | https://openai.com/index/sora-2/ |
 | S24 | Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025) | https://www.forbes.com/sites/danidiplacido/2025/11/04/coca-cola-sparks-backlash-with-ai-generated-christmas-ad-again/ |
 | S25 | Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024) | https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/ |
 | S26 | Forbes — Klarna reverses on AI, re-hires human agents (May 2025) | https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/ |
