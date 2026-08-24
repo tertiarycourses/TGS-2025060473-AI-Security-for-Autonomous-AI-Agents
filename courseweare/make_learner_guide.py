@@ -37,23 +37,19 @@ GREY = RGBColor(0x55, 0x5B, 0x66); TEAL = RGBColor(0x10, 0xB9, 0x81)
 ASSETS = os.path.join(HERE, "assets")
 
 VERSIONS = [
-    ("1.0", "16 June 2025", "Initial release — Core Principles and Ethical Challenges in "
-                            "Generative AI.", "Dr Alfred Ang"),
-    ("2.0", "17 August 2026", "Retitled and rebuilt for generative-AI and autonomous-agent security; "
-                            "five activities and detailed walkthroughs added. TSC K/A text unchanged.",
+    ("1.0", "16 June 2025", "Initial release.", "Dr Alfred Ang"),
+    ("2.0", "17 August 2026", "Retitled and rebuilt for autonomous-agent security; five activities "
+                            "added. TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("2.1", "18 August 2026", "Added prompt-injection, PDPA, guardrail, approval, skill/plugin and "
+                            "visual coverage. TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("3.0", "20 August 2026", "Evidence-grounded 207-slide rebuild with product boundaries, cases, "
+                            "controls, activities and source register. TSC K/A text unchanged.",
      "Dr Alfred Ang"),
-    ("2.1", "18 August 2026", "Added prompt-injection practice, PDPA guidance, guardrails, human "
-                            "approval, skill/plugin controls and visual teaching aids. TSC K/A text unchanged.", "Dr Alfred Ang"),
-    ("3.0", "20 August 2026", "Aligned to the evidence-grounded 207-slide deck; added product "
-                            "boundaries, documented cases, control gates, detailed activities and "
-                            "source register. Unverified claims removed. TSC K/A text unchanged.",
-     "Dr Alfred Ang"),
-    ("4.0", "25 August 2026", "Rebuilt as a 1-day (8-hour) course: generative and agentic AI "
-                            "concepts, prompt engineering on the Hermes agent with MiniMax, and "
-                            "AI-agent governance and security. Eight no-code activities on "
-                            "ready-made websites and chatbots; prompt library, reflection "
-                            "framework, governance and roll-out cheat sheets added. TSC K/A text "
+    ("4.0", "25 August 2026", "Rebuilt as a 1-day course with three LO-aligned topics, eight no-code "
+                            "activities and a reflection-based practical assessment. TSC K/A text "
                             "unchanged.", "Dr Alfred Ang"),
+    ("4.1", "25 August 2026", "Refreshed trainer visuals and embedded the YouTube Online Video; "
+                            "scope, timing and TSC K/A text unchanged.", "Dr Alfred Ang"),
 ]
 
 
@@ -127,14 +123,9 @@ def build_docx():
                    org_logo=os.path.join(ASSETS, "tertiary-infotech-logo.png"),
                    course_logo=None, course_code=C.COURSE_CODE)
 
-    doc.add_heading("Document Version Control Record", level=1)
     add_version_control(doc, VERSIONS)
 
-    doc.add_heading("Table of Contents", level=1)
-    para(doc, "Right-click and choose 'Update Field' to refresh page numbers.", size=9.5,
-         color=GREY)
     add_toc(doc)
-    doc.add_page_break()
 
     # front matter
     doc.add_heading("About This Course", level=1)
@@ -262,7 +253,8 @@ def build_md():
     L.append(f"# {C.TITLE} — Learner Guide\n")
     L.append(f"**Course Code:** {C.COURSE_CODE}  |  **TSC:** {C.TSC_TITLE} ({C.TSC_CODE})  \n"
              f"**Version:** {C.VERSION}  |  **Date:** {C.VERSION_DATE}  |  **Duration:** {C.DURATION}\n")
-    source_module = "v30_learner.py" if C.VERSION.startswith("3") else "lg_content.py"
+    source_module = ("v40_learner.py" if C.VERSION.startswith("4") else
+                     "v30_learner.py" if C.VERSION.startswith("3") else "lg_content.py")
     L.append("> This guide mirrors the Learner Guide DOCX exactly. Both are generated from "
              f"`{source_module}`.\n")
 

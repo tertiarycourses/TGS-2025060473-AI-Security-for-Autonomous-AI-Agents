@@ -136,6 +136,23 @@ def _fit(path, max_w_in, max_h_in):
     return Inches(w), Inches(h)
 
 
+def _picture_cover(s, path, x, y, w, h):
+    """Fill a fixed picture frame without stretching the source image."""
+    with Image.open(path) as im:
+        iw, ih = im.size
+    image_ar = iw / ih
+    frame_ar = w / h
+    pic = s.shapes.add_picture(path, x, y)
+    pic.width = int(w); pic.height = int(h)
+    if image_ar > frame_ar:
+        crop = (1 - frame_ar / image_ar) / 2
+        pic.crop_left = crop; pic.crop_right = crop
+    else:
+        crop = (1 - image_ar / frame_ar) / 2
+        pic.crop_top = crop; pic.crop_bottom = crop
+    return pic
+
+
 # ================================================================ components
 def cover():
     s = slide(); rect(s, 0, 0, SW, SH, NAVY)
@@ -305,10 +322,11 @@ def brk(kind, dur, color=AMBER):
 def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=None):
     s = head(slide(), title, kicker, kcolor=accent)
     p = _asset(image)
-    content_h = 4.35 if note else 4.75
+    content_h = 4.08 if note else 4.75
     if p:
-        w, h = _fit(p, img_w, content_h)
-        s.shapes.add_picture(p, Inches(0.85), Inches(2.05), width=w, height=h)
+        ix = Inches(0.85); iy = Inches(2.05); iw = Inches(img_w); ih = Inches(content_h)
+        rect(s, ix - Inches(0.05), iy - Inches(0.05), iw + Inches(0.10), ih + Inches(0.10), NAVY)
+        _picture_cover(s, p, ix, iy, iw, ih)
     rx = Inches(0.85) + Inches(img_w) + Inches(0.3); rw = Inches(12.48) - rx
     n = len(points); gy = Inches(0.2); th = int((Inches(content_h) - gy * (n - 1)) / n)
     for i, (t1, t2) in enumerate(points):
@@ -317,8 +335,37 @@ def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=N
         txt(s, rx + Inches(0.28), y, rw - Inches(0.5), th,
             [[(t1, 14, col, True)], [(t2, 12, INK, False)]], anchor=MSO_ANCHOR.MIDDLE, space=3)
     if note:
-        txt(s, Inches(0.85), Inches(6.18), Inches(11.7), Inches(0.45), [[(note, 10.8, GREY, False)]],
+        txt(s, Inches(0.85), Inches(6.20), Inches(11.7), Inches(0.44), [[(note, 9.8, GREY, False)]],
             align=PP_ALIGN.CENTER)
+    footer(s); return s
+
+
+def fashion_case_slide(title, image, cards, kicker=None, accent=TEAL):
+    """Editorial portrait plus three evidence cards for the AI-fashion case."""
+    s = head(slide(), title, kicker, kcolor=accent)
+    ix = Inches(0.85); iy = Inches(1.96); iw = Inches(4.42); ih = Inches(4.66)
+    rect(s, ix - Inches(0.05), iy - Inches(0.05), iw + Inches(0.10), ih + Inches(0.10), NAVY)
+    p = _asset(image)
+    if p:
+        pic = _picture_cover(s, p, ix, iy, iw, ih)
+        # Bias the portrait crop upward so the model's face remains fully visible.
+        total_crop = pic.crop_top + pic.crop_bottom
+        pic.crop_top = min(0.035, total_crop)
+        pic.crop_bottom = max(0, total_crop - pic.crop_top)
+    rect(s, ix, iy + ih - Inches(0.52), iw, Inches(0.52), NAVY)
+    txt(s, ix + Inches(0.18), iy + ih - Inches(0.42), iw - Inches(0.36), Inches(0.28),
+        [[("SYNTHETIC MODEL · IMAGEGEN", 9.5, WHITE, True)]], align=PP_ALIGN.CENTER)
+    rx = Inches(5.62); rw = Inches(6.86); gap = Inches(0.18); ch = Inches(1.43)
+    for i, (label, body) in enumerate(cards):
+        y = iy + i * (ch + gap); col = PALETTE[i % len(PALETTE)]
+        rect(s, rx, y, rw, ch, LIGHT); rect(s, rx, y, Inches(0.10), ch, col)
+        oval(s, rx + Inches(0.22), y + Inches(0.22), Inches(0.48), Inches(0.48), col)
+        txt(s, rx + Inches(0.22), y + Inches(0.22), Inches(0.48), Inches(0.48),
+            [[(str(i + 1), 12, WHITE, True)]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        txt(s, rx + Inches(0.86), y + Inches(0.16), rw - Inches(1.10), Inches(0.34),
+            [[(label, 14.5, col, True)]])
+        txt(s, rx + Inches(0.86), y + Inches(0.55), rw - Inches(1.10), Inches(0.72),
+            [[(body, 11.8, INK, False)]])
     footer(s); return s
 
 
@@ -356,7 +403,7 @@ def _embed_youtube(s, poster_path, embed_url, watch_url, x, y, w, h):
     xml = (
         f'<p:pic {ns}>'
         f'<p:nvPicPr>'
-        f'<p:cNvPr id="0" name="AI video">'
+        f'<p:cNvPr id="{s.shapes._next_shape_id}" name="YouTube Online Video">'
         f'<a:hlinkClick r:id="" action="ppaction://media"/>'
         f'</p:cNvPr>'
         f'<p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr>'
@@ -389,10 +436,13 @@ def video_slide(title, poster, video_url, kicker=None, accent=BLUE, caption=None
     export and non-PowerPoint viewers. The vertical Short sits in a portrait frame on
     the left with talking points on the right."""
     s = head(slide(), title, kicker, kcolor=accent)
-    vh = Inches(4.55); vw = Inches(2.56)  # 9:16 portrait
-    vx = Inches(1.15); vy = Inches(1.95)
+    vh = Inches(4.30); vw = Inches(2.42)  # 9:16 portrait
+    vx = Inches(1.22); vy = Inches(2.02)
     rect(s, int(vx - Inches(0.1)), int(vy - Inches(0.1)),
          int(vw + Inches(0.2)), int(vh + Inches(0.2)), NAVY)
+    rect(s, int(vx - Inches(0.1)), int(vy - Inches(0.36)), int(vw + Inches(0.2)), Inches(0.30), RED)
+    txt(s, int(vx - Inches(0.1)), int(vy - Inches(0.34)), int(vw + Inches(0.2)), Inches(0.24),
+        [[("ONLINE VIDEO · YOUTUBE", 8.5, WHITE, True)]], align=PP_ALIGN.CENTER)
     poster_path = _asset(poster) if poster else None
     embedded = False
     if poster_path and video_embed:
@@ -421,15 +471,15 @@ def video_slide(title, poster, video_url, kicker=None, accent=BLUE, caption=None
                 anchor=MSO_ANCHOR.MIDDLE, space=3)
     # clickable link line under the video (fallback for PDF / non-PowerPoint)
     link_tb = txt(s, vx - Inches(0.1), int(vy + vh + Inches(0.12)), int(vw + Inches(0.2)),
-                  Inches(0.34), [[("▶ Watch the Short on YouTube", 11, BLUE, True)]],
+                  Inches(0.34), [[("▶ Open on YouTube (fallback)", 10.5, BLUE, True)]],
                   align=PP_ALIGN.CENTER)
     try:
         link_tb.text_frame.paragraphs[0].runs[0].hyperlink.address = video_url
     except Exception:
         pass
     if caption:
-        txt(s, rx, int(vy + vh - Inches(0.02)), rw, Inches(0.7),
-            [[(caption, 11.5, GREY, False)]])
+        txt(s, rx, Inches(6.42), rw, Inches(0.28),
+            [[(caption, 9.4, GREY, False)]], align=PP_ALIGN.CENTER)
     footer(s); return s
 
 
@@ -671,6 +721,12 @@ def _v30_render(spec):
         ncards(title, cards, kicker=kicker, accent=accent,
                cols=spec.get("cols", min(4, max(2, len(cards)))), note=note,
                ch_in=spec.get("card_height"))
+    elif kind == "fashion_case":
+        cards = []
+        for item in spec.get("cards", []):
+            cards.append(tuple(item[:2]) if not isinstance(item, dict)
+                         else (item.get("title", ""), item.get("body", "")))
+        fashion_case_slide(title, spec.get("image"), cards, kicker=kicker, accent=accent)
     elif kind == "table":
         table_slide(title, spec.get("headers", []), spec.get("rows", []),
                     kicker=kicker, accent=accent, widths=spec.get("widths"),
@@ -769,22 +825,27 @@ def _v30_render(spec):
                 size=spec.get("size", 17), kcolor=accent)
 
 
-def _add_transitions(prs, kind="fade", dur_ms=500):
-    """Apply a subtle slide transition to EVERY slide so the deck advances with a
-    consistent, restrained motion in slideshow. Uses the PowerPoint 2010 fade
-    transition (p14) which every modern PowerPoint honours; advances on click."""
+def _add_transitions(prs, specs=None):
+    """Apply restrained motion: fast fades for content, pushes for dividers."""
     from pptx.oxml import parse_xml
     a_ns = "http://schemas.openxmlformats.org/drawingml/2006/main"
     p_ns = "http://schemas.openxmlformats.org/presentationml/2006/main"
     p14 = "http://schemas.microsoft.com/office/powerpoint/2010/main"
     r_ns = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-    for slide in prs.slides:
+    for idx, slide in enumerate(prs.slides):
+        spec_kind = specs[idx].get("kind", "content") if specs and idx < len(specs) else "content"
+        if spec_kind == "section":
+            effect = '<p:push dir="l"/>'; speed = "med"; duration = 520
+        elif spec_kind == "break":
+            effect = '<p:push dir="u"/>'; speed = "med"; duration = 520
+        else:
+            effect = '<p:fade/>'; speed = "fast"; duration = 320
         sld = slide._element
         xml = (
             f'<p:transition xmlns:p="{p_ns}" xmlns:p14="{p14}" '
             f'xmlns:a="{a_ns}" xmlns:r="{r_ns}" '
-            f'p14:dur="{dur_ms}" spd="med">'
-            f'<p14:{kind}/>'
+            f'p14:dur="{duration}" spd="{speed}">'
+            f'{effect}'
             f'</p:transition>'
         )
         trans = parse_xml(xml)
@@ -821,7 +882,7 @@ def _build_v30():
     expected = getattr(V, "EXPECTED_SLIDES", 207)
     if PAGE["n"] != expected:
         raise RuntimeError(f"v3 slide count mismatch: expected {expected}, built {PAGE['n']}")
-    _add_transitions(prs)
+    _add_transitions(prs, V.SLIDES)
     out = os.path.join(OUTDIR, f"WSQ - Master Trainer Slides - {C.COURSE_CODE} - {C.TITLE}-v{C.VERSION.replace('.','')}.pptx")
     prs.save(out)
     with open(os.path.join(OUTDIR, "slide_map.json"), "w") as f:

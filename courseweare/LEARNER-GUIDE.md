@@ -1,9 +1,9 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 4.0  |  **Date:** 25 August 2026  |  **Duration:** 1 Day · 8 Hours
+**Version:** 4.1  |  **Date:** 25 August 2026  |  **Duration:** 1 Day · 8 Hours
 
-> This guide mirrors the Learner Guide DOCX exactly. Both are generated from `lg_content.py`.
+> This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v40_learner.py`.
 
 ## Learning Outcomes
 
@@ -236,11 +236,11 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 > **Evidence: HIST**
 > Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025), S11 — Karpathy on 'context engineering' (X, 25 Jun 2025)
 
-The points below unpack what “2024 — Context Engineering” means in practice.
+“2024 — Context Engineering” is worth a closer look.
 
-- Teams found the prompt alone was not enough — the model needed the right supporting information
-- Andrej Karpathy argued for 'context engineering' over 'prompt engineering' (Jun 2025)
-- The craft became: fill the context window with just the right tokens for the next step
+- ('Beyond the prompt', 'The model also needs the right supporting information')
+- ('The context window', 'Instructions, history, memory, tools and retrieved data meet here')
+- ('The craft', "Select just the right tokens for the model's next step")
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
@@ -250,11 +250,11 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 > **Evidence: HIST**
 > Sources: S12 — Anthropic — How Claude Code works (agentic harness), S13 — OpenAI — Harness engineering: Codex in an agent-first world
 
-The points below unpack what “2025 — Harness Engineering and Agentic AI” means in practice.
+“2025 — Harness Engineering and Agentic AI” is worth a closer look.
 
-- Tools like Claude Code and Codex wrapped the model in a loop that gathers context, acts and verifies
-- OpenAI named this discipline 'harness engineering'; Anthropic calls the tool an 'agentic harness'
-- The model stopped only answering and started doing multi-step work
+- ('Loop', 'Gather context, plan, act and verify until the goal is met')
+- ('Tools', 'The harness gives the model controlled ways to affect real systems')
+- ('Safety', 'Permissions, sandboxes and verification constrain each action')
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
@@ -380,13 +380,7 @@ Real, dated examples — how generation is already changing work.
 > **Evidence: CASE-V**
 > Sources: S20 — PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024), S21 — CNN — H&M to create AI 'digital twins' of models (Mar 2025), S22 — CNN — AI models in Guess ad in Vogue's August 2025 issue
 
-Read the points below as the few things worth remembering about “Fashion Models Are Now Generated”.
-
-| Concept | What it means |
-|---|---|
-| Mango, Jul 2024 | Ran its first fully AI-generated campaign for its teen 'Sunset Dream' line across 95 markets |
-| H&M, 2025 | Announced AI 'digital twins' of 30 real models; first labelled images appeared mid-2025 |
-| Guess, Aug 2025 | A Guess ad using AI-generated models ran in Vogue's August issue and drew wide debate |
+“Fashion Models Are Now Generated” is worth a closer look.
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
@@ -625,12 +619,12 @@ Read the points below as the few things worth remembering about “What Makes So
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 43 — Peter Steinberger — Creator of OpenClaw
+## Slide 43 — Peter Steinberger in 2026 — Creator of OpenClaw
 
 > **Evidence: PROD**
-> Sources: S30 — OpenClaw — Wikipedia (naming and adoption history), S32 — Peter Steinberger — GitHub (steipete)
+> Sources: S30 — OpenClaw — Wikipedia (naming and adoption history), S32 — Peter Steinberger — GitHub (steipete), S52 — Peter Steinberger — official 2026 speaker photograph
 
-“Peter Steinberger — Creator of OpenClaw” is worth a closer look.
+“Peter Steinberger in 2026 — Creator of OpenClaw” is worth a closer look.
 
 - ('Who', 'Austrian developer, founder of PSPDFKit; GitHub handle steipete')
 - ('What he built', 'OpenClaw, an open-source personal AI agent that went viral in late 2025')
@@ -678,13 +672,11 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 > **Evidence: PROD**
 > Sources: S33 — Hermes Agent (Nous Research) — documentation
 
-Read the points below as the few things worth remembering about “Hermes Agent by Nous Research”.
+“Hermes Agent by Nous Research” is worth a closer look.
 
-| Concept | What it means |
-|---|---|
-| Open-source agent | CLI, gateway and messaging surfaces; a desktop app since Jun 2026 |
-| Self-improving | Can create reusable skills from experience |
-| Flexible models | Runs on many providers — we will point it at MiniMax in Topic 2 |
+- ('Open-source agent', 'CLI, gateway, messaging surfaces and a desktop app')
+- ('Self-improving', 'Can create reusable skills from experience')
+- ('Flexible models', 'Runs on many providers — we will point it at MiniMax')
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
@@ -782,12 +774,12 @@ When one agent is not enough.
 > **Evidence: DEF**
 > Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
 
-“Orchestrator and Workers” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
+“Orchestrator and Workers” is worth a closer look. Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
 
-1. A lead agent receives the goal
-2. It splits the work into parts
-3. Worker agents run parts in parallel
-4. The lead combines their results
+- ('1 · Receive', 'A lead agent receives the goal')
+- ('2 · Delegate', 'It splits the work across specialist agents')
+- ('3 · Run', 'Workers research, analyse, create and verify in parallel')
+- ('4 · Synthesize', 'The lead combines results for final approval')
 
 > **Note**
 > Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
@@ -1060,15 +1052,13 @@ Small changes in the prompt make large changes in the output.
 > **Evidence: DEF**
 > Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
 
-Read the points below as the few things worth remembering about “Five Principles of a Good Prompt”.
+“Five Principles of a Good Prompt” is worth a closer look.
 
-| Concept | What it means |
-|---|---|
-| Role | Tell the AI who to be |
-| Task | State exactly what you want |
-| Context | Give the facts it needs |
-| Format | Say how the answer should look |
-| Constraints | Set length, tone and limits |
+- ('Role', 'Who the AI should be')
+- ('Task', 'Exactly what result you want')
+- ('Context', 'The facts it needs')
+- ('Format', 'How the answer should look')
+- ('Constraints', 'Length, tone and limits')
 
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
@@ -2208,6 +2198,7 @@ These are the sources behind the dated facts and cases in this course. Product p
 | S48 | WEF — Future of Jobs Report 2025 | https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/ |
 | S49 | Anthropic — the Anthropic Economic Index | https://www.anthropic.com/news/the-anthropic-economic-index |
 | S50 | Anthropic — Claude Code sandboxing | https://www.anthropic.com/engineering/claude-code-sandboxing |
+| S52 | Peter Steinberger — official 2026 speaker photograph | https://github.com/steipete/speaking/blob/master/Pictures/ai-engineer-worlds-fair-2026.jpg |
 
 
 ---

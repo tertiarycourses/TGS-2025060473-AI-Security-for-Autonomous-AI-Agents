@@ -9,7 +9,7 @@ and assessed VERBATIM — AI security is the delivery LENS, not a replacement fo
 Never reword a K or A statement. See research/CONTENT-DESIGN.md.
 """
 
-VERSION = "4.0"
+VERSION = "4.1"
 VERSION_DATE = "25 August 2026"
 
 TITLE = "AI Security for Autonomous AI Agents"

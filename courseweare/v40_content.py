@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Machine-readable v4.0 slide content — 1-day course architecture.
+"""Machine-readable v4.x slide content — 1-day course architecture.
 
 The course was rebuilt on 25 Aug 2026 from a 2-day security course into a
 1-Day (8h) course with three topics mapped one-to-one onto LO1/LO2/LO3:
@@ -14,7 +14,7 @@ carry an evidence label + source ID; concept/definition slides may stand on thei
 own.  Detailed procedures live in the Learner Guide and activity packs.
 """
 
-VERSION = "4.0"
+VERSION = "4.1"
 VERSION_DATE = "25 August 2026"
 COURSE_CODE = "TGS-2025060473"
 TITLE = "AI Security for Autonomous AI Agents"
@@ -61,6 +61,7 @@ SOURCES = {
     "S48": {"title": "WEF — Future of Jobs Report 2025", "url": "https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/"},
     "S49": {"title": "Anthropic — the Anthropic Economic Index", "url": "https://www.anthropic.com/news/the-anthropic-economic-index"},
     "S50": {"title": "Anthropic — Claude Code sandboxing", "url": "https://www.anthropic.com/engineering/claude-code-sandboxing"},
+    "S52": {"title": "Peter Steinberger — official 2026 speaker photograph", "url": "https://github.com/steipete/speaking/blob/master/Pictures/ai-engineer-worlds-fair-2026.jpg"},
 }
 
 
@@ -90,7 +91,7 @@ def S(n, kind, title, *, evidence="SYN", sources=(), kicker=None, accent="BLUE",
 SLIDES = [
     # ============================================================ ADMIN (front)
     S(1, "cover", TITLE, evidence="ADMIN", kicker=COURSE_CODE,
-      points=["Tertiary Infotech Pte Ltd", "One day · 8 hours", "Version 4.0"]),
+      points=["Tertiary Infotech Pte Ltd", "One day · 8 hours", "Version 4.1"]),
     S(2, "attendance", "Digital Attendance — TRAQOM", evidence="ADMIN",
       points=["Scan the LMS QR code", "Complete attendance before class begins",
               "Ask the trainer if your confirmation is not shown"]),
@@ -154,14 +155,16 @@ SLIDES = [
       points=["ChatGPT launched on 30 November 2022 and reached mass adoption through 2023",
               "One natural-language box exposed writing, coding, translation and analysis to everyone",
               "Businesses began asking not 'can it chat?' but 'what work can it do?'"]),
-    S(17, "content", "2024 — Context Engineering", evidence="HIST", sources=("S10", "S11"), accent="VIOLET",
-      points=["Teams found the prompt alone was not enough — the model needed the right supporting information",
-              "Andrej Karpathy argued for 'context engineering' over 'prompt engineering' (Jun 2025)",
-              "The craft became: fill the context window with just the right tokens for the next step"]),
-    S(18, "content", "2025 — Harness Engineering and Agentic AI", evidence="HIST", sources=("S12", "S13"), accent="VIOLET",
-      points=["Tools like Claude Code and Codex wrapped the model in a loop that gathers context, acts and verifies",
-              "OpenAI named this discipline 'harness engineering'; Anthropic calls the tool an 'agentic harness'",
-              "The model stopped only answering and started doing multi-step work"]),
+    S(17, "image", "2024 — Context Engineering", evidence="HIST", sources=("S10", "S11"), accent="VIOLET",
+      image="visual-context-engineering-v41.png", img_w=6.45,
+      points=[("Beyond the prompt", "The model also needs the right supporting information"),
+              ("The context window", "Instructions, history, memory, tools and retrieved data meet here"),
+              ("The craft", "Select just the right tokens for the model's next step")]),
+    S(18, "image", "2025 — Harness Engineering and Agentic AI", evidence="HIST", sources=("S12", "S13"), accent="VIOLET",
+      image="visual-harness-engineering-v41.png", img_w=6.45,
+      points=[("Loop", "Gather context, plan, act and verify until the goal is met"),
+              ("Tools", "The harness gives the model controlled ways to affect real systems"),
+              ("Safety", "Permissions, sandboxes and verification constrain each action")]),
     S(19, "content", "2026 — The Year of AI Agents", evidence="HIST", sources=("S30", "S33"), accent="VIOLET",
       points=["Personal and organisational agents such as OpenClaw and Hermes reached everyday users",
               "Agents now live inside WhatsApp, Telegram, email and business apps",
@@ -194,7 +197,8 @@ SLIDES = [
     # ---- Use cases (real, verified)
     S(26, "section", "Generative AI in the Real World", evidence="ADMIN", accent="TEAL",
       kicker="TOPIC 1", note="Real, dated examples — how generation is already changing work."),
-    S(27, "cards", "Fashion Models Are Now Generated", evidence="CASE-V", sources=("S20", "S21", "S22"), accent="TEAL",
+    S(27, "fashion_case", "Fashion Models Are Now Generated", evidence="CASE-V", sources=("S20", "S21", "S22"), accent="TEAL",
+      image="fashion-model-synthetic-v41.png",
       cards=[("Mango, Jul 2024", "Ran its first fully AI-generated campaign for its teen 'Sunset Dream' line across 95 markets"),
              ("H&M, 2025", "Announced AI 'digital twins' of 30 real models; first labelled images appeared mid-2025"),
              ("Guess, Aug 2025", "A Guess ad using AI-generated models ran in Vogue's August issue and drew wide debate")]),
@@ -268,8 +272,8 @@ SLIDES = [
       cards=[("A real system", "Not just a model — a running app with an identity"),
              ("Acts through tools", "Sends messages, edits files, calls services"),
              ("Keeps state", "Remembers context and can resume work")]),
-    S(43, "image", "Peter Steinberger — Creator of OpenClaw", evidence="PROD", sources=("S30", "S32"),
-      image="photo-peter-steinberger.png", accent="RED", img_w=4.3,
+    S(43, "image", "Peter Steinberger in 2026 — Creator of OpenClaw", evidence="PROD", sources=("S30", "S32", "S52"),
+      image="photo-peter-steinberger-stage-2026.jpg", accent="RED", img_w=5.15,
       points=[("Who", "Austrian developer, founder of PSPDFKit; GitHub handle steipete"),
               ("What he built", "OpenClaw, an open-source personal AI agent that went viral in late 2025"),
               ("Since", "Joined OpenAI in Feb 2026; an OpenClaw Foundation now stewards the project")]),
@@ -281,10 +285,11 @@ SLIDES = [
       cards=[("Messaging-first", "You talk to it in WhatsApp, Telegram, Slack, Signal and more"),
              ("Self-hosted", "It runs on your own machine or server, under your control"),
              ("Tool-enabled", "It can read, write and call services on your behalf")]),
-    S(46, "cards", "Hermes Agent by Nous Research", evidence="PROD", sources=("S33",), accent="RED",
-      cards=[("Open-source agent", "CLI, gateway and messaging surfaces; a desktop app since Jun 2026"),
-             ("Self-improving", "Can create reusable skills from experience"),
-             ("Flexible models", "Runs on many providers — we will point it at MiniMax in Topic 2")]),
+    S(46, "image", "Hermes Agent by Nous Research", evidence="PROD", sources=("S33",), accent="RED",
+      image="visual-hermes-agent-v41.png", img_w=6.45,
+      points=[("Open-source agent", "CLI, gateway, messaging surfaces and a desktop app"),
+              ("Self-improving", "Can create reusable skills from experience"),
+              ("Flexible models", "Runs on many providers — we will point it at MiniMax")]),
     S(47, "cards", "Try It Today: TIA Support on WhatsApp", evidence="PROD", sources=("S31",), accent="RED",
       cards=[("The number", "TIA Support WhatsApp +65 8866 6375, powered by OpenClaw"),
              ("What to do", "Message it like a person and give it a small task"),
@@ -312,9 +317,12 @@ SLIDES = [
     # ---- Multi-agent
     S(53, "section", "Multi-Agent Systems", evidence="ADMIN", accent="VIOLET",
       kicker="TOPIC 1", note="When one agent is not enough."),
-    S(54, "flow", "Orchestrator and Workers", evidence="DEF", sources=("S14",), accent="VIOLET",
-      steps=["A lead agent receives the goal", "It splits the work into parts",
-             "Worker agents run parts in parallel", "The lead combines their results"],
+    S(54, "image", "Orchestrator and Workers", evidence="DEF", sources=("S14",), accent="VIOLET",
+      image="visual-multi-agent-system-v41.png", img_w=6.45,
+      points=[("1 · Receive", "A lead agent receives the goal"),
+              ("2 · Delegate", "It splits the work across specialist agents"),
+              ("3 · Run", "Workers research, analyse, create and verify in parallel"),
+              ("4 · Synthesize", "The lead combines results for final approval")],
       note="Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval."),
     S(55, "cards", "Why and Why Not Multi-Agent", evidence="DEF", sources=("S14",), accent="VIOLET",
       cards=[("Faster & broader", "Parallel workers cover more ground"),
@@ -391,12 +399,13 @@ SLIDES = [
     # ---- Prompt engineering principles
     S(71, "section", "Prompt Engineering Principles", evidence="ADMIN", accent="BLUE",
       kicker="TOPIC 2", note="Small changes in the prompt make large changes in the output."),
-    S(72, "cards", "Five Principles of a Good Prompt", evidence="DEF", sources=("S10",),
-      cards=[("Role", "Tell the AI who to be"),
-             ("Task", "State exactly what you want"),
-             ("Context", "Give the facts it needs"),
-             ("Format", "Say how the answer should look"),
-             ("Constraints", "Set length, tone and limits")], cols=3),
+    S(72, "image", "Five Principles of a Good Prompt", evidence="DEF", sources=("S10",),
+      image="visual-prompt-engineering-v41.png", img_w=6.25,
+      points=[("Role", "Who the AI should be"),
+              ("Task", "Exactly what result you want"),
+              ("Context", "The facts it needs"),
+              ("Format", "How the answer should look"),
+              ("Constraints", "Length, tone and limits")]),
     S(73, "compare", "A Bad Prompt vs a Good Prompt", evidence="SYN",
       lhead="Bad prompt", rhead="Good prompt",
       left=["'analyse this data'", "No role, no goal", "No format", "You get a vague wall of text"],

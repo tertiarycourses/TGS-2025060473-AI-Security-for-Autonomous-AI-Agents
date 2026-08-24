@@ -33,23 +33,19 @@ GREY = RGBColor(0x55, 0x5B, 0x66)
 ASSETS = os.path.join(HERE, "assets")
 
 VERSIONS = [
-    ("1.0", "16 June 2025", "Initial release — Core Principles and Ethical Challenges in "
-                            "Generative AI.", "Dr Alfred Ang"),
-    ("2.0", "17 August 2026", "Retitled and rebuilt for generative-AI and autonomous-agent security; "
-                            "five activities and revised assessments added. TSC K/A text unchanged.", "Dr Alfred Ang"),
-    ("2.1", "18 August 2026", "Added prompt-injection practice, PDPA and organisational checklists, "
-                            "human approval, skill/plugin controls and enhanced visuals. TSC K/A text unchanged.",
+    ("1.0", "16 June 2025", "Initial release.", "Dr Alfred Ang"),
+    ("2.0", "17 August 2026", "Retitled and rebuilt for autonomous-agent security; five activities "
+                            "added. TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("2.1", "18 August 2026", "Added prompt-injection, PDPA, guardrail, approval, skill/plugin and "
+                            "visual coverage. TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("3.0", "20 August 2026", "Evidence-grounded 207-slide rebuild with product boundaries, cases, "
+                            "controls, activities and source register. TSC K/A text unchanged.",
      "Dr Alfred Ang"),
-    ("3.0", "20 August 2026", "Rebuilt as a 207-slide evidence-grounded progression from AI history "
-                            "to product boundaries, cases, controls and governance. Activities "
-                            "reordered; unverified claims removed. TSC K/A text unchanged.",
-     "Dr Alfred Ang"),
-    ("4.0", "25 August 2026", "Rebuilt as a 1-day (8-hour) course with three topics mapped to "
-                            "LO1/LO2/LO3: generative and agentic AI concepts, prompt engineering on "
-                            "the Hermes agent with MiniMax, and AI-agent governance and security. "
-                            "No-code activities on ready-made websites and chatbots; Practical "
-                            "assessment is reflection on the activities. TSC K/A text unchanged.",
-     "Dr Alfred Ang"),
+    ("4.0", "25 August 2026", "Rebuilt as a 1-day course with three LO-aligned topics, eight no-code "
+                            "activities and a reflection-based practical assessment. TSC K/A text "
+                            "unchanged.", "Dr Alfred Ang"),
+    ("4.1", "25 August 2026", "Refreshed trainer visuals and embedded the YouTube Online Video; "
+                            "scope, timing and TSC K/A text unchanged.", "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess
@@ -149,16 +145,11 @@ def build():
                    org_logo=os.path.join(ASSETS, "tertiary-infotech-logo.png"),
                    course_logo=None, course_code=C.COURSE_CODE)
 
-    h1(doc, "Document Version Control Record")
     add_version_control(doc, VERSIONS)
 
-    h1(doc, "Table of Contents")
-    para(doc, "Right-click and choose 'Update Field' to refresh page numbers.", size=9.5,
-         color=GREY)
     add_toc(doc)
-    doc.add_page_break()
 
-    # ---- overview  (add_toc already ends the page; a second break renders blank)
+    # ---- overview
     h1(doc, "1. Course Overview")
     para(doc, f"{C.TITLE} is a {C.DURATION} WSQ course that introduces generative AI, agentic "
               "AI and autonomous AI agents, and the security, governance and ethical risks they "
