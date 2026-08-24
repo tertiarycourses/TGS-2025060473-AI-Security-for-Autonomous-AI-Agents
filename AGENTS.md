@@ -2,17 +2,17 @@
 
 ## Scope
 
-- WSQ course: `TGS-2025060473 - AI Security for Autonomous AI Agents`.
-- Treat `courseweare/course_data.py`, `courseweare/v30_content.py`, and `courseweare/v30_learner.py` as the active v3.0 instructional source of truth. `deck_content.py` and `lg_content.py` are legacy v2.x sources and must not feed a v3.x build.
+- WSQ course: `TGS-2025060473 - AI Security for Autonomous AI Agents`. As of v4.0 (25 Aug 2026) this is a **1-day (8-hour) course** — see the official page https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html. It was previously a 2-day security course; do not reintroduce the 2-day structure.
+- Treat `courseweare/course_data.py`, `courseweare/v40_content.py`, and `courseweare/v40_learner.py` as the active v4.0 instructional source of truth. The v3.0 modules (`v30_content.py`, `v30_learner.py`) and v2.x modules (`deck_content.py`, `lg_content.py`) are legacy and must not feed a v4.x build. `build_slides.py` selects the content module by `C.VERSION`.
+- The course now has three topics mapped to LO1/LO2/LO3: (1) Generative AI, Agentic AI and AI Agents; (2) Prompt Engineering and Post-Training (Hermes agent on MiniMax); (3) Security Risk of Autonomous AI Agents.
+- Learners do NOT code. Every activity uses a ready-made website, chatbot or AI agent under `activities/` (activity-1..8). Activities 6 and 7 are self-contained `index.html` websites powered by a learner-supplied OpenAI or MiniMax key.
 - Preserve the existing `courseweare/` spelling. Do not rename it during a scoped release.
-- This is a technical AI-security course, but the verified learner-facing hands-on directory is `activities/`. Preserve that public destination unless the project owner explicitly changes it.
 
 ## Content and design
 
-- Keep the PowerPoint concept-led and highly visual. Put detailed procedures, evidence requirements, acceptance criteria, and checklists in the Learner Guide and activity packs.
-- Cover prompt injection, indirect and cross-modal injection, personal-data exposure under Singapore's PDPA, excessive agency, tool misuse, memory poisoning, and malicious or untrusted agent skills/plugins.
-- Use realistic, clearly fictional Singapore business scenarios. Distinguish verified incidents from reported or hypothetical cases.
-- Every factual slide must carry an evidence label and one or more source IDs resolved in `research/CLAIM-LEDGER-v30.md`; every synthetic scenario must display `SIM` and state that its names, events and numbers are fictional.
+- Keep the PowerPoint concept-led and highly visual. Put detailed procedures and checklists in the Learner Guide and activity packs. The Learner Guide targets ~120-150 pages (one slide-note block per page).
+- Topic 1 covers GenAI mechanics (autoregressive LLM, training/inference), real use cases, context engineering, the agentic loop/harness engineering, OpenClaw/Hermes/Peter Steinberger, skills/tools and multi-agent systems. Topic 3 covers AI data governance, job impact/redesign and AI-agent cybersecurity risks (adversarial AI, algorithmic bias, over-reliance, data privacy, model drift, malicious use) plus safe rollout.
+- Evidence policy is "lighter touch": real dated facts and named cases carry an evidence label + source ID (resolved in `v40_content.SOURCES`); concept/definition slides may stand alone. Every synthetic scenario is labelled `SIM` with fictional names and numbers.
 - OpenAI product claims may use only current official pages under `learn.chatgpt.com`, `developers.openai.com`, or `platform.openai.com` for this package.
 - Generated images must contain no embedded text, logos, trademarks, or watermarks. Keep titles and labels editable in PowerPoint.
 - Do not add a practice-exam slide unless this course is explicitly mapped to an external certification exam and a matching exam exists.
@@ -31,6 +31,7 @@
 - Every learner-facing Markdown file under `activities/` must have an aligned current PDF counterpart within the same activity folder.
 - Run `.claude/commands/courseware-qa.md` against the exact rebuilt artifacts. Render every changed PPT/PDF/DOCX page and inspect it visually.
 - Assessments are confidential and must remain ignored by Git. Answer keys are trainer-only and never attached to learner-facing LMS fields.
+- The assessment (v4.0) is a Written Assessment (5 SAQ, one per K1–K5) plus a **reflection-based Practical Performance** (3 tasks, one per LO1–LO3) in which learners document their own observations from the day's activities. The Practical DOCX filenames still use "Case Study" for pipeline/LMS compatibility, but the instrument is titled "Practical Performance" inside. Built by `build_assessment_set.py`.
 
 ## Environment and publication
 

@@ -160,7 +160,7 @@ def cover():
     txt(s, Inches(0.8), Inches(4.62), Inches(5.35), Inches(1.35),
         [[(f"WSQ Course Code: {C.COURSE_CODE}  ·  {C.DURATION}", 14, WHITE, False)],
          [(f"Skills Framework TSC: {C.TSC_TITLE} ({C.TSC_CODE})", 12, WHITE, False)],
-         [("Conducted by Tertiary Infotech Pte Ltd  ·  UEN 20120096W", 12, WHITE, False)]], space=6)
+         [("Conducted by Tertiary Infotech Pte Ltd  ·  UEN 201200696W", 12, WHITE, False)]], space=6)
     txt(s, Inches(0.8), Inches(6.2), Inches(5.35), Inches(0.36),
         [[(f"Version {C.VERSION}  ·  {C.VERSION_DATE}", 11, CODEBLUE, False)]])
     txt(s, Inches(0.8), Inches(6.68), Inches(5.35), Inches(0.28),
@@ -666,7 +666,10 @@ def _v30_render(spec):
 
 
 def _build_v30():
-    import v30_content as V
+    if C.VERSION.startswith("4"):
+        import v40_content as V
+    else:
+        import v30_content as V
     global CURRENT_META
     for spec in V.SLIDES:
         if spec.get("anchor"):
@@ -694,7 +697,7 @@ def _build_v30():
     print("Slide map:", SLIDE_MAP)
 
 
-if C.VERSION.startswith("3") and __name__ == "__main__":
+if (C.VERSION.startswith("3") or C.VERSION.startswith("4")) and __name__ == "__main__":
     _build_v30()
     sys.exit(0)
 
@@ -1107,7 +1110,7 @@ rect(s, Inches(5.4), Inches(4.35), Inches(2.53), Inches(0.08), RED)
 txt(s, 0, Inches(4.7), SW, Inches(0.8),
     [[(C.TITLE, 20, GREY, False)]], align=PP_ALIGN.CENTER)
 txt(s, 0, Inches(5.25), SW, Inches(0.6),
-    [[(f"{C.COURSE_CODE}  ·  Tertiary Infotech Pte Ltd  ·  UEN 20120096W", 13, GREY, False)]],
+    [[(f"{C.COURSE_CODE}  ·  Tertiary Infotech Pte Ltd  ·  UEN 201200696W", 13, GREY, False)]],
     align=PP_ALIGN.CENTER)
 PAGE["n"] += 1
 

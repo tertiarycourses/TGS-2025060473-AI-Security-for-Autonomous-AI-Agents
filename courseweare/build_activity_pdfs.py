@@ -224,7 +224,7 @@ def cover_story(activity_title: str, subtitle: str):
             ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
         ])),
         Spacer(1, 28 * mm),
-        Paragraph("Tertiary Infotech Pte Ltd | UEN 20120096W",
+        Paragraph("Tertiary Infotech Pte Ltd | UEN 201200696W",
                   ParagraphStyle("Org", parent=BODY, alignment=TA_CENTER, textColor=GREY)),
     ]
 

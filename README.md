@@ -1,93 +1,90 @@
-# AI Security for Autonomous AI Agents
+<div align="center">
 
-**WSQ course code:** TGS-2025060473
+# 🤖 AI Security for Autonomous AI Agents
 
-**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)
+**A hands-on, one-day WSQ course on generative AI, agentic AI and AI agents — and how to use them safely.**
 
-**Duration:** 2 days · 16 hours
+![WSQ](https://img.shields.io/badge/WSQ-TGS--2025060473-1F6FEB)
+![Duration](https://img.shields.io/badge/Duration-1%20Day%20·%208%20Hours-10B981)
+![Level](https://img.shields.io/badge/Level-1-7C3AED)
+![TSC](https://img.shields.io/badge/TSC-ICT--INT--0052--1.1-F59E0B)
+![Activities](https://img.shields.io/badge/Activities-8%20no--code-DC2626)
+[![Register](https://img.shields.io/badge/📝%20Register-Enrol%20Now-success)](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)
 
-**Courseware version:** 3.0 · 20 August 2026
+**[📝 Register for this course →](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)**
 
-Evidence-grounded courseware for understanding and controlling the security risks of generative AI, agentic operating patterns and deployed AI agents.
+</div>
 
-![Version 3.0 trainer-deck cover](screenshot.png)
+**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.0 · 25 August 2026
 
-## Course progression
+A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI agents, and the security, governance and ethical risks they bring to customer-service and hospitality settings. Learners work entirely on ready-made websites, chatbots and AI agents — **no coding is required**.
 
-The 207-slide trainer deck follows a simple-to-complex sequence:
+![Version 4.0 trainer-deck cover](screenshot.png)
 
-1. AI history and the transition from prediction to generation and action.
-2. Generative AI, agentic behaviour and deployed AI agents as overlapping operating layers.
-3. Product and harness boundaries across OpenClaw, Hermes, Prime Agent, QM, DeepSeek Harness, Claude Code, Codex and ChatGPT Chat/Work.
-4. Threat modelling from untrusted content through identity, tools, runtime, memory, network and impact.
-5. Prompt injection, jailbreaks, data leakage, PDPA, token exposure, malicious skills/plugins/MCP, code execution and persistent compromise.
-6. Controls, governance, incident response, rollback and deployment assurance.
+## Course structure
 
-## Frameworks and evidence
+Three topics map one-to-one onto the three learning outcomes:
 
-| Framework | Course use |
-|---|---|
-| NIST AI RMF | Govern, map, measure and manage AI risk across the lifecycle |
-| OWASP Top 10 for LLM Applications | Generative-AI application risk taxonomy |
-| OWASP Top 10 for Agentic Applications | Agentic goals, tools, identity, memory and coordination risks |
-| MITRE ATLAS | Adversary tactics and techniques involving AI-enabled systems |
-| IMDA Model AI Governance Framework for Agentic AI v1.5 | Bounds, human accountability, technical controls and end-user responsibility |
-| Singapore PDPA and PDPC publications | Purpose, protection, retention, transfers, accountability and breach notification |
+| Topic | Learning outcome | Focus |
+|---|---|---|
+| **Topic 1** | LO1 | Generative AI, agentic AI and AI agents — a short history (2023 GenAI → 2024 context engineering → 2025 harness engineering → 2026 AI agents), how generative AI works, the agentic loop, OpenClaw and Hermes, skills, tools and multi-agent systems. |
+| **Topic 2** | LO2 | Prompt engineering and post-training — running prompts through the Hermes agent on a MiniMax model to analyse data and build presentations, and installing tools and skills to lift output quality. |
+| **Topic 3** | LO3 | Security risk of autonomous AI agents — AI data governance and accountability, job impact and redesign, AI-agent cybersecurity risks and a safe roll-out framework. |
 
-PDPC's June 2026 generative-AI material is identified as proposed public-consultation guidance, not represented as final law or final guidance.
+## Activities (all no-code, ready-made)
 
-Documented cases retain evidence labels and limitations. They include EchoLeak as a verified vulnerability rather than a claimed breach; the Amazon Q extension supply-chain event where malicious code was distributed but did not execute because of a syntax error; Replit's first-party account that the affected application database was restored with no data lost; and the dated ClawHavoc security-research snapshot without generalising its reported figures to the current marketplace.
+| # | Activity | Topic | Tool |
+|---|---|---:|---|
+| 1 | Talk to an AI agent and reflect on the Pinboard | 1 | TIA Support WhatsApp (OpenClaw) |
+| 2 | Analyse mock Excel marketing data | 2 | Hermes agent + MiniMax |
+| 3 | Build an animated PowerPoint | 2 | Hermes agent + Envato template |
+| 4 | Install tools and skills, re-run the tasks | 2 | Hermes agent |
+| 5 | Draft an AI Data Governance Policy | 3 | Sample policy + prompts |
+| 6 | Coach a worried team member (role-play) | 3 | Role-play simulator website |
+| 7 | Break a leaky chatbot, compare a guarded one | 3 | Two RAG chatbot websites |
+| 8 | Reflect on agent security and decide go / no-go | 3 | Worksheet |
 
-## Organisational control model
+Activities 6 and 7 are self-contained websites (open `index.html` in a browser) powered by a learner-supplied OpenAI or MiniMax key. All data is fictional.
 
-The implementation sequence is designed to leave observable evidence:
+## Assessment
 
-1. Inventory and risk-tier the use case.
-2. Bound data, tools and autonomy.
-3. Give each agent a scoped, short-lived identity.
-4. Apply guardrails and deterministic schema/policy validation.
-5. Sandbox code and files.
-6. Deny network egress by default and allow named destinations.
-7. Require meaningful human approval for consequential actions.
-8. Log the decision, approval and resulting action.
-9. Monitor sequences and boundary crossings, not only isolated events.
-10. Red-team before go-live and retain rollback, incident and decommissioning evidence.
+- **Written Assessment (SAQ):** 5 short-answer questions, one per knowledge statement (K1–K5).
+- **Practical Performance:** 3 reflection tasks (one per LO1–LO3) in which learners document their own observations from the activities they completed during the day.
+
+Open book · Competent / Not Yet Competent · 1-hour assessment at the end of the day.
 
 ## Current learner-facing artifacts
 
 | Artifact | Current file |
 |---|---|
-| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v30.pptx` and matching PDF |
+| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v40.pptx` and matching PDF |
 | Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
 | Learner Guide Markdown | `courseweare/LEARNER-GUIDE.md` |
 | Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
-| Activities | Five self-contained folders under `activities/`, each with Markdown and printable PDFs |
+| Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 6 and 7) a ready-to-open website |
 
-The Learner Guide is 109 pages. The Lesson Plan is 9 pages. Detailed procedures are kept in the Learner Guide and activity packs; the trainer slides remain concept-led.
-
-## Activities
-
-| # | Activity | Day | Duration | Evidence |
-|---|---|---:|---:|---|
-| 1 | Threat Modelling a Generative AI Concierge | 1 | 45 min | K2, K3, A4 |
-| 2 | Prompt Injection and the PDPA Breach Decision | 2 | 60 min | K4, K1 |
-| 3 | Selecting a Security Framework for GenAI and Agents | 2 | 60 min | A3, A5 |
-| 4 | Evidence-Based Rogue Agent Incident Review | 2 | 60 min | K5 |
-| 5 | Agent Governance and the Deployment Gate | 2 | 25 min | A1, A2 |
-
-Every activity includes a learner workflow, required evidence, acceptance criteria and an operational checklist. Prompt-injection practice uses synthetic, local and reversible table-top tests. Learners must not upload answer keys, real credentials, production secrets or personal data.
+The trainer deck is 124 slides; the Learner Guide is ~120 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
 
 ## Assessment boundary
 
 The confidential `assessment/` folder is excluded from GitHub. Learner question papers are distributed through the approved Drive/LMS workflow; answer keys remain trainer-only and are never linked from LMS-TMS.
 
-## Release safety
+## Register
 
-- `.env`, credentials and local source packs are excluded.
-- Archived versions and temporary QA renders are excluded.
-- Case statements distinguish verified vulnerabilities, first-party incidents, research reports and fictional simulations.
-- The public release contains courseware artifacts only; assessments, answer keys and internal QA/build materials remain excluded.
+<div align="center">
+
+**Ready to join?**
+
+[![Register](https://img.shields.io/badge/📝%20Register-Enrol%20Now-success?style=for-the-badge)](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)
+
+**[www.tertiarycourses.com.sg → AI Security for Autonomous AI Agents](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)**
+
+</div>
 
 ---
 
-This material belongs to Tertiary Infotech Pte Ltd (UEN 20120096W). All Rights Reserved.
+<div align="center">
+
+© 2026 Tertiary Infotech Academy Pte Ltd · UEN 201200696W · All Rights Reserved.
+
+</div>

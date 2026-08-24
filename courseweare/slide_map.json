@@ -1,11 +1,5 @@
 {
-  "day1": 14,
-  "products": 57,
-  "threat_model": 79,
-  "day2": 99,
-  "prompt_injection": 101,
-  "privacy_pdpa": 128,
-  "frameworks": 144,
-  "agent_threats": 154,
-  "controls": 179
+  "topic1": 12,
+  "topic2": 64,
+  "topic3": 84
 }

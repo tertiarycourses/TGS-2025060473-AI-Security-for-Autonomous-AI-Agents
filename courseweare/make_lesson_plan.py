@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """WSQ Lesson Plan — AI Security for Autonomous AI Agents (TGS-2025060473).
 
-2 days × 8 instructional hours. 9:30am–6:30pm with a 1-hour lunch; tea breaks
-counted within the day. Asserts 480 min/day before saving.
+1 day × 8 instructional hours (9:00am–6:00pm with a 1-hour lunch; tea breaks
+counted within the day) plus a 1-hour assessment (6:00pm–7:00pm). Three topics
+map onto LO1/LO2/LO3. Asserts 480 min of instruction before saving.
 """
 import os, sys
 
@@ -12,11 +13,11 @@ sys.path.insert(0, os.path.abspath(SKILL))
 sys.path.insert(0, HERE)
 
 import prodoc
-# This course is delivered by Tertiary Infotech Pte Ltd (UEN 20120096W) — not the
+# This course is delivered by Tertiary Infotech Pte Ltd (UEN 201200696W) — not the
 # Academy entity hardcoded in the shared helper. Override before use.
 prodoc.ORG = "Tertiary Infotech Pte Ltd"
-prodoc.UEN = "UEN: 20120096W"
-prodoc.COPYRIGHT = ("This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). "
+prodoc.UEN = "UEN: 201200696W"
+prodoc.COPYRIGHT = ("This material belongs to Tertiary Infotech Pte Ltd (UEN: 201200696W). "
                     "All Rights Reserved.")
 
 from prodoc import (add_cover_page, add_version_control, add_toc, add_page_numbers,
@@ -43,43 +44,35 @@ VERSIONS = [
                             "to product boundaries, cases, controls and governance. Activities "
                             "reordered; unverified claims removed. TSC K/A text unchanged.",
      "Dr Alfred Ang"),
+    ("4.0", "25 August 2026", "Rebuilt as a 1-day (8-hour) course with three topics mapped to "
+                            "LO1/LO2/LO3: generative and agentic AI concepts, prompt engineering on "
+                            "the Hermes agent with MiniMax, and AI-agent governance and security. "
+                            "No-code activities on ready-made websites and chatbots; Practical "
+                            "assessment is reflection on the activities. TSC K/A text unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess
+# One 8-instructional-hour day (480 min incl. tea breaks, excl. the 1-hour lunch)
+# running 9:00am-6:00pm, followed by the 1-hour assessment 6:00pm-7:00pm.
 DAY1 = [
-    ("9:30 – 9:50", "Welcome, digital attendance, introductions, learning outcomes and safe-lab boundaries", 20, "admin"),
-    ("9:50 – 10:35", "AI history: symbolic systems, machine learning, deep learning, transformers and instruction following (K2)", 45, "topic"),
-    ("10:35 – 10:50", "Tea break", 15, "break"),
-    ("10:50 – 11:35", "Generative AI, agentic behaviour and deployed AI agents as overlapping operating layers (K2, K3)", 45, "topic"),
-    ("11:35 – 12:30", "Strengths, weaknesses and examples: OpenClaw, Hermes, Claude Code, Codex, ChatGPT Work, DeepSeek model/harness and evidence gates", 55, "topic"),
+    ("9:00 – 9:20", "Welcome, digital attendance, introductions, learning outcomes and ground rules", 20, "admin"),
+    ("9:20 – 10:05", "Topic 1: Brief history of AI 2023-2026; how generative AI works — autoregressive LLM, training and inference (K2, K5)", 45, "topic"),
+    ("10:05 – 10:45", "Topic 1: Real generative-AI use cases (AI fashion models, AI video, Klarna); context engineering (K3, A3, A4)", 40, "topic"),
+    ("10:45 – 11:00", "Tea break", 15, "break"),
+    ("11:00 – 11:45", "Topic 1: Agentic loop and harness engineering; AI agents, OpenClaw and Hermes, skills, tools and multi-agent systems (K2, K3)", 45, "topic"),
+    ("11:45 – 12:30", "Activity 1: Talk to the TIA Support AI agent on WhatsApp and post reflections to the Pinboard; debrief (A2, A4)", 45, "activity"),
     ("12:30 – 1:30", "Lunch break", 60, "lunch"),
-    ("1:30 – 2:15", "Capability, data, token, code-execution, skill/plugin/MCP, network and approval matrices", 45, "topic"),
-    ("2:15 – 3:00", "Threat modelling: assets, actors, trust boundaries, authority paths and abuse cases (K1, K5)", 45, "topic"),
-    ("3:00 – 3:45", "Activity 1: Threat Modelling a Generative AI Concierge (K2, K3, A4)", 45, "activity"),
-    ("3:45 – 4:00", "Tea break", 15, "break"),
-    ("4:00 – 4:45", "Attack surfaces by operating layer: content, state, identity, tools, runtime and network", 45, "topic"),
-    ("4:45 – 5:30", "Complete attack chains, source-to-sink reasoning and evidence classification", 45, "topic"),
-    ("5:30 – 6:15", "Integrated risk matrix and preview of structural controls, approvals and evidence", 45, "topic"),
-    ("6:15 – 6:30", "Day 1 recap, Q&A and PM digital attendance", 15, "admin"),
-]
-
-DAY2 = [
-    ("9:30 – 9:40", "Day 1 recap and AM digital attendance", 10, "admin"),
-    ("9:40 – 10:00", "Prompt injection, jailbreaks, injection carriers and structural control principles (K4)", 20, "topic"),
-    ("10:00 – 11:00", "Activity 2: Prompt Injection and the PDPA Breach Decision (K4, K1)", 60, "activity"),
-    ("11:00 – 11:15", "Tea break", 15, "break"),
-    ("11:15 – 11:40", "Personal data, secrets, tokens, retention, transfers and the PDPA breach decision", 25, "topic"),
-    ("11:40 – 12:00", "Framework stack followed by detailed agentic-threat and documented-case instruction (A3, K5)", 20, "topic"),
-    ("12:00 – 1:00", "Activity 3: Selecting a Security Framework for GenAI and Agents (A3, A5)", 60, "activity"),
-    ("1:00 – 2:00", "Lunch break", 60, "lunch"),
-    ("2:00 – 2:30", "Activity 3 debrief and evidence bridge into the documented incident review", 30, "topic"),
-    ("2:30 – 3:30", "Activity 4: Evidence-Based Rogue Agent Incident Review (K5)", 60, "activity"),
-    ("3:30 – 3:45", "Tea break", 15, "break"),
-    ("3:45 – 4:10", "Organisational controls: guardrails, HITL, sandbox, egress, monitoring, deployment and incident gates (A1, A2)", 25, "topic"),
-    ("4:10 – 4:35", "Activity 5: Agent Governance and the Deployment Gate (A1, A2)", 25, "activity"),
-    ("4:35 – 4:50", "Course synthesis, assessment briefing and PM digital attendance", 15, "admin"),
-    ("4:50 – 5:50", "Assessment 1: Written Assessment (SAQ) — 5 questions · 40 marks · 60 min", 60, "assess"),
-    ("5:50 – 6:30", "Assessment 2: Case Study — 3 questions · 70 marks · 40 min; TRAQOM close", 40, "assess"),
+    ("1:30 – 1:45", "Topic 1 summary: generative AI vs agentic AI vs AI agents", 15, "topic"),
+    ("1:45 – 2:20", "Topic 2: Install the Hermes agent on MiniMax M2.7; principles of prompt engineering, good vs bad prompts (K4, A5)", 35, "topic"),
+    ("2:20 – 3:10", "Activity 2 & 3: Send prompts to analyse mock Excel data and build an animated PPT; compare good vs bad prompts (K4, A5)", 50, "activity"),
+    ("3:10 – 3:25", "Tea break", 15, "break"),
+    ("3:25 – 3:50", "Activity 4: Install tools and skills, re-run the Excel and PPT tasks; Topic 2 reflection and debrief (A1, A5)", 25, "activity"),
+    ("3:50 – 4:35", "Topic 3: AI data governance and accountability (Moffatt v Air Canada); Activity 5 — draft an AI data governance policy (A1, A2)", 45, "activity"),
+    ("4:35 – 5:15", "Topic 3: Job impact and redesign; Activity 6 — coaching role-play simulator (A2)", 40, "activity"),
+    ("5:15 – 6:00", "Topic 3: AI-agent cybersecurity risks and safe rollout; Activities 7 & 8 — leaky vs guarded chatbots and security reflection (A1, A2)", 45, "activity"),
+    ("6:00 – 6:35", "Briefing for assessment; Written Assessment (SAQ) — 5 questions, one per K statement (K1-K5)", 35, "assess"),
+    ("6:35 – 7:00", "Practical Performance — 3 reflection tasks on the activities completed; TRAQOM close", 25, "assess"),
 ]
 
 SHADE = {"topic": "E8F0FE", "activity": "E6F7F1", "break": "FDF3E3", "lunch": "FDF3E3",
@@ -139,7 +132,7 @@ def day_table(doc, day):
     shades = [SHADE[k] for _, _, _, k in day]
     table(doc, ["Time", "Topic / Activity", "Duration"], rows,
           widths=[1.15, 5.15, 0.85], shades=shades, keep_whole=False)
-    total = sum(mn for _, _, mn, k in day if k not in ("lunch",))
+    total = sum(mn for _, _, mn, k in day if k not in ("lunch", "assess"))
     return total
 
 
@@ -160,31 +153,28 @@ def build():
     add_version_control(doc, VERSIONS)
 
     h1(doc, "Table of Contents")
-    para(doc, "Generated contents for the fixed v3.0 pagination.", size=9.5, color=GREY)
-    table(doc, ["Section", "Page"],
-          [["1. Course Overview", "4"],
-           ["2. Daily Schedule", "6"],
-           ["3. Activities", "8"],
-           ["4. Tools and Resources", "8"],
-           ["5. Assessment", "9"]],
-          widths=[6.2, 0.95])
+    para(doc, "Right-click and choose 'Update Field' to refresh page numbers.", size=9.5,
+         color=GREY)
+    add_toc(doc)
     doc.add_page_break()
 
     # ---- overview  (add_toc already ends the page; a second break renders blank)
     h1(doc, "1. Course Overview")
-    para(doc, f"{C.TITLE} is a {C.DURATION} WSQ course that equips learners to identify, "
-              "analyse and mitigate the security risks introduced by generative AI systems and "
-              "by autonomous AI agents. The course uses documented cases and clearly labelled "
-              "realistic simulations, grounded in current security and governance "
-              "frameworks, including the OWASP Top 10 for LLM Applications (2026), the OWASP Top "
-              "10 for Agentic Applications (2026), the NIST AI Risk Management Framework, MITRE "
-              "ATLAS, the IMDA Model AI Governance Framework for Agentic AI, and Singapore's "
-              "PDPA and current PDPC guidance. Proposed consultation material is not presented "
-              "as final law or guidance.")
-    para(doc, "The course covers AI security for BOTH generative AI (prompt injection, data "
-              "leakage, poisoning, PDPA exposure) and autonomous agents (uncontrolled and "
-              "destructive execution, tool misuse, agent vulnerabilities and cyber-attack "
-              "chains).")
+    para(doc, f"{C.TITLE} is a {C.DURATION} WSQ course that introduces generative AI, agentic "
+              "AI and autonomous AI agents, and the security, governance and ethical risks they "
+              "bring to customer-service and hospitality settings. Learners work entirely on "
+              "ready-made websites, chatbots and AI agents — no coding is required. The day is "
+              "organised as three topics mapped one-to-one onto the three learning outcomes.")
+    para(doc, "Topic 1 (LO1) explains how generative AI works and how it becomes agentic — the "
+              "agentic loop, harness engineering, AI agents such as OpenClaw and Hermes, skills, "
+              "tools and multi-agent systems. Topic 2 (LO2) covers prompt engineering and "
+              "post-training, using the Hermes agent on a MiniMax model to analyse data and "
+              "build presentations. Topic 3 (LO3) covers AI data governance, job impact and "
+              "redesign, and the cybersecurity risks of autonomous agents, including a safe "
+              "roll-out framework. Real, dated examples and clearly labelled simulations are "
+              "grounded in current governance references such as the IMDA Model AI Governance "
+              "Framework, Singapore's PDPA and PDPC guidance, and the OWASP Top 10 for LLM and "
+              "Agentic Applications.")
 
     h2(doc, "Skills Framework Alignment")
     table(doc, ["Element", "Detail"],
@@ -209,73 +199,76 @@ def build():
     table(doc, ["Code", "Knowledge statement"],
           [[c, d] for c, d in C.TSC_KNOWLEDGE], widths=[0.7, 6.45])
 
-    h2(doc, "Ability Statements (assessed by the Case Study)")
+    h2(doc, "Ability Statements (assessed by the Practical Performance)")
     table(doc, ["Code", "Ability statement"],
           [[c, d] for c, d in C.TSC_ABILITIES], widths=[0.7, 6.45])
 
     doc.add_page_break()
 
     # ---- schedule
-    h1(doc, "2. Daily Schedule")
-    para(doc, "Each training day runs 9:30am – 6:30pm and delivers 8 instructional hours. "
+    h1(doc, "2. Course Schedule")
+    para(doc, "The training day runs 9:00am – 6:00pm and delivers 8 instructional hours. "
               "A 1-hour lunch break is excluded from instructional time; short tea breaks are "
-              "counted within the day.", size=10, color=GREY)
+              "counted within the day. The 1-hour assessment runs 6:00pm – 7:00pm.", size=10,
+         color=GREY)
 
-    h2(doc, "Day 1 — Generative AI Security")
-    para(doc, "Slides 1–98 of the trainer deck.", size=9.5, color=GREY)
+    h2(doc, "One-Day Schedule (Topics 1–3)")
+    para(doc, "Slides 1–124 of the trainer deck.", size=9.5, color=GREY)
     t1 = day_table(doc, DAY1)
     para(doc, "")
-    para(doc, f"Day 1 instructional total: {t1} minutes ({t1/60:.0f} hours), excluding the "
-              "1-hour lunch break.", size=10, bold=True)
-
-    doc.add_page_break()
-    h2(doc, "Day 2 — Autonomous Agent Security")
-    para(doc, "Slides 99–207 of the trainer deck.", size=9.5, color=GREY)
-    t2 = day_table(doc, DAY2)
-    para(doc, "")
-    para(doc, f"Day 2 instructional total: {t2} minutes ({t2/60:.0f} hours), excluding the "
-              "1-hour lunch break.", size=10, bold=True)
+    para(doc, f"Instructional total: {t1} minutes ({t1/60:.0f} hours), excluding the 1-hour "
+              "lunch break and the 1-hour assessment.", size=10, bold=True)
 
     doc.add_page_break()
 
     # ---- activities
     h1(doc, "3. Activities")
-    para(doc, "Every activity is either a clearly labelled realistic simulation or an "
-              "evidence-based documented-case review. Each has its own folder under "
-              "activities/ containing learner instructions, scenarios, discussion questions, "
-              "checklists and printable PDFs. Full step-by-step facilitation detail is in the "
-              "Learner Guide.")
-    table(doc, ["#", "Activity", "Day", "Duration", "K/A assessed"],
-          [["1", "Threat Modelling a Generative AI Concierge", "1", "45 min", "K2, K3, A4"],
-           ["2", "Prompt Injection and the PDPA Breach Decision", "2", "60 min", "K4, K1"],
-           ["3", "Selecting a Security Framework for GenAI and Agents", "2", "60 min", "A3, A5"],
-           ["4", "Evidence-Based Rogue Agent Incident Review", "2", "60 min", "K5"],
-           ["5", "Agent Governance and the Deployment Gate (capstone)", "2", "25 min", "A1, A2"]],
-          widths=[0.4, 3.6, 0.5, 0.9, 1.75])
+    para(doc, "Every activity uses a ready-made website, chatbot or AI agent — learners do not "
+              "write any code. Each has its own folder under activities/ containing learner "
+              "instructions, prompt cards, mock data and printable PDFs. All data is fictional. "
+              "Full step-by-step facilitation detail is in the Learner Guide.")
+    table(doc, ["#", "Activity", "Topic", "Duration", "LO / A"],
+          [["1", "Talk to an AI Agent (TIA Support WhatsApp) and reflect on the Pinboard", "1", "45 min", "LO1 · A2, A4"],
+           ["2", "Analyse mock Excel marketing data with the Hermes + MiniMax agent", "2", "25 min", "LO2 · A5"],
+           ["3", "Build an animated PPT from an Envato template with the agent", "2", "25 min", "LO2 · A5"],
+           ["4", "Install tools and skills, then re-run the Excel and PPT tasks", "2", "25 min", "LO2 · A1, A5"],
+           ["5", "Draft an AI Data Governance Policy from a sample using prompts", "3", "30 min", "LO3 · A1, A2"],
+           ["6", "Coach a worried team member (AI role-play simulator)", "3", "30 min", "LO3 · A2"],
+           ["7", "Leaky vs guarded chatbot — see and stop a PII leak", "3", "30 min", "LO3 · A1, A2"],
+           ["8", "Reflect on agent security and decide go / no-go", "3", "15 min", "LO3 · A1, A2"]],
+          widths=[0.35, 3.65, 0.6, 0.85, 1.4])
+    para(doc, "Times overlap with the topic teaching blocks in the schedule above; activity "
+              "folders and the reflection Pinboard (alfredang.github.io/pinboard) are used "
+              "throughout the day.", size=9.5, color=GREY)
 
     h1(doc, "4. Tools and Resources")
     table(doc, ["Resource", "Purpose"],
-          [["Trainer slide deck (PPTX/PDF)", "Facilitation, diagrams and case-study prompts"],
-           ["Learner Guide", "Detailed step-by-step notes and activity walkthroughs"],
-           ["Activity packs (activities/)", "Learner scenarios, discussion questions, checklists and evidence worksheets"],
+          [["Trainer slide deck (PPTX/PDF)", "Facilitation, diagrams and concept walkthroughs"],
+           ["Learner Guide", "Detailed notes and step-by-step activity walkthroughs"],
+           ["Activity packs (activities/)", "Ready-made websites/chatbots, prompt cards and mock data"],
+           ["TIA Support on WhatsApp (+65 8866 6375)", "Live OpenClaw-powered AI agent for Activity 1"],
+           ["Reflection Pinboard", "alfredang.github.io/pinboard — group reflections by risk theme"],
+           ["Hermes Agent + MiniMax", "hermes-agent.nousresearch.com and minimax.io for Topic 2"],
            ["LMS/TMS portal", "lms-tms.tertiaryinfotech.com — course material and submission"],
-           ["Whiteboard / flip chart", "Group threat modelling and kill-chain reconstruction"],
-           ["OWASP LLM & ASI Top 10 (2026)", "Reference taxonomies used throughout"],
-           ["IMDA / PDPC publications", "Singapore governance and data-protection reference"]],
-          widths=[2.5, 4.65])
+           ["IMDA / PDPC / OWASP references", "Governance and security reference material"]],
+          widths=[2.9, 4.25])
 
     doc.add_page_break()
     h1(doc, "5. Assessment")
-    para(doc, "Assessment is conducted at the end of Day 2. The briefing for assessment is "
-              "delivered before the assessment begins.")
+    para(doc, "Assessment is conducted at the end of the day (6:00pm – 7:00pm). The briefing "
+              "for assessment is delivered before the assessment begins.")
     table(doc, ["Instrument", "Covers", "Detail"],
           [["Written Assessment (SAQ)", "K1 – K5", C.ASSESSMENT["wa"]],
-           ["Case Study", "A1 – A5 via LO1 – LO3", C.ASSESSMENT["cs"]],
+           ["Practical Performance", "LO1 – LO3 (A1 – A5)", C.ASSESSMENT["cs"]],
            ["Format", "—", C.ASSESSMENT["format"]],
            ["Grading", "—", C.ASSESSMENT["grading"]],
            ["Re-assessment", "—", "Available for learners assessed Not Yet Competent"]],
-          widths=[1.75, 1.35, 4.05])
+          widths=[1.75, 1.5, 3.9])
     para(doc, "")
+    para(doc, "The Practical Performance asks learners to document their own observations and "
+              "reflections from the activities they completed during the day, so it is grounded "
+              "in what each learner actually did in class and aligned to the slides and labs.",
+         size=10)
     para(doc, "Funding eligibility requires a minimum 75% attendance recorded through SSG "
               "digital attendance, an assessment outcome of Competent, and completion of the "
               "TRAQOM survey.", size=10)
@@ -283,13 +276,12 @@ def build():
     add_page_numbers(doc)
     enable_update_fields(doc)
 
-    assert t1 == 480, f"Day 1 is {t1} min, expected 480"
-    assert t2 == 480, f"Day 2 is {t2} min, expected 480"
+    assert t1 == 480, f"Instructional total is {t1} min, expected 480"
 
     out = os.path.join(HERE, f"Lesson Plan - {C.COURSE_CODE} - {C.TITLE}.docx")
     doc.save(out)
     print(f"Saved: {out}")
-    print(f"Day 1 = {t1} min · Day 2 = {t2} min")
+    print(f"Instruction = {t1} min")
 
 
 if __name__ == "__main__":

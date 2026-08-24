@@ -38,3 +38,6 @@ research/CLAIM-LEDGER-v*.md
 research/IMAGEGEN-PROMPTS-v*.md
 research/SOURCE-REGISTER-v*.md
 research/V*-*.md
+
+# Distribution archives (rebuildable — never pushed to GitHub)
+*.zip

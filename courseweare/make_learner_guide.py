@@ -13,8 +13,8 @@ sys.path.insert(0, HERE)
 
 import prodoc
 prodoc.ORG = "Tertiary Infotech Pte Ltd"
-prodoc.UEN = "UEN: 20120096W"
-prodoc.COPYRIGHT = ("This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). "
+prodoc.UEN = "UEN: 201200696W"
+prodoc.COPYRIGHT = ("This material belongs to Tertiary Infotech Pte Ltd (UEN: 201200696W). "
                     "All Rights Reserved.")
 
 from prodoc import (add_cover_page, add_version_control, add_toc, add_page_numbers,
@@ -25,7 +25,9 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 import course_data as C
-if C.VERSION.startswith("3"):
+if C.VERSION.startswith("4"):
+    from v40_learner import SECTIONS
+elif C.VERSION.startswith("3"):
     from v30_learner import SECTIONS
 else:
     from lg_content import SECTIONS
@@ -46,6 +48,12 @@ VERSIONS = [
                             "boundaries, documented cases, control gates, detailed activities and "
                             "source register. Unverified claims removed. TSC K/A text unchanged.",
      "Dr Alfred Ang"),
+    ("4.0", "25 August 2026", "Rebuilt as a 1-day (8-hour) course: generative and agentic AI "
+                            "concepts, prompt engineering on the Hermes agent with MiniMax, and "
+                            "AI-agent governance and security. Eight no-code activities on "
+                            "ready-made websites and chatbots; prompt library, reflection "
+                            "framework, governance and roll-out cheat sheets added. TSC K/A text "
+                            "unchanged.", "Dr Alfred Ang"),
 ]
 
 
@@ -123,26 +131,21 @@ def build_docx():
     add_version_control(doc, VERSIONS)
 
     doc.add_heading("Table of Contents", level=1)
-    para(doc, "Generated section contents for this v3.0 build.", size=9.5, color=GREY)
-    table(doc, ["Section", "Page"], [
-        ["About This Course", "4"],
-        ["How to Use This Evidence-Grounded Guide", "5"],
-        ["Day 1 — From AI Models to Acting Systems", "9"],
-        ["Day 2 — Attack, Defend, Govern, Operate", "50"],
-        ["Detailed Activity Walkthroughs", "101"],
-        ["Operational Best-Practice Checklist", "107"],
-        ["Source Register", "108"],
-    ])
+    para(doc, "Right-click and choose 'Update Field' to refresh page numbers.", size=9.5,
+         color=GREY)
+    add_toc(doc)
     doc.add_page_break()
 
     # front matter
     doc.add_heading("About This Course", level=1)
-    para(doc, f"{C.TITLE} is a {C.DURATION} WSQ course covering the security of generative AI "
-              "systems and of autonomous AI agents. It is delivered through real-world case "
-              "studies and grounded in the current security and governance frameworks.")
-    para(doc, "This guide follows the course structure. Each section names the accredited "
-              "knowledge (K) or ability (A) statement it evidences, and every activity has a "
-              "full step-by-step walkthrough.")
+    para(doc, f"{C.TITLE} is a {C.DURATION} WSQ course introducing generative AI, agentic AI and "
+              "autonomous AI agents, and the security, governance and ethical risks they bring to "
+              "customer-service and hospitality settings. Learners work entirely on ready-made "
+              "websites, chatbots and AI agents — no coding is required. The day is organised as "
+              "three topics mapped to the three learning outcomes.")
+    para(doc, "This guide follows the trainer deck in sequence. Each slide is expanded into "
+              "readable notes, and every one of the eight activities has a full step-by-step, "
+              "no-code walkthrough.")
 
     doc.add_heading("Learning Outcomes", level=2)
     table(doc, ["LO", "Learning Outcome"], [[c, d] for c, d in C.LEARNING_OUTCOMES])
@@ -187,10 +190,11 @@ def build_docx():
                 _drop_trailing_empty_paragraphs()
                 doc.add_page_break()
             elif payload.startswith("Slide "):
-                # Two complete slide-learning blocks per page gives the learner
-                # enough room for evidence, tables and control implications without
-                # leaving headings or list fragments on the next page.
-                if slide_blocks_on_page >= 2:
+                # One complete slide-learning block per page. Each block now carries an
+                # in-depth narrative, the concept table, a note and a workplace-application
+                # paragraph, so a fresh page per slide keeps every block whole and gives the
+                # learner room to annotate — and matches the detailed follow-along format.
+                if slide_blocks_on_page >= 1:
                     _drop_trailing_empty_paragraphs()
                     doc.add_page_break()
                     slide_blocks_on_page = 0
@@ -315,7 +319,7 @@ def build_md():
             L.append(f"*{cap}*\n")
 
     L.append("\n---\n")
-    L.append("*This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). "
+    L.append("*This material belongs to Tertiary Infotech Pte Ltd (UEN: 201200696W). "
              "All Rights Reserved.*")
 
     out = os.path.join(HERE, "LEARNER-GUIDE.md")

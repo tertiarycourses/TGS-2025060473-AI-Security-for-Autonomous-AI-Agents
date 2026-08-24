@@ -9,8 +9,8 @@ and assessed VERBATIM — AI security is the delivery LENS, not a replacement fo
 Never reword a K or A statement. See research/CONTENT-DESIGN.md.
 """
 
-VERSION = "3.0"
-VERSION_DATE = "20 August 2026"
+VERSION = "4.0"
+VERSION_DATE = "25 August 2026"
 
 TITLE = "AI Security for Autonomous AI Agents"
 SHORT_TITLE = "AI Security for Autonomous AI Agents"
@@ -19,7 +19,7 @@ TSC_TITLE = "Generative AI Principles and Applications"
 TSC_CODE = "ICT-INT-0052-1.1"
 PROFICIENCY = "Level 1"
 TRAINER = "Dr Alfred Ang"
-DURATION = "2 Days · 16 Hours"
+DURATION = "1 Day · 8 Hours"
 
 # ---------------------------------------------------------------- accredited K & A
 # VERBATIM from the Course Proposal. Do not edit the text.
@@ -52,15 +52,23 @@ LEARNING_OUTCOMES = [
             "engagement."),
 ]
 
+# The three delivered topics, mapped one-to-one onto the learning outcomes.
 LEARNING_UNITS = [
-    ("LU1", "Generative AI Fundamentals", "Foundations of AI Security"),
-    ("LU2", "Prompt Engineering", "Attacking and Defending the Prompt Layer"),
-    ("LU3", "Ethical Considerations", "Agent Autonomy, Governance and Compliance"),
+    ("Topic 1", "Generative AI, Agentic AI and AI Agents",
+     "How GenAI works, context and harness engineering, the agentic loop, "
+     "OpenClaw and Hermes agents, and multi-agent systems (LO1)"),
+    ("Topic 2", "Prompt Engineering and Post-Training for Autonomous AI Agents",
+     "Prompt-engineering principles, running prompts through the Hermes agent on MiniMax, "
+     "and installing tools and skills to lift output quality (LO2)"),
+    ("Topic 3", "Security Risk of Autonomous AI Agents",
+     "AI data governance, job impact and redesign, and the security risks of "
+     "autonomous agents and how to roll them out safely (LO3)"),
 ]
 
 ASSESSMENT = {
-    "wa": "Written Assessment (SAQ) — 5 short-answer questions, one per K statement",
-    "cs": "Case Study — 3 questions, one per Learning Outcome, mapped to the A statements",
+    "wa": "Written Assessment (SAQ) — 5 short-answer questions, one per K statement (K1–K5)",
+    "cs": "Practical Performance — 3 reflective tasks in which learners document their own "
+          "observations from the in-class activities, mapped to LO1–LO3 and the A statements",
     "format": "Open Book",
     "grading": "Competent / Not Yet Competent",
 }

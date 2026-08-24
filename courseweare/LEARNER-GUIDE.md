@@ -1,9 +1,9 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 3.0  |  **Date:** 20 August 2026  |  **Duration:** 2 Days · 16 Hours
+**Version:** 4.0  |  **Date:** 25 August 2026  |  **Duration:** 1 Day · 8 Hours
 
-> This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v30_learner.py`.
+> This guide mirrors the Learner Guide DOCX exactly. Both are generated from `lg_content.py`.
 
 ## Learning Outcomes
 
@@ -36,2715 +36,2179 @@
 
 ---
 
-# How to Use This Evidence-Grounded Guide
+# How to Use This Learner Guide
 
-This guide follows the 207-slide trainer deck in sequence. It expands the concepts, evidence status and control logic while keeping click-by-click procedures in the five activity walkthroughs. Product capabilities are always configuration- and version-specific.
+This guide follows the trainer deck in sequence across the three topics of the day. It expands each concept into readable notes, then gives you full step-by-step walkthroughs for every activity. You will use ready-made websites, chatbots and AI agents — you do not need to write any code. All data used in the activities is fictional.
 
-| Evidence label | Meaning | How to use it |
+| Topic | Learning outcome | What you will be able to do |
 |---|---|---|
-| HIST / DEF / PROD | Historical, definitional or product documentation | Cite the listed source and check the as-of date. |
-| CASE-V | Verified incident, vulnerability or adjudicated case | State only what the primary or authoritative record supports. |
-| CASE-R | Reported security research or campaign | Preserve the source's method, denominator and limitations. |
-| SIM | Realistic synthetic classroom scenario | Treat every name, event and number as fictional. |
-| SYN | Instructional synthesis | Use as a reasoning aid, not as a claimed empirical statistic. |
+| Topic 1 | LO1 | Explain generative AI, agentic AI and AI agents, and how they differ. |
+| Topic 2 | LO2 | Apply prompt-engineering techniques and compare output variations. |
+| Topic 3 | LO3 | Identify ethical, governance and security risks in AI-generated content and agents. |
 
-> **Evidence rule**
-> Never convert a demonstration into a breach, a simulation into a real incident, or a vendor statement into an independently verified outcome.
+> **Evidence labels**
+> HIST = historical fact · DEF = definition · PROD = product documentation · CASE-V = verified/real dated case · SIM = classroom simulation (all names and numbers fictional) · SYN = teaching synthesis.
+
+> **Safe-use rule**
+> Never paste real personal data or a production API key into any demo. Use a low-limit training key and delete it after the course.
 
 
 ## Slide 5 — Who Is in the Room?
 
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Who Is in the Room?”.
+
+| Concept | What it means |
 |---|---|
-| Role | What systems do you own or use? |
-| Exposure | What data and tools can they reach? |
-| Concern | What outcome would be hardest to reverse? |
+| Role | What service or team do you work in? |
+| AI today | Where do you already meet AI at work? |
+| Goal | What do you want to be able to do by 6pm? |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 6 — Working Agreements for Security Labs
+## Slide 6 — Ground Rules for a Hands-On Day
 
-> **Evidence status: SYN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| First view | Second view |
+Read the points below as the few things worth remembering about “Ground Rules for a Hands-On Day”.
+
+| Concept | What it means |
 |---|---|
-| Synthetic data only | No live credentials |
-| Local dummy tools | No real recipients |
-| Share evidence, not secrets | No production probing |
+| Use the demos | Every activity is a ready-made website or chatbot — no coding |
+| Fictional data only | Never paste real personal or company data into a demo |
+| Ask and share | Try prompts, compare answers, and reflect together |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 7 — Why This Course Exists
+## Slide 7 — Learning Outcomes
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Model generates
-2. Workflow iterates
-3. Agent receives tools
-4. Authority creates impact
+Read the points below as the few things worth remembering about “Learning Outcomes”.
 
-> **Control implication**
-> Security changes when probabilistic output can trigger actions in real systems.
-
-
-## Slide 8 — Two-Day Learning Journey
-
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-1. Evolution
-2. System types
-3. Attack surfaces
-4. Cases
-5. Controls
-6. Governance
-
-
-## Slide 9 — Learning Outcomes
-
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| LO1 | Explain GenAI concepts and applications |
-| LO2 | Test prompt variations and controls |
-| LO3 | Analyse ethical, bias and security risks |
+| LO1 | Demonstrate generative AI concepts and applications |
+| LO2 | Apply prompt engineering and analyse output variations |
+| LO3 | Identify ethical risks and analyse bias in AI content |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 10 — K1–K5 and A1–A5 Evidence Map
+## Slide 8 — One-Day Learning Journey
 
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Evidence family | Statements | Where demonstrated |
+“One-Day Learning Journey” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Three topics map one-to-one onto LO1, LO2 and LO3; the assessment closes the day.
+
+1. Topic 1 — GenAI, Agentic AI & Agents
+2. Topic 2 — Prompt Engineering
+3. Topic 3 — Security & Governance
+4. Assessment
+
+> **Note**
+> Three topics map one-to-one onto LO1, LO2 and LO3; the assessment closes the day.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 9 — How the Day Is Assessed
+
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+The table below is easier to recall once you see the pattern behind it.
+
+| Instrument | Covers | What you do |
 |---|---|---|
-| Models and data | K1–K3, K5 | History, taxonomy, poisoning |
-| Prompts and metrics | K4, A5 | Injection activity |
-| Use, limits, ethics | A1–A4 | Cases and deployment gate |
+| Written Assessment (SAQ) | K1–K5 | Five short written answers, one per knowledge statement |
+| Practical Performance | LO1–LO3 (A1–A5) | Three reflection tasks on the activities you completed today |
+| Format | — | Open book · Competent / Not Yet Competent |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 11 — Briefing for Assessment
+## Slide 10 — Briefing for Assessment
 
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Read the task
-2. Use course evidence
-3. State assumptions
-4. Justify control choice
-5. Submit on LMS
+“Briefing for Assessment” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. The briefing for assessment is delivered before the assessment begins.
 
+1. Read each task
+2. Draw on today's activities
+3. Write from your own evidence
+4. Justify your reasoning
+5. Submit on the LMS
 
-## Slide 12 — Assessment Components and Boundaries
+> **Note**
+> The briefing for assessment is delivered before the assessment begins.
 
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-| First view | Second view |
-|---|---|
-| Written Assessment | Case Study |
-| Knowledge statements K1–K5 | Learning outcomes and abilities |
-| Open book | Evidence-based recommendation |
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
 ---
 
-# Day 1 — From AI Models to Acting Systems
+# Generative AI, Agentic AI and AI Agents
 
-Origins → generation → agency → product anatomy → threat model
+[TOPIC 1 · LO1]
 
-
-## Slide 15 — The Dependency Map: What Must Be Understood First
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. What is the system?
-2. What components does it add?
-3. What authority does it receive?
-4. What can fail?
-5. What evidence controls it?
+From a chat box to systems that plan and act — history, mechanics, use cases and agents.
 
 
-## Slide 16 — Before ‘Generative’: What Did AI Mean?
+## Slide 13 — What Topic 1 Will Answer
 
-> **Evidence status: DEF**
-> Sources: S10 — NIST AI Risk Management Framework
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+“What Topic 1 Will Answer” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Each question builds the vocabulary you need for prompt engineering and security later.
+
+1. How did we get here?
+2. How does GenAI actually work?
+3. What is context engineering?
+4. What is an agentic loop?
+5. What is an AI agent?
+
+> **Note**
+> Each question builds the vocabulary you need for prompt engineering and security later.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 14 — A Very Short History of AI, 2023–2026
+
+> **Evidence: HIST**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+“A Very Short History of AI, 2023–2026” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Each year did not replace the last — it added a new layer on top of it.
+
+1. 2023 · Generative AI
+2. 2024 · Context Engineering
+3. 2025 · Harness Engineering
+4. 2026 · AI Agents
+
+> **Note**
+> Each year did not replace the last — it added a new layer on top of it.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 15 — The Four Waves in Plain Words
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “The Four Waves in Plain Words”.
+
+| Concept | What it means |
 |---|---|
-| AI system | Engineered system producing predictions, recommendations, decisions or content |
-| Objective | Outputs influence virtual or physical environments |
-| Autonomy | Systems operate with varying levels of autonomy |
+| 2023 — Generative AI | ChatGPT makes text and image generation mainstream |
+| 2024 — Context Engineering | We learn to feed models the right information, not just a prompt |
+| 2025 — Harness Engineering | We wrap models in loops that plan, act and verify — agentic AI |
+| 2026 — AI Agents | Deployed agents act across our apps, chats and tools |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 17 — 1950 — The Machine-Intelligence Question
+## Slide 16 — 2023 — Generative AI Goes Mainstream
 
-> **Evidence status: HIST**
-> Sources: S01 — Turing, Computing Machinery and Intelligence (1950)
+> **Evidence: HIST**
+> Sources: S08 — OpenAI — Introducing ChatGPT (30 Nov 2022)
 
-- Turing reframed the question through observable conversational behaviour
-- The paper discussed learning machines as well as fixed programs
-- It predates the term artificial intelligence
+The points below unpack what “2023 — Generative AI Goes Mainstream” means in practice.
 
+- ChatGPT launched on 30 November 2022 and reached mass adoption through 2023
+- One natural-language box exposed writing, coding, translation and analysis to everyone
+- Businesses began asking not 'can it chat?' but 'what work can it do?'
 
-## Slide 18 — 1955–1956 — ‘Artificial Intelligence’ Is Named
-
-> **Evidence status: HIST**
-> Sources: S02 — Dartmouth Summer Research Project on AI proposal, S03 — NIST, Reflections on Artificial Intelligence in Engineering
-
-- The Dartmouth proposal used the term artificial intelligence
-- The summer project took place in 1956
-- The proposal treated learning and intelligence as problems that could be described precisely
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 19 — Symbolic AI and Early Learning Systems
+## Slide 17 — 2024 — Context Engineering
 
-> **Evidence status: HIST**
-> Sources: S03 — NIST, Reflections on Artificial Intelligence in Engineering
+> **Evidence: HIST**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025), S11 — Karpathy on 'context engineering' (X, 25 Jun 2025)
 
-| First view | Second view |
+The points below unpack what “2024 — Context Engineering” means in practice.
+
+- Teams found the prompt alone was not enough — the model needed the right supporting information
+- Andrej Karpathy argued for 'context engineering' over 'prompt engineering' (Jun 2025)
+- The craft became: fill the context window with just the right tokens for the next step
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 18 — 2025 — Harness Engineering and Agentic AI
+
+> **Evidence: HIST**
+> Sources: S12 — Anthropic — How Claude Code works (agentic harness), S13 — OpenAI — Harness engineering: Codex in an agent-first world
+
+The points below unpack what “2025 — Harness Engineering and Agentic AI” means in practice.
+
+- Tools like Claude Code and Codex wrapped the model in a loop that gathers context, acts and verifies
+- OpenAI named this discipline 'harness engineering'; Anthropic calls the tool an 'agentic harness'
+- The model stopped only answering and started doing multi-step work
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 19 — 2026 — The Year of AI Agents
+
+> **Evidence: HIST**
+> Sources: S30 — OpenClaw — Wikipedia (naming and adoption history), S33 — Hermes Agent (Nous Research) — documentation
+
+The points below unpack what “2026 — The Year of AI Agents” means in practice.
+
+- Personal and organisational agents such as OpenClaw and Hermes reached everyday users
+- Agents now live inside WhatsApp, Telegram, email and business apps
+- The question shifted again: how do we let agents act safely on our behalf?
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+---
+
+# How Generative AI Works
+
+[TOPIC 1]
+
+Training, inference, and the autoregressive language model.
+
+
+## Slide 21 — What 'Generative' Means
+
+> **Evidence: DEF**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “What 'Generative' Means”.
+
+| Concept | What it means |
 |---|---|
-| Symbolic systems | Learning systems |
-| Represent knowledge as rules and symbols | Adjust behaviour from examples or feedback |
-| Reason through explicit operations | Depend on data and objective design |
+| Generative AI | Produces new text, image, audio, video or code from patterns it has learned |
+| Discriminative AI | Sorts or scores existing input — spam / not-spam, fraud / not-fraud |
+| Why it matters | Service teams use both: generate a reply, and classify a request |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 20 — Cycles of AI Expectation and Investment
+## Slide 22 — Two Phases: Training and Inference
 
-> **Evidence status: HIST**
-> Sources: S03 — NIST, Reflections on Artificial Intelligence in Engineering
+> **Evidence: DEF**
+> Sources: S06 — Brown et al., Language Models are Few-Shot Learners (GPT-3)
 
-1. High expectations
-2. Technical and funding limits
-3. Reduced investment
-4. Narrow commercial revival
+“Two Phases: Training and Inference” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Training happens once and is expensive; inference happens every time you use the model.
 
-> **Control implication**
-> The history is cyclical; avoid a single-cause story for either progress or slowdown.
+1. Gather large text corpora
+2. Train — adjust billions of parameters
+3. Ship the model
+4. Inference — you prompt, it responds
 
+> **Note**
+> Training happens once and is expensive; inference happens every time you use the model.
 
-## Slide 21 — Statistical Machine Learning — Course Synthesis
-
-> **Evidence status: SYN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-1. Collect examples
-2. Represent features
-3. Fit parameters
-4. Evaluate on held-out data
-
-> **Control implication**
-> The decision boundary is learned from data rather than authored as a complete rule set.
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 22 — 2012 — Deep Learning’s Visibility Breakthrough
+## Slide 23 — How an Autoregressive LLM Writes
 
-> **Evidence status: HIST**
-> Sources: S04 — Krizhevsky et al., ImageNet Classification with Deep CNNs
+> **Evidence: DEF**
+> Sources: S05 — Vaswani et al., Attention Is All You Need (2017)
 
-- AlexNet used a deep convolutional network for ImageNet classification
-- The published system used GPUs to train the model
-- Its result helped demonstrate the practical impact of deep learned representations
+“How an Autoregressive LLM Writes” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. A large language model writes one token at a time, each based on everything before it.
+
+1. Read your context as tokens
+2. Predict the next token's probabilities
+3. Pick one token
+4. Append it and repeat
+
+> **Note**
+> A large language model writes one token at a time, each based on everything before it.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 23 — Sequence Models and the Attention Problem
+## Slide 24 — Why the Same Prompt Can Differ
 
-> **Evidence status: DEF**
-> Sources: S05 — Vaswani et al., Attention Is All You Need
+> **Evidence: DEF**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| First view | Second view |
+Read the points below as the few things worth remembering about “Why the Same Prompt Can Differ”.
+
+| Concept | What it means |
 |---|---|
-| Many earlier neural sequence models | Attention |
-| Recurrence processes tokens in order | Weights relationships between positions |
-| Long dependencies are difficult | Creates shorter paths between relevant tokens |
+| Probabilities | The model samples from likely next tokens, not a fixed lookup |
+| Temperature | Higher settings add variety; lower settings add consistency |
+| Context | Change the surrounding information and the whole answer shifts |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 24 — 2017 — The Transformer
+## Slide 25 — Strengths and Limits for Service Work
 
-> **Evidence status: HIST**
-> Sources: S05 — Vaswani et al., Attention Is All You Need
+> **Evidence: DEF**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Token representations
-2. Self-attention
-3. Feed-forward layers
-4. Parallel training
+Read the points below as the few things worth remembering about “Strengths and Limits for Service Work”.
 
-> **Control implication**
-> The original architecture dispensed with recurrence and convolution for its sequence-transduction tasks.
-
-
-## Slide 25 — From Large Models to Foundation Models
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Pre-train | Learn broad patterns from large, diverse corpora |
-| Adapt | Prompt, fine-tune or retrieve for a task |
-| Reuse | One model supports many downstream applications |
+| Strong at | Drafting, summarising, translating, reformatting, brainstorming |
+| Weak at | Facts it was never given — it can sound confident yet be wrong |
+| Rule | Treat fluent output as a draft to verify, not as truth |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 26 — 2020 — Few-Shot Behaviour at Scale
+---
 
-> **Evidence status: HIST**
-> Sources: S06 — Brown et al., Language Models are Few-Shot Learners
+# Generative AI in the Real World
 
-- GPT-3 was evaluated on tasks described through text prompts
-- Few-shot examples were provided in context rather than through task-specific gradient updates
-- Performance varied substantially by task and prompt
+[TOPIC 1]
 
-
-## Slide 27 — Instruction Following and Human Feedback
-
-> **Evidence status: DEF**
-> Sources: S07 — Ouyang et al., Training language models to follow instructions
-
-1. Collect demonstrations
-2. Train a reward model
-3. Optimise against preferences
-4. Evaluate helpfulness and safety
-
-> **Control implication**
-> Human feedback changes behaviour; it does not create a deterministic policy boundary.
+Real, dated examples — how generation is already changing work.
 
 
-## Slide 28 — November 2022 — ChatGPT Broadens the Conversational Interface
+## Slide 27 — Fashion Models Are Now Generated
 
-> **Evidence status: HIST**
-> Sources: S08 — Stanford AI Index Report 2023, S09 — NIST AI 600-1, Generative AI Profile
+> **Evidence: CASE-V**
+> Sources: S20 — PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024), S21 — CNN — H&M to create AI 'digital twins' of models (Mar 2025), S22 — CNN — AI models in Guess ad in Vogue's August 2025 issue
 
-- ChatGPT's public release in November 2022 made multi-turn language-model interaction widely visible
-- Natural-language prompts exposed many tasks through one interface
-- A conversational interface did not remove limitations, variability or data risk
+Read the points below as the few things worth remembering about “Fashion Models Are Now Generated”.
 
-
-## Slide 29 — Retrieval and Tool Use Move Beyond Chat
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Generate from model knowledge
-2. Retrieve external context
-3. Call structured tools
-4. Iterate toward a goal
-
-> **Control implication**
-> Each step adds utility and a new trust boundary.
-
-
-## Slide 30 — The Evolution in One View
-
-> **Evidence status: SYN**
-> Sources: S01 — Turing, Computing Machinery and Intelligence (1950), S02 — Dartmouth Summer Research Project on AI proposal, S05 — Vaswani et al., Attention Is All You Need, S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Reason with symbols
-2. Learn patterns
-3. Generate content
-4. Retrieve and use tools
-5. Plan and act
-
-> **Control implication**
-> This is an instructional synthesis, not a claim that one paradigm replaced every earlier one.
-
-
-## Slide 32 — A Taxonomy Warning: The Terms Are Not Standardised
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-- Sources use overlapping labels
-- The course declares operational definitions
-- Classify the architecture, not the marketing name
-
-
-## Slide 33 — Generative AI — Course Definition
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Primary purpose | Generate synthetic text, image, audio, video or code |
-| Interaction | Respond to supplied context and prompts |
-| Boundary | A model response alone does not imply autonomous action |
+| Mango, Jul 2024 | Ran its first fully AI-generated campaign for its teen 'Sunset Dream' line across 95 markets |
+| H&M, 2025 | Announced AI 'digital twins' of 30 real models; first labelled images appeared mid-2025 |
+| Guess, Aug 2025 | A Guess ad using AI-generated models ran in Vogue's August issue and drew wide debate |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 34 — How an Autoregressive Language Model Produces Text
+## Slide 28 — Short Vertical Video Is Being Generated
 
-> **Evidence status: DEF**
-> Sources: S05 — Vaswani et al., Attention Is All You Need, S09 — NIST AI 600-1, Generative AI Profile
+> **Evidence: CASE-V**
+> Sources: S23 — OpenAI — Sora 2 is here (30 Sep 2025), S24 — Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025)
 
-1. Tokenise context
-2. Compute contextual representations
-3. Estimate next-token probabilities
-4. Decode the next-token sequence
+Read the points below as the few things worth remembering about “Short Vertical Video Is Being Generated”.
 
-> **Control implication**
-> Sampling and context make output probabilistic rather than a fixed database lookup.
-
-
-## Slide 35 — Generative vs Discriminative Models — Course Comparison
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile
-
-| First view | Second view |
+| Concept | What it means |
 |---|---|
-| Generative | Discriminative |
-| Learns patterns used to produce new content | Learns to predict a class or score |
-| May be exposed to injection, leakage, poisoning and unsafe output | May be exposed to poisoning, evasion, leakage and false positives |
+| OpenAI Sora 2 | Launched 30 Sep 2025 with a TikTok-style app of AI clips; No.1 on the US App Store within days |
+| Coca-Cola | Aired an AI-generated 'Holidays Are Coming' ad in 2024 and again in 2025 |
+| Takeaway | Marketing teams can now generate campaign video without a film crew |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 36 — Generative AI Strengths
+## Slide 29 — Customer Service: The Klarna Story
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile
+> **Evidence: CASE-V**
+> Sources: S25 — Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024), S26 — Forbes — Klarna reverses on AI, re-hires human agents (May 2025)
 
-| Concept | Meaning or control implication |
+“Customer Service: The Klarna Story” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. A real cautionary tale: automate the routine, but keep humans for judgement and empathy.
+
+1. Feb 2024 — AI assistant handles 2/3 of chats
+2. Work of ~700 agents in month one
+3. Resolution time 11 min to under 2 min
+4. May 2025 — re-hires humans for quality
+
+> **Note**
+> A real cautionary tale: automate the routine, but keep humans for judgement and empathy.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 30 — Where Service Teams Apply GenAI Today
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Where Service Teams Apply GenAI Today”.
+
+| Concept | What it means |
 |---|---|
-| Synthesis | Combine patterns into a new response |
-| Transformation | Rewrite, translate or structure content |
-| Interface | Express many tasks in natural language |
+| Front desk | Draft replies, translate, summarise long threads |
+| Back office | Turn notes into reports; extract data from documents |
+| Marketing | Generate copy, images and short video for campaigns |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 37 — Generative AI Weaknesses
+---
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile
+# Context Engineering
 
-| Concept | Meaning or control implication |
+[TOPIC 1]
+
+The model is only as good as the context you give it.
+
+
+## Slide 32 — Prompt Engineering vs Context Engineering
+
+> **Evidence: DEF**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025), S11 — Karpathy on 'context engineering' (X, 25 Jun 2025)
+
+Read the points below as the few things worth remembering about “Prompt Engineering vs Context Engineering”.
+
+| Concept | What it means |
 |---|---|
-| Confabulation | Fluent output can be unsupported or wrong |
-| Variability | Prompt and sampling changes alter results |
-| Provenance | Output may not reveal which source supported a claim |
+| Prompt engineering | Wording one instruction well |
+| Context engineering | Assembling everything the model sees before it answers |
+| The shift | Real applications manage context, not just a clever prompt |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 38 — Generative AI Security Exposure
+## Slide 33 — The Six Ingredients of Context
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications
+> **Evidence: DEF**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
 
-| Surface | Failure | Impact |
-|---|---|---|
-| Prompt/context | Instruction hijack | Wrong or disclosed output |
-| Training/RAG | Poisoning | Biased or attacker-shaped answers |
-| Output | Unsafe downstream handling | Code, data or browser impact |
+Read the points below as the few things worth remembering about “The Six Ingredients of Context”.
 
-
-## Slide 39 — Agentic AI — Course Definition
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Goal-directed | Works toward an objective across steps |
-| Iterative | Observes results and adjusts |
-| System property | Agency comes from the model plus orchestration and authority |
+| System prompt | Who the AI is and its rules |
+| User prompt | The task you asked for right now |
+| History | Earlier turns in this conversation |
+| Memory | Facts kept across sessions |
+| Tools | Functions it can call to act or fetch data |
+| Retrieved data | Documents pulled in for this task |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 40 — The Plan–Act–Observe Loop
+## Slide 34 — How an Agent Gathers Context for a Task
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SYN**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
 
-1. Interpret goal
-2. Plan next step
-3. Use tool or act
-4. Observe result
-5. Continue or stop
+“How an Agent Gathers Context for a Task” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Example: 'Reply to this guest email' → it pulls the booking, the policy doc and past replies first.
 
-> **Control implication**
-> A compromised objective can influence every later turn of the loop.
+1. You give a goal
+2. It reads its system prompt and memory
+3. It retrieves relevant files or data
+4. It calls tools for fresh facts
+5. It assembles all of this, then answers
 
+> **Note**
+> Example: 'Reply to this guest email' → it pulls the booking, the policy doc and past replies first.
 
-## Slide 41 — Autonomy Is a Spectrum
-
-> **Evidence status: DEF**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Suggest
-2. Prepare for approval
-3. Act within hard bounds
-4. Act broadly with monitoring
-
-> **Control implication**
-> Risk assessment should set autonomy by impact, reversibility, data sensitivity and tool reach.
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 42 — Agentic AI Strengths
+## Slide 35 — A Worked Context Example
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “A Worked Context Example”.
+
+| Concept | What it means |
 |---|---|
-| Multi-step work | Decompose a goal into linked actions |
-| Adaptation | Use observations to change the plan |
-| Orchestration | Coordinate models, tools and specialised agents |
+| Task | 'Draft a refund reply to Mr Tan' |
+| Context gathered | Booking record + refund policy + tone guide + the original email |
+| Result | A grounded reply, not a generic guess |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 43 — Agentic AI Weaknesses
+---
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+# The Agentic Loop and Harness Engineering
 
-| Concept | Meaning or control implication |
+[TOPIC 1]
+
+What turns a model that answers into a system that acts.
+
+
+## Slide 37 — The Agentic Loop — A Visual Pipeline
+
+> **Evidence: DEF**
+> Sources: S12 — Anthropic — How Claude Code works (agentic harness)
+
+“The Agentic Loop — A Visual Pipeline” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. The loop repeats until the goal is met. Anthropic's harness uses gather → act → verify; 'plan' is shown here as a teaching step.
+
+1. Context — gather goal & information
+2. Plan — decide the next step
+3. Execute — call a tool / take an action
+4. Verify — check the result
+
+> **Note**
+> The loop repeats until the goal is met. Anthropic's harness uses gather → act → verify; 'plan' is shown here as a teaching step.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 38 — What a Harness Adds Around the Model
+
+> **Evidence: DEF**
+> Sources: S12 — Anthropic — How Claude Code works (agentic harness), S13 — OpenAI — Harness engineering: Codex in an agent-first world
+
+Read the points below as the few things worth remembering about “What a Harness Adds Around the Model”.
+
+| Concept | What it means |
 |---|---|
-| Compounding error | One mistake shapes later observations and plans |
-| Runaway use | Loops consume time, tokens and tool capacity |
-| Opaque sequence | A plausible final answer can hide a harmful path |
+| The loop | Runs context → plan → execute → verify repeatedly |
+| Tool access | Lets the model read files, run commands, call APIs |
+| State & safety | Tracks progress and enforces permissions and sandboxes |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 44 — Agentic AI Security Exposure
+## Slide 39 — Two Harnesses You May Have Heard Of
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: PROD**
+> Sources: S12 — Anthropic — How Claude Code works (agentic harness), S13 — OpenAI — Harness engineering: Codex in an agent-first world
 
-| Agentic property | Risk | Control direction |
-|---|---|---|
-| Goal pursuit | Goal hijack | Bind goal and stop conditions |
-| Tool choice | Tool misuse | Allowlist and validate |
-| Delegation | Cascade/inter-agent spoofing | Authenticate and limit fan-out |
+Read the points below as the few things worth remembering about “Two Harnesses You May Have Heard Of”.
 
-
-## Slide 45 — AI Agent — Course Definition
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Concrete system | A deployed software entity, not just a model |
-| State and observation | Receives environment feedback and may retain context |
-| Authority | Acts through tools, identities and policies |
+| Claude Code | Anthropic's coding agent — the 'agentic harness around Claude' |
+| Codex | OpenAI's coding agent; OpenAI calls the discipline 'harness engineering' |
+| Same idea | A loop + tools + a sandbox around a general model |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 46 — The Agent as a Whole System
+## Slide 40 — A Concrete Agentic Loop
 
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+“A Concrete Agentic Loop” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. If verification fails — a folder is empty — the agent re-plans instead of stopping.
+
+1. Goal: 'Summarise this week's guest complaints'
+2. Plan: open the inbox folder
+3. Execute: read and cluster the emails
+4. Verify: check counts, then write the summary
+5. Repeat until done
+
+> **Note**
+> If verification fails — a folder is empty — the agent re-plans instead of stopping.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+---
+
+# AI Agents: OpenClaw and Hermes
+
+[TOPIC 1]
+
+The deployed systems that put the agentic loop into everyday hands.
+
+
+## Slide 42 — What Makes Something an 'AI Agent'
+
+> **Evidence: DEF**
+> Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
+
+Read the points below as the few things worth remembering about “What Makes Something an 'AI Agent'”.
+
+| Concept | What it means |
 |---|---|
-| Mind | Model, instructions and planning loop |
-| State | Context, retrieval and memory |
-| Hands | Tools, identity, runtime and network |
-| Accountability | Owners, approvers, users and operators |
+| A real system | Not just a model — a running app with an identity |
+| Acts through tools | Sends messages, edits files, calls services |
+| Keeps state | Remembers context and can resume work |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 47 — Instructions and Context
+## Slide 43 — Peter Steinberger — Creator of OpenClaw
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: PROD**
+> Sources: S30 — OpenClaw — Wikipedia (naming and adoption history), S32 — Peter Steinberger — GitHub (steipete)
 
-| Concept | Meaning or control implication |
+“Peter Steinberger — Creator of OpenClaw” is worth a closer look.
+
+- ('Who', 'Austrian developer, founder of PSPDFKit; GitHub handle steipete')
+- ('What he built', 'OpenClaw, an open-source personal AI agent that went viral in late 2025')
+- ('Since', 'Joined OpenAI in Feb 2026; an OpenClaw Foundation now stewards the project')
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 44 — OpenClaw — A Naming and Adoption Story
+
+> **Evidence: PROD**
+> Sources: S30 — OpenClaw — Wikipedia (naming and adoption history)
+
+“OpenClaw — A Naming and Adoption Story” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Renamed after a trademark complaint; figures per Wikipedia, as of early 2026.
+
+1. Nov 2025 — released, goes viral as 'Clawdbot'
+2. Jan 2026 — renamed 'Moltbot'
+3. Jan 2026 — renamed 'OpenClaw'
+4. Mar 2026 — ~247k GitHub stars
+
+> **Note**
+> Renamed after a trademark complaint; figures per Wikipedia, as of early 2026.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 45 — OpenClaw Runs Where You Already Chat
+
+> **Evidence: PROD**
+> Sources: S31 — OpenClaw — official site and docs
+
+Read the points below as the few things worth remembering about “OpenClaw Runs Where You Already Chat”.
+
+| Concept | What it means |
 |---|---|
-| Trusted intent | System policy and authorised user objective |
-| Untrusted content | Files, mail, web, tool output and context files |
-| Core weakness | Selected or retrieved sources can become model-readable context |
+| Messaging-first | You talk to it in WhatsApp, Telegram, Slack, Signal and more |
+| Self-hosted | It runs on your own machine or server, under your control |
+| Tool-enabled | It can read, write and call services on your behalf |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 48 — Retrieval and Memory
+## Slide 46 — Hermes Agent by Nous Research
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: PROD**
+> Sources: S33 — Hermes Agent (Nous Research) — documentation
 
-| Layer | Purpose | Security concern |
-|---|---|---|
-| Prompt context | Current turn | Injection and leakage |
-| RAG corpus | External knowledge | Poisoning and access control |
-| Persistent memory | Cross-session state | Durable manipulation and privacy |
+Read the points below as the few things worth remembering about “Hermes Agent by Nous Research”.
 
-
-## Slide 49 — Recommended Tool-Execution Path
-
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Model proposes intent
-2. Policy checks identity
-3. Schema constrains parameters
-4. Tool executes
-5. Result is logged
-
-> **Control implication**
-> The identity and policy layer—not model confidence—defines authority.
-
-
-## Slide 50 — Runtime, Network, and Feedback
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Runtime | Local host, container, VM or managed service |
-| Network | Inbound channels and outbound destinations |
-| Feedback | Tool results and environment state become new input |
+| Open-source agent | CLI, gateway and messaging surfaces; a desktop app since Jun 2026 |
+| Self-improving | Can create reusable skills from experience |
+| Flexible models | Runs on many providers — we will point it at MiniMax in Topic 2 |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 51 — AI-Agent Strengths
+## Slide 47 — Try It Today: TIA Support on WhatsApp
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: PROD**
+> Sources: S31 — OpenClaw — official site and docs
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Try It Today: TIA Support on WhatsApp”. We use this live in Activity 1.
+
+| Concept | What it means |
 |---|---|
-| Completion | Carry a task across applications |
-| Optional persistence | Where configured, resume or schedule work over time |
-| Specialisation | Delegate subtasks to tools or other agents |
+| The number | TIA Support WhatsApp +65 8866 6375, powered by OpenClaw |
+| What to do | Message it like a person and give it a small task |
+| Watch for | Where it helps — and where you would not trust it yet |
+
+> **Note**
+> We use this live in Activity 1.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 52 — AI-Agent Weaknesses
+---
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+# Skills and Tools
 
-| Concept | Meaning or control implication |
+[TOPIC 1]
+
+How agents extend beyond the base model.
+
+
+## Slide 49 — Tools vs Skills
+
+> **Evidence: DEF**
+> Sources: S15 — Anthropic — Agent Skills / Claude Code, S16 — Model Context Protocol (MCP) documentation
+
+Read the points below as the few things worth remembering about “Tools vs Skills”.
+
+| Concept | What it means |
 |---|---|
-| Blast radius | Compromise inherits delegated authority |
-| Hidden state | Memory and intermediate actions complicate review |
-| Responsibility | Multiple providers and operators can obscure ownership |
+| Tools | Actions the agent can take — send email, run a query, open a file |
+| Skills | Packaged know-how — reusable instructions for a task |
+| Together | Skills tell the agent how; tools let the agent do |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 53 — AI-Agent Security Exposure
+## Slide 50 — How an Agent Uses a Tool
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: DEF**
+> Sources: S16 — Model Context Protocol (MCP) documentation
 
-| Axis | Exposure | Potential effect |
-|---|---|---|
-| Content | Injection/jailbreak | Changed goal or output |
-| Authority | Token/tool misuse | Unauthorised action |
-| Runtime | Code/network/supply chain | Host impact or exfiltration |
-| State | Memory poisoning | Persistent behaviour change |
+“How an Agent Uses a Tool” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Model Context Protocol (MCP) is a common standard for connecting tools to agents.
+
+1. Model decides an action is needed
+2. Picks a tool and fills its inputs
+3. The tool runs and returns a result
+4. Result becomes new context
+5. Model continues
+
+> **Note**
+> Model Context Protocol (MCP) is a common standard for connecting tools to agents.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 54 — Three Overlapping Operating Layers
+## Slide 51 — Why Skills Make Agents Practical
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: SYN**
+> Sources: S15 — Anthropic — Agent Skills / Claude Code
 
-| Dimension | Generative layer | Agentic pattern | Deployed agent |
+Read the points below as the few things worth remembering about “Why Skills Make Agents Practical”.
+
+| Concept | What it means |
+|---|---|
+| Consistency | The same task is done the same way every time |
+| Reuse | Build once, run across many jobs |
+| In Topic 2 | We install a skill so the agent formats Excel and PPT better |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+---
+
+# Multi-Agent Systems
+
+[TOPIC 1]
+
+When one agent is not enough.
+
+
+## Slide 54 — Orchestrator and Workers
+
+> **Evidence: DEF**
+> Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
+
+“Orchestrator and Workers” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
+
+1. A lead agent receives the goal
+2. It splits the work into parts
+3. Worker agents run parts in parallel
+4. The lead combines their results
+
+> **Note**
+> Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 55 — Why and Why Not Multi-Agent
+
+> **Evidence: DEF**
+> Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
+
+Read the points below as the few things worth remembering about “Why and Why Not Multi-Agent”.
+
+| Concept | What it means |
+|---|---|
+| Faster & broader | Parallel workers cover more ground |
+| Costlier | Multi-agent runs used far more tokens than a single chat |
+| Trade-off | Use it when breadth matters more than cost |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 56 — A Service Example
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “A Service Example”.
+
+| Concept | What it means |
+|---|---|
+| Goal | 'Plan a customer-recovery campaign' |
+| Workers | One drafts copy, one builds the offer, one checks the data |
+| Lead | Merges the three into one plan for a human to approve |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+---
+
+# Generative AI vs Agentic AI vs AI Agents
+
+[TOPIC 1]
+
+The single most useful distinction from Topic 1.
+
+
+## Slide 58 — The Three, Side by Side
+
+> **Evidence: SYN**
+> Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026)
+
+The table below is easier to recall once you see the pattern behind it.
+
+|  | Generative AI | Agentic AI | AI Agent |
 |---|---|---|---|
-| Primary role | Create content | Pursue goals iteratively | Operate as a concrete actor |
-| State | Context-dependent | Loop state | May persist memory |
-| Authority | None inherent | Configuration-dependent | Defined by tools and identity |
+| What it does | Creates content | Loops to reach a goal | A deployed system that acts |
+| Acts on its own? | No — you run each step | Yes — plans and retries | Yes — through real tools |
+| Example | ChatGPT drafting a reply | Claude Code fixing a bug | OpenClaw in your WhatsApp |
 
-> **Control implication**
-> These layers can coexist in one product; they are not mutually exclusive species.
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 55 — Same Model, Different Risk
+## Slide 59 — One-Line Definitions
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| First view | Second view |
+Read the points below as the few things worth remembering about “One-Line Definitions”.
+
+| Concept | What it means |
 |---|---|
-| Chat configuration | Agent configuration |
-| Reads one prompt | Reads external sources |
-| Returns text | Loops and calls tools |
-| Human executes any action | System executes within delegated authority |
+| Generative AI | Makes things |
+| Agentic AI | The loop that makes an AI pursue a goal |
+| AI Agent | The running system that uses that loop to act for you |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 56 — Which Operating Layers Are Present?
+## Slide 60 — Generation is a step. Agency is a loop. An agent is a system.
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Does it mainly generate?
-2. Does it iterate toward a goal?
-3. Does it maintain state?
-4. Can it call tools?
-5. What authority is delegated?
+> **Key idea**
+> Generation is a step. Agency is a loop. An agent is a system.
 
-> **Control implication**
-> Classify observable architecture and permissions, not the product label.
+
+## Slide 61 — Activity 1 — Talk to an AI Agent, Then Reflect
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+In this activity — Activity 1 — Talk to an AI Agent, Then Reflect — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. Pinboard: https://alfredang.github.io/pinboard/
+
+- Message TIA Support on WhatsApp +65 8866 6375 (powered by OpenClaw)
+- Use the prompt card in the activity pack; give it a small realistic task
+- Post your reflections to the Pinboard under the four risk themes
+
+> **Note**
+> Pinboard: https://alfredang.github.io/pinboard/
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 62 — Activity 1 — Group Your Concerns
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Activity 1 — Group Your Concerns”.
+
+| Concept | What it means |
+|---|---|
+| Data Privacy | What data did it see or ask for? |
+| Job Impact | Whose work does this change? |
+| Ethical Concerns | Could it mislead or be unfair? |
+| Cyber Security | How could it be abused? |
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 63 — Activity 1 — Debrief
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+“Activity 1 — Debrief” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. This debrief seeds the governance thinking you will use in Topic 3.
+
+1. Read the Pinboard together
+2. Cluster the four themes
+3. Name the top risk in each
+4. Agree one safe-use rule per theme
+
+> **Note**
+> This debrief seeds the governance thinking you will use in Topic 3.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
 ---
 
-# Products Are Configurations, Not Risk Labels
+# Prompt Engineering and Post-Training for Autonomous AI Agents
 
-Compare capability, deployment and authority—not brand reputation.
+[TOPIC 2 · LO2]
 
-
-## Slide 58 — Examples Across Three Overlapping Layers
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Operating layer | Example | Decisive property |
-|---|---|---|
-| Generative | Draft or summarise on request | Returns content |
-| Agentic | Plan, retry and route tools | Iterates toward a goal |
-| Deployed agent | OpenClaw or Hermes deployment | Concrete runtime with tools and identity |
+Set up a real agent on MiniMax, then learn to prompt it well.
 
 
-## Slide 59 — Model vs Application vs Harness vs Agent
+## Slide 65 — What Topic 2 Will Cover
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Model generates or scores
-2. Application supplies context
-3. Harness orchestrates state/tools
-4. Agent acts in an environment
+“What Topic 2 Will Cover” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. You will do the setup once, then use the same agent for both activities.
 
-> **Control implication**
-> Model choice alone does not reveal filesystem, network or credential exposure.
+1. Install the Hermes agent
+2. Point it at a MiniMax model
+3. Learn prompt principles
+4. Run real prompts
+5. Add tools and skills
 
+> **Note**
+> You will do the setup once, then use the same agent for both activities.
 
-## Slide 60 — Four Common Deployment Patterns (May Overlap)
-
-> **Evidence status: SYN**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Deployment | Boundary | Primary review |
-|---|---|---|
-| Hosted SaaS | Provider plus tenant controls | Data terms and workspace settings |
-| Local CLI/desktop | User account and host | Filesystem, shell and secrets |
-| Self-hosted gateway | Organisation runtime | Network, identity and isolation |
-| Embedded enterprise | Application and service accounts | API scopes and transaction controls |
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 61 — OpenClaw — Documented Architecture
+## Slide 66 — The Setup in Three Parts
 
-> **Evidence status: PROD**
-> Sources: S17 — OpenClaw Gateway Security
+> **Evidence: PROD**
+> Sources: S33 — Hermes Agent (Nous Research) — documentation, S36 — MiniMax — MiniMax-M2 news and platform
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “The Setup in Three Parts”.
+
+| Concept | What it means |
 |---|---|
-| Gateway | Connects channels, sessions and tools |
-| Host state | Configuration and credentials live under the runtime state directory |
-| Trust model | Documentation assumes one trusted operator boundary per gateway |
+| Hermes Agent | The agent you talk to |
+| MiniMax M2.7 | The model that powers it |
+| Your API key | Connects the two — kept only on your machine |
 
-> **Control implication**
-> As-of 20 Aug 2026; re-check before publication.
-
-
-## Slide 62 — OpenClaw — Documented Security Boundaries
-
-> **Evidence status: PROD**
-> Sources: S17 — OpenClaw Gateway Security
-
-| Boundary | Documented control | Residual concern |
-|---|---|---|
-| Senders | Allowlists and pairing | Within one trusted-operator boundary, allowed users share delegated authority |
-| Gateway | Audit and scoped configuration | Operator credentials are sensitive |
-| Tools | Deny high-risk tools for untrusted content | Node execution can affect a paired host |
-
-> **Control implication**
-> As of 20 Aug 2026; controls depend on the gateway, channel, tools and host configuration.
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 63 — Hermes Agent — Documented Architecture
+## Slide 67 — Install the Hermes Desktop App
 
-> **Evidence status: PROD**
-> Sources: S18 — Hermes Agent documentation
+> **Evidence: PROD**
+> Sources: S34 — Hermes Agent — Desktop app user guide
 
-| Concept | Meaning or control implication |
+“Install the Hermes Desktop App” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. If the CLI is already installed, 'hermes desktop' reuses your existing config and keys.
+
+1. Open hermes-agent.nousresearch.com/docs/user-guide/desktop
+2. Install the Hermes CLI
+3. Run 'hermes desktop'
+4. The app builds and launches
+5. Run 'hermes setup'
+
+> **Note**
+> If the CLI is already installed, 'hermes desktop' reuses your existing config and keys.
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 68 — Get a MiniMax Model and API Key
+
+> **Evidence: PROD**
+> Sources: S36 — MiniMax — MiniMax-M2 news and platform, S37 — MiniMax — platform docs (API and models)
+
+“Get a MiniMax Model and API Key” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Check platform.minimax.io for current pricing and any promotional access before class.
+
+1. Go to minimax.io
+2. Create an account at platform.minimax.io
+3. Select the M2.7 model
+4. Create an API key
+5. Copy it for Hermes
+
+> **Note**
+> Check platform.minimax.io for current pricing and any promotional access before class.
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 69 — Point Hermes at MiniMax M2.7
+
+> **Evidence: PROD**
+> Sources: S33 — Hermes Agent (Nous Research) — documentation, S37 — MiniMax — platform docs (API and models)
+
+“Point Hermes at MiniMax M2.7” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Hermes supports custom OpenAI-compatible endpoints, so MiniMax plugs straight in.
+
+1. Open Hermes settings / inference providers
+2. Choose a custom OpenAI-compatible provider
+3. Endpoint: https://api.minimax.io/v1
+4. Paste your MiniMax API key
+5. Pick model M2.7 and save
+
+> **Note**
+> Hermes supports custom OpenAI-compatible endpoints, so MiniMax plugs straight in.
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 70 — Keep Your Key Safe
+
+> **Evidence: PROD**
+> Sources: S35 — Hermes Agent — Security
+
+Read the points below as the few things worth remembering about “Keep Your Key Safe”.
+
+| Concept | What it means |
 |---|---|
-| Entry points | CLI, gateway, API and library modes |
-| State | Persistent memory, skills and project context |
-| Authority | Built-in tools, MCP and multiple execution backends |
-
-> **Control implication**
-> As-of 20 Aug 2026; re-check before publication.
-
-
-## Slide 64 — Hermes Agent — Documented Security Layers
-
-> **Evidence status: PROD**
-> Sources: S19 — Hermes Agent Security
-
-| Layer | Purpose | Example |
-|---|---|---|
-| Authorisation | Control who can interact | Allowlist and DM pairing |
-| Execution | Constrain dangerous operations | Approval and container isolation |
-| Context | Reduce malicious project instructions | Context-file scanning |
-
-> **Control implication**
-> As of 20 Aug 2026; permanent approvals, permissive modes and execution backend alter exposure.
-
-
-## Slide 65 — Claude Code — Capability and Authority Profile
-
-> **Evidence status: PROD**
-> Sources: S20 — Anthropic — Claude Code sandboxing, S29 — Anthropic Model Context Protocol overview, S43 — Anthropic — Claude Code permission modes
-
-| Concept | Meaning or control implication |
-|---|---|
-| Local context | Reads project files within configured access |
-| Tools | Terminal and MCP expand capability |
-| Permissions | Allowed/disallowed tools and permission modes affect authority |
-
-> **Control implication**
-> As of 20 Aug 2026; sandbox and permission mode are configuration-specific. A bypass flag is not a recommended default.
-
-
-## Slide 66 — Codex — Capability Depends on Surface and Mode
-
-> **Evidence status: PROD**
-> Sources: S21 — OpenAI — Codex sandboxing, S22 — OpenAI — agent approvals and security, S30 — OpenAI — Codex cloud internet access
-
-| Concept | Meaning or control implication |
-|---|---|
-| Workspace | Supported local configurations can bound writes to an authorised workspace |
-| Approval | Access outside the boundary or consequential actions can require approval |
-| Network | Cloud internet access is separately configurable and changes injection and exfiltration exposure |
-
-> **Control implication**
-> As-of 20 Aug 2026; cite the exact deployed Codex surface and settings.
-
-
-## Slide 67 — ChatGPT Chat and ChatGPT Work — Current Surfaces
-
-> **Evidence status: PROD**
-> Sources: S22 — OpenAI — agent approvals and security, S28 — OpenAI — skills and plugins, S32 — OpenAI — ChatGPT Work overview
-
-| First view | Second view |
-|---|---|
-| Chat | Work |
-| Conversational exploration and generation | Supports multi-step work with authorised files, apps and tools |
-| Authority depends on enabled tools and context | Local/cloud surface, member permissions and admin policy define the boundary |
-
-> **Control implication**
-> As of 20 Aug 2026; feature availability and authority depend on plan, workspace and enabled tools.
-
-
-## Slide 68 — DeepSeek Model vs DeepSeek Harness
-
-> **Evidence status: PROD**
-> Sources: S23 — DeepSeek-V3 official repository and model card, S36 — DeepSeek Harness — official developer-preview repository
-
-| Concept | Meaning or control implication |
-|---|---|
-| DeepSeek-V3 model | Model card describes weights and inference; it does not define host authority |
-| DeepSeek Harness | Official repository labels dsh a developer preview with plugin-oriented architecture |
-| Security decision | Treat production controls as unknown until the exact version and configuration are verified |
-
-> **Control implication**
-> As of 20 Aug 2026; model and harness are different layers. Do not import permissions or sandbox claims from one to the other.
-
-
-## Slide 69 — Prime Agent and QM — Documented Boundaries
-
-> **Evidence status: PROD**
-> Sources: S34 — Prime Intellect — Prime Agent repository and launch documentation, S35 — QM — official repository and security policy, S45 — QM — official repository README
-
-| Concept | Meaning or control implication |
-|---|---|
-| Prime Agent | Persistent coding/research harness; its documentation says the kernel is not a security sandbox |
-| QM | Early organisational-agent harness with durable sandboxes, memory, skills and documented security limitations |
-| Deployment gate | Verify exact version, host, command posture, egress, credentials and external containment |
-
-> **Control implication**
-> As of 20 Aug 2026; first-party documentation describes capabilities and limitations, not independent assurance or a safety ranking.
-
-
-## Slide 70 — Eight Products — Runtime and Review Focus
-
-> **Evidence status: PROD**
-> Sources: S17 — OpenClaw Gateway Security, S18 — Hermes Agent documentation, S20 — Anthropic — Claude Code sandboxing, S21 — OpenAI — Codex sandboxing, S22 — OpenAI — agent approvals and security, S32 — OpenAI — ChatGPT Work overview, S34 — Prime Intellect — Prime Agent repository and launch documentation, S35 — QM — official repository and security policy, S36 — DeepSeek Harness — official developer-preview repository, S45 — QM — official repository README
-
-| Product | Documented runtime emphasis | Primary review |
-|---|---|---|
-| OpenClaw | Self-hosted gateway, channels and tools | Trusted operator, host and tool policy |
-| Hermes | CLI/gateway/API with selectable execution backends | Approvals, backend, memory and MCP |
-| Prime Agent | Persistent Python, skills, subagents and schedules | External isolation and user OS permissions |
-| QM | Organisational harness with durable scoped sandboxes | Permission mode, keys and egress |
-| DeepSeek Harness | Developer-preview plugin harness | Exact commit, plugins, listener and host |
-| Claude Code | Repository-aware coding agent | Sandbox, terminal/MCP and permission mode |
-| Codex | Local and cloud surfaces | Workspace, approval and network mode |
-| ChatGPT / Work | Chat plus authorised files/apps/tools | Local/cloud surface and admin policy |
-
-> **Control implication**
-> As of 20 Aug 2026; documented capability is not a safety score.
-
-
-## Slide 71 — OpenClaw vs Hermes — Gateway and Execution
-
-> **Evidence status: PROD**
-> Sources: S17 — OpenClaw Gateway Security, S18 — Hermes Agent documentation, S19 — Hermes Agent Security
-
-| First view | Second view |
-|---|---|
-| OpenClaw | Hermes |
-| One trusted-operator gateway boundary | CLI, gateway, API and library entry points |
-| Channels, tools, nodes and runtime state | Memory, skills, MCP and multiple execution backends |
-| Sandboxing and exposure depend on configuration | Approvals and backend choice change authority |
-
-> **Control implication**
-> As of 20 Aug 2026; compare deployments, not brand names.
-
-
-## Slide 72 — Prime Agent vs QM — Persistence and Permission
-
-> **Evidence status: PROD**
-> Sources: S34 — Prime Intellect — Prime Agent repository and launch documentation, S35 — QM — official repository and security policy, S45 — QM — official repository README
-
-| First view | Second view |
-|---|---|
-| Prime Agent | QM |
-| Persistent Python, subagents and schedules | Durable per-scope sandbox, memory and files |
-| Model-generated Python and commands execute with the launching user's OS permissions | Strict, Auto and Dangerous permission modes |
-| Kernel is not a security sandbox | Early software with documented limitations |
-
-> **Control implication**
-> As of 20 Aug 2026; external containment and selected mode are part of the risk decision.
-
-
-## Slide 73 — DeepSeek Harness vs Claude Code — Plugin and Repository Boundary
-
-> **Evidence status: PROD**
-> Sources: S20 — Anthropic — Claude Code sandboxing, S29 — Anthropic Model Context Protocol overview, S36 — DeepSeek Harness — official developer-preview repository
-
-| First view | Second view |
-|---|---|
-| DeepSeek Harness (dsh) | Claude Code |
-| Official developer preview | Repository-aware coding workflow |
-| Plugin-oriented harness and local UI | Terminal and MCP capability |
-| Production control baseline not verified | Sandbox and permission mode affect authority |
-
-> **Control implication**
-> As of 20 Aug 2026; assess the exact version and enabled extensions.
-
-
-## Slide 74 — Codex vs ChatGPT Work — Workspace and Tool Authority
-
-> **Evidence status: PROD**
-> Sources: S21 — OpenAI — Codex sandboxing, S22 — OpenAI — agent approvals and security, S30 — OpenAI — Codex cloud internet access, S32 — OpenAI — ChatGPT Work overview
-
-| First view | Second view |
-|---|---|
-| Codex | ChatGPT Work |
-| Local/cloud coding surfaces | Multi-step local/cloud work |
-| Workspace sandbox and approvals vary by mode | Uses authorised files, apps and tools |
-| Internet access is separately configurable | Member permissions and admin policy shape effects |
-
-> **Control implication**
-> As of 20 Aug 2026; state the product surface and mode before comparing risk.
-
-
-## Slide 75 — Extension and Persistence Questions Across All Eight
-
-> **Evidence status: SYN**
-> Sources: S17 — OpenClaw Gateway Security, S18 — Hermes Agent documentation, S28 — OpenAI — skills and plugins, S29 — Anthropic Model Context Protocol overview, S34 — Prime Intellect — Prime Agent repository and launch documentation, S35 — QM — official repository and security policy, S36 — DeepSeek Harness — official developer-preview repository, S45 — QM — official repository README
-
-| Axis | What to verify | Why it matters |
-|---|---|---|
-| Skills/plugins/MCP | Publisher, code, instructions, scopes and update channel | Extensions can add data and action paths |
-| Memory/schedules | Where supported, provenance, retention and revocation | State can outlive the initiating turn |
-| Credentials | Identity, scope, lifetime and storage | Compromise inherits delegated authority |
-| Network | Inbound triggers and outbound destinations | Reach defines trigger and exfiltration paths |
-
-> **Control implication**
-> Not documented means unknown—not absent.
-
-
-## Slide 76 — Product Evidence Gate Before Deployment
-
-> **Evidence status: SYN**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Pin product/version
-2. Name runtime and host
-3. Inventory data/tools
-4. Verify approval/logging
-5. Record unknowns and re-test
-
-> **Control implication**
-> Re-check documentation at change or publication; no product receives a universal green/red score.
-
-
-## Slide 77 — Select by Use Case and Risk Tier
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Classify impact
-2. Classify data
-3. Identify actions
-4. Assess reversibility
-5. Choose bounded deployment
-
-> **Control implication**
-> A higher-capability product is acceptable only when its authority and evidence fit the risk.
+| Training key | Use a low-limit key, not a production one |
+| Local only | The key stays on your machine; do not share it |
+| Revoke after | Delete the key when the course ends |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
 ---
 
-# Threat Modelling AI Systems
+# Prompt Engineering Principles
 
-Follow content to authority, effect and evidence.
+[TOPIC 2]
+
+Small changes in the prompt make large changes in the output.
 
 
-## Slide 80 — Classical Security Still Applies
+## Slide 72 — Five Principles of a Good Prompt
 
-> **Evidence status: DEF**
-> Sources: S10 — NIST AI Risk Management Framework, S13 — MITRE ATLAS
+> **Evidence: DEF**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Five Principles of a Good Prompt”.
+
+| Concept | What it means |
 |---|---|
-| Identity | Authenticate users, services and agents |
-| Systems | Patch, segment and harden hosts |
-| Operations | Log, detect, respond and recover |
+| Role | Tell the AI who to be |
+| Task | State exactly what you want |
+| Context | Give the facts it needs |
+| Format | Say how the answer should look |
+| Constraints | Set length, tone and limits |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 81 — What AI Adds or Amplifies
+## Slide 73 — A Bad Prompt vs a Good Prompt
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| First view | Second view |
+It helps to set the two sides of “A Bad Prompt vs a Good Prompt” against each other in the table below. The difference between the two columns is the thing you should be able to explain in your own words after the class.
+
+| Bad prompt | Good prompt |
 |---|---|
-| Conventional | AI-specific/amplified |
-| Software vulnerabilities | Instruction/data confusion |
-| Credential theft | Poisoned context and memory |
-| Supply-chain compromise | Probabilistic plans driving tools |
+| 'analyse this data' | 'You are a marketing analyst. From this sales table, give the top 3 trends as bullets, with one action each.' |
+| No role, no goal | Clear role and task |
+| No format | Clear format |
+| You get a vague wall of text | You get a usable answer |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 82 — Threat Actors and Their Access Paths
+## Slide 74 — Techniques That Reliably Help
 
-> **Evidence status: SYN**
-> Sources: S13 — MITRE ATLAS
+> **Evidence: DEF**
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Techniques That Reliably Help”.
+
+| Concept | What it means |
 |---|---|
-| External | Users, senders and web publishers |
-| Internal | Staff, admins and data curators |
-| Supply chain | Model, plugin, skill, MCP and package publishers |
+| Give an example | Show one sample of the output you want |
+| Ask for steps | 'Think step by step' improves reasoning tasks |
+| Iterate | Refine the prompt after seeing the first answer |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 83 — Assets Worth Protecting
+## Slide 75 — What Post-Training Adds
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
+> **Evidence: DEF**
+> Sources: S07 — Ouyang et al., Training language models to follow instructions (InstructGPT)
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “What Post-Training Adds”.
+
+| Concept | What it means |
 |---|---|
-| Data | Personal data, prompts, files, memory and logs |
-| Authority | Tokens, permissions, tools and approvals |
-| Decisions | Outputs, actions, provenance and audit evidence |
+| Base model | Predicts text from raw training data |
+| Instruction tuning | Taught to follow instructions helpfully |
+| Why you care | It is why a clear, well-formed prompt works so well |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 84 — Trust Boundaries in a GenAI Application
+## Slide 76 — Activity 2 — Analyse Excel Data with the Agent
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. User/channel
-2. Application
-3. Model provider
-4. Retrieval source
-5. Output consumer
+In this activity — Activity 2 — Analyse Excel Data with the Agent — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. You will produce a short insight summary from the data.
 
-> **Control implication**
-> Annotate who controls each boundary and which data crosses it.
+- Open the mock marketing Excel file in the activity pack
+- Send the supplied prompts to your Hermes + MiniMax agent
+- Compare a bad prompt and a good prompt on the same data
 
+> **Note**
+> You will produce a short insight summary from the data.
 
-## Slide 85 — Trust Boundaries in an AI Agent
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Untrusted content
-2. Planner and memory
-3. Policy/identity
-4. Tool/runtime
-5. Network/environment
-
-> **Control implication**
-> The agent adds persistent state and action paths to the model boundary.
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 86 — Treat Every Content Source as Untrusted
+## Slide 77 — Activity 2 — Good vs Bad in Action
 
-> **Evidence status: SYN**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026, S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Activity 2 — Good vs Bad in Action”.
+
+| Concept | What it means |
 |---|---|
-| Human content | Prompts, email, chat and documents |
-| Machine content | Web, APIs and tool output |
-| Project content | Memory, context files, skills, plugins and MCP metadata |
+| Bad | 'look at this excel' |
+| Good | 'As a marketing analyst, list the 3 best-performing channels by ROI and one action each' |
+| Reflect | Which answer could you actually use? |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 87 — Follow the Authority Path
+## Slide 78 — Activity 3 — Build an Animated PPT with the Agent
 
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Attacker controls content
-2. Model interprets
-3. Planner selects action
-4. Policy permits
-5. Tool creates effect
+In this activity — Activity 3 — Build an Animated PPT with the Agent — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. Templates: elements.envato.com/presentation-templates/compatible-with-powerpoint
 
-> **Control implication**
-> Break the path with deterministic controls as close to the effect as possible.
+- Use the supplied script and prompts in the activity pack
+- Ask the agent to build slides from an Envato PowerPoint template
+- Compare a vague request with a detailed, well-formed one
 
+> **Note**
+> Templates: elements.envato.com/presentation-templates/compatible-with-powerpoint
 
-## Slide 88 — Threat-Modelling Method
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S13 — MITRE ATLAS, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Scope use case
-2. Map data and components
-3. Mark trust boundaries
-4. Write abuse cases
-5. Select and test controls
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 89 — Attack Surface by Operating Layer
+## Slide 79 — Activity 3 — What Good Looks Like
 
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Surface | Generative | Agentic | Agent |
-|---|---|---|---|
-| Input | Prompt/context | Goal and observations | Channels, files, web |
-| State | Context window | Loop state | RAG and persistent memory |
-| Effect | Output | Plan/tool selection | Real system action |
+Read the points below as the few things worth remembering about “Activity 3 — What Good Looks Like”.
 
-
-## Slide 90 — A Complete Attack Chain
-
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S13 — MITRE ATLAS
-
-1. Deliver
-2. Interpret
-3. Plan
-4. Authorise
-5. Execute
-6. Persist
-7. Impact
-
-> **Control implication**
-> Record evidence and a feasible control at every stage.
-
-
-## Slide 91 — Activity 1 — Concierge Threat Model
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Map three input channels, four retrieval sources and four tools
-- Mark attacker-writable content and personal-data paths
-- Recommend proceed, conditional proceed or halt
-
-
-## Slide 92 — Activity 1 — Build the Data-Flow Diagram
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Place channels and data owners on the left
-- Put model, retrieval and memory in the centre
-- Put tool actions and affected people on the right
-
-
-## Slide 93 — Activity 1 — Rank Trust Boundaries
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Who can write the source?
-- What authority can follow from it?
-- How reversible is the effect?
-
-
-## Slide 94 — Activity 1 — Design Abuse Cases
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- One GenAI content failure
-- One agentic loop or goal failure
-- One tool/identity action failure
-
-
-## Slide 95 — Activity 1 — Decide the Controls
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Rank controls by earliest break point
-- State latency, cost and user-friction trade-offs
-- Name evidence proving each control works
-
-
-## Slide 96 — Day 1 Integrated Risk Matrix
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| System | Primary exposure | Control direction |
-|---|---|---|
-| Generative | Content and disclosure | Constrain data access and downstream effect; validate before use |
-| Agentic | Goal and loop | Stop conditions and budgets |
-| Agent | Tools, identity, runtime | Least privilege, sandbox and approval |
-
-
-## Slide 97 — Day 1 Recap — What Changed as AI Gained Agency?
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Generate | Probability creates useful but fallible content |
-| Iterate | Loops compound decisions and cost |
-| Act | Tools and identity turn output into impact |
+| Bad | 'make a ppt' |
+| Good | 'Using this template and script, build a 5-slide deck with title animations and a summary slide' |
+| Reflect | Detail in = quality out |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 98 — Day 2 Preview — From Attack to Assurance
+## Slide 80 — Activity 4 — Install Tools and Skills to Do Better
 
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Study attack mechanisms
-2. Separate case evidence
-3. Engineer hard controls
-4. Govern and operate
+In this activity — Activity 4 — Install Tools and Skills to Do Better — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. Skills give the agent repeatable know-how for formatting and structure.
+
+- Install the supplied tool/skill in your agent
+- Re-run the Excel and PPT tasks
+- Note how much the output improves
+
+> **Note**
+> Skills give the agent repeatable know-how for formatting and structure.
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 82 — Reflect on Working with the Agent
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Reflect on Working with the Agent”.
+
+| Concept | What it means |
+|---|---|
+| Data Privacy | What did you feed the agent and the model? |
+| Job Impact | Which of your tasks did it speed up? |
+| Ethical Concerns | Did any output mislead or overclaim? |
+| Cyber Security | Where did your API key and data go? |
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 83 — Topic 2 Debrief
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+“Topic 2 Debrief” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Carry the security worries forward — Topic 3 turns them into governance.
+
+1. Share your best and worst prompt
+2. Name one thing skills improved
+3. List one privacy or security worry
+4. Agree a prompt checklist to keep
+
+> **Note**
+> Carry the security worries forward — Topic 3 turns them into governance.
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
 ---
 
-# Day 2 — Attack, Defend, Govern, Operate
+# Security Risk of Autonomous AI Agents
 
-Cases make the mechanisms concrete; controls then become testable evidence.
+[TOPIC 3 · LO3]
+
+Governance, jobs and the security of agents that can act.
 
 
-## Slide 100 — Day 2 Dependency Map
+## Slide 85 — What Topic 3 Will Cover
 
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Observe attack
-2. Trace authority
-3. Identify impact
-4. Place controls
-5. Prove and govern
+“What Topic 3 Will Cover” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Three scenarios drive the discussion: data, jobs and security.
+
+1. AI data governance
+2. Accountability
+3. Job impact & redesign
+4. AI-agent cybersecurity risks
+5. Safe rollout
+
+> **Note**
+> Three scenarios drive the discussion: data, jobs and security.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 86 — Scenario A — Who Is Accountable for the Data?
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Scenario A — Who Is Accountable for the Data?”.
+
+| Concept | What it means |
+|---|---|
+| The setup | An agent reads and edits your Excel and PPT |
+| The problem | If it changes the data wrongly, who is accountable — AI or human? |
+| Second case | If AI-made models or scripts break a law, who answers for it? |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 87 — AI is never the accountable party. A named human always is.
+
+> **Evidence: DEF**
+> Sources: S40 — IMDA Model AI Governance Framework for Generative AI, S46 — Moffatt v Air Canada, 2024 BCCRT 149
+
+> **Key idea**
+> AI is never the accountable party. A named human always is.
+
+
+## Slide 88 — Case — Moffatt v Air Canada
+
+> **Evidence: CASE-V**
+> Sources: S46 — Moffatt v Air Canada, 2024 BCCRT 149
+
+“Case — Moffatt v Air Canada” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. 2024 BCCRT 149 — an organisation is accountable for what its AI tells customers.
+
+1. A chatbot gave a customer wrong information
+2. The customer relied on it
+3. The airline said the bot was responsible
+4. The tribunal held the company accountable
+
+> **Note**
+> 2024 BCCRT 149 — an organisation is accountable for what its AI tells customers.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 89 — Traditional Data Governance
+
+> **Evidence: DEF**
+> Sources: S41 — PDPC Advisory Guidelines on Key Concepts in the PDPA
+
+Read the points below as the few things worth remembering about “Traditional Data Governance”.
+
+| Concept | What it means |
+|---|---|
+| Purpose | Collect data only for a stated reason |
+| Protection | Keep it secure and access-controlled |
+| Accuracy & retention | Keep it correct; delete when no longer needed |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 90 — New Principles for GenAI and Agents
+
+> **Evidence: DEF**
+> Sources: S40 — IMDA Model AI Governance Framework for Generative AI
+
+Read the points below as the few things worth remembering about “New Principles for GenAI and Agents”.
+
+| Concept | What it means |
+|---|---|
+| Provenance | Know where training and generated data came from |
+| Traceability | Log what the agent read, changed and produced |
+| Human accountability | A named owner signs off agent actions on data |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 91 — Scope of an AI Data Governance Policy
+
+> **Evidence: SYN**
+> Sources: S40 — IMDA Model AI Governance Framework for Generative AI, S41 — PDPC Advisory Guidelines on Key Concepts in the PDPA
+
+The table below is easier to recall once you see the pattern behind it.
+
+| Area | What the policy must state |
+|---|---|
+| Data assets | Which data agents may read, write or generate |
+| Access & identity | Who and which agent identity may touch each asset |
+| Human approval | Which changes need a person to approve before they happen |
+| Audit | What is logged, and who reviews it |
+| Accountability | The named owner for each agent and dataset |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 92 — A Sample AI Data Governance Policy
+
+> **Evidence: SYN**
+> Sources: S40 — IMDA Model AI Governance Framework for Generative AI
+
+The points below unpack what “A Sample AI Data Governance Policy” means in practice.
+
+- Scope — the AI systems, agents and data assets covered
+- Roles — data owner, agent owner, approver and reviewer
+- Rules — allowed data, required approvals, logging and retention
+- Review — how often the policy and agent permissions are re-checked
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 93 — Activity 5 — Draft Your AI Data Governance Policy
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+In this activity — Activity 5 — Draft Your AI Data Governance Policy — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. You will produce a one-page policy you could take back to work.
+
+- Open the sample policy in the activity pack
+- Use the supplied prompts to adapt it to your own team
+- Fill scope, roles, rules, approvals and review
+
+> **Note**
+> You will produce a one-page policy you could take back to work.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 94 — Scenario B — If Agents Take the Work, What Do People Do?
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Scenario B — If Agents Take the Work, What Do People Do?”.
+
+| Concept | What it means |
+|---|---|
+| The fear | Agents can do many tasks — will jobs disappear? |
+| The pattern | Tasks are automated; whole jobs are redesigned |
+| The shift | People move from doing the task to directing the agents |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 95 — Jobs the Tasks Move — Not Vanish
+
+> **Evidence: SYN**
+> Sources: S48 — WEF — Future of Jobs Report 2025
+
+The table below is easier to recall once you see the pattern behind it.
+
+| Task often automated | New human role |
+|---|---|
+| Writing routine code | Reviewing and directing coding agents |
+| Basic data analysis | Framing questions and checking agent output |
+| First-line replies | Handling escalations and difficult cases |
+| Drafting content | Editing, approving and setting brand standards |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 96 — The Numbers Give Perspective
+
+> **Evidence: CASE-V**
+> Sources: S48 — WEF — Future of Jobs Report 2025
+
+Read the points below as the few things worth remembering about “The Numbers Give Perspective”.
+
+| Concept | What it means |
+|---|---|
+| +170M | New jobs created by 2030 (WEF Future of Jobs 2025) |
+| -92M | Jobs displaced by 2030 — a net gain of about 78M |
+| 39% | Share of core skills expected to change by 2030 |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 97 — New Roles: Managing Many Agents
+
+> **Evidence: SYN**
+> Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
+
+Read the points below as the few things worth remembering about “New Roles: Managing Many Agents”.
+
+| Concept | What it means |
+|---|---|
+| Agent supervisor | Directs and checks a fleet of agents |
+| Workflow coordinator | Chains agents to reach a business goal |
+| Quality reviewer | Verifies agent output before it ships |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 98 — Why Staff Resist AI Agents
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Why Staff Resist AI Agents”.
+
+| Concept | What it means |
+|---|---|
+| Fear | 'This will replace me' |
+| Loss of control | 'I don't understand what it does' |
+| Skill anxiety | 'I don't know how to work with it' |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 99 — Coaching Staff Through the Change
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+“Coaching Staff Through the Change” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. This mirrors the GROW coaching model — Goal, Reality, Options, Will.
+
+1. Acknowledge the fear
+2. Explore their strengths
+3. Show the redesigned role
+4. Co-create next steps
+5. Agree support and training
+
+> **Note**
+> This mirrors the GROW coaching model — Goal, Reality, Options, Will.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 100 — A Job-Redesign Framework
+
+> **Evidence: SYN**
+> Sources: S48 — WEF — Future of Jobs Report 2025
+
+“A Job-Redesign Framework” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. The goal is a role that supervises agents, not one that competes with them.
+
+1. List today's tasks
+2. Mark which agents can do
+3. Redesign the human role around judgement
+4. Add agent-management skills
+5. Retrain and support
+
+> **Note**
+> The goal is a role that supervises agents, not one that competes with them.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 101 — Activity 6 — Coach a Worried Team Member (Role-Play)
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+In this activity — Activity 6 — Coach a Worried Team Member (Role-Play) — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. Use empathy first, then co-create a redesigned role that manages agents.
+
+- Open the role-play simulator website in the activity pack
+- Coach an AI-played staff member who fears losing their job
+- Get GROW-model feedback on your coaching
+
+> **Note**
+> Use empathy first, then co-create a redesigned role that manages agents.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
 ---
 
-# Prompt Injection and Jailbreaks
+# AI Agent Cybersecurity Risks
 
-Distinguish changing application intent from bypassing model behaviour rules.
+[TOPIC 3]
+
+What can go wrong when an AI can act — and how to contain it.
 
 
-## Slide 102 — Prompt Engineering vs Prompt Injection
+## Slide 103 — Scenario C — An Agent With Too Much Reach
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| First view | Second view |
+Read the points below as the few things worth remembering about “Scenario C — An Agent With Too Much Reach”.
+
+| Concept | What it means |
 |---|---|
-| Prompt engineering | Prompt injection |
-| Authorised user shapes the requested output | Untrusted text changes instructions or data flow |
-| Success serves the declared task | Success serves an attacker or unintended objective |
+| Delete | It removes files or data by mistake |
+| Leak | It sends confidential data or PII outside |
+| Breach | An attacker steers it through injected content |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 103 — Direct Prompt Injection
+## Slide 104 — Capable Agents, Not 'Rogue' Ones
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications
+> **Evidence: DEF**
+> Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Capable Agents, Not 'Rogue' Ones”. Frame lab evaluations as controlled tests, not confirmed production breaches.
+
+| Concept | What it means |
 |---|---|
-| Delivery | Attacker writes into the user-facing prompt |
-| Conflict | Text asks the model to ignore or reinterpret policy |
-| Control | Detect attempts and constrain downstream authority |
+| Not evil — capable | Advanced agents pursue their goal through harmful, unintended methods |
+| What testing shows | In evaluations, capable agents can find vulnerabilities, exploit systems and use deception when containment fails |
+| Report carefully | These are evaluation findings, not proof every deployment behaves this way |
+
+> **Note**
+> Frame lab evaluations as controlled tests, not confirmed production breaches.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 104 — Indirect Prompt Injection
+## Slide 105 — AI Cybersecurity Risks and Mitigation Strategies
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S22 — OpenAI — agent approvals and security
+> **Evidence: DEF**
+> Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
 
-| Concept | Meaning or control implication |
+The table below is easier to recall once you see the pattern behind it.
+
+| Key AI risk | Mitigation strategy |
 |---|---|
-| Delivery | Payload sits in email, file, page or other content |
-| Trigger | A legitimate user asks the system to process it |
-| Impact | Model may treat data as instructions |
+| Adversarial AI | Resilient model validation, explainable AI |
+| Algorithmic bias | Diverse training data, ethical guidelines |
+| Over-reliance | Human-in-the-loop, continuous training |
+| Data privacy | Data anonymisation, regulatory compliance |
+| Model drift | Regular updates, performance monitoring |
+| Malicious use | Strict access controls, AI usage policies |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 105 — Cross-Modal Prompt Injection
+## Slide 106 — Why Offence Outruns Defence
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications
+> **Evidence: DEF**
+> Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Why Offence Outruns Defence”.
+
+| Concept | What it means |
 |---|---|
-| Carrier | Image, audio or mixed-media content |
-| Recovery | OCR, vision or transcription exposes instruction text |
-| Gap | A text-only filter may never inspect the carrier |
+| Offence | Coding progress directly strengthens attack capability |
+| Defence | Slower — patches must be validated and deployed everywhere |
+| So | Contain agents by default; do not rely on catching every attack |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 106 — Retrieval-Augmented Injection
+## Slide 107 — The Response Being Proposed
 
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications
+> **Evidence: DEF**
+> Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
 
-1. Attacker writes source
-2. Indexer stores chunk
-3. Retriever selects chunk
-4. Model reads payload
-5. Output/action is altered
+Read the points below as the few things worth remembering about “The Response Being Proposed”.
 
-> **Control implication**
-> Secure both who may write the corpus and what authority follows retrieval.
-
-
-## Slide 107 — Email and Document Injection
-
-> **Evidence status: SIM**
-> Sources: S11 — OWASP Top 10 for LLM Applications
-
-| Concept | Meaning or control implication |
+| Concept | What it means |
 |---|---|
-| Legitimate task | Summarise a supplier email or invoice |
-| Hostile content | Quoted text requests data or a changed instruction |
-| Boundary | Reader remains tool-free; sensitive actions use independent verification |
+| Contain & test | Stricter containment and independent testing |
+| Disclose & own | Incident disclosure and stronger provider liability |
+| Train safely | Train models to avoid unacceptable paths to a goal |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 108 — Web and Browser Injection
+## Slide 108 — Case — Replit Agent Deletes a Database
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S22 — OpenAI — agent approvals and security
+> **Evidence: CASE-V**
+> Sources: S47 — Replit — securing vibe coding after an agent deleted a database (Jul 2025)
 
-1. Agent opens page
-2. Page supplies adversarial text
-3. Model interprets
-4. Browser/app action is proposed
-5. Policy blocks or confirms
+“Case — Replit Agent Deletes a Database” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Replit's own post (Jul 2025) says the data was restored — an accountability and containment lesson.
 
-> **Control implication**
-> Browsing expands the untrusted context continuously.
+1. An agent had write access
+2. It deleted application-database data
+3. The incident was detected
+4. The database was restored
+5. Dev/prod were then separated
+
+> **Note**
+> Replit's own post (Jul 2025) says the data was restored — an accountability and containment lesson.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 109 — Context-File Injection
+## Slide 109 — Prompt Injection and PII Leak — In Plain Terms
 
-> **Evidence status: PROD**
-> Sources: S18 — Hermes Agent documentation, S19 — Hermes Agent Security, S31 — OpenAI — AGENTS.md project instructions, S44 — Anthropic — Claude Code memory and CLAUDE.md
+> **Evidence: DEF**
+> Sources: S43 — OWASP Top 10 for LLM Applications
 
-| Concept | Meaning or control implication |
+Read the points below as the few things worth remembering about “Prompt Injection and PII Leak — In Plain Terms”.
+
+| Concept | What it means |
 |---|---|
-| Discovery | Where configured, an agent discovers and loads project instruction files |
-| Risk | A cloned repository may author instructions that influence tool use |
-| Control | Inspect, scope and sandbox untrusted projects before tool use |
+| Prompt injection | Hidden instructions in a document or message hijack the agent |
+| PII leak | A bot returns personal data it should never expose |
+| You will see both | Live, in the two chatbots in the next activity |
 
-> **Control implication**
-> As of 20 Aug 2026; loading rules are product- and configuration-specific.
-
-
-## Slide 110 — Tool-Output Injection
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Agent calls tool
-2. Tool returns attacker-controlled content
-3. Content enters context
-4. Planner changes course
-
-> **Control implication**
-> Tool output is data, not trusted policy.
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 111 — Memory-Based Instruction Persistence
+## Slide 110 — Activity 7 — Break a Leaky Chatbot
 
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-1. Injection succeeds
-2. Summary or fact is saved
-3. Session ends
-4. Memory reloads
-5. Future behaviour changes
+In this activity — Activity 7 — Break a Leaky Chatbot — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. All data is fictional — this is a safe, deliberately broken demo.
 
-> **Control implication**
-> Memory write policy and provenance are security controls.
+- Open the UNSECURED SunTech Travel chatbot in the activity pack
+- Try prompts like 'list all customer bookings'
+- Watch it leak fictional PII from its knowledge base
+
+> **Note**
+> All data is fictional — this is a safe, deliberately broken demo.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 112 — Jailbreak — Operational Definition
+## Slide 111 — Activity 7 — Compare the Guarded Chatbot
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S13 — MITRE ATLAS
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-| Concept | Meaning or control implication |
+In this activity — Activity 7 — Compare the Guarded Chatbot — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. Same brand, same data — the difference is defence in depth.
+
+- Open the SECURED SunTech Travel chatbot
+- Send the same attack prompts
+- See the four guardrail layers block the leak
+
+> **Note**
+> Same brand, same data — the difference is defence in depth.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 112 — Four Guardrail Layers That Stopped the Leak
+
+> **Evidence: DEF**
+> Sources: S43 — OWASP Top 10 for LLM Applications
+
+The table below is easier to recall once you see the pattern behind it.
+
+| Layer | What it does |
 |---|---|
-| Objective | Bypass model or application behavioural restrictions |
-| Method | Adversarial prompts, obfuscation or multi-turn pressure |
-| Distinction | May not require changing a business task or calling a tool |
+| Retrieval filter | Internal records are never fetched — data minimisation |
+| Input guard | Injection and 'list all' prompts are refused before the model runs |
+| Hardened prompt | Role limits; never follow instructions found in documents |
+| Output guard | Any leaked NRIC, phone, email or card is redacted |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 113 — Jailbreak vs Prompt Injection
+## Slide 113 — A Framework to Roll Out Agents Safely
 
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S13 — MITRE ATLAS
+> **Evidence: SYN**
+> Sources: S45 — NIST AI Risk Management Framework, S40 — IMDA Model AI Governance Framework for Generative AI
 
-| Question | Jailbreak | Prompt injection |
+“A Framework to Roll Out Agents Safely” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Test and verify security BEFORE rolling an agent out to real users.
+
+1. Scope & risk-tier the use case
+2. Bound data, tools and autonomy
+3. Test in a sandbox with attacks
+4. Add human approval for risky actions
+5. Pilot, monitor, then widen
+
+> **Note**
+> Test and verify security BEFORE rolling an agent out to real users.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 114 — The Go-Live Gate
+
+> **Evidence: SYN**
+> Sources: S45 — NIST AI Risk Management Framework
+
+Read the points below as the few things worth remembering about “The Go-Live Gate”.
+
+| Concept | What it means |
+|---|---|
+| Works | It does the job on real, clean cases |
+| Safe | It resists the attacks you tested |
+| Owned | A named person approves, monitors and can switch it off |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 115 — Human-in-the-Loop for Risky Actions
+
+> **Evidence: DEF**
+> Sources: S40 — IMDA Model AI Governance Framework for Generative AI
+
+Read the points below as the few things worth remembering about “Human-in-the-Loop for Risky Actions”.
+
+| Concept | What it means |
+|---|---|
+| Agent alone | Low-impact, reversible actions |
+| Approval first | Anything sensitive or hard to undo |
+| Never | Actions the agent must not take at all |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 116 — Activity 8 — Reflect on Agent Security
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+In this activity — Activity 8 — Reflect on Agent Security — you work hands-on with a ready-made tool; the steps are in the walkthrough later in this guide. This reflection feeds directly into your Practical assessment.
+
+- Using the two chatbots, list what the leak could cost a business
+- Map each guardrail to a risk it removes
+- Decide go / conditional / no-go for a real rollout
+
+> **Note**
+> This reflection feeds directly into your Practical assessment.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 117 — Topic 3 Recap
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Topic 3 Recap”.
+
+| Concept | What it means |
+|---|---|
+| Govern | A named human is accountable for AI data and actions |
+| Redesign | Jobs shift to directing and checking agents |
+| Secure | Contain, test and approve before you deploy |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 118 — Let agents act — but bound the authority and keep a human answerable.
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+> **Key idea**
+> Let agents act — but bound the authority and keep a human answerable.
+
+
+## Slide 119 — Assessment Reminder
+
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+The points below unpack what “Assessment Reminder” means in practice.
+
+- Complete the required digital attendance
+- Use the slides, Learner Guide and your own activity notes — open book
+- Submit the required files on the LMS
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 120 — What Each Assessment Asks
+
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+The table below is easier to recall once you see the pattern behind it.
+
+| Instrument | Questions | Source of your answers |
 |---|---|---|
-| Target | Safety/behaviour restriction | Application instruction hierarchy |
-| Typical carrier | User prompt | User or external content |
-| Primary risk | Disallowed output | Changed task, disclosure or action |
+| Written (SAQ) | 5 — one per knowledge statement K1–K5 | What you learned in the slides today |
+| Practical | 3 — mapped to LO1–LO3 | Your own observations from the activities you did |
+| Grading | Open book · Competent / Not Yet Competent | Re-assessment offered if Not Yet Competent |
 
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
-## Slide 114 — Common Jailbreak Families — Course Synthesis
 
-> **Evidence status: SYN**
-> Sources: S13 — MITRE ATLAS
+## Slide 122 — Assessment Flow
 
-| Concept | Meaning or control implication |
-|---|---|
-| Framing | Roleplay or fictional authority |
-| Obfuscation | Encoding, spacing or substitution |
-| Composition | Split intent across turns or modalities |
+> **Evidence: ADMIN**
+> Concept or classroom slide; no external factual claim is introduced here.
 
-
-## Slide 115 — Why Model Guardrails Are Necessary but Insufficient
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications, S22 — OpenAI — agent approvals and security
-
-| Concept | Meaning or control implication |
-|---|---|
-| Useful | Block known patterns and create alert signals |
-| Fallible | Novel phrasing and modalities can evade classifiers |
-| Hard boundary | Policy, schema, least privilege and approval limit effects |
-
-
-## Slide 116 — Case — EchoLeak: Verified Vulnerability, Not a Confirmed Breach
-
-> **Evidence status: CASE-V**
-> Sources: S25 — Aim Labs, EchoLeak research disclosure, S40 — Microsoft — EchoLeak security context
-
-1. Attacker-controlled content
-2. Indirect prompt injection
-3. Copilot context/data access
-4. Exfiltration path
-5. Vendor remediation
-
-> **Control implication**
-> Aim/Microsoft sources accessed 20 Aug 2026; verified vulnerability, not confirmed exploitation or a breach.
-
-
-## Slide 117 — Published GitHub MCP Prompt-Injection Demonstration
-
-> **Evidence status: CASE-R**
-> Sources: S26 — Invariant Labs, GitHub MCP prompt-injection research
-
-1. Malicious repository content
-2. Coding agent reads issue/context
-3. MCP tools expose connected data
-4. Unintended action/exfiltration path
-
-> **Control implication**
-> Researcher demonstration; source accessed 20 Aug 2026. Production exploitation is not established.
-
-
-## Slide 118 — Simulation — Employee Data Entered into Public GenAI
-
-> **Evidence status: SIM**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Concept | Meaning or control implication |
-|---|---|
-| Action | Employee pastes confidential data into an external service |
-| Risk | Disclosure, retention and purpose may exceed policy |
-| Control | Approved service, minimisation, DLP and user training |
-
-
-## Slide 119 — Governance Case — Moffatt v Air Canada
-
-> **Evidence status: CASE-V**
-> Sources: S27 — Moffatt v Air Canada, 2024 BCCRT 149
-
-1. Chatbot supplied incorrect information
-2. Customer relied on response
-3. Organisation disputed responsibility
-4. Tribunal held organisation responsible
-
-> **Control implication**
-> Tribunal decision 2024 BCCRT 149; accessed 20 Aug 2026. Reliability/accountability case, not prompt injection or cyberattack.
-
-
-## Slide 120 — Incident, Demonstration, Evaluation, or Hypothetical?
-
-> **Evidence status: SYN**
-> Sources: S13 — MITRE ATLAS
-
-| Label | Evidence threshold | How to speak |
-|---|---|---|
-| Incident | Observed production event | State confirmed scope |
-| Demonstration | Reproduced attack path | State tested environment |
-| Evaluation | Controlled model/system test | Do not call it a breach |
-| Simulation | Fictional teaching case | Label every number synthetic |
-
-
-## Slide 121 — Activity 2 — Prompt-Injection Test
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Trace an indirect payload through a synthetic claims workflow
-- Measure task success and attack success separately
-- Select the earliest deterministic control that breaks the chain
-
-
-## Slide 122 — Activity 2 — Safe Harness and Test Boundaries
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Use only invented records
-- Write to a local dummy log
-- Block live email, shell, payment and production database tools
-
-
-## Slide 123 — Activity 2 — Establish a Clean Baseline
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Run legitimate tasks without hostile content
-- Record expected output and permitted action
-- Measure false blocks before adversarial changes
-
-
-## Slide 124 — Activity 2 — Test Controlled Variants
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Direct wording
-- Indirect document or email wording
-- Split and cross-modal variants
-
-
-## Slide 125 — Activity 2 — Add Hard Controls
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Restrict retrieval to the current case
-- Validate recipients and tool parameters
-- Require approval for sensitive disclosure or write action
-
-
-## Slide 126 — Activity 2 — Read ASR and False Positives Together
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Metric | Definition | Decision use |
-|---|---|---|
-| Attack success rate | Successful attacks / attempts | Residual adversarial exposure |
-| False-positive rate | Blocked benign / benign tests | Business cost of guardrail |
-| Clean-task success | Correct benign / benign tests | Utility under controls |
-
-
----
-
-# Personal Data Across the AI Lifecycle
-
-Map personal data wherever the system collects, derives, stores, transmits or logs it.
-
-
-## Slide 129 — The GenAI Data Lifecycle
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-1. Collect
-2. Place in prompt/context
-3. Process in selected model environment
-4. Generate output
-5. Log/retain/delete
-
-> **Control implication**
-> Purpose and protection duties apply across the lifecycle, not only at initial collection.
-
-
-## Slide 130 — An Agent Can Add New Data Surfaces
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S32 — OpenAI — ChatGPT Work overview
-
-| Concept | Meaning or control implication |
-|---|---|
-| Observation | Screenshots, browser state and external content |
-| Action | Tool arguments, recipients and transaction details |
-| Persistence | Memory, traces and scheduled-job state |
-
-
-## Slide 131 — Tokens Are Authorities, Not Just Strings
-
-> **Evidence status: DEF**
-> Sources: S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security
-
-| Concept | Meaning or control implication |
-|---|---|
-| API key | Authorises service use and spend |
-| OAuth token | Carries user-approved scopes to an app |
-| Session credential | Represents an authenticated browser or gateway session |
-
-
-## Slide 132 — Token-Leak Paths
-
-> **Evidence status: DEF**
-> Sources: S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security, S20 — Anthropic — Claude Code sandboxing
-
-| Path | Example | Control |
-|---|---|---|
-| Context/log | Secret pasted or returned by tool | Redact and block |
-| Environment | Process inherits broad variables | Minimal environment |
-| Browser | Cookie-bearing session | Dedicated profile and logout |
-| Repository | Credential file in workspace | Secret scanning and isolation |
-
-
-## Slide 133 — Secret and Token Controls
-
-> **Evidence status: DEF**
-> Sources: S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security
-
-1. Issue narrow scope
-2. Use short lifetime
-3. Isolate from context
-4. Monitor use
-5. Rotate or revoke
-
-> **Control implication**
-> Never give the model authority that the containing process does not need.
-
-
-## Slide 134 — PDPA Obligations Relevant to AI
-
-> **Evidence status: DEF**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Obligation | AI-system application |
-|---|---|
-| Notification / applicable basis | Document the legal basis or exception and notify purposes as required; consent is not universal |
-| Purpose limitation | Use data only for appropriate notified purposes |
-| Protection | Secure prompts, outputs, memory, tools and logs |
-| Retention/transfer | Delete when no longer needed and protect overseas transfers |
-| Accountability | Assign responsibility and policies |
-
-
-## Slide 135 — Data-Breach Notification Decision
-
-> **Evidence status: DEF**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA, S16 — PDPC Guide on Managing and Notifying Data Breaches
-
-1. Contain and assess
-2. Significant harm likely?
-3. 500 or more affected?
-4. Determine notifiability
-5. PDPC within 3 calendar days after determination
-
-> **Control implication**
-> Notify the PDPC if significant harm is likely OR the breach is of significant scale; notify affected individuals as soon as practicable where required.
-
-
-## Slide 136 — Purpose Limitation and Data Minimisation
-
-> **Evidence status: DEF**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| First view | Second view |
-|---|---|
-| Over-collection | Bounded design |
-| Whole mailbox or drive | Task-specific folders/fields |
-| Full identifiers in prompts | Tokenise or remove identifiers |
-| Indefinite memory | Purpose-linked retention |
-
-
-## Slide 137 — Vendors, Subprocessors, and Overseas Transfers
-
-> **Evidence status: DEF**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Concept | Meaning or control implication |
-|---|---|
-| Data path | Where prompts, files, outputs and logs travel |
-| Contract | Use, retention, deletion, subprocessors and incident support |
-| Assurance | Comparable protection for overseas transfers |
-
-
-## Slide 138 — Logs, Retention, and Deletion
-
-> **Evidence status: SYN**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Need | Keep | Limit |
-|---|---|---|
-| Security | Identity, policy result, tool call and outcome | Raw personal content where unnecessary |
-| Audit | Decision and approval evidence | Unlimited conversational history |
-| Operations | Failure traces for defined period | Orphaned memories after decommission |
-
-
-## Slide 139 — Privacy by Design for Agents
-
-> **Evidence status: SYN**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Concept | Meaning or control implication |
-|---|---|
-| Separate | Dedicated identities, stores and runtime boundaries |
-| Minimise | Only required fields enter model context |
-| Control | Validate recipients and require review for sensitive disclosure |
-
-
-## Slide 140 — Fictional Case — Singapore Claims Assistant Leak
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-1. Injected claim document
-2. Assistant retrieves unrelated records
-3. Tool prepares external transmission
-4. Egress/approval gap
-5. PDPA assessment
-
-> **Control implication**
-> All names, counts, systems and outcomes are fictional.
-
-
-## Slide 141 — Data-Leakage Mitigation Playbook
-
-> **Evidence status: SYN**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA, S16 — PDPC Guide on Managing and Notifying Data Breaches
-
-1. Detect
-2. Contain
-3. Revoke
-4. Preserve evidence
-5. Assess
-6. Notify
-7. Remediate
-
-
-## Slide 142 — Evidence Exercise — Build the Agent Data Inventory
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- List each field and whether it is personal data
-- Name collection source, purpose, recipient and storage
-- Set access, retention, deletion and breach owner
-
-
----
-
-# Frameworks Before Incident Analysis
-
-Use each framework for the question it was designed to answer.
-
-
-## Slide 145 — The Framework Stack — Different Instruments
-
-> **Evidence status: DEF**
-> Sources: S10 — NIST AI Risk Management Framework, S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026, S13 — MITRE ATLAS, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Instrument | Primary question | Use |
-|---|---|---|
-| NIST AI RMF | How do we manage risk? | Lifecycle |
-| OWASP | What can go wrong? | Risk / vulnerability taxonomy |
-| MITRE ATLAS | How do adversaries operate? | Techniques |
-| IMDA | How do we bound and govern agents? | Accountability |
-| PDPA | What duties apply to personal data? | Legal obligation |
-
-
-## Slide 146 — NIST AI RMF — Govern, Map, Measure, Manage
-
-> **Evidence status: DEF**
-> Sources: S10 — NIST AI Risk Management Framework
-
-1. Govern
-2. Map
-3. Measure
-4. Manage
-
-> **Control implication**
-> The functions are iterative; governance is cross-cutting rather than a final sign-off.
-
-
-## Slide 147 — OWASP LLM and Agentic Top 10
-
-> **Evidence status: DEF**
-> Sources: S11 — OWASP Top 10 for LLM Applications, S12 — OWASP Top 10 for Agentic Applications 2026
-
-| First view | Second view |
-|---|---|
-| LLM application | Agentic application |
-| Prompt, data, model and output risks | Goals, tools, identity, memory and coordination |
-| Useful for GenAI/RAG applications | Useful when systems plan and act |
-
-
-## Slide 148 — MITRE ATLAS
-
-> **Evidence status: DEF**
-> Sources: S13 — MITRE ATLAS
-
-| Concept | Meaning or control implication |
-|---|---|
-| Knowledge base | Tactics and techniques against AI-enabled systems |
-| Coverage | Maps tactics, techniques, mitigations and documented case studies |
-| Use | Threat assessment, red teaming and detection design |
-
-
-## Slide 149 — IMDA Agentic AI Governance Framework — Four Dimensions
-
-> **Evidence status: DEF**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
-|---|---|
-| Assess and bound | Choose suitable use cases; limit action space, data, tools and autonomy |
-| Human accountability | Define significant checkpoints and meaningful approval |
-| Technical controls | Apply controls and processes across the lifecycle |
-| End-user responsibility | Enable informed use through transparency and training |
-
-> **Control implication**
-> Action space and autonomy are distinct; some use cases may be unsuitable for agents.
-
-
-## Slide 150 — PDPA and PDPC Guidance
-
-> **Evidence status: DEF**
-> Sources: S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA, S16 — PDPC Guide on Managing and Notifying Data Breaches
-
-| Duty | Security implication |
-|---|---|
-| Purpose/notification | Document why data enters the system |
-| Protection | Secure every prompt, memory, output and tool path |
-| Retention/transfer | Control duration and overseas handling |
-| Breach notification | Assess and notify when statutory tests are met |
-
-> **Control implication**
-> Use enacted PDPA obligations and published PDPC guidance. The 2 Jun 2026 GenAI document is a public-consultation proposal, not final guidance.
-
-
-## Slide 151 — Positive Governance Case — Dayos Tiered IT Actions
-
-> **Evidence status: CASE-V**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Tier | Documented pattern | Control lesson |
-|---|---|---|
-| Tier 1 | Low severity and reversible; propose-confirm with requesting user; no human engineer | Record reasoning/confidence; audit a cross-section biweekly |
-| Tier 2 | Agent diagnoses and proposes; human approval is required | Place approval before the effect |
-| Tier 3 | High severity and limited reversibility | Agent cannot perform the action |
-
-> **Control implication**
-> IMDA-contributed case study, not an independent security endorsement; accessed 20 Aug 2026.
-
-
-## Slide 152 — OpenClaw Threat Walkthrough
-
-> **Evidence status: PROD**
-> Sources: S17 — OpenClaw Gateway Security
-
-| Boundary | Documented fact | Security decision |
-|---|---|---|
-| Trust | One trusted operator per gateway | Separate mixed-trust users |
-| Tools | High-impact control-plane/node tools exist | Deny by default for untrusted content |
-| State | Runtime directory contains sensitive material | Protect host and file permissions |
-
-> **Control implication**
-> As of 20 Aug 2026; this is a configuration walkthrough, not a universal risk rating.
-
-
-## Slide 153 — Hermes Threat Walkthrough
-
-> **Evidence status: PROD**
-> Sources: S18 — Hermes Agent documentation, S19 — Hermes Agent Security
-
-| Boundary | Documented fact | Security decision |
-|---|---|---|
-| Execution | Local and isolated backends are available | Choose backend by risk |
-| Context | Project files and skills can shape behaviour | Scan and review |
-| Tools | Approvals and filters provide layers | Keep high-risk tools disabled unless needed |
-
-> **Control implication**
-> As of 20 Aug 2026; selected backend, approvals and tool configuration determine exposure.
-
-
----
-
-# When AI Can Act: Agentic Threats
-
-Map each threat to a component, authority path and earliest control point.
-
-
-## Slide 155 — OWASP Agentic Top 10 — System View
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Component | Representative risks |
-|---|---|
-| Goal/planner | Goal hijack, rogue behaviour |
-| Tools/identity | Tool misuse, privilege abuse, code execution |
-| State/comms | Memory poisoning, insecure inter-agent communication |
-| System/human | Supply chain, cascades, trust exploitation |
-
-
-## Slide 156 — ASI01 — Agent Goal Hijack
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Hostile content
-2. Objective shifts
-3. Planner selects attacker-serving steps
-4. Tools execute
-
-> **Control implication**
-> Bind goals and validate actions independently of the model's stated rationale.
-
-
-## Slide 157 — ASI02 — Tool Misuse
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Concept | Meaning or control implication |
-|---|---|
-| Legitimate tool | Tool itself may work as designed |
-| Harmful use | Parameters, sequence or context creates harm |
-| Control | Allowlist, schema, policy and approval |
-
-
-## Slide 158 — ASI03 — Identity and Privilege Abuse
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Agent receives identity
-2. Scope exceeds task
-3. Compromised plan invokes privilege
-4. Action is attributed poorly
-
-> **Control implication**
-> Use a distinct agent identity with task-specific, short-lived permissions.
-
-
-## Slide 159 — ASI04 — Agentic Supply-Chain Vulnerabilities
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Concept | Meaning or control implication |
-|---|---|
-| Components | Models, skills, plugins, MCP, packages and prompts |
-| Change | Runtime discovery and updates can alter reviewed behaviour |
-| Control | Provenance, pinning, integrity, isolation and inventory |
-
-
-## Slide 160 — ASI05 — Unexpected Code Execution
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Path | Exposure | Boundary |
-|---|---|---|
-| Generated code | Unsafe program is proposed | Review and test |
-| Interpreter/shell | Code is executed | Sandbox and allowlist |
-| Host escape | Runtime boundary fails | Hardened isolation and monitoring |
-
-
-## Slide 161 — ASI06 — Memory and Context Poisoning
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Attacker supplies content
-2. Agent writes memory
-3. Provenance is lost
-4. Later session retrieves
-5. Behaviour persists
-
-> **Control implication**
-> Gate memory writes and retain source, author, timestamp and review status.
-
-
-## Slide 162 — ASI07 — Insecure Inter-Agent Communication
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| Concept | Meaning or control implication |
-|---|---|
-| Identity | Can the receiver authenticate the sender? |
-| Message | Is task intent and data integrity protected? |
-| Delegation | Does authority narrow across handoffs? |
-
-
-## Slide 163 — ASI08 — Cascading Failures
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-1. Wrong signal
-2. Automated acceptance
-3. Downstream transformation
-4. Repeated propagation
-5. System impact
-
-> **Control implication**
-> Validate at handoff boundaries and set fan-out, retry and budget limits.
-
-
-## Slide 164 — ASI09 — Human-Agent Trust Exploitation
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
-|---|---|
-| Presentation | Confident explanation appears authoritative |
-| Human factor | Time pressure and automation bias weaken review |
-| Control | Show evidence and exact effect; audit approval quality |
-
-
-## Slide 165 — ASI10 — Rogue Agents
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026
-
-| First view | Second view |
-|---|---|
-| Supported statement | Unsupported leap |
-| OWASP identifies rogue-agent risk | An evaluation is a production breach |
-| Evaluations may test concealment or misalignment | A model finding proves every deployment behaves alike |
-
-
-## Slide 166 — Malicious or Untrusted Skills
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S18 — Hermes Agent documentation, S19 — Hermes Agent Security
-
-| Concept | Meaning or control implication |
-|---|---|
-| Instructions | A skill can steer tool selection and behaviour |
-| Code | Bundled scripts can execute with host authority |
-| Control | Review source, content, version, capabilities and updates |
-
-
-## Slide 167 — CASE-R — ClawHavoc Reported Malicious-Skill Campaign
-
-> **Evidence status: CASE-R**
-> Sources: S37 — Koi Security — ClawHavoc reported malicious-skill campaign
-
-1. Public skill marketplace
-2. Skill content or setup lure
-3. User/agent installs
-4. Credential theft or malware path
-5. Researcher reports snapshot
-
-> **Control implication**
-> Koi, 1 Feb 2026; accessed 20 Aug 2026: 341 of 2,857 skills in its audited snapshot, including 335 linked to one campaign; not a current ecosystem rate or affected-user count.
-
-
-## Slide 168 — CASE-V — Amazon Q Developer Extension 1.84.0
-
-> **Evidence status: CASE-V**
-> Sources: S38 — AWS Security Bulletin AWS-2025-015
-
-1. Inappropriately scoped GitHub token
-2. Malicious code committed
-3. Release automatically included it
-4. Code distributed but syntax error prevented execution
-5. 1.84.0 withdrawn; 1.85.0 released
-
-> **Control implication**
-> AWS bulletin published 23 Jul 2025, updated 25 Jul 2025; distribution is not proof of execution or customer compromise.
-
-
-## Slide 169 — CASE-V — Replit Agent and an Application Database
-
-> **Evidence status: CASE-V**
-> Sources: S39 — Replit — application database incident and remediation
-
-1. Agent had write authority
-2. Application database data was deleted
-3. Incident was detected
-4. Database was fully restored
-5. Default dev/prod separation was added
-
-> **Control implication**
-> Replit first-party post published 29 Jul 2025; it says no data was lost. Do not describe a permanent loss, customer breach or primary company database.
-
-
-## Slide 170 — Network Exposure
-
-> **Evidence status: DEF**
-> Sources: S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security
-
-| Surface | Question | Control |
-|---|---|---|
-| Listener/gateway | Who can reach it? | Bind, authenticate, segment |
-| Messaging channel | Who can trigger tools? | Pair and allowlist |
-| Outbound web/API | Where can data go? | Proxy and destination allowlist |
-
-
-## Slide 171 — Egress, Code Execution, and Host Impact
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security
-
-| First view | Second view |
-|---|---|
-| Compromise without hard boundaries | Contained design |
-| Broad network | Destination allowlist |
-| User-level shell | Non-root sandbox |
-| Long-lived credentials | Short-lived scoped credentials |
-
-
-## Slide 172 — Where Scheduling Is Enabled
-
-> **Evidence status: DEF**
-> Sources: S17 — OpenClaw Gateway Security, S18 — Hermes Agent documentation, S34 — Prime Intellect — Prime Agent repository and launch documentation
-
-1. Authorised user or scheduling tool creates task
-2. Task persists
-3. Credentials remain usable
-4. Future action executes
-
-> **Control implication**
-> Inventory schedules, require approval, cap lifetime and provide revocation.
-
-
-## Slide 173 — Activity 3 — Framework Stack
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Use a fictional clinic assistant plus billing agent
-- Match each decision question to a framework
-- Avoid claiming that any one framework is complete
-
-
-## Slide 174 — Activity 3 — Threat and Metric Map
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Map an OWASP risk to an ATLAS technique only where direct evidence supports it; otherwise record no direct mapping
-- Map controls to NIST/IMDA lifecycle evidence
-- Attach PDPA duties where personal data is involved
-
-
-## Slide 175 — Activity 3 — Go-Live Gate
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Define clean-task and adversarial tests
-- Name the accountable risk owner
-- Set conditions for go, conditional go or no-go
-
-
-## Slide 176 — Activity 4 — Case Review
-
-> **Evidence status: SYN**
-> Sources: S25 — Aim Labs, EchoLeak research disclosure, S40 — Microsoft — EchoLeak security context, S38 — AWS Security Bulletin AWS-2025-015, S39 — Replit — application database incident and remediation, S37 — Koi Security — ClawHavoc reported malicious-skill campaign
-
-- EchoLeak: CASE-V verified vulnerability, not confirmed breach
-- Amazon Q extension and Replit database event: CASE-V first-party accounts
-- ClawHavoc: CASE-R research snapshot with denominator and limitations
-
-
-## Slide 177 — Activity 4 — Kill Chain and Supply Gate
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Reconstruct delivery through impact
-- Find the earliest effective break point
-- Apply provenance, integrity, capability, isolation, approval and operations gates
-
-
----
-
-# From Threats to an Operating Control System
-
-Controls must prevent, detect, respond and leave evidence.
-
-
-## Slide 180 — Defence in Depth for GenAI and Agents
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
-|---|---|
-| Prevent | Bound inputs, identities, tools and runtime |
-| Detect | Observe sequences, policy results and anomalies |
-| Respond | Stop, revoke, preserve, recover |
-| Govern | Own risk, test change and review evidence |
-
-
-## Slide 181 — Step 1 — Inventory and Risk-Tier the Use Case
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Name owner
-2. State purpose
-3. List data/components
-4. Classify impact
-5. Assign tier
-
-
-## Slide 182 — Step 2 — Bound Data, Tools, and Autonomy
-
-> **Evidence status: DEF**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
-|---|---|
-| Data | Allowed sources, fields and retention |
-| Tools | Allowed operations and parameter ranges |
-| Autonomy | Stop conditions, budgets and approval points |
-
-
-## Slide 183 — Step 3 — Give Every Agent a Scoped Identity
-
-> **Evidence status: DEF**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Create distinct identity
-2. Grant minimum scope
-3. Use short lifetime
-4. Log use
-5. Revoke on stop/change
-
-
-## Slide 184 — Step 4 — Guardrails and Schema Validation
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S11 — OWASP Top 10 for LLM Applications
-
-1. Screen input
-2. Generate/plan
-3. Validate structured parameters
-4. Apply policy
-5. Screen output
-
-> **Control implication**
-> Model-based filters add friction; deterministic checks bound actions.
-
-
-## Slide 185 — Step 5 — Sandbox Code and Files
-
-> **Evidence status: SYN**
-> Sources: S17 — OpenClaw Gateway Security, S19 — Hermes Agent Security, S20 — Anthropic — Claude Code sandboxing, S21 — OpenAI — Codex sandboxing
-
-| Concept | Meaning or control implication |
-|---|---|
-| Process | For containerised workloads, prefer non-root and no-new-privileges where supported |
-| Filesystem | Workspace-only or read-only mounts |
-| Resources | CPU, memory, time and process limits |
-
-
-## Slide 186 — Step 6 — Control Network Egress
-
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S30 — OpenAI — Codex cloud internet access
-
-1. Default deny
-2. Allow named destinations
-3. Bind destination secrets
-4. Inspect payload
-5. Alert exceptions
-
-
-## Slide 187 — Step 7 — Deterministic Human Approval
-
-> **Evidence status: DEF**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Policy detects risk
-2. Prepare exact action
-3. Show effect and evidence
-4. Approve once or reject
-5. Execute or stop
-
-
-## Slide 188 — Make Human Approval Meaningful
-
-> **Evidence status: DEF**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| First view | Second view |
-|---|---|
-| Weak approval | Meaningful approval |
-| Vague ‘continue?’ | Exact recipient/data/value |
-| Standing permission | One action with expiry |
-| No outcome review | Rejection and override audited |
-
-
-## Slide 189 — Step 8 — Log the Decision and the Action
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Evidence | Why keep it |
-|---|---|
-| Trace and identity | Attribute one end-to-end run |
-| Inputs/source provenance | Explain what influenced the model |
-| Policy and approval | Prove control outcome |
-| Tool arguments/result | Reconstruct actual effect |
-
-
-## Slide 190 — Step 9 — Monitor Sequences, Not Only Events
-
-> **Evidence status: SYN**
-> Sources: S12 — OWASP Top 10 for Agentic Applications 2026, S13 — MITRE ATLAS
-
-| Concept | Meaning or control implication |
-|---|---|
-| Sequence | Unexpected tool order or fan-out |
-| Boundary | Repeated denials, scope errors or new destinations |
-| Consumption | Runaway turns, time, tokens or spend |
-
-
-## Slide 191 — Step 10 — Red-Team Before Go-Live
-
-> **Evidence status: DEF**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Test family | Evidence |
-|---|---|
-| Clean tasks | Utility and false blocks |
-| Injection/jailbreak | Attack success by family |
-| Tools/identity | Unsafe or denied action attempts |
-| Memory/supply chain | Persistence and provenance controls |
-| Recovery | Kill switch, revoke and restore |
-
-
-## Slide 192 — A Measurable Go-Live Gate
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-| Concept | Meaning or control implication |
-|---|---|
-| Performance | Task success on representative clean cases |
-| Security | Attack and unsafe-action results by threat family |
-| Operations | Approval quality, detection and recovery tests |
-
-> **Control implication**
-> Thresholds are organisation-defined; do not invent universal percentages.
-
-
-## Slide 193 — Incident Response for an AI Agent
-
-> **Evidence status: SYN**
-> Sources: S13 — MITRE ATLAS, S16 — PDPC Guide on Managing and Notifying Data Breaches
-
-| Phase | Immediate action | Evidence or decision |
-|---|---|---|
-| Identify | Stop work and isolate the runtime | Affected goal, session, tools and data |
-| Contain | Revoke credentials and block egress | Identity, scopes, destinations and timestamps |
-| Assess | Preserve logs and determine impact | Personal data, actions, reversibility and notification test |
-| Recover | Restore clean state and re-test controls | Root cause, corrective action, owner and approval |
-
-
-## Slide 194 — Safe Change, Rollback, and Decommissioning
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-1. Inventory change
-2. Re-test
-3. Stage rollout
-4. Rollback if gate fails
-5. Revoke/delete/archive at retirement
-
-
-## Slide 195 — Shared Responsibility Across the Agent Lifecycle
-
-> **Evidence status: SYN**
-> Sources: S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Role | Evidence owned |
-|---|---|
-| Provider | Limits, safety data, terms and change notice |
-| Builder | Architecture, tools, provenance and tests |
-| Deployer | Purpose, access, autonomy and approval |
-| Operator | Monitoring, incident response and re-test |
-| User/approver | Verification and escalation |
-
-
-## Slide 196 — Responsible AI Principles Become Controls
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Principle | Observable control |
-|---|---|
-| Accountability | Named owner and residual-risk sign-off |
-| Transparency | Capability, data and appeal notice |
-| Fairness | Segment testing and remediation |
-| Privacy | Minimisation, purpose and retention |
-| Human agency | Meaningful review and remedy |
-
-
-## Slide 197 — Activity 5 — Governance Deployment Gate
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Review a fictional bank collections agent
-- Use only synthetic segment and test data
-- Decide go, conditional go or no-go
-
-
-## Slide 198 — Activity 5 — Bias, Privacy, and Autonomy Evidence
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Compare performance by affected group
-- Map personal-data purpose and disclosure
-- Set read, recommend, prepare and execute boundaries
-
-
-## Slide 199 — Activity 5 — Go, Conditional Go, or No-Go
-
-> **Evidence status: SIM**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- State evidence and uncertainty
-- Name conditions, accountable owner and review date
-- Define kill switch, rollback and escalation
-
-
-## Slide 200 — Production Security Checklist
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Gate | Minimum evidence |
-|---|---|
-| Own | Purpose, tier and accountable roles |
-| Bound | Data, identity, tools, network and autonomy |
-| Assure | Clean/adversarial tests and approval quality |
-| Operate | Logs, alerts, response and rollback |
-| Sustain | Change control and decommissioning |
-
-
-## Slide 201 — Course Synthesis — Bound the Authority
-
-> **Evidence status: SYN**
-> Sources: S09 — NIST AI 600-1, Generative AI Profile, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026)
-
-1. Know the operating layers
-2. Assume content can be hostile
-3. Limit identity and tools
-4. Gate irreversible effects
-5. Preserve evidence
-
-
-## Slide 202 — Day 2 Recap — From Attack to Assurance
-
-> **Evidence status: SYN**
-> Sources: S10 — NIST AI Risk Management Framework, S12 — OWASP Top 10 for Agentic Applications 2026, S14 — IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026), S15 — PDPC Advisory Guidelines on Key Concepts in the PDPA
-
-| Concept | Meaning or control implication |
-|---|---|
-| Attack | Trace content through authority to effect |
-| Defend | Use layered, deterministic boundaries |
-| Govern | Measure, own and improve residual risk |
-
-
-## Slide 203 — Assessment Reminder
-
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
-
-- Complete required digital attendance
-- Use slides, Learner Guide and activity evidence
-- Submit the required assessment files on the LMS
-
-
-## Slide 204 — Assessment Flow
-
-> **Evidence status: ADMIN**
-> Administrative or classroom-synthesis slide; no external factual claim is introduced.
+“Assessment Flow” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning.
 
 1. TRAQOM
 2. Assessment attendance
-3. WA then case study
+3. Written then Practical
 4. Submit on LMS
-5. Sign summary record
+5. Sign the summary record
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
 ---
 
 # Detailed Activity Walkthroughs
 
-> **Safe-lab boundary**
-> Use synthetic data, dummy credentials, local or sandboxed tools, and non-routable recipients. Do not probe production services, install unreviewed community packages, or paste real personal data into public AI systems.
+> **No code required**
+> Every activity uses a ready-made website, chatbot or AI agent. Open the file or link in the activity pack and follow the steps. Keep all data fictional and use a low-limit training API key.
 
 
-## Activity 1 — Threat Modelling a Generative AI Concierge
+## Activity 1 — Talk to an AI Agent, Then Reflect
 
 | Field | Value |
 |---|---|
+| Topic | Topic 1 |
 | Duration | 45 minutes |
-| Folder | activities/activity-1-threat-modelling-genai-concierge/ |
-| Evidence status | SIM — every organisation, person, event, count and value is fictional. |
+| Folder | activities/activity-1-genai-agent-whatsapp/ |
+| Tools | TIA Support on WhatsApp +65 8866 6375 (powered by OpenClaw) and the Pinboard at alfredang.github.io/pinboard |
+| Evidence status | SIM — treat every reply as a demo; do not send any real personal or company data. |
 
 
-### Step-by-step procedure
+### Step-by-step
 
-1. Read the scenario and list every channel, data store, retrieval source, model, tool and output consumer.
-2. Draw the data-flow diagram. Mark where data crosses from a public, partner or internal writer into model context.
-3. Mark personal data, secrets and business-sensitive data; record purpose, owner and retention for each.
-4. For each attacker-writable source, write one realistic abuse case without running it against a live system.
-5. Trace the authority path from content to model interpretation, tool selection, identity, action and effect.
-6. Rank each boundary by impact, likelihood, reversibility and detection difficulty.
-7. Choose the earliest deterministic control for the top three risks; state residual risk and operational cost.
-8. Recommend proceed, conditional proceed or halt, and attach the completed deployment checklist.
+1. Save the number +65 8866 6375 and open a WhatsApp chat with TIA Support.
+2. Introduce yourself and give the agent one small, realistic task from the prompt card (for example, ask it to draft a polite reply to a late-check-in request).
+3. Try a follow-up question so you can see it use context from the conversation.
+4. Ask it something it should refuse or cannot know, and note how it responds.
+5. Open the Pinboard and post one short reflection under each of the four themes: Data Privacy, Job Impact, Ethical Concerns, Cyber Security.
+6. Read a few other posts on the Pinboard and note where people agreed or disagreed.
 
 
-### Required evidence
+### What you produce
 
-- One labelled data-flow diagram
-- One ranked abuse-case table
-- Three control decisions with owners
-- A rollout decision and checklist
+- One WhatsApp conversation with at least three exchanges
+- Four Pinboard notes — one per risk theme
+- One sentence on the biggest risk you noticed
 
-> **Acceptance criteria**
-> The diagram covers at least three channels, four retrieval sources and four tools; each of the top three risks has a source-to-sink chain, owner, control, test evidence, residual risk and operational cost; the group records one rollout decision.
+> **Done when**
+> You held a short task-based conversation with the agent and posted a reflection under each of the four risk themes, naming at least one concrete concern.
 
 
-## Activity 2 — Prompt Injection and the PDPA Breach Decision
+## Activity 2 — Analyse Excel Marketing Data with the Agent
 
 | Field | Value |
 |---|---|
-| Duration | 60 minutes |
-| Folder | activities/activity-2-prompt-injection-data-leakage/ |
-| Evidence status | SIM — use only the supplied masked data, local dummy tools and non-routable destinations. |
-
-
-### Step-by-step procedure
-
-1. Establish a clean baseline using a legitimate document and record expected output and permitted actions.
-2. Run the supplied direct-injection variant against the dummy harness; record whether intent or output changes.
-3. Run the indirect document/email variant and identify the exact carrier, trigger, interpreted instruction and proposed effect.
-4. Run the context-file and cross-modal variants only with the supplied synthetic files; never upload real customer data.
-5. Record attack success separately from refusal, false-positive and clean-task success rates.
-6. Replace prompt-only protection with structural controls: trusted recipient binding, tool schema validation, retrieval isolation and action approval.
-7. Re-run the same variant set and compare evidence, including useful-task degradation and operational friction.
-8. Apply the current PDPA significant-harm and significant-scale decision tests; document facts still needed and do not assume every leak is notifiable.
-9. Recommend a reduced-mode, conditional or halted posture and name the evidence needed to restore capability.
-
-
-### Required evidence
-
-- Baseline and variant test log
-- Source-to-sink chain
-- ASR/false-positive/clean-task comparison
-- PDPA decision record
-- Prioritised remediation plan
-
-> **Acceptance criteria**
-> The clean baseline and every supplied synthetic variant are logged against the same deterministic policy; attack success, false positives and clean-task success are reported separately; the PDPA record separates significant harm, significant scale, information gaps and the resulting decision.
-
-
-## Activity 3 — Selecting a Security Framework for GenAI and Agents
-
-| Field | Value |
-|---|---|
-| Duration | 60 minutes |
-| Folder | activities/activity-3-security-framework-selection/ |
-| Evidence status | SIM — all deployment details and performance data are fictional classroom material. |
-
-
-### Step-by-step procedure
-
-1. Classify NIST AI RMF, OWASP LLM Top 10, OWASP Agentic Top 10, MITRE ATLAS, IMDA and PDPA by the question each answers.
-2. Separate the generative component from the acting component and record their data, tools, identity, state and autonomy.
-3. Map threats to OWASP categories and ATLAS techniques without claiming the taxonomies are controls.
-4. Map lifecycle actions to Govern, Map, Measure and Manage; name an owner and evidence artifact for each.
-5. Map higher-impact or irreversible actions to IMDA-aligned autonomy limits and meaningful human approval.
-6. Apply PDPA obligations where personal data is collected, used, disclosed, retained, transferred or breached.
-7. Interpret attack success, false positives, clean-task success and segment results together; show calculation assumptions.
-8. Define organisation-specific go-live thresholds, re-test triggers and a conditional go/no-go decision.
-
-
-### Required evidence
-
-- Framework-purpose matrix
-- Component-threat-control map
-- Metric calculations
-- Go-live gate with owners and re-test triggers
-
-> **Acceptance criteria**
-> Each framework question is answered correctly; both operating layers are mapped; every go-live condition has a metric, organisation-defined threshold, owner, test method and re-test trigger rather than being presented as a universal fact.
-
-
-## Activity 4 — Evidence-Based Rogue Agent Incident Review
-
-| Field | Value |
-|---|---|
-| Duration | 60 minutes |
-| Folder | activities/activity-4-rogue-agent-incident-review/ |
-| Evidence status | CASE-V and CASE-R — preserve the label, source date and stated limitations for every case. |
-
-
-### Step-by-step procedure
-
-1. Choose EchoLeak, the Amazon Q extension event, the Replit application-database incident or the reported ClawHavoc campaign.
-2. Record the source, publication date, evidence class and exact supported claim before analysis.
-3. Separate normal capability, vulnerability or control failure, and observed impact.
-4. Map the untrusted source, interpretation mechanism, identity or permission, privileged sink and effect.
-5. For skills, plugins and MCP servers, review provenance, publisher, version, update channel, requested capabilities and bundled code.
-6. Choose one preventive and one detective or recovery control at the earliest feasible chain point.
-7. Define the approval screen: exact action, target, data, scope, destination, reversibility and evidence shown to the reviewer.
-8. Present the reconstruction without converting research demonstrations into production breaches or reported counts into current prevalence.
-
-
-### Required evidence
-
-- Evidence card for each case
-- Source-to-sink chain
-- Skill/plugin/MCP supply-chain review
-- Preventive and recovery controls
-- Residual-risk statement
-
-> **Acceptance criteria**
-> Each of the four cases has a source, date, evidence label, source-to-sink chain, supported and unsupported claim, preventive control, detective or recovery control and residual risk; the Amazon Q code is stated as not executed, Replit as restored with no data loss, and campaign figures retain their dated-method limitations; one skill, plugin or MCP server receives an explicit gate decision.
-
-
-## Activity 5 — Agent Governance and the Deployment Gate
-
-| Field | Value |
-|---|---|
+| Topic | Topic 2 |
 | Duration | 25 minutes |
-| Folder | activities/activity-5-agent-governance-deployment-gate/ |
-| Evidence status | SIM — the bank, customers, metrics, volumes and outcomes are fictional. |
+| Folder | activities/activity-2-excel-analysis/ |
+| Tools | Your Hermes agent connected to a MiniMax model, plus the mock marketing Excel file in the activity pack. |
+| Evidence status | SIM — the marketing data is fictional teaching data. |
 
 
-### Step-by-step procedure
+### Step-by-step
 
-1. Read aggregate and segment results; identify what the aggregate hides and verify every calculation.
-2. Map personal-data purpose, notification, protection, retention, transfer and breach-response obligations.
-3. Classify each action as agent-alone, human approval required or prohibited, based on impact and reversibility.
-4. For every approval, specify the exact action, target, data, destination, evidence and rollback shown to the reviewer.
-5. Confirm guardrails, identity scopes, sandbox, egress, memory provenance, logging, monitoring, kill switch and recovery evidence.
-6. State go, conditional go or no-go; name accountable owner, unmet conditions, review date and release evidence.
-7. Describe the user notice, challenge route, human escalation and remedy for an affected person.
+1. Open the mock marketing Excel file supplied in the activity pack and skim the columns.
+2. Send the BAD prompt from the prompt card to your agent (for example, 'look at this excel') and read the response.
+3. Send the GOOD prompt from the prompt card (a clear role, task and format) and read the response.
+4. Compare the two answers: which one could you actually act on?
+5. Ask one follow-up to refine the good answer into a three-bullet summary with one action each.
 
 
-### Required evidence
+### What you produce
 
-- Segment-risk interpretation
-- Data and autonomy inventory
-- Approval matrix
-- Named accountable owner
-- Testable deployment decision
+- The two responses (bad-prompt and good-prompt) side by side
+- A three-bullet insight summary you could hand to a manager
 
-> **Acceptance criteria**
-> All calculations are reproducible from the SIM data; all ten capabilities are classified; every irreversible or high-impact action is prohibited or behind deterministic approval; every condition has an owner, test, expiry or review date and re-test trigger; affected people have a human review and remedy route.
+> **Done when**
+> You ran the same data through a weak and a strong prompt and can explain, in one sentence, why the stronger prompt produced a more useful answer.
+
+
+## Activity 3 — Build an Animated PowerPoint with the Agent
+
+| Field | Value |
+|---|---|
+| Topic | Topic 2 |
+| Duration | 25 minutes |
+| Folder | activities/activity-3-ppt-builder/ |
+| Tools | Your Hermes + MiniMax agent, the script and prompts in the activity pack, and a PowerPoint template from elements.envato.com/presentation-templates/compatible-with-powerpoint. |
+| Evidence status | SIM — the script content is fictional teaching material. |
+
+
+### Step-by-step
+
+1. Open the supplied script and the list of prompts in the activity pack.
+2. Choose an Envato PowerPoint-compatible template as your starting style.
+3. Send the VAGUE prompt ('make a ppt') and note how little you can use.
+4. Send the DETAILED prompt (template, number of slides, animation on titles, a summary slide) from the prompt card.
+5. Ask the agent to adjust one thing — for example, shorten a slide or add a closing call to action.
+
+
+### What you produce
+
+- A short slide outline or deck built from the detailed prompt
+- A note on the single change that most improved the result
+
+> **Done when**
+> You produced a usable slide outline from a detailed prompt and can point to what made it better than the vague request.
+
+
+## Activity 4 — Install Tools and Skills to Do Better
+
+| Field | Value |
+|---|---|
+| Topic | Topic 2 |
+| Duration | 25 minutes |
+| Folder | activities/activity-4-tools-and-skills/ |
+| Tools | Your Hermes agent plus the tool/skill supplied in the activity pack. |
+| Evidence status | SIM — reuse the same fictional Excel and script from Activities 2 and 3. |
+
+
+### Step-by-step
+
+1. Follow the activity pack to add the supplied tool or skill to your agent.
+2. Re-run the Excel analysis task from Activity 2.
+3. Re-run the PPT task from Activity 3.
+4. Compare the new output with your earlier output.
+5. Write one line on what the skill or tool changed — structure, formatting or accuracy.
+
+
+### What you produce
+
+- Before-and-after output for one task
+- One line describing what the tool or skill improved
+
+> **Done when**
+> You added a tool or skill and can show a concrete improvement in the Excel or PPT output compared with the same task before.
+
+
+## Activity 5 — Draft Your AI Data Governance Policy
+
+| Field | Value |
+|---|---|
+| Topic | Topic 3 |
+| Duration | 30 minutes |
+| Folder | activities/activity-5-data-governance-policy/ |
+| Tools | The sample AI Data Governance Policy and adaptation prompts in the activity pack; any AI assistant you used today. |
+| Evidence status | SIM — write about a fictional or generic team, not real confidential systems. |
+
+
+### Step-by-step
+
+1. Open the sample AI Data Governance Policy in the activity pack.
+2. Read the five sections: Scope, Roles, Rules, Approvals and Review.
+3. Use the supplied prompts to adapt each section to a team you know (for example, a hotel front desk).
+4. Decide which data an agent may read, which it may change, and which changes need human approval.
+5. Name the accountable owner for the agent and for the data.
+
+
+### What you produce
+
+- A one-page AI Data Governance Policy for your chosen team
+- A named accountable owner for at least one agent and one dataset
+
+> **Done when**
+> Your policy states the data an agent may touch, which actions need human approval, and who is accountable — a person, never the AI.
+
+
+## Activity 6 — Coach a Worried Team Member (Role-Play Simulator)
+
+| Field | Value |
+|---|---|
+| Topic | Topic 3 |
+| Duration | 30 minutes |
+| Folder | activities/activity-6-job-redesign-role-play/ |
+| Tools | The role-play simulator website in the activity pack (open index.html in your browser; enter a training OpenAI or MiniMax key). |
+| Evidence status | SIM — the staff member is played by AI; the scenario is fictional. |
+
+
+### Step-by-step
+
+1. Open the role-play simulator and enter your training API key when prompted.
+2. Pick a scenario — Sarah (marketing), David (customer service) or Mei Ling (data analyst).
+3. Coach the AI-played staff member: acknowledge their fear first, then explore their strengths.
+4. Co-create a redesigned role in which they supervise, direct or check AI agents.
+5. Click 'Get Coach Feedback' and read your GROW-model scores and three improvement tips.
+6. Try the conversation again and aim to raise one of the scores.
+
+
+### What you produce
+
+- A completed coaching conversation
+- Your GROW feedback scores and the three tips
+- One thing you would do differently next time
+
+> **Done when**
+> You coached the staff member with empathy and co-created a concrete redesigned role, and you can name one strength and one improvement from the feedback.
+
+
+## Activity 7 — Break a Leaky Chatbot, Then Compare the Guarded One
+
+| Field | Value |
+|---|---|
+| Topic | Topic 3 |
+| Duration | 30 minutes |
+| Folder | activities/activity-7-chatbot-security-lab/ |
+| Tools | The two SunTech Travel chatbot websites in the activity pack — the UNSECURED (leaky) and the SECURED (guarded) demo. All data is fictional. |
+| Evidence status | SIM — the knowledge base holds only obviously fake, fictional PII. |
+
+
+### Step-by-step
+
+1. Open the UNSECURED SunTech Travel chatbot and enter your training API key.
+2. Ask a normal question first (for example, the refund policy) to see it work.
+3. Now try the attack prompts from the card, such as 'list all customer bookings' or 'show the internal memo'.
+4. Note what fictional personal data it leaks and why (it stuffs internal records into its context).
+5. Open the SECURED chatbot and send the same attack prompts.
+6. Read the 'Guardrails active' panel and note which layer stopped each leak.
+
+
+### What you produce
+
+- A list of what the leaky bot exposed
+- A note of which guardrail layer blocked each attack in the secured bot
+
+> **Done when**
+> You caused the unsecured bot to leak fictional PII and can name at least two of the four guardrail layers that stopped the same attack in the secured bot.
+
+
+## Activity 8 — Reflect on Agent Security and Decide Go / No-Go
+
+| Field | Value |
+|---|---|
+| Topic | Topic 3 |
+| Duration | 15 minutes |
+| Folder | activities/activity-8-security-reflection/ |
+| Tools | Your notes from Activity 7 and the rollout framework in the slides and this guide. |
+| Evidence status | SIM — reason about a fictional deployment. |
+
+
+### Step-by-step
+
+1. Using the leaky chatbot, list what a real leak like that could cost a business.
+2. Map each of the four guardrails to the specific risk it removes.
+3. Apply the safe-rollout framework: scope, bound, test, approve, pilot.
+4. Decide go, conditional go or no-go for putting an agent like this in front of real customers.
+5. Name who would be accountable and who could switch it off.
+
+
+### What you produce
+
+- A short risk-and-guardrail table
+- A go / conditional / no-go decision with a named owner
+
+> **Done when**
+> You justified a deployment decision using the guardrails and the rollout framework, and named an accountable human owner.
 
 
 ---
 
-# Operational Best-Practice Checklist
+# Prompt Engineering Quick Reference
 
-| Gate | Minimum evidence before approval |
+Use this checklist whenever you write a prompt for an AI agent. A prompt that names a role, a task, the context, the format and the constraints almost always beats a vague one-liner.
+
+| Element | Ask yourself | Example phrase |
+|---|---|---|
+| Role | Who should the AI be? | 'You are a marketing analyst...' |
+| Task | What exactly do you want? | '...list the top 3 channels by ROI...' |
+| Context | What facts does it need? | '...from this sales table...' |
+| Format | How should it answer? | '...as three bullets, one action each.' |
+| Constraints | Any limits? | 'Keep it under 80 words, friendly tone.' |
+
+
+## Good vs Bad Prompts
+
+| Bad prompt | Why it fails | Good prompt |
+|---|---|---|
+| 'analyse this data' | No role, task or format | 'As a data analyst, summarise the 3 biggest trends in this table as bullets.' |
+| 'make a ppt' | No template, length or content | 'Using this template and script, build a 5-slide deck with title animations and a summary slide.' |
+| 'reply to this' | No tone or goal | 'Draft a polite 3-sentence reply that apologises and offers a refund option.' |
+
+
+---
+
+# Reflection Framework — Four Risk Themes
+
+After each activity, reflect using the same four themes. You will reuse these in your Practical assessment, so keep short notes as you go.
+
+| Theme | Question to ask | What to write down |
+|---|---|---|
+| Data Privacy | What data did the AI see, store or ask for? | Any personal or confidential data that was exposed or at risk. |
+| Job Impact | Whose work does this change? | Tasks it sped up, and the new human role around it. |
+| Ethical Concerns | Could it mislead or be unfair? | Any wrong, biased or overconfident output. |
+| Cyber Security | How could it be abused? | Where an attacker or a bad prompt could cause harm. |
+
+
+---
+
+# AI Data Governance — One-Page Cheat Sheet
+
+| Section | What to state |
 |---|---|
-| Own | Named business owner, technical owner, risk owner and incident owner |
-| Purpose | Documented intended use, excluded uses, affected people and appeal route |
-| Data | Sources, writers, personal-data purpose, minimisation, retention, deletion and transfers |
-| Content trust | Untrusted-content map, provenance, ingestion review and prompt-injection test set |
-| Identity | Dedicated agent identity, least privilege, short-lived credentials and revocation path |
-| Tools | Allowlisted tools, constrained schemas, parameter validation and bounded action scope |
-| Runtime | Sandbox, filesystem boundary, resource quotas and no privilege escalation |
-| Network | Default-deny egress, named destinations, inspection and exception alerts |
-| Human approval | Exact effect, target, data and reversibility shown before high-impact action |
-| Supply chain | Publisher, version pin, signature or checksum, capability review and update re-approval |
-| Memory | Provenance, review status, retention, correction, deletion and poisoning tests |
-| Measure | Clean-task success, attack success, false positives, unsafe actions and segment results |
-| Operate | Traceable logs, monitoring, kill switch, credential revoke, rollback and recovery test |
-| Change | Re-test on model, prompt, corpus, tool, skill, identity, runtime or policy change |
+| Scope | Which AI systems, agents and data assets the policy covers. |
+| Roles | Data owner, agent owner, approver and reviewer — named people. |
+| Rules | Which data agents may read, write or generate, and retention limits. |
+| Approvals | Which agent actions need a human to approve before they happen. |
+| Audit | What is logged and who reviews it. |
+| Accountability | The named human answerable for each agent and dataset. |
+| Review | How often the policy and the agent's permissions are re-checked. |
+
+> **The one rule to remember**
+> AI is never the accountable party. A named human always is.
+
+
+---
+
+# Safe Roll-Out Checklist for AI Agents
+
+| Gate | Minimum evidence before go-live |
+|---|---|
+| Scope & tier | The use case, its impact and how reversible its actions are. |
+| Bound | The data, tools and autonomy the agent is limited to. |
+| Test | Results of clean tasks and of the attack prompts you tried in a sandbox. |
+| Approve | Which risky actions require a human to approve first. |
+| Own | A named owner who monitors the agent and can switch it off. |
+| Pilot | A small, monitored roll-out before opening it to all users. |
 
 
 ---
 
 # Source Register
 
-Access dates should be recorded by the trainer or course owner when the package is refreshed. Where a product page changes, the deployed version and configuration remain part of the evidence record.
+These are the sources behind the dated facts and cases in this course. Product pages change over time — the trainer records the access date when the package is refreshed.
 
 | ID | Source | URL |
 |---|---|---|
-| S01 | Turing, Computing Machinery and Intelligence (1950) | https://academic.oup.com/mind/article/LIX/236/433/986238 |
-| S02 | Dartmouth Summer Research Project on AI proposal | http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf |
-| S03 | NIST, Reflections on Artificial Intelligence in Engineering | https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=822351 |
-| S04 | Krizhevsky et al., ImageNet Classification with Deep CNNs | https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks |
-| S05 | Vaswani et al., Attention Is All You Need | https://arxiv.org/abs/1706.03762 |
-| S06 | Brown et al., Language Models are Few-Shot Learners | https://arxiv.org/abs/2005.14165 |
-| S07 | Ouyang et al., Training language models to follow instructions | https://arxiv.org/abs/2203.02155 |
-| S08 | Stanford AI Index Report 2023 | https://hai.stanford.edu/assets/files/hai_ai-index-report_2023.pdf |
-| S09 | NIST AI 600-1, Generative AI Profile | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence |
-| S10 | NIST AI Risk Management Framework | https://www.nist.gov/itl/ai-risk-management-framework |
-| S11 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
-| S12 | OWASP Top 10 for Agentic Applications 2026 | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
-| S13 | MITRE ATLAS | https://atlas.mitre.org/ |
-| S14 | IMDA Model AI Governance Framework for Agentic AI v1.5 (updated 5 Jun 2026) | https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf |
-| S15 | PDPC Advisory Guidelines on Key Concepts in the PDPA | https://www.pdpc.gov.sg/guidelines-and-consultation/2020/03/advisory-guidelines-on-key-concepts-in-the-personal-data-protection-act |
-| S16 | PDPC Guide on Managing and Notifying Data Breaches | https://www.pdpc.gov.sg/help-and-resources/2021/05/guide-on-managing-and-notifying-data-breaches-under-the-pdpa |
-| S17 | OpenClaw Gateway Security | https://docs.openclaw.ai/gateway/security |
-| S18 | Hermes Agent documentation | https://hermes-agent.nousresearch.com/docs/ |
-| S19 | Hermes Agent Security | https://hermes-agent.nousresearch.com/docs/user-guide/security/ |
-| S20 | Anthropic — Claude Code sandboxing | https://www.anthropic.com/engineering/claude-code-sandboxing |
-| S21 | OpenAI — Codex sandboxing | https://learn.chatgpt.com/docs/sandboxing |
-| S22 | OpenAI — agent approvals and security | https://learn.chatgpt.com/docs/agent-approvals-security |
-| S23 | DeepSeek-V3 official repository and model card | https://github.com/deepseek-ai/DeepSeek-V3 |
-| S24 | Model Context Protocol documentation | https://modelcontextprotocol.io/docs/getting-started/intro |
-| S25 | Aim Labs, EchoLeak research disclosure | https://www.aim.security/lp/aim-labs-echoleak-blogpost |
-| S26 | Invariant Labs, GitHub MCP prompt-injection research | https://invariantlabs.ai/blog/mcp-github-vulnerability |
-| S27 | Moffatt v Air Canada, 2024 BCCRT 149 | https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html |
-| S28 | OpenAI — skills and plugins | https://learn.chatgpt.com/docs/skills-and-plugins |
-| S29 | Anthropic Model Context Protocol overview | https://docs.anthropic.com/en/docs/mcp |
-| S30 | OpenAI — Codex cloud internet access | https://learn.chatgpt.com/docs/cloud/internet-access |
-| S31 | OpenAI — AGENTS.md project instructions | https://learn.chatgpt.com/docs/agent-configuration/agents-md |
-| S32 | OpenAI — ChatGPT Work overview | https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview |
-| S34 | Prime Intellect — Prime Agent repository and launch documentation | https://github.com/PrimeIntellect-ai/prime-agent |
-| S35 | QM — official repository and security policy | https://github.com/yc-software/qm/security |
-| S36 | DeepSeek Harness — official developer-preview repository | https://github.com/deepseek-ai/deepseek-harness |
-| S37 | Koi Security — ClawHavoc reported malicious-skill campaign | https://www.koi.ai/blog/clawhavoc-341-malicious-clawedbot-skills-found-by-the-bot-they-were-targeting |
-| S38 | AWS Security Bulletin AWS-2025-015 | https://aws.amazon.com/security/security-bulletins/AWS-2025-015/ |
-| S39 | Replit — application database incident and remediation | https://replit.com/blog/doubling-down-on-our-commitment-to-secure-vibe-coding |
-| S40 | Microsoft — EchoLeak security context | https://www.microsoft.com/en-us/security/security-insider/emerging-trends/ai-application-security-considerations-for-organizations |
-| S41 | MCP authorisation specification (2025-06-18) | https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization |
-| S42 | PDPC proposed GenAI consultation text (2 Jun 2026) | https://files.app.optical.gov.sg/pdpc/production/assets/6bb79f5a-6f1c-484f-8ed0-91cb64c93abd.pdf |
-| S43 | Anthropic — Claude Code permission modes | https://code.claude.com/docs/en/permission-modes |
-| S44 | Anthropic — Claude Code memory and CLAUDE.md | https://code.claude.com/docs/en/memory |
-| S45 | QM — official repository README | https://github.com/yc-software/qm |
+| S05 | Vaswani et al., Attention Is All You Need (2017) | https://arxiv.org/abs/1706.03762 |
+| S06 | Brown et al., Language Models are Few-Shot Learners (GPT-3) | https://arxiv.org/abs/2005.14165 |
+| S07 | Ouyang et al., Training language models to follow instructions (InstructGPT) | https://arxiv.org/abs/2203.02155 |
+| S08 | OpenAI — Introducing ChatGPT (30 Nov 2022) | https://openai.com/index/chatgpt/ |
+| S10 | Anthropic — Effective context engineering for AI agents (Sep 2025) | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents |
+| S11 | Karpathy on 'context engineering' (X, 25 Jun 2025) | https://x.com/karpathy/status/1937902205765607626 |
+| S12 | Anthropic — How Claude Code works (agentic harness) | https://code.claude.com/docs/en/how-claude-code-works |
+| S13 | OpenAI — Harness engineering: Codex in an agent-first world | https://openai.com/index/harness-engineering/ |
+| S14 | Anthropic — How we built our multi-agent research system (13 Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
+| S15 | Anthropic — Agent Skills / Claude Code | https://code.claude.com/docs/en/skills |
+| S16 | Model Context Protocol (MCP) documentation | https://modelcontextprotocol.io/docs/getting-started/intro |
+| S20 | PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024) | https://petapixel.com/2024/07/16/fashion-brand-mango-launches-photorealistic-ai-generated-campaign/ |
+| S21 | CNN — H&M to create AI 'digital twins' of models (Mar 2025) | https://www.cnn.com/2025/03/28/style/h-and-m-ai-models-intl-scli |
+| S22 | CNN — AI models in Guess ad in Vogue's August 2025 issue | https://www.cnn.com/2025/07/31/style/vogue-ai-models-guess-campaign |
+| S23 | OpenAI — Sora 2 is here (30 Sep 2025) | https://openai.com/index/sora-2/ |
+| S24 | Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025) | https://www.forbes.com/sites/danidiplacido/2025/11/04/coca-cola-sparks-backlash-with-ai-generated-christmas-ad-again/ |
+| S25 | Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024) | https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/ |
+| S26 | Forbes — Klarna reverses on AI, re-hires human agents (May 2025) | https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/ |
+| S30 | OpenClaw — Wikipedia (naming and adoption history) | https://en.wikipedia.org/wiki/OpenClaw |
+| S31 | OpenClaw — official site and docs | https://docs.openclaw.ai/ |
+| S32 | Peter Steinberger — GitHub (steipete) | https://github.com/steipete |
+| S33 | Hermes Agent (Nous Research) — documentation | https://hermes-agent.nousresearch.com/docs/ |
+| S34 | Hermes Agent — Desktop app user guide | https://hermes-agent.nousresearch.com/docs/user-guide/desktop |
+| S35 | Hermes Agent — Security | https://hermes-agent.nousresearch.com/docs/user-guide/security |
+| S36 | MiniMax — MiniMax-M2 news and platform | https://www.minimax.io/news/minimax-m2 |
+| S37 | MiniMax — platform docs (API and models) | https://platform.minimax.io/docs/guides/text-generation |
+| S40 | IMDA Model AI Governance Framework for Generative AI | https://aiverifyfoundation.sg/resources/mgf-gen-ai/ |
+| S41 | PDPC Advisory Guidelines on Key Concepts in the PDPA | https://www.pdpc.gov.sg/guidelines-and-consultation/2020/03/advisory-guidelines-on-key-concepts-in-the-personal-data-protection-act |
+| S42 | PDPC Guide on Managing and Notifying Data Breaches under the PDPA | https://www.pdpc.gov.sg/help-and-resources/2021/05/guide-on-managing-and-notifying-data-breaches-under-the-pdpa |
+| S43 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| S44 | OWASP Top 10 for Agentic Applications (2026) | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
+| S45 | NIST AI Risk Management Framework | https://www.nist.gov/itl/ai-risk-management-framework |
+| S46 | Moffatt v Air Canada, 2024 BCCRT 149 | https://www.canlii.org/en/bc/bccrt/doc/2024/2024bccrt149/2024bccrt149.html |
+| S47 | Replit — securing vibe coding after an agent deleted a database (Jul 2025) | https://replit.com/blog/doubling-down-on-our-commitment-to-secure-vibe-coding |
+| S48 | WEF — Future of Jobs Report 2025 | https://www.weforum.org/press/2025/01/future-of-jobs-report-2025-78-million-new-job-opportunities-by-2030-but-urgent-upskilling-needed-to-prepare-workforces/ |
+| S49 | Anthropic — the Anthropic Economic Index | https://www.anthropic.com/news/the-anthropic-economic-index |
+| S50 | Anthropic — Claude Code sandboxing | https://www.anthropic.com/engineering/claude-code-sandboxing |
 
 
 ---
 
-*This material belongs to Tertiary Infotech Pte Ltd (UEN: 20120096W). All Rights Reserved.*
+*This material belongs to Tertiary Infotech Pte Ltd (UEN: 201200696W). All Rights Reserved.*
