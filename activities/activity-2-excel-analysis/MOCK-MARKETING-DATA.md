@@ -2,7 +2,7 @@
 
 **Evidence status: SIM — all data is fictional.** This is a made-up dataset for training only. It does not describe any real business.
 
-Fictional monthly marketing performance for **Sunset Bay Resort Singapore**, Jan–Jun 2026, across two channels. You may paste this whole table into the Hermes agent, or use the `.xlsx` version your trainer supplies.
+Fictional monthly marketing performance for **Sunset Bay Resort Singapore**, Jan–Jun 2026, across two channels. **The file to upload to the Hermes agent is `MOCK-MARKETING-DATA.xlsx` in this folder** — this page is a printable copy of the same table (paste it into the agent only if file upload is unavailable).
 
 | Month | Channel        | Spend (S$) | Impressions | Clicks | Conversions | Revenue (S$) |
 |-------|----------------|-----------:|------------:|-------:|------------:|-------------:|

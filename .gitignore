@@ -13,7 +13,7 @@ assessment/
 # Local environment (contains the courseware Drive link)
 .env
 .env.*
-courseweare/.env
+courseware/.env
 *.pem
 *.key
 *.p12
@@ -41,6 +41,4 @@ research/V*-*.md
 
 # Distribution archives (rebuildable — never pushed to GitHub)
 *.zip
-
-# local convenience symlink -> courseweare (for shared push scripts)
-/courseware
+.playwright-mcp/

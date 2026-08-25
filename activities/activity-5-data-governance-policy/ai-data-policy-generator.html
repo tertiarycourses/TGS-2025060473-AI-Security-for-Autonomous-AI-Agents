@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Data Governance Policy Generator — Activity 5</title>
+<style>
+  :root{
+    --brand:#0f4c81;
+    --brand-light:#e8f1f9;
+    --accent:#e07a2f;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --danger:#b91c1c;
+    --ok:#047857;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  header{background:var(--brand);color:#fff;padding:28px 24px;text-align:center}
+  header h1{font-size:1.6rem;margin-bottom:6px}
+  header p{opacity:.85;font-size:.95rem}
+  .badge{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:bold;
+         padding:3px 10px;border-radius:12px;margin-top:10px;letter-spacing:.5px}
+  main{max-width:1100px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:400px 1fr;gap:20px}
+  @media (max-width:900px){main{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .card h2{font-size:1.05rem;color:var(--brand);margin-bottom:14px;border-bottom:2px solid var(--brand-light);padding-bottom:8px}
+  label{display:block;font-weight:bold;font-size:.85rem;margin:12px 0 4px}
+  label .req{color:var(--danger)}
+  input[type=text],input[type=password],textarea,select{
+    width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:.9rem;font-family:inherit;background:#fff}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
+  textarea{resize:vertical}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .keywarn{background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 10px;font-size:.78rem;margin-top:6px;color:#78350f}
+  button{cursor:pointer;font-family:inherit}
+  .btn-primary{width:100%;margin-top:18px;background:var(--brand);color:#fff;border:none;border-radius:6px;
+    padding:12px;font-size:1rem;font-weight:bold}
+  .btn-primary:hover{background:#0c3d68}
+  .btn-primary:disabled{background:#9ca3af;cursor:not-allowed}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .toolbar button{background:#fff;border:1px solid var(--brand);color:var(--brand);border-radius:6px;padding:7px 14px;font-size:.82rem;font-weight:bold}
+  .toolbar button:hover{background:var(--brand-light)}
+  .status{font-size:.85rem;margin-top:10px;min-height:1.2em}
+  .status.err{color:var(--danger);font-weight:bold}
+  .status.ok{color:var(--ok)}
+  .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--brand-light);border-top-color:var(--brand);
+    border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .framework{background:var(--brand-light);border-radius:8px;padding:12px 14px;font-size:.8rem;margin-top:16px}
+  .framework strong{color:var(--brand)}
+  .framework ol{margin:6px 0 0 18px}
+  /* rendered policy */
+  #policy{font-size:.92rem}
+  #policy h1{font-size:1.35rem;color:var(--brand);margin:0 0 6px}
+  #policy h2{font-size:1.05rem;color:var(--brand);margin:20px 0 8px;border:none;border-bottom:1px solid var(--line);padding-bottom:4px}
+  #policy h3{font-size:.95rem;margin:14px 0 6px}
+  #policy p{margin:8px 0}
+  #policy ul,#policy ol{margin:8px 0 8px 22px}
+  #policy li{margin:3px 0}
+  #policy table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem}
+  #policy th,#policy td{border:1px solid #cbd5e1;padding:6px 9px;text-align:left;vertical-align:top}
+  #policy th{background:var(--brand-light);color:var(--brand)}
+  #policy strong{color:#111}
+  #policy hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+  #policy blockquote{border-left:3px solid var(--accent);padding-left:12px;color:var(--muted);margin:8px 0}
+  .placeholder{color:var(--muted);text-align:center;padding:60px 20px;font-size:.9rem}
+  .placeholder .big{font-size:2.4rem;margin-bottom:10px}
+  footer{text-align:center;color:var(--muted);font-size:.78rem;padding:24px 12px}
+  @media print{
+    header,form,.toolbar,.status,footer,.card.left{display:none!important}
+    body{background:#fff}
+    main{display:block;max-width:100%;margin:0}
+    .card{border:none;box-shadow:none;padding:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI Data Governance Policy Generator</h1>
+  <p>Activity 5 — Draft Your AI Data Governance Policy · AI Security for Autonomous AI Agents</p>
+  <span class="badge">SIM — TRAINING USE ONLY · KEEP ALL DATA FICTIONAL</span>
+</header>
+
+<main>
+  <!-- ============ LEFT: FORM ============ -->
+  <div class="card left">
+    <h2>1 · Your Company Details</h2>
+    <form id="genForm" autocomplete="off">
+
+      <label for="apiKey">OpenAI API Key <span class="req">*</span></label>
+      <input type="password" id="apiKey" placeholder="sk-..." required>
+      <div class="keywarn">⚠️ Your key is used only in this browser to call the OpenAI API directly. It is never stored or sent anywhere else. Do not use a production key — use a training key and revoke it after class.</div>
+
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="gpt-4o-mini" selected>gpt-4o-mini (fast, low cost)</option>
+        <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+        <option value="gpt-4.1">gpt-4.1</option>
+      </select>
+
+      <label for="coName">Company Name <span class="req">*</span></label>
+      <input type="text" id="coName" placeholder="e.g. Sunset Bay Resort Singapore (fictional)" required>
+
+      <label for="coBiz">Company Business <span class="req">*</span></label>
+      <textarea id="coBiz" rows="3" required
+        placeholder="e.g. A 120-room beach resort with a front desk team of 5, plus a small marketing team"></textarea>
+
+      <label for="agents">AI Agents / Systems You Use</label>
+      <textarea id="agents" rows="3"
+        placeholder="e.g. a WhatsApp guest-support agent, a marketing spreadsheet agent, a slide-building agent"></textarea>
+      <div class="hint">Leave blank and the AI will propose typical agents for your business.</div>
+
+      <label for="dataAssets">Key Data the Agents Touch</label>
+      <textarea id="dataAssets" rows="2"
+        placeholder="e.g. booking records, guest contact details, marketing spreadsheets"></textarea>
+      <div class="hint">Optional — helps the Scope and Rules sections.</div>
+
+      <button type="submit" class="btn-primary" id="goBtn">Generate My AI Data Governance Policy</button>
+      <div class="status" id="status"></div>
+    </form>
+
+    <div class="framework">
+      <strong>The policy follows the 7-part framework taught in class</strong>
+      (aligned in spirit with the IMDA Model AI Governance Framework and the PDPA):
+      <ol>
+        <li>Scope</li><li>Roles</li><li>Principles</li><li>Rules</li>
+        <li>Audit &amp; Logging</li><li>Accountability</li><li>Review</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT: OUTPUT ============ -->
+  <div class="card">
+    <h2>2 · Your Generated Policy</h2>
+    <div class="toolbar" id="toolbar" style="display:none">
+      <button id="copyBtn">📋 Copy Markdown</button>
+      <button id="dlBtn">⬇️ Download .md</button>
+      <button id="printBtn">🖨️ Print / Save as PDF</button>
+    </div>
+    <div id="policy">
+      <div class="placeholder">
+        <div class="big">📄</div>
+        Fill in your (fictional) company details on the left and click
+        <strong>Generate</strong>.<br>Your one-to-two page AI data governance policy will appear here.
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 Tertiary Infotech Pte Ltd · Training use only · Evidence status: SIM — all data is fictional</footer>
+
+<script>
+"use strict";
+
+/* ---------- The framework taught in class, embedded as the system prompt ---------- */
+const SYSTEM_PROMPT = `You are an AI governance assistant helping a learner in the WSQ course "AI Security for Autonomous AI Agents" draft an AI Data Governance Policy. All company details are FICTIONAL training data.
+
+Write a complete, plain-English, one-to-two page AI Data Governance Policy in Markdown, following EXACTLY this 7-part framework taught in class (aligned in spirit with the IMDA Model AI Governance Framework and the Singapore PDPA — do not quote clause numbers):
+
+Start with:
+- A level-1 heading: "AI Data Governance Policy — <Company Name>"
+- A line: "**Evidence status: SIM — all data is fictional.** For training only."
+- Owner of this policy (a senior job title), Version 1.0, Effective date, Next review date (12 months later).
+
+Then these seven numbered level-2 sections:
+
+## 1. Scope
+List exactly which AI systems/agents are covered and which data assets they touch. Include an "Out of scope" line.
+
+## 2. Roles
+A Markdown table with columns Role | Who (job title) | Responsibility, covering four roles: Data Owner, Agent Owner, Approver, Reviewer. Every role MUST be held by a named human job title — never the AI. End with the sentence: "A named human always holds each role. The AI holds none of them."
+
+## 3. Principles
+Exactly these six principles, each rewritten in one short sentence that fits the company's day-to-day work: Accuracy, Purpose limitation, Protection, Provenance, Traceability, Human accountability.
+
+## 4. Rules
+State clearly, in bold-labelled paragraphs:
+- What agents MAY read (least data needed; single-customer data only when serving that customer).
+- What agents MAY write / change (drafts only; any change to live records needs human approval FIRST).
+- What agents MAY generate (always marked "AI draft — to be checked").
+- Approvals for changes (new agent, new skill, or wider data access needs Approver sign-off).
+- Retention (how long files and agent logs are kept, then deleted).
+
+## 5. Audit & Logging
+Simple steps: every agent logs what it was asked and what it did; logs record date, staff member, data used, files produced; who reviews the logs and how often.
+
+## 6. Accountability
+Accountability rests with the named human owners — NEVER with the AI. Say which job title is answerable if an agent produces a wrong output, and that incidents are recorded.
+
+## 7. Review
+Review cadence (every 12 months), who owns the review, and the triggers that force an early review (new agent, new skill, new data type, or any incident).
+
+End with the footer line: "© 2026 <Company Name> · Adapted for training from the Tertiary Infotech sample policy · SIM data only"
+
+Rules for you:
+- Plain English, short sentences. No legal jargon.
+- Keep it one to two pages.
+- Use job titles that plausibly exist in the described business.
+- If the learner did not list AI agents or data assets, propose 2-4 realistic ones for their business type.
+- Output ONLY the Markdown policy — no preamble, no commentary, no code fences.`;
+
+/* ---------- Tiny Markdown renderer (headings, tables, lists, bold/italic, hr, blockquote) ---------- */
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function inline(s){
+  return s
+    .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g,"$1<em>$2</em>")
+    .replace(/`([^`]+)`/g,"<code>$1</code>");
+}
+function mdToHtml(md){
+  const lines = md.replace(/\r/g,"").split("\n");
+  let html="", i=0, inUl=false, inOl=false;
+  const closeLists=()=>{ if(inUl){html+="</ul>";inUl=false;} if(inOl){html+="</ol>";inOl=false;} };
+  while(i<lines.length){
+    let line=lines[i];
+    // table
+    if(line.trim().startsWith("|") && i+1<lines.length && /^\s*\|[\s\-:|]+\|\s*$/.test(lines[i+1])){
+      closeLists();
+      const headCells=line.trim().replace(/^\||\|$/g,"").split("|").map(c=>inline(esc(c.trim())));
+      html+="<table><thead><tr>"+headCells.map(c=>"<th>"+c+"</th>").join("")+"</tr></thead><tbody>";
+      i+=2;
+      while(i<lines.length && lines[i].trim().startsWith("|")){
+        const cells=lines[i].trim().replace(/^\||\|$/g,"").split("|").map(c=>inline(esc(c.trim())));
+        html+="<tr>"+cells.map(c=>"<td>"+c+"</td>").join("")+"</tr>";
+        i++;
+      }
+      html+="</tbody></table>";
+      continue;
+    }
+    const t=line.trim();
+    if(t===""){ closeLists(); i++; continue; }
+    if(/^---+$/.test(t)){ closeLists(); html+="<hr>"; i++; continue; }
+    let m;
+    if((m=t.match(/^(#{1,4})\s+(.*)$/))){
+      closeLists();
+      const lvl=m[1].length;
+      html+="<h"+lvl+">"+inline(esc(m[2]))+"</h"+lvl+">";
+    } else if((m=t.match(/^>\s?(.*)$/))){
+      closeLists();
+      html+="<blockquote><p>"+inline(esc(m[1]))+"</p></blockquote>";
+    } else if((m=t.match(/^[-*]\s+(.*)$/))){
+      if(inOl){html+="</ol>";inOl=false;}
+      if(!inUl){html+="<ul>";inUl=true;}
+      html+="<li>"+inline(esc(m[1]))+"</li>";
+    } else if((m=t.match(/^\d+\.\s+(.*)$/))){
+      if(inUl){html+="</ul>";inUl=false;}
+      if(!inOl){html+="<ol>";inOl=true;}
+      html+="<li>"+inline(esc(m[1]))+"</li>";
+    } else {
+      closeLists();
+      html+="<p>"+inline(esc(t))+"</p>";
+    }
+    i++;
+  }
+  closeLists();
+  return html;
+}
+
+/* ---------- Generate ---------- */
+const form=document.getElementById("genForm");
+const statusEl=document.getElementById("status");
+const goBtn=document.getElementById("goBtn");
+const policyEl=document.getElementById("policy");
+const toolbar=document.getElementById("toolbar");
+let lastMarkdown="";
+
+function setStatus(msg,cls){ statusEl.className="status "+(cls||""); statusEl.innerHTML=msg; }
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const apiKey=document.getElementById("apiKey").value.trim();
+  const model=document.getElementById("model").value;
+  const coName=document.getElementById("coName").value.trim();
+  const coBiz=document.getElementById("coBiz").value.trim();
+  const agents=document.getElementById("agents").value.trim();
+  const dataAssets=document.getElementById("dataAssets").value.trim();
+
+  if(!apiKey.startsWith("sk-")){ setStatus("That does not look like an OpenAI API key (should start with sk-).","err"); return; }
+
+  const today=new Date();
+  const next=new Date(today); next.setFullYear(next.getFullYear()+1);
+  const fmt=d=>d.toLocaleDateString("en-SG",{day:"numeric",month:"long",year:"numeric"});
+
+  const userPrompt=
+    "Company name (fictional): "+coName+"\n"+
+    "Company business: "+coBiz+"\n"+
+    (agents?"AI agents / systems we use: "+agents+"\n":"AI agents: not specified — propose realistic ones for this business.\n")+
+    (dataAssets?"Key data assets the agents touch: "+dataAssets+"\n":"")+
+    "Effective date: "+fmt(today)+" · Next review: "+fmt(next)+"\n"+
+    "Draft the full AI Data Governance Policy now.";
+
+  goBtn.disabled=true;
+  setStatus('<span class="spinner"></span>Drafting your policy with '+model+" — this takes 10–30 seconds…");
+
+  try{
+    const res=await fetch("https://api.openai.com/v1/chat/completions",{
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "Authorization":"Bearer "+apiKey },
+      body:JSON.stringify({
+        model:model,
+        temperature:0.4,
+        messages:[
+          {role:"system",content:SYSTEM_PROMPT},
+          {role:"user",content:userPrompt}
+        ]
+      })
+    });
+    if(!res.ok){
+      let msg="HTTP "+res.status;
+      try{ const j=await res.json(); if(j.error&&j.error.message) msg=j.error.message; }catch(_){}
+      throw new Error(msg);
+    }
+    const data=await res.json();
+    let md=(data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content||"").trim();
+    md=md.replace(/^```(?:markdown)?\s*/i,"").replace(/```\s*$/,"");
+    if(!md) throw new Error("The model returned an empty response. Try again.");
+    lastMarkdown=md;
+    policyEl.innerHTML=mdToHtml(md);
+    toolbar.style.display="flex";
+    setStatus("✅ Policy generated. Review it, then check: does every agent have a named human owner? Does every change to real data need human approval?","ok");
+    if(window.innerWidth<900) policyEl.scrollIntoView({behavior:"smooth"});
+  }catch(err){
+    setStatus("❌ "+esc(err.message)+(err.message.includes("Failed to fetch")?" — check your internet connection, or your network may block api.openai.com.":""),"err");
+  }finally{
+    goBtn.disabled=false;
+  }
+});
+
+/* ---------- Toolbar ---------- */
+document.getElementById("copyBtn").addEventListener("click",async ()=>{
+  try{ await navigator.clipboard.writeText(lastMarkdown); setStatus("✅ Markdown copied to clipboard.","ok"); }
+  catch(_){ setStatus("Could not copy — select the text manually.","err"); }
+});
+document.getElementById("dlBtn").addEventListener("click",()=>{
+  const name=(document.getElementById("coName").value.trim()||"my-company")
+    .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const blob=new Blob([lastMarkdown],{type:"text/markdown"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="ai-data-governance-policy-"+name+".md";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+document.getElementById("printBtn").addEventListener("click",()=>window.print());
+</script>
+</body>
+</html>

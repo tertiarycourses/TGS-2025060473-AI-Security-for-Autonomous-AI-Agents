@@ -15,11 +15,11 @@
 
 </div>
 
-**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.3 · 25 August 2026
+**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.13 · 26 August 2026
 
 A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI agents, and the security, governance and ethical risks they bring to customer-service and hospitality settings. Learners work entirely on ready-made websites, chatbots and AI agents — **no coding is required**.
 
-![Version 4.3 trainer-deck cover](screenshot.png)
+![Version 4.13 trainer-deck cover](screenshot.png)
 
 ## Course structure
 
@@ -36,8 +36,8 @@ Three topics map one-to-one onto the three learning outcomes:
 | # | Activity | Topic | Tool |
 |---|---|---:|---|
 | 1 | Talk to an AI agent and reflect on the Pinboard | 1 | TIA Support WhatsApp (OpenClaw) |
-| 2 | Analyse mock Excel marketing data | 2 | Hermes agent + MiniMax |
-| 3 | Build an animated PowerPoint | 2 | Hermes agent + Envato template |
+| 2 | Analyse mock Excel marketing data into a charted .docx report | 2 | Hermes agent + MiniMax |
+| 3 | Create a 10-slide AI-security PPT, then redesign it from an image template | 2 | Hermes agent + image template |
 | 4 | Install tools and skills, re-run the tasks | 2 | Hermes agent |
 | 5 | Draft an AI Data Governance Policy | 3 | Sample policy + prompts |
 | 6 | Coach a worried team member (role-play) | 3 | Role-play simulator website |
@@ -49,7 +49,7 @@ Activities 6 and 7 are self-contained websites (open `index.html` in a browser) 
 ## Assessment
 
 - **Written Assessment (SAQ):** 5 short-answer questions, one per knowledge statement (K1–K5).
-- **Practical Performance:** 3 reflection tasks (one per LO1–LO3) in which learners document their own observations from the activities they completed during the day.
+- **Case Study:** 3 reflection tasks (one per LO1–LO3, two questions each) in which learners document their own observations from the activities they completed during the day.
 
 Open book · Competent / Not Yet Competent · 1-hour assessment at the end of the day.
 
@@ -57,13 +57,13 @@ Open book · Competent / Not Yet Competent · 1-hour assessment at the end of th
 
 | Artifact | Current file |
 |---|---|
-| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v43.pptx` and matching PDF |
-| Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
-| Learner Guide Markdown | `courseweare/LEARNER-GUIDE.md` |
-| Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
-| Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 6 and 7) a ready-to-open website |
+| Trainer deck | `courseware/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v413.pptx` and matching PDF |
+| Learner Guide | `courseware/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
+| Learner Guide Markdown | `courseware/LEARNER-GUIDE.md` |
+| Lesson Plan | `courseware/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
+| Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 5, 6 and 7) a ready-to-open website |
 
-The trainer deck is 138 slides; the Learner Guide is ~120 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
+The trainer deck is 165 slides; the Learner Guide is ~170 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
 
 ## Assessment boundary
 

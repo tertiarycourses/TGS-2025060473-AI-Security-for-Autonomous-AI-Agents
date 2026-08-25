@@ -3,10 +3,10 @@
 ## Scope
 
 - WSQ course: `TGS-2025060473 - AI Security for Autonomous AI Agents`. As of v4.0 (25 Aug 2026) this is a **1-day (8-hour) course** — see the official page https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html. It was previously a 2-day security course; do not reintroduce the 2-day structure.
-- Treat `courseweare/course_data.py`, `courseweare/v40_content.py`, and `courseweare/v40_learner.py` as the active v4.0 instructional source of truth. The v3.0 modules (`v30_content.py`, `v30_learner.py`) and v2.x modules (`deck_content.py`, `lg_content.py`) are legacy and must not feed a v4.x build. `build_slides.py` selects the content module by `C.VERSION`.
+- Treat `courseware/course_data.py`, `courseware/v40_content.py`, and `courseware/v40_learner.py` as the active v4.0 instructional source of truth. The v3.0 modules (`v30_content.py`, `v30_learner.py`) and v2.x modules (`deck_content.py`, `lg_content.py`) are legacy and must not feed a v4.x build. `build_slides.py` selects the content module by `C.VERSION`.
 - The course now has three topics mapped to LO1/LO2/LO3: (1) Generative AI, Agentic AI and AI Agents; (2) Prompt Engineering and Post-Training (Hermes agent on MiniMax); (3) Security Risk of Autonomous AI Agents.
 - Learners do NOT code. Every activity uses a ready-made website, chatbot or AI agent under `activities/` (activity-1..8). Activities 6 and 7 are self-contained `index.html` websites powered by a learner-supplied OpenAI or MiniMax key.
-- Preserve the existing `courseweare/` spelling. Do not rename it during a scoped release.
+- The build output folder is `courseware/` (the old `courseweare/` typo was renamed in Aug 2026; do not reintroduce it).
 
 ## Content and design
 
@@ -31,7 +31,7 @@
 - Every learner-facing Markdown file under `activities/` must have an aligned current PDF counterpart within the same activity folder.
 - Run `.claude/commands/courseware-qa.md` against the exact rebuilt artifacts. Render every changed PPT/PDF/DOCX page and inspect it visually.
 - Assessments are confidential and must remain ignored by Git. Answer keys are trainer-only and never attached to learner-facing LMS fields.
-- The assessment (v4.0) is a Written Assessment (5 SAQ, one per K1–K5) plus a **reflection-based Practical Performance** (3 tasks, one per LO1–LO3) in which learners document their own observations from the day's activities. The Practical DOCX filenames still use "Case Study" for pipeline/LMS compatibility, but the instrument is titled "Practical Performance" inside. Built by `build_assessment_set.py`.
+- The assessment (v4.4) is a Written Assessment (5 SAQ, one per K1–K5) plus a **reflection-based Case Study** (3 tasks, one per LO1–LO3, two questions each) in which learners document their own observations from the day's activities. The instrument is titled "Case Study" both in the DOCX filenames and inside the papers. Built by `build_assessment_set.py`.
 
 ## Environment and publication
 

@@ -1,30 +1,31 @@
-# Activity 3 — Vague vs Detailed Prompts
+# Activity 3 — Create, Then Redesign
 
-**Evidence status: SIM — all data is fictional.** Use with `SCRIPT.md` in the Hermes (MiniMax) agent. Send the vague prompt first, then the detailed one, and compare the decks.
+**Evidence status: SIM — the decks are generated teaching output.** Use these prompts in the Hermes (MiniMax) agent. Send the CREATE prompt first; save the deck to your Downloads folder; then upload `new-template.avif` and send the REDESIGN prompt.
 
-## Vague prompt (send first)
+## Prompt 1 — CREATE (send first)
 
-> "Make me a presentation about our marketing plan."
+> "Create a **10-slide PowerPoint presentation** on **AI Security for AI Agents**.
+> - Cover: what an AI agent is, why agents create new security risks, prompt injection, data leakage, tool and skill misuse, human-in-the-loop controls, governance, and a closing summary.
+> - One clear idea per slide, with **2–4 short bullets** each.
+> - Add **speaker notes** on every slide.
+> - Return the finished deck as a **downloadable PowerPoint file**."
 
-*(Notice what it guesses: number of slides, style, animations, which points to include.)*
+**When it completes:** download the file and **save it to your Downloads folder**.
 
-## Detailed prompt (send second)
+## Prompt 2 — REDESIGN (upload `new-template.avif` first, then send)
 
-> "Build a 5-slide animated PowerPoint from the script I gave you, for the fictional Sunset Bay Resort 2026 Marketing Plan.
->
-> - Use the Envato template called **[write the template name you chose, e.g. 'Aurora Business']**.
-> - Exactly **5 slides**, matching my script: Title, Where We Are Today, Our 2026 Goals, How We Get There, Summary.
-> - Add a **title animation** (fade or slide-in) to the heading on every slide.
-> - Keep **2–3 short bullets** per content slide — do not add points that are not in my script.
-> - Make the **last slide a clear summary** with the 4 key takeaways.
-> - **Brand tone:** warm, welcoming, confident — this is a friendly beachfront resort, not a bank.
-> - Return the finished deck as a downloadable PowerPoint file."
+> "Redesign the 10-slide presentation using the **uploaded image as the visual template**.
+> - Apply its style across **all 10 slides**: dark cybersecurity background, neon cyan circuitry and frames, the AI-shield and fingerprint imagery, red/orange accent highlights.
+> - **Keep all slide content and speaker notes unchanged** — this is a redesign, not a rewrite.
+> - Return the redesigned deck as a **downloadable PowerPoint file**."
 
-## Compare — three things the detailed prompt controlled
+**When it completes:** save the redesigned deck to your **Downloads folder** and compare it with the first version.
 
-1. ____________________________________________ (e.g. exact number of slides)
-2. ____________________________________________ (e.g. animation on titles)
-3. ____________________________________________ (e.g. brand tone / no invented points)
+## Compare — three things the image template changed
+
+1. ____________________________________________ (e.g. colour scheme and background)
+2. ____________________________________________ (e.g. imagery — shield, circuitry, fingerprint)
+3. ____________________________________________ (e.g. overall mood — corporate vs cyber)
 
 ---
 

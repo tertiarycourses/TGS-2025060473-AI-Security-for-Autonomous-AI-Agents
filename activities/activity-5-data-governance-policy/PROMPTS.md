@@ -1,6 +1,6 @@
-# Activity 5 — Prompts to Adapt Each Section
+# Activity 5 — Prompts to Refine Each Section
 
-**Evidence status: SIM — all data is fictional.** Paste one section of `SAMPLE-AI-DATA-GOVERNANCE-POLICY.md` at a time, then send the matching prompt. Keep all names and data fictional.
+**Evidence status: SIM — all data is fictional.** Start with the policy drafted by `ai-data-policy-generator.html` (or the sample in `SAMPLE-AI-DATA-GOVERNANCE-POLICY.md`). Paste one section at a time into the Hermes agent, then send the matching prompt to sharpen it. Keep all names and data fictional.
 
 ## Set the scene (send once, first)
 
