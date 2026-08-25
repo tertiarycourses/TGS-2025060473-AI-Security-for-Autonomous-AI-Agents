@@ -92,10 +92,51 @@ PAGE = {"n": 0}; SLIDE_MAP = {}; CURRENT_META = {"evidence": "", "sources": []}
 def mark(key): SLIDE_MAP[key] = PAGE["n"] + 1
 
 
+def _domain(url):
+    """Short human-readable host for a source URL, e.g. 'klarna.com'."""
+    m = re.sub(r"^https?://(www\.)?", "", url or "")
+    return m.split("/")[0] if m else ""
+
+
+def _source_band(s, cite):
+    """A visible, clickable 'Sources' strip for real-life case-study slides so
+    learners can see and check the origin of every claim on the slide."""
+    y = Inches(6.42); x = Inches(0.85); w = Inches(11.63); h = Inches(0.34)
+    rect(s, x, y, w, h, LIGHT); rect(s, x, y, Inches(0.08), h, RED)
+    # Build one run per source: "Publisher (domain)", hyperlinked to the URL.
+    tb = s.shapes.add_textbox(x + Inches(0.22), y, w - Inches(0.4), h)
+    tf = tb.text_frame; tf.word_wrap = True; tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]
+    lead = p.add_run(); lead.text = "Sources:  "
+    lead.font.size = Pt(9); lead.font.bold = True; lead.font.name = "Arial"
+    lead.font.color.rgb = RED
+    for i, src in enumerate(cite):
+        # Take the publisher part before an em-dash if present, else the domain.
+        title = src.get("title", "")
+        publisher = title.split(" — ")[0].strip() if " — " in title else title
+        if len(publisher) > 46:
+            publisher = publisher[:43].rstrip() + "..."
+        dom = _domain(src.get("url", ""))
+        label = f"{publisher} ({dom})" if dom else publisher
+        if i:
+            sep = p.add_run(); sep.text = "   ·   "
+            sep.font.size = Pt(9); sep.font.name = "Arial"; sep.font.color.rgb = GREY
+        r = p.add_run(); r.text = label
+        r.font.size = Pt(9); r.font.name = "Arial"; r.font.color.rgb = BLUE
+        if src.get("url"):
+            try:
+                r.hyperlink.address = src["url"]
+            except Exception:
+                pass
+
+
 def footer(s):
     PAGE["n"] += 1
     evidence = CURRENT_META.get("evidence", "")
     source_ids = ", ".join(CURRENT_META.get("sources", []))
+    cite = CURRENT_META.get("cite", [])
+    if cite:
+        _source_band(s, cite)
     if evidence or source_ids:
         source_line = "Evidence: " + evidence if evidence else ""
         if source_ids:
@@ -899,15 +940,20 @@ def _build_v30():
         if spec.get("anchor"):
             mark(spec["anchor"])
         source_labels = []
+        source_details = []
         for sid in spec.get("sources", []):
             src = V.SOURCES.get(sid, {})
-            short = (src.get("short") or src.get("title", "")) if isinstance(src, dict) else str(src)
-            if len(short) > 34:
-                short = short[:31].rstrip() + "..."
+            title = src.get("title", "") if isinstance(src, dict) else str(src)
+            url = src.get("url", "") if isinstance(src, dict) else ""
             # The footer is a compact trace key. Full titles and URLs are resolved
             # in the claim ledger; IDs alone prevent wrapping into the note/footer.
             source_labels.append(sid)
-        CURRENT_META = {"evidence": spec.get("evidence", ""), "sources": source_labels}
+            source_details.append({"id": sid, "title": title, "url": url})
+        # Real-life case studies (verified / reported) get a VISIBLE source-citation
+        # band so learners can see and check where each claim comes from.
+        show_cite = spec.get("evidence") in ("CASE-V", "CASE-R", "HIST") and source_details
+        CURRENT_META = {"evidence": spec.get("evidence", ""), "sources": source_labels,
+                        "cite": source_details if show_cite else []}
         _v30_render(spec)
     expected = getattr(V, "EXPECTED_SLIDES", 207)
     if PAGE["n"] != expected:
