@@ -59,7 +59,7 @@ VERSIONS = [
                             "testing, Synapxe AgentSea healthcare), a brand-damage discussion and "
                             "debrief, a 'Key Challenges of AI to Business' capstone, a visual "
                             "multi-agent map and a DeepSeek 'everything is a plugin' slide. Visible "
-                            "source citations on all real-life cases. TSC K/A text unchanged.",
+                            "source citations on all real-life cases. Added tool-agnostic agent-control slides (spot threats; least privilege; approval/validation/shutdown; multi-agent governance; incident response). TSC K/A text unchanged.",
      "Dr Alfred Ang"),
 ]
 

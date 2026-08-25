@@ -365,13 +365,17 @@ def brk(kind, dur, color=AMBER):
     return s
 
 
-def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=None):
+def img_points(title, image, points, kicker=None, accent=BLUE, img_w=7.0, note=None,
+               frame="dark"):
     s = head(slide(), title, kicker, kcolor=accent)
     p = _asset(image)
     content_h = 4.08 if note else 4.75
     if p:
         ix = Inches(0.85); iy = Inches(2.05); iw = Inches(img_w); ih = Inches(content_h)
-        rect(s, ix - Inches(0.05), iy - Inches(0.05), iw + Inches(0.10), ih + Inches(0.10), NAVY)
+        frame_pad = Inches(0.03) if frame == "soft" else Inches(0.05)
+        frame_color = LINE if frame == "soft" else NAVY
+        rect(s, ix - frame_pad, iy - frame_pad,
+             iw + frame_pad * 2, ih + frame_pad * 2, frame_color)
         _picture_cover(s, p, ix, iy, iw, ih)
     rx = Inches(0.85) + Inches(img_w) + Inches(0.3); rw = Inches(12.48) - rx
     n = len(points); gy = Inches(0.2); th = int((Inches(content_h) - gy * (n - 1)) / n)
@@ -832,7 +836,8 @@ def _v30_render(spec):
                     pts.append(tuple(item[:2]) if not isinstance(item, dict)
                                else (item.get("title", ""), item.get("body", "")))
                 img_points(title, image_name, pts, kicker=kicker, accent=accent,
-                           img_w=spec.get("img_w", 7.0), note=note)
+                           img_w=spec.get("img_w", 7.0), note=note,
+                           frame=spec.get("frame", "dark"))
             else:
                 img_full(title, image_name, kicker=kicker, accent=accent, caption=note)
         else:
