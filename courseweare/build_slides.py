@@ -163,8 +163,9 @@ def cover():
     rect(s, 0, 0, SW, Inches(0.16), BLUE); rect(s, 0, Inches(7.34), SW, Inches(0.16), RED)
     org = _asset("tertiary-infotech-logo.png")
     if org:
-        rect(s, Inches(0.72), Inches(0.58), Inches(2.35), Inches(0.92), WHITE)
-        s.shapes.add_picture(org, Inches(0.84), Inches(0.67), height=Inches(0.72))
+        # The source PNG already has a transparent alpha channel. Keep the mark directly
+        # on the navy cover instead of placing it on a white backing rectangle.
+        s.shapes.add_picture(org, Inches(0.82), Inches(0.62), height=Inches(0.78))
     rect(s, Inches(10.72), Inches(0.62), Inches(1.85), Inches(0.94), RED)
     txt(s, Inches(10.72), Inches(0.73), Inches(1.85), Inches(0.46),
         [[("WSQ", 22, WHITE, True)]], align=PP_ALIGN.CENTER)

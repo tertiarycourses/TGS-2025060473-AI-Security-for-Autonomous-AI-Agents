@@ -46,6 +46,10 @@ VERSIONS = [
                             "unchanged.", "Dr Alfred Ang"),
     ("4.1", "25 August 2026", "Refreshed trainer visuals and embedded the YouTube Online Video; "
                             "scope, timing and TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("4.2", "25 August 2026", "Added coding-harness and latest-AI-agents reference slides to the "
+                            "deck (Claude Code, Codex, DeepSeek Harness; OpenClaw, Hermes, Prime "
+                            "Agent, OpenWorker, QM). Schedule and TSC K/A text unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess

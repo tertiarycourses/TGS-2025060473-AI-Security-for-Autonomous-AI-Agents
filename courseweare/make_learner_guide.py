@@ -50,6 +50,10 @@ VERSIONS = [
                             "unchanged.", "Dr Alfred Ang"),
     ("4.1", "25 August 2026", "Refreshed trainer visuals and embedded the YouTube Online Video; "
                             "scope, timing and TSC K/A text unchanged.", "Dr Alfred Ang"),
+    ("4.2", "25 August 2026", "Added a coding-harness comparison (Claude Code, Codex, DeepSeek "
+                            "Harness) and a latest-AI-agents reference (OpenClaw, Hermes, Prime "
+                            "Agent, OpenWorker, QM) with official links. TSC K/A text unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 
