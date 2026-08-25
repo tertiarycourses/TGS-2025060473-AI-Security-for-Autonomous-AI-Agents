@@ -35,11 +35,11 @@ SOURCES = {
     "S16": {"title": "Model Context Protocol (MCP) documentation", "url": "https://modelcontextprotocol.io/docs/getting-started/intro"},
     # --- Use cases
     "S20": {"title": "PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024)", "url": "https://petapixel.com/2024/07/16/fashion-brand-mango-launches-photorealistic-ai-generated-campaign/"},
-    "S21": {"title": "CNN — H&M to create AI 'digital twins' of models (Mar 2025)", "url": "https://www.cnn.com/2025/03/28/style/h-and-m-ai-models-intl-scli"},
-    "S22": {"title": "CNN — AI models in Guess ad in Vogue's August 2025 issue", "url": "https://www.cnn.com/2025/07/31/style/vogue-ai-models-guess-campaign"},
+    "S21": {"title": "Process Excellence Network — H&M debuts AI 'digital twins' of models (Mar 2025)", "url": "https://www.processexcellencenetwork.com/ai/news/hm-debuts-ai-generated-digital-twins-of-fashion-models"},
+    "S22": {"title": "ABC News — AI-generated models in Guess ad in Vogue (Aug 2025)", "url": "https://abcnews.com/GMA/Style/controversy-stirs-ai-generated-models-new-guess-ads/story?id=124271323"},
     "S24": {"title": "Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025)", "url": "https://www.forbes.com/sites/danidiplacido/2025/11/04/coca-cola-sparks-backlash-with-ai-generated-christmas-ad-again/"},
     "S25": {"title": "Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024)", "url": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/"},
-    "S26": {"title": "Forbes — Klarna reverses on AI, re-hires human agents (May 2025)", "url": "https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/"},
+    "S26": {"title": "Entrepreneur — Klarna CEO reverses course, hiring more humans not AI (May 2025)", "url": "https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396"},
     # --- Products / agents
     "S30": {"title": "OpenClaw — Wikipedia (naming and adoption history)", "url": "https://en.wikipedia.org/wiki/OpenClaw"},
     "S31": {"title": "OpenClaw — official site and docs", "url": "https://docs.openclaw.ai/"},
@@ -70,9 +70,9 @@ SOURCES = {
     "S58": {"title": "Prime Agent (Prime Intellect) — repository", "url": "https://github.com/PrimeIntellect-ai/prime-agent"},
     "S59": {"title": "OpenWorker — open standard for employing AI in organisations", "url": "https://github.com/openworker-io/openworker"},
     "S60": {"title": "QM (Quartermaster, Y Combinator) — multiplayer agent harness", "url": "https://github.com/yc-software/qm"},
-    "S61": {"title": "The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025)", "url": "https://www.straitstimes.com/paid-press-releases/singapore-businesses-lead-in-ai-and-data-adoption-but-face-cybersecurity-challenges-20251201"},
+    "S61": {"title": "CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025)", "url": "https://www.cpaaustralia.com.au/about-cpa-australia/media/media-releases/singapore-businesses-lead-in-ai"},
     "S62": {"title": "Tricentis — QA trends 2026: AI, agents and the future of testing (5 Jan 2026)", "url": "https://www.tricentis.com/blog/qa-trends-ai-agentic-testing"},
-    "S63": {"title": "The Straits Times — New AgentSea platform lets public healthcare professionals create AI agents (24 Aug 2026)", "url": "https://www.straitstimes.com/tech/new-platform-to-create-ai-agents-available-to-all-public-healthcare-professionals"},
+    "S63": {"title": "BritCham Singapore — New AgentSea platform lets public healthcare professionals create AI agents (Aug 2026)", "url": "https://www.britcham.org.sg/news/new-platform-create-ai-agents-available-all-public-healthcare-professionals"},
     "S64": {"title": "CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026)", "url": "https://www.channelnewsasia.com/singapore/gen-ai-ads-singapore-marketing-backfire-6323236"},
     "S65": {"title": "MindStudio — DeepSeek Harness: agentic coding where everything is a plugin", "url": "https://www.mindstudio.ai/blog/deepseek-harness-agentic-coding"},
 }

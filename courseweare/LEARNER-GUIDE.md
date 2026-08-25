@@ -378,7 +378,7 @@ Real, dated examples — how generation is already changing work.
 ## Slide 27 — Fashion Models Are Now Generated
 
 > **Evidence: CASE-V**
-> Sources: S20 — PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024), S21 — CNN — H&M to create AI 'digital twins' of models (Mar 2025), S22 — CNN — AI models in Guess ad in Vogue's August 2025 issue
+> Sources: S20 — PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024), S21 — Process Excellence Network — H&M debuts AI 'digital twins' of models (Mar 2025), S22 — ABC News — AI-generated models in Guess ad in Vogue (Aug 2025)
 
 “Fashion Models Are Now Generated” is worth a closer look.
 
@@ -442,7 +442,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 ## Slide 31 — Customer Service: The Klarna Story
 
 > **Evidence: CASE-V**
-> Sources: S25 — Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024), S26 — Forbes — Klarna reverses on AI, re-hires human agents (May 2025)
+> Sources: S25 — Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024), S26 — Entrepreneur — Klarna CEO reverses course, hiring more humans not AI (May 2025)
 
 “Customer Service: The Klarna Story” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. A real cautionary tale: automate the routine, but keep humans for judgement and empathy.
 
@@ -1711,7 +1711,7 @@ What can go wrong when an AI can act — and how to contain it.
 ## Slide 113 — The Singapore Reality — Fast on AI, Slower on Security
 
 > **Evidence: CASE-V**
-> Sources: S61 — The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025)
+> Sources: S61 — CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025)
 
 “The Singapore Reality — Fast on AI, Slower on Security” is worth a closer look. CPA Australia Business Technology Survey, 1,117 respondents, Jul–Sep 2025. Adoption races ahead of security — and AI-enabled threats (phishing, deepfakes) make the gap worse.
 
@@ -2070,7 +2070,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 ## Slide 134 — Positive Case — Singapore Healthcare Does It Right (AgentSea)
 
 > **Evidence: CASE-V**
-> Sources: S63 — The Straits Times — New AgentSea platform lets public healthcare professionals create AI agents (24 Aug 2026)
+> Sources: S63 — BritCham Singapore — New AgentSea platform lets public healthcare professionals create AI agents (Aug 2026)
 
 The table below is easier to recall once you see the pattern behind it. ST, 24 Aug 2026. 'Technological capability cannot be allowed to outpace our capability to govern it.'
 
@@ -2106,7 +2106,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 ## Slide 136 — The Key Challenges of AI to Business
 
 > **Evidence: SYN**
-> Sources: S61 — The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025), S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026), S46 — Moffatt v Air Canada, 2024 BCCRT 149
+> Sources: S61 — CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025), S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026), S46 — Moffatt v Air Canada, 2024 BCCRT 149
 
 The table below is easier to recall once you see the pattern behind it. This is the heart of LO3: the ethical, legal and business risks a Singapore organisation must manage to use AI responsibly.
 
@@ -2532,11 +2532,11 @@ These are the sources behind the dated facts and cases in this course. Product p
 | S15 | Anthropic — Agent Skills / Claude Code | https://code.claude.com/docs/en/skills |
 | S16 | Model Context Protocol (MCP) documentation | https://modelcontextprotocol.io/docs/getting-started/intro |
 | S20 | PetaPixel — Mango launches photorealistic AI-generated campaign (Jul 2024) | https://petapixel.com/2024/07/16/fashion-brand-mango-launches-photorealistic-ai-generated-campaign/ |
-| S21 | CNN — H&M to create AI 'digital twins' of models (Mar 2025) | https://www.cnn.com/2025/03/28/style/h-and-m-ai-models-intl-scli |
-| S22 | CNN — AI models in Guess ad in Vogue's August 2025 issue | https://www.cnn.com/2025/07/31/style/vogue-ai-models-guess-campaign |
+| S21 | Process Excellence Network — H&M debuts AI 'digital twins' of models (Mar 2025) | https://www.processexcellencenetwork.com/ai/news/hm-debuts-ai-generated-digital-twins-of-fashion-models |
+| S22 | ABC News — AI-generated models in Guess ad in Vogue (Aug 2025) | https://abcnews.com/GMA/Style/controversy-stirs-ai-generated-models-new-guess-ads/story?id=124271323 |
 | S24 | Forbes — Coca-Cola AI-generated Christmas ad, again (Nov 2025) | https://www.forbes.com/sites/danidiplacido/2025/11/04/coca-cola-sparks-backlash-with-ai-generated-christmas-ad-again/ |
 | S25 | Klarna — AI assistant handles two-thirds of chats in first month (27 Feb 2024) | https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/ |
-| S26 | Forbes — Klarna reverses on AI, re-hires human agents (May 2025) | https://www.forbes.com/sites/quickerbettertech/2025/05/18/business-tech-news-klarna-reverses-on-ai-says-customers-like-talking-to-people/ |
+| S26 | Entrepreneur — Klarna CEO reverses course, hiring more humans not AI (May 2025) | https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396 |
 | S30 | OpenClaw — Wikipedia (naming and adoption history) | https://en.wikipedia.org/wiki/OpenClaw |
 | S31 | OpenClaw — official site and docs | https://docs.openclaw.ai/ |
 | S32 | Peter Steinberger — GitHub (steipete) | https://github.com/steipete |
@@ -2565,9 +2565,9 @@ These are the sources behind the dated facts and cases in this course. Product p
 | S58 | Prime Agent (Prime Intellect) — repository | https://github.com/PrimeIntellect-ai/prime-agent |
 | S59 | OpenWorker — open standard for employing AI in organisations | https://github.com/openworker-io/openworker |
 | S60 | QM (Quartermaster, Y Combinator) — multiplayer agent harness | https://github.com/yc-software/qm |
-| S61 | The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025) | https://www.straitstimes.com/paid-press-releases/singapore-businesses-lead-in-ai-and-data-adoption-but-face-cybersecurity-challenges-20251201 |
+| S61 | CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025) | https://www.cpaaustralia.com.au/about-cpa-australia/media/media-releases/singapore-businesses-lead-in-ai |
 | S62 | Tricentis — QA trends 2026: AI, agents and the future of testing (5 Jan 2026) | https://www.tricentis.com/blog/qa-trends-ai-agentic-testing |
-| S63 | The Straits Times — New AgentSea platform lets public healthcare professionals create AI agents (24 Aug 2026) | https://www.straitstimes.com/tech/new-platform-to-create-ai-agents-available-to-all-public-healthcare-professionals |
+| S63 | BritCham Singapore — New AgentSea platform lets public healthcare professionals create AI agents (Aug 2026) | https://www.britcham.org.sg/news/new-platform-create-ai-agents-available-all-public-healthcare-professionals |
 | S64 | CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026) | https://www.channelnewsasia.com/singapore/gen-ai-ads-singapore-marketing-backfire-6323236 |
 | S65 | MindStudio — DeepSeek Harness: agentic coding where everything is a plugin | https://www.mindstudio.ai/blog/deepseek-harness-agentic-coding |
 
