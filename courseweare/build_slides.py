@@ -431,22 +431,45 @@ def _embed_youtube(s, poster_path, embed_url, watch_url, x, y, w, h):
 
 
 def video_slide(title, poster, video_url, kicker=None, accent=BLUE, caption=None,
-                points=None, video_embed=None):
-    """A slide with a real embedded YouTube video that streams and plays in-slide in
-    PowerPoint slideshow. A clickable 'Watch the Short' link is a fallback for PDF
-    export and non-PowerPoint viewers. The vertical Short sits in a portrait frame on
-    the left with talking points on the right."""
+                points=None, video_embed=None, video_file=None):
+    """A slide with an embedded video that plays in-slide in PowerPoint slideshow.
+    If video_file is given it is embedded as a real local movie (plays offline);
+    otherwise a YouTube online-video object is used. A clickable link is the fallback
+    for PDF export and non-PowerPoint viewers. The vertical clip sits in a portrait
+    frame on the left with talking points on the right."""
     s = head(slide(), title, kicker, kcolor=accent)
-    vh = Inches(4.30); vw = Inches(2.42)  # 9:16 portrait
-    vx = Inches(1.22); vy = Inches(2.02)
+    # Size the video frame from the poster's aspect ratio so both portrait (9:16)
+    # and landscape (16:9) clips sit correctly. Portrait fills the height; landscape
+    # fills a wider box and drops the frame lower so the title/banner stay clear.
+    poster_probe = _asset(poster) if poster else None
+    ar = 9 / 16
+    if poster_probe:
+        try:
+            with Image.open(poster_probe) as _im:
+                ar = _im.size[0] / _im.size[1]
+        except Exception:
+            pass
+    if ar >= 1:  # landscape
+        vw = Inches(4.65); vh = Inches(vw / 914400 * (1 / ar)); vx = Inches(1.05); vy = Inches(2.35)
+    else:        # portrait
+        vh = Inches(4.30); vw = Inches(vh / 914400 * ar); vx = Inches(1.22); vy = Inches(2.02)
     rect(s, int(vx - Inches(0.1)), int(vy - Inches(0.1)),
          int(vw + Inches(0.2)), int(vh + Inches(0.2)), NAVY)
+    local = bool(video_file and _asset(video_file))
+    banner = "EMBEDDED VIDEO · PLAYS IN SLIDESHOW" if local else "ONLINE VIDEO · YOUTUBE"
     rect(s, int(vx - Inches(0.1)), int(vy - Inches(0.36)), int(vw + Inches(0.2)), Inches(0.30), RED)
     txt(s, int(vx - Inches(0.1)), int(vy - Inches(0.34)), int(vw + Inches(0.2)), Inches(0.24),
-        [[("ONLINE VIDEO · YOUTUBE", 8.5, WHITE, True)]], align=PP_ALIGN.CENTER)
+        [[(banner, 8.0, WHITE, True)]], align=PP_ALIGN.CENTER)
     poster_path = _asset(poster) if poster else None
     embedded = False
-    if poster_path and video_embed:
+    if local:
+        try:
+            s.shapes.add_movie(_asset(video_file), vx, vy, vw, vh,
+                               poster_frame_image=poster_path, mime_type="video/mp4")
+            embedded = True
+        except Exception as e:
+            print(f"  [video] local movie embed failed ({e}); trying poster fallback")
+    if not embedded and poster_path and video_embed:
         try:
             _embed_youtube(s, poster_path, video_embed, video_url, vx, vy, vw, vh)
             embedded = True
@@ -455,29 +478,35 @@ def video_slide(title, poster, video_url, kicker=None, accent=BLUE, caption=None
     if not embedded and poster_path:
         s.shapes.add_picture(poster_path, vx, vy, width=vw, height=vh)
     if not embedded:
-        # play badge only on the fallback poster (the real embed shows its own control)
         bd = Inches(0.9)
         oval(s, int(vx + vw/2 - bd/2), int(vy + vh/2 - bd/2), bd, bd, RED)
         txt(s, int(vx + vw/2 - bd/2), int(vy + vh/2 - bd/2), bd, bd,
             [[("▶", 26, WHITE, True)]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    # right-hand talking points
+    # right-hand talking points — a fixed band so they read full for both portrait
+    # and landscape video frames.
     rx = int(vx + vw + Inches(0.55)); rw = int(Inches(12.48) - rx)
     if points:
-        n = len(points); gy = Inches(0.2); th = int((vh - gy*(n-1))/n)
+        band_y = Inches(1.95); band_h = Inches(4.55)
+        n = len(points); gy = Inches(0.2); th = int((band_h - gy*(n-1))/n)
         for i, (t1, t2) in enumerate(points):
-            y = int(vy + (th+gy)*i); col = PALETTE[i % len(PALETTE)]
+            y = int(band_y + (th+gy)*i); col = PALETTE[i % len(PALETTE)]
             rect(s, rx, y, rw, th, LIGHT); rect(s, rx, y, Inches(0.09), th, col)
             txt(s, rx + Inches(0.28), y, rw - Inches(0.5), th,
                 [[(t1, 15, col, True)], [(t2, 12.5, INK, False)]],
                 anchor=MSO_ANCHOR.MIDDLE, space=3)
-    # clickable link line under the video (fallback for PDF / non-PowerPoint)
-    link_tb = txt(s, vx - Inches(0.1), int(vy + vh + Inches(0.12)), int(vw + Inches(0.2)),
-                  Inches(0.34), [[("▶ Open on YouTube (fallback)", 10.5, BLUE, True)]],
-                  align=PP_ALIGN.CENTER)
-    try:
-        link_tb.text_frame.paragraphs[0].runs[0].hyperlink.address = video_url
-    except Exception:
-        pass
+    # link line under the video: for a local movie there is no external link to show
+    if video_url and not local:
+        link_tb = txt(s, vx - Inches(0.1), int(vy + vh + Inches(0.12)), int(vw + Inches(0.2)),
+                      Inches(0.34), [[("▶ Open on YouTube (fallback)", 10.5, BLUE, True)]],
+                      align=PP_ALIGN.CENTER)
+        try:
+            link_tb.text_frame.paragraphs[0].runs[0].hyperlink.address = video_url
+        except Exception:
+            pass
+    elif local:
+        txt(s, vx - Inches(0.1), int(vy + vh + Inches(0.12)), int(vw + Inches(0.2)),
+            Inches(0.34), [[("Click the video, then Play, in slideshow", 9.5, GREY, False)]],
+            align=PP_ALIGN.CENTER)
     if caption:
         txt(s, rx, Inches(6.42), rw, Inches(0.28),
             [[(caption, 9.4, GREY, False)]], align=PP_ALIGN.CENTER)
@@ -748,7 +777,7 @@ def _v30_render(spec):
                        else (item.get("title", ""), item.get("body", "")))
         video_slide(title, spec.get("image"), spec.get("video_url"), kicker=kicker,
                     accent=accent, caption=note, points=pts or None,
-                    video_embed=spec.get("video_embed"))
+                    video_embed=spec.get("video_embed"), video_file=spec.get("video_file"))
     elif kind == "image":
         image_name = spec.get("image")
         if image_name and _asset(image_name):
