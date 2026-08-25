@@ -1,7 +1,7 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 4.13  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
+**Version:** 4.14  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
 
 > This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v40_learner.py`.
 
@@ -94,9 +94,9 @@ Read the points below as the few things worth remembering about “Learning Outc
 
 | Concept | What it means |
 |---|---|
-| LO1 | Demonstrate generative AI concepts and applications |
-| LO2 | Apply prompt engineering and analyse output variations |
-| LO3 | Identify ethical risks and analyse bias in AI content |
+| LO1 | Demonstrate generative AI concepts and applications relevant to customer service and hospitality management |
+| LO2 | Apply prompt engineering techniques and analyse output variations to improve generative AI performance in service settings |
+| LO3 | Identify ethical risks and analyse bias in AI-generated content used in customer engagement |
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 

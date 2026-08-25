@@ -763,10 +763,10 @@ def attendance_slide(kicker="TRAQOM · SSG DIGITAL ATTENDANCE"):
 def _v30_thank_you(spec):
     s = slide(); rect(s, 0, 0, SW, SH, WHITE)
     rect(s, 0, 0, SW, Inches(0.22), BLUE); rect(s, 0, Inches(7.28), SW, Inches(0.22), RED)
-    txt(s, Inches(0.9), Inches(2.35), Inches(11.5), Inches(1.25),
+    txt(s, Inches(0.9), Inches(2.15), Inches(11.5), Inches(1.25),
         [[(spec.get("title", "Thank You"), 46, INK, True)]], align=PP_ALIGN.CENTER)
-    rect(s, Inches(5.4), Inches(3.85), Inches(2.53), Inches(0.08), RED)
-    txt(s, Inches(1.15), Inches(4.25), Inches(11.0), Inches(1.15),
+    rect(s, Inches(5.4), Inches(4.10), Inches(2.53), Inches(0.08), RED)
+    txt(s, Inches(1.15), Inches(4.45), Inches(11.0), Inches(1.15),
         [[(spec.get("note", "Bound the authority. Preserve the evidence."), 21, GREY, False)]],
         align=PP_ALIGN.CENTER)
     txt(s, 0, Inches(5.55), SW, Inches(0.6),

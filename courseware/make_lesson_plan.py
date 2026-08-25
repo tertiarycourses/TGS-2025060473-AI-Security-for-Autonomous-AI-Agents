@@ -122,6 +122,13 @@ VERSIONS = [
                             "chatbot and accountability questions. Marks rebalanced (20/24/26, "
                             "total 70). Schedule timing and TSC K/A text unchanged.",
      "Dr Alfred Ang"),
+    ("4.14", "26 August 2026", "Learning Outcomes slide now carries the full accredited LO1-LO3 "
+                            "wording. Activity overview slides for Activities 1, 4, 6, 7 and 8 "
+                            "regenerated with activity-specific step flows and 'You'll produce' "
+                            "lines matching the activity packs and Learner Guide. Thank You "
+                            "slide layout corrected. Activity PDFs re-stamped to the current "
+                            "version. Schedule timing and TSC K/A text unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess

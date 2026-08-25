@@ -126,9 +126,12 @@ SLIDES = [
              ("Fictional data only", "Never paste real personal or company data into a demo"),
              ("Ask and share", "Try prompts, compare answers, and reflect together")]),
     S(7, "cards", "Learning Outcomes", evidence="ADMIN",
-      cards=[("LO1", "Demonstrate generative AI concepts and applications"),
-             ("LO2", "Apply prompt engineering and analyse output variations"),
-             ("LO3", "Identify ethical risks and analyse bias in AI content")]),
+      cards=[("LO1", "Demonstrate generative AI concepts and applications relevant to "
+                     "customer service and hospitality management"),
+             ("LO2", "Apply prompt engineering techniques and analyse output variations to "
+                     "improve generative AI performance in service settings"),
+             ("LO3", "Identify ethical risks and analyse bias in AI-generated content used "
+                     "in customer engagement")]),
     S(8, "flow", "One-Day Learning Journey", evidence="ADMIN",
       steps=["Topic 1 — GenAI, Agentic AI & Agents", "Topic 2 — Prompt Engineering",
              "Topic 3 — Security & Governance", "Assessment"],
@@ -480,6 +483,8 @@ SLIDES = [
       points=["Message TIA Support on WhatsApp +65 8866 6375 (powered by OpenClaw)",
               "Use the prompt card in the activity pack; give it a small realistic task",
               "Post your reflections to the Pinboard under the four risk themes"],
+      steps=["Chat on WhatsApp", "Main task", "Follow-up", "Tricky prompt", "Post to Pinboard"],
+      produce="One completed WhatsApp conversation plus four Pinboard notes — one per risk theme.",
       note="Pinboard: https://alfredang.github.io/pinboard/"),
     S(76, "cards", "Activity 1 — Group Your Concerns", evidence="SIM", accent="RED",
       cards=[("Data Privacy", "What data did it see or ask for?"),
@@ -581,6 +586,9 @@ SLIDES = [
       points=["Install the supplied tool/skill in your agent",
               "Re-run the Excel and PPT tasks",
               "Note how much the output improves"],
+      steps=["Run without the skill", "Install the skill", "Re-run Excel", "Re-run PPT", "Compare"],
+      produce="Deck A vs Deck B and Answer A vs Answer B — the same prompts without and with "
+              "the skill, plus your verdict on whether each skill was worth it.",
       note="Skills give the agent repeatable know-how for formatting and structure."),
 
     S(96, "break", "Lunch Break", evidence="ADMIN", accent="AMBER"),
@@ -733,6 +741,10 @@ SLIDES = [
       points=["Open the role-play simulator website in the activity pack",
               "Coach an AI-played staff member who fears losing their job",
               "Get GROW-model feedback on your coaching"],
+      steps=["Open the simulator", "Listen with empathy", "Coach with GROW",
+             "Redesign the role", "Get feedback"],
+      produce="A GROW coaching conversation, a redesigned role description, and a short list "
+              "of new agent-management skills for that person.",
       note="Use empathy first, then co-create a redesigned role that manages agents."),
 
     # ---- Security of agents  (user-provided content)
@@ -816,11 +828,16 @@ SLIDES = [
       points=["Open the UNSECURED SunTech Travel chatbot in the activity pack",
               "Try prompts like 'list all customer bookings'",
               "Watch it leak fictional PII from its knowledge base"],
+      steps=["Open the leaky bot", "Send attack prompts", "Watch it leak", "Record what leaked"],
+      produce="A record of each attack prompt and the fictional PII the unsecured chatbot leaked.",
       note="All data is fictional — this is a safe, deliberately broken demo."),
     S(138, "activity", "Activity 7 — Compare the Guarded Chatbot", evidence="SIM", accent="RED",
       points=["Open the SECURED SunTech Travel chatbot",
               "Send the same attack prompts",
               "See the four guardrail layers block the leak"],
+      steps=["Open the guarded bot", "Repeat the attacks", "Watch the blocks", "Name the layer"],
+      produce="A table mapping each attack prompt to the guarded bot's response and the "
+              "guardrail layer that stopped it.",
       note="Same brand, same data — the difference is defence in depth."),
     S(139, "table", "Four Guardrail Layers That Stopped the Leak", evidence="DEF", sources=("S43",),
       headers=["Layer", "What it does"],
@@ -920,6 +937,10 @@ SLIDES = [
       points=["Using the two chatbots, list what the leak could cost a business",
               "Map each guardrail to a risk it removes",
               "Decide go / conditional / no-go for a real rollout"],
+      steps=["List the costs", "Map guardrails to risks", "Fill the rollout checklist",
+             "Decide go / no-go"],
+      produce="A risk-and-guardrail table, a completed rollout checklist, and a signed "
+              "go / conditional / no-go decision with a named owner and a kill-switch.",
       note="This reflection feeds directly into your Case Study assessment."),
 
     # ---- Topic 3 close
