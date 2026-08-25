@@ -54,6 +54,13 @@ VERSIONS = [
                             "Harness) and a latest-AI-agents reference (OpenClaw, Hermes, Prime "
                             "Agent, OpenWorker, QM) with official links. TSC K/A text unchanged.",
      "Dr Alfred Ang"),
+    ("4.3", "25 August 2026", "Beefed up Topic 3 with Singapore case studies (CPA Australia AI "
+                            "adoption vs cybersecurity, CNA gen-AI brand-damage, Tricentis agentic "
+                            "testing, Synapxe AgentSea healthcare), a brand-damage discussion and "
+                            "debrief, a 'Key Challenges of AI to Business' capstone, a visual "
+                            "multi-agent map and a DeepSeek 'everything is a plugin' slide. Visible "
+                            "source citations on all real-life cases. TSC K/A text unchanged.",
+     "Dr Alfred Ang"),
 ]
 
 

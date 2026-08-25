@@ -1,7 +1,7 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 4.2  |  **Date:** 25 August 2026  |  **Duration:** 1 Day · 8 Hours
+**Version:** 4.3  |  **Date:** 25 August 2026  |  **Duration:** 1 Day · 8 Hours
 
 > This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v40_learner.py`.
 
@@ -630,7 +630,26 @@ The table below is easier to recall once you see the pattern behind it. All thre
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 43 — A Concrete Agentic Loop
+## Slide 43 — DeepSeek Harness — 'Everything Is a Plugin'
+
+> **Evidence: PROD**
+> Sources: S55 — DeepSeek Harness (dsh) — developer preview repository, S65 — MindStudio — DeepSeek Harness: agentic coding where everything is a plugin
+
+Read the points below as the few things worth remembering about “DeepSeek Harness — 'Everything Is a Plugin'”. A v0.1 developer preview. Its openness is powerful; in Topic 3 we treat each plugin as untrusted until reviewed.
+
+| Concept | What it means |
+|---|---|
+| One idea | Every capability — tools, models, UI, even core behaviour — is a swappable plugin |
+| Model-agnostic | Plug in any model; the harness is not tied to DeepSeek's own |
+| Why it matters | Flexible and extensible — but every plugin is also new code and a new trust boundary to review |
+
+> **Note**
+> A v0.1 developer preview. Its openness is powerful; in Topic 3 we treat each plugin as untrusted until reviewed.
+
+Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+
+
+## Slide 44 — A Concrete Agentic Loop
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -658,7 +677,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 The deployed systems that put the agentic loop into everyday hands.
 
 
-## Slide 45 — What Makes Something an 'AI Agent'
+## Slide 46 — What Makes Something an 'AI Agent'
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -674,7 +693,7 @@ Read the points below as the few things worth remembering about “What Makes So
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 46 — Peter Steinberger in 2026 — Creator of OpenClaw
+## Slide 47 — Peter Steinberger in 2026 — Creator of OpenClaw
 
 > **Evidence: PROD**
 > Sources: S30 — OpenClaw — Wikipedia (naming and adoption history), S32 — Peter Steinberger — GitHub (steipete), S52 — Peter Steinberger — official 2026 speaker photograph
@@ -688,7 +707,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 47 — OpenClaw — A Naming and Adoption Story
+## Slide 48 — OpenClaw — A Naming and Adoption Story
 
 > **Evidence: PROD**
 > Sources: S30 — OpenClaw — Wikipedia (naming and adoption history)
@@ -706,7 +725,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 48 — OpenClaw Runs Where You Already Chat
+## Slide 49 — OpenClaw Runs Where You Already Chat
 
 > **Evidence: PROD**
 > Sources: S31 — OpenClaw — official site and docs
@@ -722,7 +741,7 @@ Read the points below as the few things worth remembering about “OpenClaw Runs
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 49 — Hermes Agent by Nous Research
+## Slide 50 — Hermes Agent by Nous Research
 
 > **Evidence: PROD**
 > Sources: S33 — Hermes Agent (Nous Research) — documentation
@@ -736,7 +755,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 50 — The Latest AI Agents (2025–2026)
+## Slide 51 — The Latest AI Agents (2025–2026)
 
 > **Evidence: PROD**
 > Sources: S56 — OpenClaw — repository, S57 — Hermes Agent (Nous Research) — repository, S58 — Prime Agent (Prime Intellect) — repository, S59 — OpenWorker — open standard for employing AI in organisations, S60 — QM (Quartermaster, Y Combinator) — multiplayer agent harness
@@ -757,7 +776,7 @@ The table below is easier to recall once you see the pattern behind it. All open
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 51 — Try It Today: TIA Support on WhatsApp
+## Slide 52 — Try It Today: TIA Support on WhatsApp
 
 > **Evidence: PROD**
 > Sources: S31 — OpenClaw — official site and docs
@@ -785,7 +804,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 How agents extend beyond the base model.
 
 
-## Slide 53 — Tools vs Skills
+## Slide 54 — Tools vs Skills
 
 > **Evidence: DEF**
 > Sources: S15 — Anthropic — Agent Skills / Claude Code, S16 — Model Context Protocol (MCP) documentation
@@ -801,7 +820,7 @@ Read the points below as the few things worth remembering about “Tools vs Skil
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 54 — How an Agent Uses a Tool
+## Slide 55 — How an Agent Uses a Tool
 
 > **Evidence: DEF**
 > Sources: S16 — Model Context Protocol (MCP) documentation
@@ -820,7 +839,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 55 — Why Skills Make Agents Practical
+## Slide 56 — Why Skills Make Agents Practical
 
 > **Evidence: SYN**
 > Sources: S15 — Anthropic — Agent Skills / Claude Code
@@ -845,25 +864,20 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 When one agent is not enough.
 
 
-## Slide 58 — Orchestrator and Workers
+## Slide 59 — How a Multi-Agent System Works
 
 > **Evidence: DEF**
 > Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
 
-“Orchestrator and Workers” is worth a closer look. Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
-
-- ('1 · Receive', 'A lead agent receives the goal')
-- ('2 · Delegate', 'It splits the work across specialist agents')
-- ('3 · Run', 'Workers research, analyse, create and verify in parallel')
-- ('4 · Synthesize', 'The lead combines results for final approval')
+“How a Multi-Agent System Works” is worth a closer look. A lead agent takes your goal, delegates to specialist workers that run in parallel, then combines their results. Anthropic's research system used this pattern and beat a single agent by ~90% on its internal eval.
 
 > **Note**
-> Anthropic's research system used this pattern; it beat a single agent by ~90% on their internal research eval.
+> A lead agent takes your goal, delegates to specialist workers that run in parallel, then combines their results. Anthropic's research system used this pattern and beat a single agent by ~90% on its internal eval.
 
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 59 — Why and Why Not Multi-Agent
+## Slide 60 — Why and Why Not Multi-Agent
 
 > **Evidence: DEF**
 > Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
@@ -879,7 +893,7 @@ Read the points below as the few things worth remembering about “Why and Why N
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 60 — A Service Example
+## Slide 61 — A Service Example
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -904,7 +918,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 The single most useful distinction from Topic 1.
 
 
-## Slide 62 — The Three, Side by Side
+## Slide 63 — The Three, Side by Side
 
 > **Evidence: SYN**
 > Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -920,7 +934,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
 
 
-## Slide 63 — One-Line Definitions
+## Slide 64 — One-Line Definitions
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -933,10 +947,10 @@ Read the points below as the few things worth remembering about “One-Line Defi
 | Agentic AI | The loop that makes an AI pursue a goal |
 | AI Agent | The running system that uses that loop to act for you |
 
-Why it matters at work: In a customer-service or hospitality setting, this shapes how you brief an AI tool and how much you trust its answer before it reaches a guest.
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 64 — Generation is a step. Agency is a loop. An agent is a system.
+## Slide 65 — Generation is a step. Agency is a loop. An agent is a system.
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -945,7 +959,7 @@ Why it matters at work: In a customer-service or hospitality setting, this shape
 > Generation is a step. Agency is a loop. An agent is a system.
 
 
-## Slide 65 — Activity 1 — Talk to an AI Agent, Then Reflect
+## Slide 66 — Activity 1 — Talk to an AI Agent, Then Reflect
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -962,7 +976,7 @@ In this activity — Activity 1 — Talk to an AI Agent, Then Reflect — you wo
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 66 — Activity 1 — Group Your Concerns
+## Slide 67 — Activity 1 — Group Your Concerns
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -979,7 +993,7 @@ Read the points below as the few things worth remembering about “Activity 1 �
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 67 — Activity 1 — Debrief
+## Slide 68 — Activity 1 — Debrief
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1006,7 +1020,7 @@ Why it matters at work: At work this is the difference between a prompt that was
 Set up a real agent on MiniMax, then learn to prompt it well.
 
 
-## Slide 69 — What Topic 2 Will Cover
+## Slide 70 — What Topic 2 Will Cover
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1025,7 +1039,7 @@ Set up a real agent on MiniMax, then learn to prompt it well.
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 70 — The Setup in Three Parts
+## Slide 71 — The Setup in Three Parts
 
 > **Evidence: PROD**
 > Sources: S33 — Hermes Agent (Nous Research) — documentation, S36 — MiniMax — MiniMax-M2 news and platform
@@ -1041,7 +1055,7 @@ Read the points below as the few things worth remembering about “The Setup in 
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 71 — Install the Hermes Desktop App
+## Slide 72 — Install the Hermes Desktop App
 
 > **Evidence: PROD**
 > Sources: S34 — Hermes Agent — Desktop app user guide
@@ -1060,7 +1074,7 @@ Why it matters at work: At work this is the difference between a prompt that was
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 72 — Get a MiniMax Model and API Key
+## Slide 73 — Get a MiniMax Model and API Key
 
 > **Evidence: PROD**
 > Sources: S36 — MiniMax — MiniMax-M2 news and platform, S37 — MiniMax — platform docs (API and models)
@@ -1079,7 +1093,7 @@ Why it matters at work: At work this is the difference between a prompt that was
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 73 — Point Hermes at MiniMax M2.7
+## Slide 74 — Point Hermes at MiniMax M2.7
 
 > **Evidence: PROD**
 > Sources: S33 — Hermes Agent (Nous Research) — documentation, S37 — MiniMax — platform docs (API and models)
@@ -1098,7 +1112,7 @@ Why it matters at work: At work this is the difference between a prompt that was
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 74 — Keep Your Key Safe
+## Slide 75 — Keep Your Key Safe
 
 > **Evidence: PROD**
 > Sources: S35 — Hermes Agent — Security
@@ -1123,7 +1137,7 @@ Why it matters at work: At work this is the difference between a prompt that was
 Small changes in the prompt make large changes in the output.
 
 
-## Slide 76 — Five Principles of a Good Prompt
+## Slide 77 — Five Principles of a Good Prompt
 
 > **Evidence: DEF**
 > Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
@@ -1139,7 +1153,7 @@ Small changes in the prompt make large changes in the output.
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 77 — A Bad Prompt vs a Good Prompt
+## Slide 78 — A Bad Prompt vs a Good Prompt
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1156,7 +1170,7 @@ It helps to set the two sides of “A Bad Prompt vs a Good Prompt” against eac
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 78 — Techniques That Reliably Help
+## Slide 79 — Techniques That Reliably Help
 
 > **Evidence: DEF**
 > Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025)
@@ -1172,23 +1186,47 @@ Read the points below as the few things worth remembering about “Techniques Th
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 79 — What Post-Training Adds
+## Slide 80 — 'Post-Training' for Agents — Memory and Skills, Not Fine-Tuning
 
 > **Evidence: DEF**
-> Sources: S07 — Ouyang et al., Training language models to follow instructions (InstructGPT)
+> Sources: S10 — Anthropic — Effective context engineering for AI agents (Sep 2025), S15 — Anthropic — Agent Skills / Claude Code
 
-Read the points below as the few things worth remembering about “What Post-Training Adds”.
+Read the points below as the few things worth remembering about “'Post-Training' for Agents — Memory and Skills, Not Fine-Tuning”. This is how the Hermes agent 'self-improves': it writes learnings to memory and skills, then reuses them.
 
 | Concept | What it means |
 |---|---|
-| Base model | Predicts text from raw training data |
-| Instruction tuning | Taught to follow instructions helpfully |
-| Why you care | It is why a clear, well-formed prompt works so well |
+| Not fine-tuning | You are not retraining the model's weights — that is expensive and out of reach for most teams |
+| It's context engineering | The agent stores what it learns in memory files and reusable skills |
+| Improves over time | Next time, it loads those memories and skills — so it gets better without retraining |
+| Stays consistent | The same saved skill makes the agent do a task the same way every time |
+
+> **Note**
+> This is how the Hermes agent 'self-improves': it writes learnings to memory and skills, then reuses them.
 
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 80 — Activity 2 — Analyse Excel Data with the Agent
+## Slide 81 — Reflect — Does Prompt Engineering Still Matter With Agents?
+
+> **Evidence: SYN**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Reflect — Does Prompt Engineering Still Matter With Agents?”. Discuss: think back to your bad-vs-good prompts — how many extra agent steps did the vague one cause?
+
+| Concept | What it means |
+|---|---|
+| The question | An agentic loop can plan, retry and self-correct — so is a good prompt still worth the effort? |
+| Still yes | A clear prompt points the loop at the right goal from the start, instead of it guessing and looping |
+| Saves time & tokens | A vague prompt makes the agent take extra steps — more turns, more tokens, more cost and delay |
+| The takeaway | Prompt engineering matters MORE with agents: a clear brief up front saves a whole loop of rework |
+
+> **Note**
+> Discuss: think back to your bad-vs-good prompts — how many extra agent steps did the vague one cause?
+
+Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+
+
+## Slide 82 — Activity 2 — Analyse Excel Data with the Agent
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1205,7 +1243,7 @@ In this activity — Activity 2 — Analyse Excel Data with the Agent — you wo
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 81 — Activity 2 — Good vs Bad in Action
+## Slide 83 — Activity 2 — Good vs Bad in Action
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1221,7 +1259,7 @@ Read the points below as the few things worth remembering about “Activity 2 �
 Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
 
 
-## Slide 82 — Activity 3 — Build an Animated PPT with the Agent
+## Slide 84 — Activity 3 — Build an Animated PPT with the Agent
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1235,10 +1273,10 @@ In this activity — Activity 3 — Build an Animated PPT with the Agent — you
 > **Note**
 > Templates: elements.envato.com/presentation-templates/compatible-with-powerpoint
 
-Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 83 — Activity 3 — What Good Looks Like
+## Slide 85 — Activity 3 — What Good Looks Like
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1251,10 +1289,10 @@ Read the points below as the few things worth remembering about “Activity 3 �
 | Good | 'Using this template and script, build a 5-slide deck with title animations and a summary slide' |
 | Reflect | Detail in = quality out |
 
-Why it matters at work: At work this is the difference between a prompt that wastes time and one that gives you an answer you can send or act on straight away.
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 84 — Activity 4 — Install Tools and Skills to Do Better
+## Slide 86 — Activity 4 — Install Tools and Skills to Do Better
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1271,7 +1309,7 @@ In this activity — Activity 4 — Install Tools and Skills to Do Better — yo
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 86 — Reflect on Working with the Agent
+## Slide 88 — Reflect on Working with the Agent
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1288,7 +1326,7 @@ Read the points below as the few things worth remembering about “Reflect on Wo
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 87 — Topic 2 Debrief
+## Slide 89 — Topic 2 Debrief
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1315,31 +1353,31 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Governance, jobs and the security of agents that can act.
 
 
-## Slide 89 — What Topic 3 Will Cover
+## Slide 91 — What Topic 3 Will Cover
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
 
-“What Topic 3 Will Cover” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Three scenarios drive the discussion: data, jobs and security.
+“What Topic 3 Will Cover” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Real Singapore cases drive the discussion — building to the key AI challenges every business must manage.
 
-1. AI data governance
-2. Accountability
+1. Data governance & accountability
+2. Brand damage
 3. Job impact & redesign
-4. AI-agent cybersecurity risks
-5. Safe rollout
+4. Cybersecurity & safe rollout
+5. The key challenges to business
 
 > **Note**
-> Three scenarios drive the discussion: data, jobs and security.
+> Real Singapore cases drive the discussion — building to the key AI challenges every business must manage.
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 90 — Scenario A — Who Is Accountable for the Data?
+## Slide 92 — Discussion Point 1 — Who Is Accountable for the Data?
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
 
-Read the points below as the few things worth remembering about “Scenario A — Who Is Accountable for the Data?”.
+Read the points below as the few things worth remembering about “Discussion Point 1 — Who Is Accountable for the Data?”.
 
 | Concept | What it means |
 |---|---|
@@ -1350,7 +1388,7 @@ Read the points below as the few things worth remembering about “Scenario A �
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 91 — AI is never the accountable party. A named human always is.
+## Slide 93 — AI is never the accountable party. A named human always is.
 
 > **Evidence: DEF**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI, S46 — Moffatt v Air Canada, 2024 BCCRT 149
@@ -1359,7 +1397,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 > AI is never the accountable party. A named human always is.
 
 
-## Slide 92 — Case — Moffatt v Air Canada
+## Slide 94 — Case — Moffatt v Air Canada
 
 > **Evidence: CASE-V**
 > Sources: S46 — Moffatt v Air Canada, 2024 BCCRT 149
@@ -1377,7 +1415,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 93 — Traditional Data Governance
+## Slide 95 — Traditional Data Governance
 
 > **Evidence: DEF**
 > Sources: S41 — PDPC Advisory Guidelines on Key Concepts in the PDPA
@@ -1393,7 +1431,7 @@ Read the points below as the few things worth remembering about “Traditional D
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 94 — New Principles for GenAI and Agents
+## Slide 96 — New Principles for GenAI and Agents
 
 > **Evidence: DEF**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI
@@ -1409,7 +1447,7 @@ Read the points below as the few things worth remembering about “New Principle
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 95 — Scope of an AI Data Governance Policy
+## Slide 97 — Scope of an AI Data Governance Policy
 
 > **Evidence: SYN**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI, S41 — PDPC Advisory Guidelines on Key Concepts in the PDPA
@@ -1427,7 +1465,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 96 — A Sample AI Data Governance Policy
+## Slide 98 — A Sample AI Data Governance Policy
 
 > **Evidence: SYN**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI
@@ -1442,7 +1480,7 @@ The points below unpack what “A Sample AI Data Governance Policy” means in p
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 97 — Activity 5 — Draft Your AI Data Governance Policy
+## Slide 99 — Activity 5 — Draft Your AI Data Governance Policy
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1459,12 +1497,83 @@ In this activity — Activity 5 — Draft Your AI Data Governance Policy — you
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 98 — Scenario B — If Agents Take the Work, What Do People Do?
+## Slide 100 — Discussion Point 2 — Brand Damage from Generative AI
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
 
-Read the points below as the few things worth remembering about “Scenario B — If Agents Take the Work, What Do People Do?”.
+Read the points below as the few things worth remembering about “Discussion Point 2 — Brand Damage from Generative AI”.
+
+| Concept | What it means |
+|---|---|
+| The temptation | AI can make an ad or a campaign in 24–48 hours, from about S$1,000 |
+| The risk | A cheap or misleading AI ad can read as low-effort and hurt the brand |
+| Who feels it most | Big and luxury brands — the backlash is sharpest for them |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 101 — Case — Gen-AI Ads Flood Singapore, and Could Backfire
+
+> **Evidence: CASE-V**
+> Sources: S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026)
+
+The table below is easier to recall once you see the pattern behind it. CNA, 24 Aug 2026. An industry-wide risk, not one named failure — the harm is to trust, authenticity and brand equity.
+
+| What is happening | The warning |
+|---|---|
+| AI ad demand in Singapore is up 4–5x; half of advertisers already use gen-AI for video | 'Using AI will not necessarily damage a brand. Using it poorly can.' (SMU Prof Sabine Benoit) |
+| Virtual influencers and AI livestream avatars are replacing human hosts | Virtual influencers can 'give people the creeps' and breed mistrust (NUS Assoc Prof Ang Swee Hoon) |
+| Luxury and global brands are adopting AI ads to cut cost | Seen as 'lacking effort' and 'less authentic'; 'not all publicity is good publicity' |
+| Regulators are watching | ASAS: 'Disclosure of the use of AI alone does not whitewash this issue' |
+
+> **Note**
+> CNA, 24 Aug 2026. An industry-wide risk, not one named failure — the harm is to trust, authenticity and brand equity.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 102 — Why AI Content Can Damage a Brand
+
+> **Evidence: SYN**
+> Sources: S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026)
+
+Read the points below as the few things worth remembering about “Why AI Content Can Damage a Brand”.
+
+| Concept | What it means |
+|---|---|
+| Signals low effort | 'The company hasn't put much effort into the product' |
+| Feels inauthentic | Synthetic faces and voices erode trust and connection |
+| Ethical shadow | Models trained on creators' work 'without their consent' — a visible symbol of unfairness |
+| Backlash is costly | Negative buzz can force an ad down — the campaign fails its objective |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 103 — Discuss & Debrief — Protecting the Brand
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+“Discuss & Debrief — Protecting the Brand” is best understood as a sequence — the steps below run in order. Each step feeds the next, so a problem early on shows up later in the chain — which is exactly why the order is worth learning. Debrief: authenticity, disclosure, human sign-off and knowing which content should never be fully synthetic.
+
+1. When is AI content fine — and when is it a risk?
+2. Should you disclose that an ad is AI-made?
+3. What review would catch a brand-damaging ad first?
+4. Write one brand-safe-AI rule for your team
+
+> **Note**
+> Debrief: authenticity, disclosure, human sign-off and knowing which content should never be fully synthetic.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 104 — Discussion Point 3 — If Agents Take the Work, What Do People Do?
+
+> **Evidence: SIM**
+> Concept or classroom slide; no external factual claim is introduced here.
+
+Read the points below as the few things worth remembering about “Discussion Point 3 — If Agents Take the Work, What Do People Do?”.
 
 | Concept | What it means |
 |---|---|
@@ -1475,7 +1584,7 @@ Read the points below as the few things worth remembering about “Scenario B �
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 99 — Jobs the Tasks Move — Not Vanish
+## Slide 105 — Jobs the Tasks Move — Not Vanish
 
 > **Evidence: SYN**
 > Sources: S48 — WEF — Future of Jobs Report 2025
@@ -1492,23 +1601,20 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 100 — The Numbers Give Perspective
+## Slide 106 — The Numbers Give Perspective
 
 > **Evidence: CASE-V**
 > Sources: S48 — WEF — Future of Jobs Report 2025
 
-Read the points below as the few things worth remembering about “The Numbers Give Perspective”.
+“The Numbers Give Perspective” is worth a closer look. WEF Future of Jobs 2025: +170M new and −92M displaced by 2030 — a net gain of ~78M, with 39% of core skills changing.
 
-| Concept | What it means |
-|---|---|
-| +170M | New jobs created by 2030 (WEF Future of Jobs 2025) |
-| -92M | Jobs displaced by 2030 — a net gain of about 78M |
-| 39% | Share of core skills expected to change by 2030 |
+> **Note**
+> WEF Future of Jobs 2025: +170M new and −92M displaced by 2030 — a net gain of ~78M, with 39% of core skills changing.
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 101 — New Roles: Managing Many Agents
+## Slide 107 — New Roles: Managing Many Agents
 
 > **Evidence: SYN**
 > Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
@@ -1524,7 +1630,7 @@ Read the points below as the few things worth remembering about “New Roles: Ma
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 102 — Why Staff Resist AI Agents
+## Slide 108 — Why Staff Resist AI Agents
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1540,7 +1646,7 @@ Read the points below as the few things worth remembering about “Why Staff Res
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 103 — Coaching Staff Through the Change
+## Slide 109 — Coaching Staff Through the Change
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1559,7 +1665,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 104 — A Job-Redesign Framework
+## Slide 110 — A Job-Redesign Framework
 
 > **Evidence: SYN**
 > Sources: S48 — WEF — Future of Jobs Report 2025
@@ -1578,7 +1684,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 105 — Activity 6 — Coach a Worried Team Member (Role-Play)
+## Slide 111 — Activity 6 — Coach a Worried Team Member (Role-Play)
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1604,12 +1710,25 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 What can go wrong when an AI can act — and how to contain it.
 
 
-## Slide 107 — Scenario C — An Agent With Too Much Reach
+## Slide 113 — The Singapore Reality — Fast on AI, Slower on Security
+
+> **Evidence: CASE-V**
+> Sources: S61 — The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025)
+
+“The Singapore Reality — Fast on AI, Slower on Security” is worth a closer look. CPA Australia Business Technology Survey, 1,117 respondents, Jul–Sep 2025. Adoption races ahead of security — and AI-enabled threats (phishing, deepfakes) make the gap worse.
+
+> **Note**
+> CPA Australia Business Technology Survey, 1,117 respondents, Jul–Sep 2025. Adoption races ahead of security — and AI-enabled threats (phishing, deepfakes) make the gap worse.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 114 — Discussion Point 4 — An Agent With Too Much Reach
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
 
-Read the points below as the few things worth remembering about “Scenario C — An Agent With Too Much Reach”.
+Read the points below as the few things worth remembering about “Discussion Point 4 — An Agent With Too Much Reach”.
 
 | Concept | What it means |
 |---|---|
@@ -1620,7 +1739,7 @@ Read the points below as the few things worth remembering about “Scenario C �
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 108 — Capable Agents, Not 'Rogue' Ones
+## Slide 115 — Capable Agents, Not 'Rogue' Ones
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -1639,7 +1758,7 @@ Read the points below as the few things worth remembering about “Capable Agent
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 109 — AI Cybersecurity Risks and Mitigation Strategies
+## Slide 116 — AI Cybersecurity Risks and Mitigation Strategies
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
@@ -1658,7 +1777,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 110 — Why Offence Outruns Defence
+## Slide 117 — Why Offence Outruns Defence
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -1674,7 +1793,7 @@ Read the points below as the few things worth remembering about “Why Offence O
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 111 — The Response Being Proposed
+## Slide 118 — The Response Being Proposed
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
@@ -1690,7 +1809,7 @@ Read the points below as the few things worth remembering about “The Response 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 112 — Case — Replit Agent Deletes a Database
+## Slide 119 — Case — Replit Agent Deletes a Database
 
 > **Evidence: CASE-V**
 > Sources: S47 — Replit — securing vibe coding after an agent deleted a database (Jul 2025)
@@ -1709,7 +1828,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 113 — Prompt Injection and PII Leak — In Plain Terms
+## Slide 120 — Prompt Injection and PII Leak — In Plain Terms
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -1725,7 +1844,7 @@ Read the points below as the few things worth remembering about “Prompt Inject
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 114 — Activity 7 — Break a Leaky Chatbot
+## Slide 121 — Activity 7 — Break a Leaky Chatbot
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1742,7 +1861,7 @@ In this activity — Activity 7 — Break a Leaky Chatbot — you work hands-on 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 115 — Activity 7 — Compare the Guarded Chatbot
+## Slide 122 — Activity 7 — Compare the Guarded Chatbot
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1759,7 +1878,7 @@ In this activity — Activity 7 — Compare the Guarded Chatbot — you work han
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 116 — Four Guardrail Layers That Stopped the Leak
+## Slide 123 — Four Guardrail Layers That Stopped the Leak
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -1776,7 +1895,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 117 — A Framework to Roll Out Agents Safely
+## Slide 124 — A Framework to Roll Out Agents Safely
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework, S40 — IMDA Model AI Governance Framework for Generative AI
@@ -1795,7 +1914,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 118 — The Go-Live Gate
+## Slide 125 — The Go-Live Gate
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework
@@ -1811,7 +1930,7 @@ Read the points below as the few things worth remembering about “The Go-Live G
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 119 — Human-in-the-Loop for Risky Actions
+## Slide 126 — Human-in-the-Loop for Risky Actions
 
 > **Evidence: DEF**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI
@@ -1827,7 +1946,45 @@ Read the points below as the few things worth remembering about “Human-in-the-
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 120 — Activity 8 — Reflect on Agent Security
+## Slide 127 — Case — Testing AI Before You Trust It
+
+> **Evidence: CASE-V**
+> Sources: S62 — Tricentis — QA trends 2026: AI, agents and the future of testing (5 Jan 2026)
+
+Read the points below as the few things worth remembering about “Case — Testing AI Before You Trust It”. Tricentis QA trends, Jan 2026. AI is probabilistic, not deterministic — verify before you rely on it.
+
+| Concept | What it means |
+|---|---|
+| The gap | 88% of developers are not confident deploying AI-generated code (Tricentis, 2026) |
+| The failures | 95% of AI pilots fail for lack of guardrails; 60% of those are preventable compliance issues |
+| The fix | Make quality the 'accountability layer' — test for risk, keep a human in the loop |
+
+> **Note**
+> Tricentis QA trends, Jan 2026. AI is probabilistic, not deterministic — verify before you rely on it.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 128 — Positive Case — Singapore Healthcare Does It Right (AgentSea)
+
+> **Evidence: CASE-V**
+> Sources: S63 — The Straits Times — New AgentSea platform lets public healthcare professionals create AI agents (24 Aug 2026)
+
+The table below is easier to recall once you see the pattern behind it. ST, 24 Aug 2026. 'Technological capability cannot be allowed to outpace our capability to govern it.'
+
+| What was done | Why it is responsible |
+|---|---|
+| Synapxe + AWS gave 80,000+ staff a no-code way to build AI agents | Governed rollout: 12,000+ agents built, 300+ shared for reuse |
+| A pre-clerking agent halved a doctor's review time | 'This has not replaced the need for verification or my own clinical assessment' |
+| The platform refuses sensitive data (NRIC, card numbers) | Guardrails built in; tied to MOH's updated AI-in-Healthcare Guidelines |
+
+> **Note**
+> ST, 24 Aug 2026. 'Technological capability cannot be allowed to outpace our capability to govern it.'
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 129 — Activity 8 — Reflect on Agent Security
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1844,7 +2001,28 @@ In this activity — Activity 8 — Reflect on Agent Security — you work hands
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 121 — Topic 3 Recap
+## Slide 130 — The Key Challenges of AI to Business
+
+> **Evidence: SYN**
+> Sources: S61 — The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025), S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026), S46 — Moffatt v Air Canada, 2024 BCCRT 149
+
+The table below is easier to recall once you see the pattern behind it. This is the heart of LO3: the ethical, legal and business risks a Singapore organisation must manage to use AI responsibly.
+
+| Challenge | What it looks like | What business must do |
+|---|---|---|
+| Data privacy & PDPA | Agents read and move personal data; a leak may be notifiable | Minimise data, map it, meet PDPA duties |
+| Brand damage | A poor or misleading AI ad erodes trust and authenticity | Human sign-off; disclose; know what not to synthesise |
+| Cybersecurity | Injection, data leaks, deepfakes — adoption outruns security | Contain, test and monitor before rollout |
+| Accountability | When AI is wrong, who answers? | A named human is always accountable, never the AI |
+| Job impact | Tasks are automated; roles must be redesigned | Redesign jobs around directing and checking agents |
+
+> **Note**
+> This is the heart of LO3: the ethical, legal and business risks a Singapore organisation must manage to use AI responsibly.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 131 — Topic 3 Recap
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1860,30 +2038,32 @@ Read the points below as the few things worth remembering about “Topic 3 Recap
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 122 — Let agents act — but bound the authority and keep a human answerable.
+## Slide 132 — Adopt AI boldly — but govern the data, guard the brand, and keep a human accountable.
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
 
 > **Key idea**
-> Let agents act — but bound the authority and keep a human answerable.
+> Adopt AI boldly — but govern the data, guard the brand, and keep a human accountable.
 
 
-## Slide 123 — Assessment Reminder
+## Slide 133 — Assessment Reminder
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
 
-The points below unpack what “Assessment Reminder” means in practice.
+Read the points below as the few things worth remembering about “Assessment Reminder”.
 
-- Complete the required digital attendance
-- Use the slides, Learner Guide and your own activity notes — open book
-- Submit the required files on the LMS
+| Concept | What it means |
+|---|---|
+| Attendance | Complete the required digital attendance first |
+| Open book | Use the slides, Learner Guide and your own activity notes |
+| Submit | Upload the required files on the LMS |
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 124 — What Each Assessment Asks
+## Slide 134 — What Each Assessment Asks
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1899,7 +2079,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 126 — Assessment Flow
+## Slide 136 — Assessment Flow
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2283,6 +2463,11 @@ These are the sources behind the dated facts and cases in this course. Product p
 | S58 | Prime Agent (Prime Intellect) — repository | https://github.com/PrimeIntellect-ai/prime-agent |
 | S59 | OpenWorker — open standard for employing AI in organisations | https://github.com/openworker-io/openworker |
 | S60 | QM (Quartermaster, Y Combinator) — multiplayer agent harness | https://github.com/yc-software/qm |
+| S61 | The Straits Times / CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (1 Dec 2025) | https://www.straitstimes.com/paid-press-releases/singapore-businesses-lead-in-ai-and-data-adoption-but-face-cybersecurity-challenges-20251201 |
+| S62 | Tricentis — QA trends 2026: AI, agents and the future of testing (5 Jan 2026) | https://www.tricentis.com/blog/qa-trends-ai-agentic-testing |
+| S63 | The Straits Times — New AgentSea platform lets public healthcare professionals create AI agents (24 Aug 2026) | https://www.straitstimes.com/tech/new-platform-to-create-ai-agents-available-to-all-public-healthcare-professionals |
+| S64 | CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026) | https://www.channelnewsasia.com/singapore/gen-ai-ads-singapore-marketing-backfire-6323236 |
+| S65 | MindStudio — DeepSeek Harness: agentic coding where everything is a plugin | https://www.mindstudio.ai/blog/deepseek-harness-agentic-coding |
 
 
 ---

@@ -50,6 +50,11 @@ VERSIONS = [
                             "deck (Claude Code, Codex, DeepSeek Harness; OpenClaw, Hermes, Prime "
                             "Agent, OpenWorker, QM). Schedule and TSC K/A text unchanged.",
      "Dr Alfred Ang"),
+    ("4.3", "25 August 2026", "Beefed up Topic 3 with Singapore AI case studies (adoption vs "
+                            "cybersecurity, gen-AI brand damage, agentic testing, healthcare "
+                            "AgentSea), a brand-damage discussion/debrief, a 'Key Challenges of AI "
+                            "to Business' capstone and a visual multi-agent map. Schedule and TSC "
+                            "K/A text unchanged.", "Dr Alfred Ang"),
 ]
 
 # (time, topic, minutes, kind)  kind: topic | activity | break | admin | assess

@@ -15,11 +15,11 @@
 
 </div>
 
-**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.2 · 25 August 2026
+**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.3 · 25 August 2026
 
 A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI agents, and the security, governance and ethical risks they bring to customer-service and hospitality settings. Learners work entirely on ready-made websites, chatbots and AI agents — **no coding is required**.
 
-![Version 4.2 trainer-deck cover](screenshot.png)
+![Version 4.3 trainer-deck cover](screenshot.png)
 
 ## Course structure
 
@@ -57,13 +57,13 @@ Open book · Competent / Not Yet Competent · 1-hour assessment at the end of th
 
 | Artifact | Current file |
 |---|---|
-| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v42.pptx` and matching PDF |
+| Trainer deck | `courseweare/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v43.pptx` and matching PDF |
 | Learner Guide | `courseweare/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
 | Learner Guide Markdown | `courseweare/LEARNER-GUIDE.md` |
 | Lesson Plan | `courseweare/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
 | Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 6 and 7) a ready-to-open website |
 
-The trainer deck is 124 slides; the Learner Guide is ~120 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
+The trainer deck is 138 slides; the Learner Guide is ~120 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
 
 ## Assessment boundary
 

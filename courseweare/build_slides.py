@@ -100,8 +100,10 @@ def _domain(url):
 
 def _source_band(s, cite):
     """A visible, clickable 'Sources' strip for real-life case-study slides so
-    learners can see and check the origin of every claim on the slide."""
-    y = Inches(6.42); x = Inches(0.85); w = Inches(11.63); h = Inches(0.34)
+    learners can see and check the origin of every claim on the slide. Sits in the
+    footer zone (below any slide caption/note, above the org/copyright line) so it
+    never collides with card or table notes."""
+    y = Inches(6.80); x = Inches(0.85); w = Inches(11.63); h = Inches(0.22)
     rect(s, x, y, w, h, LIGHT); rect(s, x, y, Inches(0.08), h, RED)
     # Build one run per source: "Publisher (domain)", hyperlinked to the URL.
     tb = s.shapes.add_textbox(x + Inches(0.22), y, w - Inches(0.4), h)
@@ -136,8 +138,10 @@ def footer(s):
     source_ids = ", ".join(CURRENT_META.get("sources", []))
     cite = CURRENT_META.get("cite", [])
     if cite:
+        # The visible Sources band replaces the cryptic "Sources: S.." ID line for
+        # these slides (it occupies the same footer zone), so we do not draw both.
         _source_band(s, cite)
-    if evidence or source_ids:
+    elif evidence or source_ids:
         source_line = "Evidence: " + evidence if evidence else ""
         if source_ids:
             source_line += ("  ·  " if source_line else "") + "Sources: " + source_ids
@@ -949,9 +953,11 @@ def _build_v30():
             # in the claim ledger; IDs alone prevent wrapping into the note/footer.
             source_labels.append(sid)
             source_details.append({"id": sid, "title": title, "url": url})
-        # Real-life case studies (verified / reported) get a VISIBLE source-citation
-        # band so learners can see and check where each claim comes from.
-        show_cite = spec.get("evidence") in ("CASE-V", "CASE-R", "HIST") and source_details
+        # Real-life case studies (verified / reported) AND any slide that opts in
+        # with cite=True get a VISIBLE source-citation band, so learners can see and
+        # check where each claim or chart's data comes from.
+        show_cite = source_details and (
+            spec.get("evidence") in ("CASE-V", "CASE-R", "HIST") or spec.get("cite"))
         CURRENT_META = {"evidence": spec.get("evidence", ""), "sources": source_labels,
                         "cite": source_details if show_cite else []}
         _v30_render(spec)
