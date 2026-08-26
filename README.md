@@ -40,7 +40,7 @@ Three topics map one-to-one onto the three learning outcomes:
 | 3 | Create a 10-slide AI-security PPT, then redesign it from an image template | 2 | Hermes agent + image template |
 | 4 | Install tools and skills, re-run the tasks | 2 | Hermes agent |
 | 5 | Draft an AI Data Governance Policy | 3 | Sample policy + prompts |
-| 6 | Coach a worried team member (role-play) | 3 | Role-play simulator website |
+| 6 | Coach a worried team member (role-play) | 3 | Role-play simulator website + worked coaching transcript |
 | 7 | Break a leaky chatbot, compare a guarded one | 3 | Two RAG chatbot websites |
 | 8 | Reflect on agent security and decide go / no-go | 3 | Worksheet |
 
@@ -63,7 +63,7 @@ Open book · Competent / Not Yet Competent · 1-hour assessment at the end of th
 | Lesson Plan | `courseware/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
 | Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 5, 6 and 7) a ready-to-open website |
 
-The trainer deck is 165 slides; the Learner Guide is ~170 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
+The trainer deck is 168 slides; the Learner Guide is ~170 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
 
 ## Assessment boundary
 
