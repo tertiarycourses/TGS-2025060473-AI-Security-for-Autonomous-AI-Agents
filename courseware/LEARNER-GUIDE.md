@@ -1,7 +1,7 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 4.14  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
+**Version:** 4.15  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
 
 > This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v40_learner.py`.
 
@@ -1779,7 +1779,7 @@ Read the points below as the few things worth remembering about “Discussion Po
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 115 — Jobs the Tasks Move — Not Vanish
+## Slide 115 — Jobs Move — Not Vanish
 
 > **Evidence: SYN**
 > Sources: S48 — WEF — Future of Jobs Report 2025
@@ -1796,52 +1796,109 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 116 — The Numbers Give Perspective
+## Slide 116 — Why Now — 12,000+ Agents in Singapore Healthcare
 
 > **Evidence: CASE-V**
-> Sources: S48 — WEF — Future of Jobs Report 2025
+> Source: Singapore Ministry of Health, HIMSS26 APAC speech, 24 Aug 2026
 
-“The Numbers Give Perspective” is worth a closer look. WEF Future of Jobs 2025: 170M new jobs created and 92M displaced by 2030 — a net gain of about 78 million jobs.
+Singapore public healthcare professionals have created more than **12,000 AI agents** on the AgentSea platform since it launched in late May 2026 — built with **no code required**, and with **human review** retained.
 
 > **Note**
-> WEF Future of Jobs 2025: 170M new jobs created and 92M displaced by 2030 — a net gain of about 78 million jobs.
+> MOH: when AI can act, assurance must shift from outputs to actions. The doctor remains responsible for the clinical decision.
+
+The lesson for every organisation is the same — ownership cannot be automated.
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 117 — New Roles: Managing Many Agents
+## Slide 117 — The Stakes — The Numbers Give Perspective
+
+> **Evidence: CASE-V**
+> Sources: S48 — WEF — Future of Jobs Report 2025; WEF workforce strategies
+
+The advantage comes from redesigning work — not merely deploying AI.
+
+| Global job change by 2030 | Figure |
+|---|---|
+| Created | +170M |
+| Displaced | −92M |
+| Net | +78M |
+
+22% of today's formal jobs are projected to be disrupted.
+
+| The employer response | Share |
+|---|---|
+| Expect AI to transform their business | 86% |
+| Plan to upskill workers for AI | 77% |
+| Also expect workforce reductions from automation | 41% |
+
+> **Note**
+> The opportunity: make agent management part of the job.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 118 — Our Operating Model — A Human at Every Consequential Gate
 
 > **Evidence: SYN**
-> Sources: S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
+> Source: Tertiary Infotech Academy practitioner experience (websites and software projects)
 
-Read the points below as the few things worth remembering about “New Roles: Managing Many Agents”.
+At Tertiary, agents support website and software workflows — and we help clients apply the same pattern.
 
-| Concept | What it means |
-|---|---|
-| Agent supervisor | Directs and checks a fleet of agents |
-| Workflow coordinator | Chains agents to reach a business goal |
-| Quality reviewer | Verifies agent output before it ships |
+1. **Frame** — the human sets the goal, context and constraints
+2. **Orchestrate** — agents research, build, test and monitor
+3. **Challenge** — the human reviews evidence, risks and exceptions
+4. **Decide** — a named owner approves release and remains accountable
+
+> **Note**
+> Agents increase throughput. Humans protect judgement and accountability.
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 118 — Why Staff Resist AI Agents
+## Slide 119 — The Problem — Adoption Debt When Roles Lag Behind
 
 > **Evidence: SYN**
-> Concept or classroom slide; no external factual claim is introduced here.
+> Source: Tertiary practitioner observations and the Sarah coaching scenario
 
-Read the points below as the few things worth remembering about “Why Staff Resist AI Agents”.
+AI deployment creates **adoption debt** when roles lag behind the technology. If identity, decision rights and accountability remain unresolved, resistance compounds.
 
-| Concept | What it means |
+**What we hear:** "The agent is wrong." · "This will not work here." · "I do not have time to learn it."
+
+| What is often underneath | The unasked question |
 |---|---|
-| Fear | 'This will replace me' |
-| Loss of control | 'I don't understand what it does' |
-| Skill anxiety | 'I don't know how to work with it' |
+| JOB | Will I still be needed? |
+| IDENTITY | What happens to my expertise? |
+| CONTROL | Can I stop a bad action? |
+| BLAME | Am I liable for its mistakes? |
+
+> **Note**
+> Resistance is not a people problem. It is a role-design signal.
 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 119 — Coaching Staff Through the Change
+## Slide 120 — The Solution — An Explicit Human Owner Role
+
+> **Evidence: SYN**
+> Work redesign pattern: human direction, challenge, approval, escalation and continuous improvement
+
+The solution is an explicit **Human Owner** role: move routine production to the agent and make human decision rights visible.
+
+**BEFORE — the DOER:** drafts every output · runs every check · handles every routine case · measures effort by volume
+
+| AFTER — the HUMAN OWNER | Responsibility |
+|---|---|
+| DIRECT | Set intent and boundaries |
+| CHALLENGE | Test evidence and assumptions |
+| DECIDE | Approve consequential actions |
+| ESCALATE | Own exceptions and recovery |
+| IMPROVE | Refine prompts, tools and rules |
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 121 — Coaching Staff Through the Change
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1860,7 +1917,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 120 — A Job-Redesign Framework
+## Slide 122 — A Job-Redesign Framework
 
 > **Evidence: SYN**
 > Sources: S48 — WEF — Future of Jobs Report 2025
@@ -1879,7 +1936,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 121 — The GROW Coaching Model
+## Slide 123 — The Intervention — Use GROW to Turn Resistance into Redesign
 
 > **Evidence: DEF**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1899,7 +1956,53 @@ Read the points below as the few things worth remembering about “The GROW Coac
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 122 — Activity 6 — Coach a Worried Team Member (Role-Play)
+## Slide 124 — The Product — The Job-Redesign Coaching Simulator
+
+> **Evidence: SIM**
+> Live training simulator — six fictional scenarios; demo mode makes no external API calls
+
+The **AI Agent Job Redesign Coach** simulator makes the hard conversation safe to practise, building coaching confidence across six realistic forms of resistance.
+
+| Person | Role | Resistance |
+|---|---|---|
+| Sarah | Marketing | Fear / identity |
+| David | Customer Service | Anger / trust |
+| Mei Ling | Data Analyst | Anxiety / withdrawal |
+| Arjun | Software Developer | Scepticism / pride |
+| Aisha | Web Operations | Control / accountability |
+| Farah | HR Executive | Ethics / purpose |
+
+The flow is: **pick a person → coach the transition → get GROW feedback.**
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 125 — The Worked Example — Sarah's Redesigned Role
+
+> **Evidence: SIM**
+> Source: A6 coaching scenario supplied for this presentation; fictional staff and company data
+
+A coaching conversation can reframe fear as ownership. Sarah moves from threatened doer to AI-augmented marketing lead.
+
+**REALITY —** "The agent writes the campaign copy and builds the decks. That is basically my whole job." Fear of redundancy · loss of identity · no consultation · anxiety about blame.
+
+| REDESIGNED ROLE — AI-Augmented Marketing Lead | |
+|---|---|
+| DIRECTION | Goals, creative angle and brand voice |
+| CHALLENGE | Audit assumptions, facts and market fit |
+| APPROVAL | Final gate for external content |
+| INSIGHT | Feed live client and market context back |
+| LEARNING | Refine the human-agent workflow |
+
+> **Note**
+> AI lights the way. The human decides the path.
+
+The full transcript is in the Activity 6 pack as `A6-Coaching-Sarah.docx`.
+
+Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
+
+
+## Slide 126 — Activity 6 — Coach a Worried Team Member (Role-Play)
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1925,7 +2028,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 What can go wrong when an AI can act — and how to contain it.
 
 
-## Slide 124 — The Singapore Reality — Fast on AI, Slower on Security
+## Slide 128 — The Singapore Reality — Fast on AI, Slower on Security
 
 > **Evidence: CASE-V**
 > Sources: S61 — CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025)
@@ -1938,7 +2041,7 @@ What can go wrong when an AI can act — and how to contain it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 125 — Discussion Point 4 — An Agent With Too Much Reach
+## Slide 129 — Discussion Point 4 — An Agent With Too Much Reach
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -1954,7 +2057,7 @@ Read the points below as the few things worth remembering about “Discussion Po
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 126 — Capable Agents, Not 'Rogue' Ones
+## Slide 130 — Capable Agents, Not 'Rogue' Ones
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -1973,7 +2076,7 @@ Read the points below as the few things worth remembering about “Capable Agent
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 127 — AI Cybersecurity Risks and Mitigation Strategies
+## Slide 131 — AI Cybersecurity Risks and Mitigation Strategies
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
@@ -1992,7 +2095,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 128 — Going Deeper — Mitigating Bias in AI Systems
+## Slide 132 — Going Deeper — Mitigating Bias in AI Systems
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework
@@ -2011,7 +2114,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 129 — Spot the Threats Across an Agent Workflow
+## Slide 133 — Spot the Threats Across an Agent Workflow
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications, S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -2030,7 +2133,7 @@ The table below is easier to recall once you see the pattern behind it. Learn to
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 130 — Why Agents Are Hard to Secure — Four Gaps
+## Slide 134 — Why Agents Are Hard to Secure — Four Gaps
 
 > **Evidence: SYN**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -2050,7 +2153,7 @@ Read the points below as the few things worth remembering about “Why Agents Ar
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 131 — Why Offence Outruns Defence
+## Slide 135 — Why Offence Outruns Defence
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -2066,7 +2169,7 @@ Read the points below as the few things worth remembering about “Why Offence O
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 132 — The Response Being Proposed
+## Slide 136 — The Response Being Proposed
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S45 — NIST AI Risk Management Framework
@@ -2082,7 +2185,7 @@ Read the points below as the few things worth remembering about “The Response 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 133 — Case — Replit Agent Deletes a Database
+## Slide 137 — Case — Replit Agent Deletes a Database
 
 > **Evidence: CASE-V**
 > Sources: S47 — Replit — securing vibe coding after an agent deleted a database (Jul 2025)
@@ -2101,7 +2204,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 134 — Prompt Injection and PII Leak — In Plain Terms
+## Slide 138 — Prompt Injection and PII Leak — In Plain Terms
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2117,7 +2220,7 @@ Read the points below as the few things worth remembering about “Prompt Inject
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 135 — Prompt Injection — Direct and Indirect
+## Slide 139 — Prompt Injection — Direct and Indirect
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2136,7 +2239,7 @@ Read the points below as the few things worth remembering about “Prompt Inject
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 136 — Jailbreaking — and Why It Persists
+## Slide 140 — Jailbreaking — and Why It Persists
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2156,7 +2259,7 @@ Read the points below as the few things worth remembering about “Jailbreaking 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 137 — Activity 7 — Break a Leaky Chatbot
+## Slide 141 — Activity 7 — Break a Leaky Chatbot
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2173,7 +2276,7 @@ In this activity — Activity 7 — Break a Leaky Chatbot — you work hands-on 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 138 — Activity 7 — Compare the Guarded Chatbot
+## Slide 142 — Activity 7 — Compare the Guarded Chatbot
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2190,7 +2293,7 @@ In this activity — Activity 7 — Compare the Guarded Chatbot — you work han
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 139 — Four Guardrail Layers That Stopped the Leak
+## Slide 144 — Four Guardrail Layers That Stopped the Leak
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2216,7 +2319,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Attacks on the model and the AI ecosystem itself. Know them by name — defending against them is specialist work, but buying and deploying AI safely means asking about them.
 
 
-## Slide 141 — Data Poisoning and Backdoor Attacks
+## Slide 145 — Data Poisoning and Backdoor Attacks
 
 > **Evidence: DEF**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2235,7 +2338,7 @@ Read the points below as the few things worth remembering about “Data Poisonin
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 142 — The AI Supply Chain Is Hard to Secure
+## Slide 146 — The AI Supply Chain Is Hard to Secure
 
 > **Evidence: SYN**
 > Sources: S43 — OWASP Top 10 for LLM Applications
@@ -2254,7 +2357,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 143 — Agent-to-Agent Attacks
+## Slide 147 — Agent-to-Agent Attacks
 
 > **Evidence: SYN**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026)
@@ -2273,7 +2376,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 144 — Misalignment — Goodhart's Law in Action
+## Slide 148 — Misalignment — Goodhart's Law in Action
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2301,7 +2404,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Four controls that keep a deployed agent bounded, watched and recoverable.
 
 
-## Slide 146 — Control 1 — Least Privilege, Allowlists and Credentials
+## Slide 150 — Control 1 — Least Privilege, Allowlists and Credentials
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S40 — IMDA Model AI Governance Framework for Generative AI
@@ -2320,7 +2423,7 @@ Read the points below as the few things worth remembering about “Control 1 —
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 147 — Control 2 — Approval, Output Validation and Shutdown
+## Slide 151 — Control 2 — Approval, Output Validation and Shutdown
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S40 — IMDA Model AI Governance Framework for Generative AI
@@ -2339,7 +2442,7 @@ Read the points below as the few things worth remembering about “Control 2 —
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 148 — Control 3 — Govern Multi-Agent Coordination
+## Slide 152 — Control 3 — Govern Multi-Agent Coordination
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S14 — Anthropic — How we built our multi-agent research system (13 Jun 2025)
@@ -2358,7 +2461,7 @@ Read the points below as the few things worth remembering about “Control 3 —
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 149 — Control 4 — Investigate and Respond to a Compromised Agent
+## Slide 153 — Control 4 — Investigate and Respond to a Compromised Agent
 
 > **Evidence: DEF**
 > Sources: S44 — OWASP Top 10 for Agentic Applications (2026), S42 — PDPC Guide on Managing and Notifying Data Breaches under the PDPA
@@ -2377,7 +2480,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 150 — A Framework to Roll Out Agents Safely
+## Slide 154 — A Framework to Roll Out Agents Safely
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework, S40 — IMDA Model AI Governance Framework for Generative AI
@@ -2396,7 +2499,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 151 — The Go-Live Gate
+## Slide 155 — The Go-Live Gate
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework
@@ -2412,7 +2515,7 @@ Read the points below as the few things worth remembering about “The Go-Live G
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 152 — Human-in-the-Loop for Risky Actions
+## Slide 156 — Human-in-the-Loop for Risky Actions
 
 > **Evidence: DEF**
 > Sources: S40 — IMDA Model AI Governance Framework for Generative AI
@@ -2428,7 +2531,7 @@ Read the points below as the few things worth remembering about “Human-in-the-
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 153 — Human-in-the-Loop at Machine Speed
+## Slide 157 — Human-in-the-Loop at Machine Speed
 
 > **Evidence: SYN**
 > Sources: S45 — NIST AI Risk Management Framework
@@ -2447,7 +2550,7 @@ Read the points below as the few things worth remembering about “Human-in-the-
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 154 — Case — Testing AI Before You Trust It
+## Slide 158 — Case — Testing AI Before You Trust It
 
 > **Evidence: CASE-V**
 > Sources: S62 — Tricentis — QA trends 2026: AI, agents and the future of testing (5 Jan 2026)
@@ -2466,26 +2569,7 @@ Read the points below as the few things worth remembering about “Case — Test
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 155 — Positive Case — Singapore Healthcare Does It Right (AgentSea)
-
-> **Evidence: CASE-V**
-> Sources: S63 — BritCham Singapore — New AgentSea platform lets public healthcare professionals create AI agents (Aug 2026)
-
-The table below is easier to recall once you see the pattern behind it. ST, 24 Aug 2026. 'Technological capability cannot be allowed to outpace our capability to govern it.'
-
-| What was done | Why it is responsible |
-|---|---|
-| Synapxe + AWS gave 80,000+ staff a no-code way to build AI agents | Governed rollout: 12,000+ agents built, 300+ shared for reuse |
-| A pre-clerking agent halved a doctor's review time | 'This has not replaced the need for verification or my own clinical assessment' |
-| The platform refuses sensitive data (NRIC, card numbers) | Guardrails built in; tied to MOH's updated AI-in-Healthcare Guidelines |
-
-> **Note**
-> ST, 24 Aug 2026. 'Technological capability cannot be allowed to outpace our capability to govern it.'
-
-Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
-
-
-## Slide 156 — Activity 8 — Reflect on Agent Security
+## Slide 159 — Activity 8 — Reflect on Agent Security
 
 > **Evidence: SIM**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2502,7 +2586,7 @@ In this activity — Activity 8 — Reflect on Agent Security — you work hands
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 157 — The Key Challenges of AI to Business
+## Slide 160 — The Key Challenges of AI to Business
 
 > **Evidence: SYN**
 > Sources: S61 — CPA Australia — Singapore businesses lead in AI and data adoption but face cybersecurity challenges (Dec 2025), S64 — CNA — Gen-AI ads flooding the Singapore market could backfire on brands (24 Aug 2026), S46 — Moffatt v Air Canada, 2024 BCCRT 149
@@ -2523,7 +2607,7 @@ The table below is easier to recall once you see the pattern behind it. This is 
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 158 — Topic 3 Recap
+## Slide 161 — Topic 3 Recap
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2539,7 +2623,7 @@ Read the points below as the few things worth remembering about “Topic 3 Recap
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 159 — Adopt AI boldly — but govern the data, guard the brand, and keep a human accountable.
+## Slide 162 — Adopt AI boldly — but govern the data, guard the brand, and keep a human accountable.
 
 > **Evidence: SYN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2548,7 +2632,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 > Adopt AI boldly — but govern the data, guard the brand, and keep a human accountable.
 
 
-## Slide 160 — Assessment Reminder
+## Slide 163 — Assessment Reminder
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2564,7 +2648,7 @@ Read the points below as the few things worth remembering about “Assessment Re
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 161 — What Each Assessment Asks
+## Slide 164 — What Each Assessment Asks
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2580,7 +2664,7 @@ The table below is easier to recall once you see the pattern behind it.
 Why it matters at work: For a deployment you own, this is where accountability, data protection and safe roll-out become concrete decisions rather than good intentions.
 
 
-## Slide 163 — Assessment Flow
+## Slide 166 — Assessment Flow
 
 > **Evidence: ADMIN**
 > Concept or classroom slide; no external factual claim is introduced here.
@@ -2769,7 +2853,7 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 ### Step-by-step
 
 1. Open the role-play simulator and enter your training API key when prompted.
-2. Pick a scenario — Sarah (marketing), David (customer service) or Mei Ling (data analyst).
+2. Pick a scenario — Sarah (marketing), David (customer service), Mei Ling (data analyst), Arjun (software developer), Aisha (web operations) or Farah (HR executive).
 3. Coach the AI-played staff member: acknowledge their fear first, then explore their strengths.
 4. Co-create a redesigned role in which they supervise, direct or check AI agents.
 5. Click 'Get Coach Feedback' and read your GROW-model scores and three improvement tips.
@@ -2781,6 +2865,8 @@ Why it matters at work: For a deployment you own, this is where accountability, 
 - A completed coaching conversation
 - Your GROW feedback scores and the three tips
 - One thing you would do differently next time
+
+A worked example of this conversation — Sarah, coached through GROW to an AI-Augmented Marketing Lead role — is provided in the activity pack as `A6-Coaching-Sarah.docx`, and is summarised on slide 125.
 
 > **Done when**
 > You coached the staff member with empathy and co-created a concrete redesigned role, and you can name one strength and one improvement from the feedback.

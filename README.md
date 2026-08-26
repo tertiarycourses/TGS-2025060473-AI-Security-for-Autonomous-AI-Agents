@@ -15,7 +15,7 @@
 
 </div>
 
-**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.14 · 26 August 2026
+**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.15 · 26 August 2026
 
 A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI agents, and the security, governance and ethical risks they bring to customer-service and hospitality settings. Learners work entirely on ready-made websites, chatbots and AI agents — **no coding is required**.
 
