@@ -1,7 +1,7 @@
 # AI Security for Autonomous AI Agents — Learner Guide
 
 **Course Code:** TGS-2025060473  |  **TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1)  
-**Version:** 4.15  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
+**Version:** 4.16  |  **Date:** 26 August 2026  |  **Duration:** 1 Day · 8 Hours
 
 > This guide mirrors the Learner Guide DOCX exactly. Both are generated from `v40_learner.py`.
 
