@@ -21,8 +21,10 @@ courseware/.env
 credentials.json
 secrets.json
 
-# Local source packs, trainer-only debriefs and generated archives are not public release content
-reference/
+# Source material the project was derived from — not ours to republish.
+**/reference/
+!.claude/skills/**/reference/
+!.claude/skills/**/reference/**
 trainer-resources/
 **/archive/
 
