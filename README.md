@@ -21,6 +21,20 @@ A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI 
 
 ![Version 4.14 trainer-deck cover](screenshot.png)
 
+| Course detail | Information |
+|---|---|
+| Course code | `TGS-2025060473` |
+| Programme | WSQ |
+| Duration | 1 day · 8 hours (including a 1-hour assessment) |
+| Registration | [View course details and register](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html) |
+| Funding | Up to 70% WSQ course-fee funding for eligible Singaporeans/PRs and companies. Eligibility and terms apply — see the course page. |
+
+## Learning outcomes
+
+1. Demonstrate generative and discriminative AI concepts and applications relevant to customer service and hospitality management.
+2. Apply prompt engineering techniques and analyse output variations based on model training data and outputs to improve generative AI performance.
+3. Identify ethical risks and analyse bias in AI-generated content based on model training data and outputs.
+
 ## Course structure
 
 Three topics map one-to-one onto the three learning outcomes:
@@ -57,11 +71,11 @@ Open book · Competent / Not Yet Competent · 1-hour assessment at the end of th
 
 | Artifact | Current file |
 |---|---|
-| Trainer deck | `courseware/WSQ - Master Trainer Slides - TGS-2025060473 - AI Security for Autonomous AI Agents-v414.pptx` and matching PDF |
-| Learner Guide | `courseware/Learner Guide - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
-| Learner Guide Markdown | `courseware/LEARNER-GUIDE.md` |
-| Lesson Plan | `courseware/Lesson Plan - TGS-2025060473 - AI Security for Autonomous AI Agents.docx` and PDF |
-| Activities | Eight self-contained folders under `activities/`, each with Markdown, data files, printable PDFs and (for 5, 6 and 7) a ready-to-open website |
+| Trainer deck | [PowerPoint](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v414.pptx) · [PDF](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v414.pdf) |
+| Learner Guide | [Word](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.docx) · [PDF](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.pdf) |
+| Learner Guide Markdown | [courseware/LEARNER-GUIDE.md](courseware/LEARNER-GUIDE.md) |
+| Lesson Plan | [Word](courseware/Lesson%20Plan%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.docx) · [PDF](courseware/Lesson%20Plan%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.pdf) |
+| Activities | Eight self-contained folders under [`activities/`](activities/), each with Markdown, data files, printable PDFs and (for 5, 6 and 7) a ready-to-open website |
 
 The trainer deck is 168 slides; the Learner Guide is ~170 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
 
