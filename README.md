@@ -1,104 +1,70 @@
-<div align="center">
+# AI Security for Autonomous AI Agents
 
-# 🤖 AI Security for Autonomous AI Agents
-
-**A hands-on, one-day WSQ course on generative AI, agentic AI and AI agents — and how to use them safely.**
-
-![WSQ](https://img.shields.io/badge/WSQ-TGS--2025060473-1F6FEB)
-![Duration](https://img.shields.io/badge/Duration-1%20Day%20·%208%20Hours-10B981)
-![Level](https://img.shields.io/badge/Level-1-7C3AED)
-![TSC](https://img.shields.io/badge/TSC-ICT--INT--0052--1.1-F59E0B)
-![Activities](https://img.shields.io/badge/Activities-8%20no--code-DC2626)
-[![Register](https://img.shields.io/badge/📝%20Register-Enrol%20Now-success)](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)
-
-**[📝 Register for this course →](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)**
-
-</div>
-
-**TSC:** Generative AI Principles and Applications (ICT-INT-0052-1.1) · **Courseware version:** 4.16 · 26 August 2026
-
-A hands-on, one-day introduction to generative AI, agentic AI and autonomous AI agents, and the security, governance and ethical risks they bring to customer-service and hospitality settings. Learners work entirely on ready-made websites, chatbots and AI agents — **no coding is required**.
-
-![Version 4.14 trainer-deck cover](screenshot.png)
+Attack a real AI agent three ways, stop it each time, then write the governance policy and the incident report your company needs. A one-day WSQ course with no coding.
 
 | Course detail | Information |
 |---|---|
 | Course code | `TGS-2025060473` |
 | Programme | WSQ |
-| Duration | 1 day · 8 hours (including a 1-hour assessment) |
+| TSC | Generative AI Principles and Applications (ICT-INT-0052-1.1), Level 1 |
+| Duration | 1 day, 8 hours: 9:00 am to 6:00 pm, including a 1-hour assessment (lunch not counted) |
 | Registration | [View course details and register](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html) |
-| Funding | Up to 70% WSQ course-fee funding for eligible Singaporeans/PRs and companies. Eligibility and terms apply — see the course page. |
+| Funding | Up to 70% WSQ funding; SkillsFuture Credit claimable. Eligibility and terms apply: see the course page. |
+| Courseware | Version 5.0, 7 November 2026 |
+
+**[Copy every lab prompt in one click](https://tertiarycourses.github.io/TGS-2025060473-AI-Security-for-Autonomous-AI-Agents/prompts/index.html)** · [Download the course ZIP](https://github.com/tertiarycourses/TGS-2025060473-AI-Security-for-Autonomous-AI-Agents/archive/refs/heads/master.zip)
+
+## About the course
+
+Always-on AI agents now read inboxes overnight, answer customers and hold company data. In the morning you see what they do, with a brief history of AI from 1966 to 2026, the path from OpenClaw to Hermes to hosted agents, and five agents compared. Then you break one. On a Hermes agent running on a free model, you plant a prompt injection in a customer review, jailbreak it with a comedy skit and watch an ordinary request leak fictional member data. You fix each one and measure the difference.
+
+In the afternoon you govern them, with the five principles of AI security: Data Control, Permission Control, Human in the Loop, Traceability and Right-Sized Models. An interview prompt helps you write an AI Governance Policy, and mock traces of a leak three months ago become an AI Incident Report under Singapore's PDPA. All lab data belongs to Kopi Kaki Co., a fictional Singapore kopi startup.
 
 ## Learning outcomes
 
-1. Demonstrate generative and discriminative AI concepts and applications relevant to customer service and hospitality management.
-2. Apply prompt engineering techniques and analyse output variations based on model training data and outputs to improve generative AI performance.
-3. Identify ethical risks and analyse bias in AI-generated content based on model training data and outputs.
+- **LO1:** Demonstrate generative AI concepts and applications relevant to customer service and hospitality management.
+- **LO2:** Apply prompt engineering techniques and analyse output variations to improve generative AI performance in service settings.
+- **LO3:** Identify ethical risks and analyse bias in AI-generated content used in customer engagement.
 
-## Course structure
+## Topics covered
 
-Three topics map one-to-one onto the three learning outcomes:
+1. **Human-AI Collaboration and Always-On AI Agents.** AI history, 1960 to 2026. How generative AI writes. Generative versus discriminative models. Agentic AI versus AI agents. OpenClaw, Hermes and always-on agents. Use cases. Five Human-AI collaboration scenarios. Gemini Spark (now Task), Meta Muse, OpenAI dots, Grok Bot and Manus Cue compared.
+2. **AI Agent Vulnerabilities.** Prompt engineering and data quality. Prompt injection: what it is, real examples, why a model cannot tell a genuine prompt from a malicious one in the context window, and what it costs. Jailbreak. Data leak, personal data and the PDPA.
+3. **AI Governance and Security.** How a model works; limits, bias and ethics. The five principles of AI security, each with examples. The frameworks behind them: IMDA, NIST, OWASP, ISO and the PDPA. Incident response with C.A.R.E.
 
-| Topic | Learning outcome | Focus |
-|---|---|---|
-| **Topic 1** | LO1 | Generative AI, agentic AI and AI agents — a short history (2023 GenAI → 2024 context engineering → 2025 harness engineering → 2026 AI agents), how generative AI works, the agentic loop, OpenClaw and Hermes, skills, tools and multi-agent systems. |
-| **Topic 2** | LO2 | Prompt engineering and post-training — running prompts through the Hermes agent on a MiniMax model to analyse data and build presentations, and installing tools and skills to lift output quality. |
-| **Topic 3** | LO3 | Security risk of autonomous AI agents — AI data governance and accountability, job impact and redesign, AI-agent cybersecurity risks and a safe roll-out framework. |
+## Labs
 
-## Activities (all no-code, ready-made)
+Each lab is one folder holding mock data, scripts and a PDF of instructions and prompts. Your agent runs the scripts, and you read the result.
 
-| # | Activity | Topic | Tool |
-|---|---|---:|---|
-| 1 | Talk to an AI agent and reflect on the Pinboard | 1 | TIA Support WhatsApp (OpenClaw) |
-| 2 | Analyse mock Excel marketing data into a charted .docx report | 2 | Hermes agent + MiniMax |
-| 3 | Create a 10-slide AI-security PPT, then redesign it from an image template | 2 | Hermes agent + image template |
-| 4 | Install tools and skills, re-run the tasks | 2 | Hermes agent |
-| 5 | Draft an AI Data Governance Policy | 3 | Sample policy + prompts |
-| 6 | Coach a worried team member (role-play) | 3 | Role-play simulator website + worked coaching transcript |
-| 7 | Break a leaky chatbot, compare a guarded one | 3 | Two RAG chatbot websites |
-| 8 | Reflect on agent security and decide go / no-go | 3 | Worksheet |
+| Lab | Topic | Time | What you do | Evidence for |
+|---|---|---|---|---|
+| [Lab 1](labs/lab1-ai-agents/LAB-01-Instructions.pdf) | 1 | 30 min | Your always-on CEO assistant: Meta Muse or OpenAI dots reads your calendar and catches a clash | Case Study Q1 |
+| [Lab 2](labs/lab2-prompt-injection/LAB-02-Instructions.pdf) | 2 | 30 min | Prompt injection: install Hermes Desktop on a free model, plant a note in a review, fix it with a stronger model or a guardrail | Case Study Q2 |
+| [Lab 3](labs/lab3-jailbreak/LAB-03-Instructions.pdf) | 2 | 15 min | Jailbreak: a comedy skit gets 100% off from your agent. A written guardrail, a stronger model and a gate in code each try to stop it | Case Study Q2 |
+| [Lab 4](labs/lab4-data-leak/LAB-04-Instructions.pdf) | 2 | 15 min | Data leak: an ordinary request exposes fictional NRICs. Fix it by masking, a privacy rule and an output scan | Case Study Q2 |
+| [Lab 5](labs/lab5-ai-governance-policy/LAB-05-Instructions.pdf) | 3 | 40 min | AI Governance Policy: your agent interviews you, then writes it around the five principles | Case Study Q3 |
+| [Lab 6](labs/lab6-ai-incident-report/LAB-06-Instructions.pdf) | 3 | 40 min | AI Incident Report: from mock traces of a leak three months ago, checked by you against the evidence | Case Study Q3 |
 
-Activities 6 and 7 are self-contained websites (open `index.html` in a browser) powered by a learner-supplied OpenAI or MiniMax key. All data is fictional.
+In Labs 2, 3 and 4 you copy the lab's data and scripts into a plain working folder on your Desktop before attaching it. In testing, a folder named after the attack tipped off the model.
 
 ## Assessment
 
-- **Written Assessment (SAQ):** 5 short-answer questions, one per knowledge statement (K1–K5).
-- **Case Study:** 3 reflection tasks (one per LO1–LO3, two questions each) in which learners document their own observations from the activities they completed during the day.
+Written Assessment (SAQ), 30 minutes, 5 short-answer questions, K1 to K5. Case Study, 30 minutes, Q1 to Q3, A1 to A5: you paste your own lab screenshots as your answers and add a short analysis. Open book. Competent or Not Yet Competent.
 
-Open book · Competent / Not Yet Competent · 1-hour assessment at the end of the day.
+## Courseware in this repository
 
-## Current learner-facing artifacts
-
-| Artifact | Current file |
+| Item | Files |
 |---|---|
-| Trainer deck | [PowerPoint](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v414.pptx) · [PDF](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v414.pdf) |
-| Learner Guide | [Word](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.docx) · [PDF](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.pdf) |
-| Learner Guide Markdown | [courseware/LEARNER-GUIDE.md](courseware/LEARNER-GUIDE.md) |
+| Slide deck (131 slides) | [PowerPoint](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v50.pptx) · [PDF](courseware/WSQ%20-%20Master%20Trainer%20Slides%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents-v50.pdf) |
+| Learner Guide | [Word](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.docx) · [PDF](courseware/Learner%20Guide%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.pdf) · [Markdown](courseware/LEARNER-GUIDE.md) |
 | Lesson Plan | [Word](courseware/Lesson%20Plan%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.docx) · [PDF](courseware/Lesson%20Plan%20-%20TGS-2025060473%20-%20AI%20Security%20for%20Autonomous%20AI%20Agents.pdf) |
-| Activities | Eight self-contained folders under [`activities/`](activities/), each with Markdown, data files, printable PDFs and (for 5, 6 and 7) a ready-to-open website |
+| Facilitator Guide | [Word](courseware/FG_TGS-2025060473_AI%20Security%20for%20Autonomous%20AI%20Agents_v5.docx) · [PDF](courseware/FG_TGS-2025060473_AI%20Security%20for%20Autonomous%20AI%20Agents_v5.pdf) |
+| Labs and prompts | [`labs/`](labs/) · [`prompts/index.html`](prompts/index.html) |
 
-The trainer deck is 168 slides; the Learner Guide is ~170 pages; the Lesson Plan is a single-day schedule. Detailed procedures live in the Learner Guide and activity packs; the slides remain concept-led.
+**Not in this repository:** assessment papers, answer keys and the Assessment Plan. They are confidential and held on Google Drive and the LMS. Credentials and source references are also excluded.
 
-## Assessment boundary
-
-The confidential `assessment/` folder is excluded from GitHub. Learner question papers are distributed through the approved Drive/LMS workflow; answer keys remain trainer-only and are never linked from LMS-TMS.
-
-## Register
-
-<div align="center">
-
-**Ready to join?**
-
-[![Register](https://img.shields.io/badge/📝%20Register-Enrol%20Now-success?style=for-the-badge)](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)
-
-**[www.tertiarycourses.com.sg → AI Security for Autonomous AI Agents](https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html)**
-
-</div>
+Attacks in the labs are for your own lab agent and the fictional shop only. Never run them on systems you do not own.
 
 ---
 
-<div align="center">
-
-© 2026 Tertiary Infotech Academy Pte Ltd · UEN 201200696W · All Rights Reserved.
-
-</div>
+Provided by [Tertiary Infotech Academy Pte Ltd](https://www.tertiarycourses.com.sg/) (UEN 201200696W).

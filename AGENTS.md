@@ -2,20 +2,13 @@
 
 ## Scope
 
-- WSQ course: `TGS-2025060473 - AI Security for Autonomous AI Agents`. As of v4.0 (25 Aug 2026) this is a **1-day (8-hour) course** — see the official page https://www.tertiarycourses.com.sg/wsq-ai-security-for-autonomous-ai-agents.html. It was previously a 2-day security course; do not reintroduce the 2-day structure.
-- Treat `courseware/course_data.py`, `courseware/v40_content.py`, and `courseware/v40_learner.py` as the active v4.0 instructional source of truth. The v3.0 modules (`v30_content.py`, `v30_learner.py`) and v2.x modules (`deck_content.py`, `lg_content.py`) are legacy and must not feed a v4.x build. `build_slides.py` selects the content module by `C.VERSION`.
-- The course now has three topics mapped to LO1/LO2/LO3: (1) Generative AI, Agentic AI and AI Agents; (2) Prompt Engineering and Post-Training (Hermes agent on MiniMax); (3) Security Risk of Autonomous AI Agents.
-- Learners do NOT code. Every activity uses a ready-made website, chatbot or AI agent under `activities/` (activity-1..8). Activities 6 and 7 are self-contained `index.html` websites powered by a learner-supplied OpenAI or MiniMax key.
-- The build output folder is `courseware/` (the old `courseweare/` typo was renamed in Aug 2026; do not reintroduce it).
-
-## Content and design
-
-- Keep the PowerPoint concept-led and highly visual. Put detailed procedures and checklists in the Learner Guide and activity packs. The Learner Guide targets ~120-150 pages (one slide-note block per page).
-- Topic 1 covers GenAI mechanics (autoregressive LLM, training/inference), real use cases, context engineering, the agentic loop/harness engineering, OpenClaw/Hermes/Peter Steinberger, skills/tools and multi-agent systems. Topic 3 covers AI data governance, job impact/redesign and AI-agent cybersecurity risks (adversarial AI, algorithmic bias, over-reliance, data privacy, model drift, malicious use) plus safe rollout.
-- Evidence policy is "lighter touch": real dated facts and named cases carry an evidence label + source ID (resolved in `v40_content.SOURCES`); concept/definition slides may stand alone. Every synthetic scenario is labelled `SIM` with fictional names and numbers.
-- OpenAI product claims may use only current official pages under `learn.chatgpt.com`, `developers.openai.com`, or `platform.openai.com` for this package.
-- Generated images must contain no embedded text, logos, trademarks, or watermarks. Keep titles and labels editable in PowerPoint.
-- Do not add a practice-exam slide unless this course is explicitly mapped to an external certification exam and a matching exam exists.
+- WSQ course `TGS-2025060473 - AI Security for Autonomous AI Agents`, 1 day, 8 hours. Approved Course Proposal: `../course_application/CP_IT_AI Ethnics_INT.xlsx` (LU, LO, K, A wording and minutes are fixed: LU1 120, LU2 120, LU3 180, WA 30, Case Study 30).
+- v5.0 (7 Nov 2026) is a full overhaul. Single source: `.claude/skills/courseware-build/build/` (`course_data.py`, `data_labs.py`, `mock_data.py`, `lab_scripts/`). Build everything with `bash .claude/skills/courseware-build/build/build_courseware.sh`. Earlier builders and the eight activities are in `courseware/archive/` (git-ignored) and must not feed a build.
+- Topics: (1) Human-AI Collaboration and Always-On AI Agents; (2) AI Agent Vulnerabilities; (3) AI Governance and Security. Six labs on the fictional Kopi Kaki Co.
+- Deck theme: the Claude Code course design (`ccdeck.py`). Slide notes are the Learner Guide narrative.
+- Labs follow the `wsq-lab-author` skill: one folder per lab with `data/`, `scripts/` and a PDF, no .md files, plus `prompts/index.html`. Lab folders are named for the topic (owner's choice), so Labs 2 to 4 have learners copy data/ and scripts/ into a plain Desktop folder before attaching it, and scoring is a separate step: a tipped-off model behaves (1 of 4 vs 4 of 4). Topic 1 and Lab 1 slides are copied from the Human-AI Workforce deck by copy_slides.py. Re-run attacks before class; results are in `research/V50-LAB-TEST-RESULTS.md`.
+- Assessment: Written Assessment (5 SAQ, K1 to K5, questions must not change) and a Case Study (Q1 to Q3, lab screenshots pasted as answers). The instrument is "Case Study", as the CP names it. Never "PP".
+- Facts: the verified ledger is `research/SOURCE-REGISTER-v50.md`, checked 7 Nov 2026. Do not cite buldrr for product facts. Write "Gemini Spark (now Task)" and "Grok Bot, SpaceXSI (formerly xAI)".
 
 ## Security framework
 
@@ -28,10 +21,8 @@
 - Bump the package version and change-control entries before rebuilding.
 - Build the slide deck before the Lesson Plan because slide mappings feed the LP.
 - Regenerate the Learner Guide Markdown, DOCX, and PDF together.
-- Every learner-facing Markdown file under `activities/` must have an aligned current PDF counterpart within the same activity folder.
 - Run `.claude/commands/courseware-qa.md` against the exact rebuilt artifacts. Render every changed PPT/PDF/DOCX page and inspect it visually.
-- Assessments are confidential and must remain ignored by Git. Answer keys are trainer-only and never attached to learner-facing LMS fields.
-- The assessment (v4.4) is a Written Assessment (5 SAQ, one per K1–K5) plus a **reflection-based Case Study** (3 tasks, one per LO1–LO3, two questions each) in which learners document their own observations from the day's activities. The instrument is titled "Case Study" both in the DOCX filenames and inside the papers. Built by `build_assessment_set.py`.
+- Assessments are confidential and must remain ignored by Git, as must `build_assessment_v50.py` and `fgap/`. Answer keys never reach learner-facing LMS fields.
 
 ## Environment and publication
 

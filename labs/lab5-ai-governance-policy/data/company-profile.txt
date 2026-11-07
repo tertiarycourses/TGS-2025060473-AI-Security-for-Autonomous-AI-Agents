@@ -1,0 +1,7 @@
+KOPI KAKI CO. COMPANY PROFILE (fictional)
+Singapore kopi startup. Tiong Bahru flagship opens 1 Dec 2026; pop-ups and app pre-orders until then.
+People: founder-CEO (you), 2 baristas, 1 part-time Data Protection Officer, Nadia Rahman.
+Customers: 1,284 loyalty members. We hold name, NRIC (legacy sign-up field), mobile, email, birth date and points.
+AI agents in use: see ai-agent-register.csv.
+Regulation: Personal Data Protection Act 2012 (Singapore). PDPC is the regulator.
+Risk appetite: we would rather lose a sale than lose a customer's trust.

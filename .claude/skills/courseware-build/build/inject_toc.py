@@ -82,6 +82,10 @@ def main():
     # 5) build static TOC paragraphs, insert before placeholder, then delete it
     anchor = placeholder._p
     GREY = RGBColor(0x33, 0x33, 0x33)
+    from docx.oxml import OxmlElement
+    def _fld(run, kind):
+        fc = OxmlElement("w:fldChar"); fc.set(qn("w:fldCharType"), kind); run._r.append(fc)
+    paras = []
     for lvl, text, page in entries:
         new_p = anchor.makeelement(qn('w:p'), {})
         anchor.addprevious(new_p)
@@ -97,6 +101,18 @@ def main():
         r.font.name = "Arial"
         r.bold = (lvl == 1)
         r.font.color.rgb = GREY
+        paras.append(para)
+    # Wrap the static entries as the cached result of a real Word TOC field:
+    # Word sees an updatable TOC (right-click > Update Field); LibreOffice/PDF show these page numbers.
+    if paras:
+        first = paras[0]; first_run = first.runs[0]
+        b_run = first.add_run(); _fld(b_run, "begin")
+        it_run = first.add_run(); it = OxmlElement("w:instrText"); it.set(qn("xml:space"), "preserve")
+        it.text = ' TOC \\o "1-3" \\h \\z \\u '; it_run._r.append(it)
+        s_run = first.add_run(); _fld(s_run, "separate")
+        for rr in (b_run, it_run, s_run):           # move the field start before the visible text
+            first_run._r.addprevious(rr._r)
+        e_run = paras[-1].add_run(); _fld(e_run, "end")
     anchor.getparent().remove(anchor)
 
     doc.save(docx_path)

@@ -1,0 +1,11 @@
+ALWAYS-ON ASSISTANT CHECK (Lab 1)
+Agent and route used:
+Calendar connected? (yes/no + account):
+Gmail connected? (yes/no + account):
+Meetings the agent read, with times in Asia/Singapore:
+Clash the agent reported:
+Clash found by scripts/clash_check.py:
+Do they match? If not, who was right?
+One detail I corrected in the draft:
+Was anything sent, booked or changed? (it must be no):
+How I stopped or paused the agent's task:

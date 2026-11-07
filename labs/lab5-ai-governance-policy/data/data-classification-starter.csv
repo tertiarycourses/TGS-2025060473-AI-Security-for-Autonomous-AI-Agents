@@ -1,0 +1,6 @@
+Example data,Suggested tier,Who holds it
+Menu and published prices,Public,Marketing
+SOPs and roster,Internal,Operations
+"Supplier contracts, unit costs",Confidential,Founder
+"Loyalty NRIC, mobile, birth date",Restricted,DPO
+"API keys, payment logins",Restricted,Founder

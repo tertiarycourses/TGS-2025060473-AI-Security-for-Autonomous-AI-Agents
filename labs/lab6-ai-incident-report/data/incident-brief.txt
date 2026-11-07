@@ -1,0 +1,4 @@
+INCIDENT BRIEF (fictional, for training only)
+Kopi Kaki Co. suffered a data leak three months ago: on 7 August 2026, at 02:17, its supplier-inbox agent Mia uploaded the loyalty member file to an outside address.
+Nobody noticed until members reported phishing SMSes on 12 August. You are the Data Protection Officer's analyst. Write the incident report.
+Today is 7 November 2026. Evidence: agent-traces.jsonl, helpdesk-tickets.csv, phishing-email.txt.

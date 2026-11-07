@@ -14,7 +14,7 @@ GREY  = RGBColor(0x55, 0x5B, 0x66)
 ORG  = "Tertiary Infotech Academy Pte Ltd"
 COPYRIGHT = "© 2026 Tertiary Infotech Academy Pte Ltd. All rights reserved."
 UEN  = "UEN: 201200696W"
-TGS  = "TGS Ref No: TGS-2023035977"
+TGS  = "TGS Ref No: TGS-2025060473"
 
 def _shade_cell(cell, hexc):
     tcPr = cell._tc.get_or_add_tcPr(); shd = OxmlElement("w:shd")
@@ -64,7 +64,7 @@ def add_cover_page(doc, kind, title, version, conducted_by=ORG,
                    org_logo=None, course_logo=None, course_code=None):
     """kind: 'Learner Guide' or 'LESSON PLAN'.
     org_logo: Tertiary Infotech Academy logo path; course_logo: course logo path.
-    course_code: e.g. 'TGS-2023035977' (defaults to the module constant if not given)."""
+    course_code: e.g. 'TGS-2025060473' (defaults to the module constant if not given)."""
     tgs_line = f"TGS Ref No: {course_code}" if course_code else TGS
     doc.add_paragraph()
     _img(doc, org_logo, 2.1)                              # Tertiary Infotech Academy logo
@@ -97,7 +97,21 @@ def add_version_control(doc, rows):
         cells = t.add_row().cells
         for i, val in enumerate(row):
             cells[i].text = ""; rr = cells[i].paragraphs[0].add_run(str(val)); rr.font.size = Pt(9.5)
+    set_widths(t, [0.8, 1.15, 3.85, 1.0])
     doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
+
+def set_widths(t, inches):
+    """Fixed table layout + tblGrid + per-cell widths (LibreOffice ignores cell widths alone)."""
+    from docx.shared import Inches
+    tbl = t._tbl; tblPr = tbl.tblPr
+    lay = OxmlElement("w:tblLayout"); lay.set(qn("w:type"), "fixed"); tblPr.append(lay)
+    grid = tbl.find(qn("w:tblGrid"))
+    if grid is not None:
+        for gc, w in zip(grid.findall(qn("w:gridCol")), inches):
+            gc.set(qn("w:w"), str(int(w * 1440)))
+    for row in t.rows:
+        for c, w in zip(row.cells, inches):
+            c.width = Inches(w)
 
 def add_toc(doc, levels="1-3"):
     h = doc.add_paragraph(); r = h.add_run("TABLE OF CONTENTS")
@@ -126,11 +140,4 @@ def add_page_numbers(doc, left_text=""):
 def enable_update_fields(doc):
     """Tell Word to refresh all fields (TOC, PAGE) when the document opens."""
     settings = doc.settings.element
-    zoom = settings.find(qn("w:zoom"))
-    if zoom is not None:
-        zoom.set(qn("w:percent"), "100")
-    existing = settings.find(qn("w:updateFields"))
-    if existing is not None:
-        settings.remove(existing)
-    uf = OxmlElement("w:updateFields"); uf.set(qn("w:val"), "true")
-    settings.insert_element_before(uf, "w:hdrShapeDefaults", "w:footnotePr", "w:endnotePr", "w:compat")
+    uf = OxmlElement("w:updateFields"); uf.set(qn("w:val"), "true"); settings.append(uf)

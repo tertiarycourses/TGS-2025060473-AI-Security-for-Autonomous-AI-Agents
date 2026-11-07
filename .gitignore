@@ -45,9 +45,23 @@ research/V*-*.md
 *.zip
 .playwright-mcp/
 
-# Facilitator Guide + Assessment Plan embed the answer keys and rubric:
-# trainer-only (Google Drive + TMS), never GitHub
-**/FG_*
-**/FG-*
+# The Assessment Plan embeds answer keys and rubric: trainer-only (Drive + TMS), never GitHub.
+# The Facilitator Guide has no annexes and IS published (user rule, 7 Nov 2026).
 **/Assessment_Plan_*
 **/AP-*
+
+# Builders that hold model answers or the rubric: private
+.claude/skills/courseware-build/build/build_assessment_v50.py
+.claude/skills/courseware-build/fgap/
+courseware/build_assessment_set.py
+cqc/
+**/Assessment Summary Record*
+courseware/brochure/
+
+# Learner lab outputs
+labs/*/outputs/*
+!labs/*/outputs/.gitkeep
+
+# User rule (7 Nov 2026): nothing assessment-related on GitHub, including the Facilitator Guide
+**/FG_*
+**/FG-*

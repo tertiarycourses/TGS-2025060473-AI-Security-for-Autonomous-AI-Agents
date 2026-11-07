@@ -1,0 +1,5 @@
+agent,job,platform,model,human_owner,rights,data_it_can_reach
+Kaki,Customer-service replies,Hermes Agent,Free model on Nous Portal,Founder-CEO,Read + draft,"Loyalty file, order history"
+Mia,Supplier inbox triage,Hermes Agent,Free model on Nous Portal,Founder-CEO,Read + send,"Supplier mailbox, loyalty file"
+CEO Assistant,Calendar and email drafts,Meta Muse,Muse Spark 1.3,Founder-CEO,Read + draft,"Founder's Gmail, Calendar"
+Roster Bot,Weekly barista roster,Hermes Agent,GPT-6 via ChatGPT Plus,Head barista,Read + write,Staff availability sheet

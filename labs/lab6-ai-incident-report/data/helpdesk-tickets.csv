@@ -1,0 +1,4 @@
+ticket,opened,channel,summary,status
+TCK-3107,2026-08-12 09:20,Phone,Member got a phishing SMS quoting her birth date and loyalty points,Closed
+TCK-3112,2026-08-12 11:05,App,Two more members report the same SMS,Closed
+TCK-3118,2026-08-13 15:30,Email,Member asks whether her NRIC was exposed,Closed
